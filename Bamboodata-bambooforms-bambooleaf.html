@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>竹种性质 | Nifty - Admin Template</title>
+    <title>竹叶表 | Nifty - Admin Template</title>
 
 
     <!--STYLESHEET-->
@@ -182,7 +182,7 @@
                                 <!-- User dropdown menu -->
                                 <ul class="head-list">
                                     <li>
-                                        <a href="login1没有滚动条.html">
+                                        <a href="loginyougun.html">
                                             <i class="demo-pli-unlock icon-fw"></i> 退出
                                         </a>
                                     </li>
@@ -234,41 +234,71 @@
 					    <div class="panel-heading">
 					        <h3 class="panel-title">竹叶表</h3>
 					    </div>
-					    <div class="panel-body">
-                            <button id="demo-delete-row" class="btn btn-danger" disabled><i class="demo-pli-cross"></i> 删除</button>
-                            <button id="demo-add-row" class="btn btn-success" style="margin-left:85px;margin-bottom: -75px"><i class="demo-pli-plus"></i> 增加</button>
-                            <button id="demo-apdate-row" class="btn btn-info" style="margin-left:15px;margin-bottom: -75px"><i class="demo-pli-cross"></i> 修改</button>
-					        <table id="demo-custom-toolbar" class="demo-add-niftycheck" data-toggle="table"
-					               data-url="data/bs-table.json"
-					               data-toolbar="#demo-delete-row"
-					               data-search="true"
-					               data-show-refresh="true"
-					               data-show-toggle="true"
-					               data-show-columns="true"
-					               data-sort-name="id"
-					               data-page-list="[5, 10, 20]"
-					               data-page-size="5"
-					               data-pagination="true" data-show-pagination-switch="true">
-					            <thead>
-					                <tr>
-					                    <th data-field="state" data-checkbox="true">ID</th>
-					                    <th data-field="id" data-sortable="true" data-formatter="invoiceFormatter">ID</th>
-					                    <th data-field="name" data-sortable="true">Name</th>
-					                    <th data-field="date" data-sortable="true" data-formatter="dateFormatter">Order date</th>
-					                    <th data-field="amount" data-align="center" data-sortable="true" data-sorter="priceSorter">Balance</th>
-					                    <th data-field="status" data-align="center" data-sortable="true" data-formatter="statusFormatter">Status</th>
-					                    <th data-field="track" data-align="center" data-sortable="true" data-formatter="trackFormatter">Tracking Number</th>
-					                </tr>
-					            </thead>
-					        </table>
-					    </div>
-					</div>
-					<!--===================================================-->
+                        <div class="panel-body">
+                            <div id="btn_area">
+                                <button id="btn_add" class="btn btn-success" ><i class="demo-pli-plus"></i> 增加</button>
+                                <button id="btn_delete" class="btn btn-danger"><i class="demo-pli-cross"></i> 删除</button>
+                            </div>
 
 
 
+                            <!--增加按钮的模态框-->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="exampleModalLabel">新增</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form-horizontal">
+                                                <div class="panel-body">
+                                                    <div class="form-group">
+                                                        <label for="Chinesename" class="col-sm-2 control-label">中文名:</label>
+                                                        <div class="col-sm-4">
+                                                            <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                        </div>
+                                                        <label for="Englishname" class="col-sm-2 control-label">英文名:</label>
+                                                        <div class="col-sm-4">
+                                                            <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="Ladingname" class="col-sm-2 control-label">拉丁名:</label>
+                                                        <div class="col-sm-4">
+                                                            <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                        </div>
+                                                        <label for="Biename" class="col-sm-2 control-label">别名:</label>
+                                                        <div class="col-sm-4">
+                                                            <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="Chinesename" class="col-sm-2 control-label">描述:</label>
+                                                        <div class="col-sm-10">
+                                                            <textarea placeholder="" id="content" rows="5" class="form-control"></textarea>
+                                                        </div>
+                                                    </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                            <button type="button" class="btn btn-primary">保存</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <table id="data_table"></table>
+                    </div>
             </div>
             <!--===================================================-->
+        </div>
+
+        <!--===================================================-->
             <!--END CONTENT CONTAINER-->
 
 
@@ -394,7 +424,7 @@
                                                 <a href="#">藤种形态<i class="arrow"></i></a>
                                                 <!--Submenu-->
                                                 <ul class="collapse">
-                                                    <li><a href="#">藤种形态表</a></li>
+                                                    <li><a href="Bamboodata-Tengform-tengform.html">藤种形态表</a></li>
                                                 </ul>
                                             </li>
 
@@ -986,6 +1016,7 @@
     <!-- END SETTINGS -->
 
     </div>
+    <script src="js/bambootattan_pc_js/Bamboodata-bambooforms-bambooleaf.js"></script>
 </body>
 </html>
 
