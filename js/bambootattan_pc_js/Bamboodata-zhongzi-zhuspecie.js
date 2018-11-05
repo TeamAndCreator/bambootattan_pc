@@ -1,162 +1,96 @@
-$(document).ready(function () {
-
-    // //日历
-    // $('#demo-dp-component .input-group.date').datepicker({autoclose: true});
-
-
-//判断用户角色，添加添加、删除按钮
-    if (rolesId.indexOf(3) != -1 || rolesId.indexOf(4) != -1) {
-        $('#demo-delete-row').html('<button id="demo-add-row" class="btn btn-success" data-toggle="modal"\n' +
-            '                                    data-target="#demo-lg-modal"><i class="demo-pli-plus"></i>添加\n' +
-            '                            </button>\n' +
-            '                            <button onclick="delete1()" data-toggle="modal" data-target="#delete_modal" class="btn btn-danger"><i class="demo-pli-cross"></i>删除\n' +
-            '                            </button>')
-        $("input[ name = 'system']").val(sessionStorage.getItem("systemName"));
-    }
-    var labs;
-//获取数据
-    $.ajax({
-        crossDomain: true,
-        url: ipValue + "/laboratory/findAll1",
-        dataType: "json",
-        data: {"systemId": sessionStorage.getItem("systemId")},
-        type: "get",
-        async: false,
-        success: function (result) {
-            labs = result.data.laboratories;
-            for (var i = 0; i < labs.length; i++) {
-                labs[i].laboratory.zr=labs[i].zr[0];
-                labs[i]=labs[i].laboratory
-            }
-        }
+$(function(){
+    $('#btn_add').on('click',function () {
+        $('#exampleModal').modal('show');
     });
-//设置表格每列标题
-    $('#demo-custom-toolbar').bootstrapTable({
-        idField: 'id',
-        data: labs,
-        columns: [{
-            checkbox: true
-        }, {
-            field: 'ChineseNam',
-            align: 'center',
-            title: '中文名',
-            sortable:'true',
-            formatter:function (value, row, index) {
-                return value.systemName
-            }
-        }, {
-            field: 'EnglishNam',
-            align: 'center',
-            title: '英文名',
-            sortable:'true',
-
-        }, {
-            field: 'LadingNam',
-            align: 'center',
-            sortable:'true',
-            title: '拉丁名'
-        }, {
-            field: 'BieNam',
-            align: 'center',
-            sortable:'true',
-            title: '别名'
-        }, {
-            field: 'state',
-            align: 'center',
-            title: '属描述',
-
-        }, {
-            field: 'Num',
-            align: 'center',
-            title: '序号',
-
-        }
-        ]
+    $('#btn_delete').on('click',function(){
+       alert("删除");
     });
+    function init(){
+        var dataSoure=[
+            {'id':'1','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','Miaoshu':'23','Num':'韩梅梅'},
+            {'id':'2','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
+            {'id':'3','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
+            {'id':'1','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','Miaoshu':'23','Num':'韩梅梅'},
+            {'id':'2','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
+            {'id':'3','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
+            {'id':'1','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','Miaoshu':'23','Num':'韩梅梅'},
+            {'id':'2','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
+            {'id':'3','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'}
+            ];
+            $('#data_table').bootstrapTable({
+                //url:'',//数据源，请求后台的路径
+                data:dataSoure,//数据源，json数据
+                toolbar:'#btn_area',//按钮组
+                search:true,//可以搜索
+                showRefresh:true,//可以刷新
+                showToggle:true,//可以视图切换
+                showColumns:true,//可以选择列
+                sortName:'id',//排序字段
+                sortOrder:'asc',//排序类型，asc正序，desc倒序
+                pageList:[5, 10, 20],//每页数量组
+                pageSize:5,//默认每页数量
+                pagination:true,//可以分页
+                showPaginationSwitch:true,//
+                columns:[//列数据
+                    {
+                        checkbox:true//有复选框
+                    },
+                    {
+                        field:'',//数据列
+                        title:'操作',//数据列名称
+                        width:'80px',
+                        align:'center',//水平居中
+                        formatter:function(value,row,index){//格式化，自定义内容
+                            var _html = '<button onclick="edit(\''+row.id+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
+                            _html += '<button  onclick="dele(\''+row.id+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>'
+                            return _html;
+                        }
+                    },
+                    {
+                        field:'nameCH',//数据列
+                        title:'中文名',//数据列名称
+                        sortable:true,//可排序
+                        align:'center'//水平居中
+                    },
+                    {
+                        field:'nameEN',//数据列
+                        title:'英文名',//数据列名称
+                        sortable:true,//可排序
+                        align:'center'//水平居中
+                    },
+                    {
+                        field:'nameLD',//数据列
+                        title:'拉丁名',//数据列名称
+                        sortable:true,//可排序
+                        align:'center'//水平居中
+                    },
+                    {
+                        field:'nameBN',//数据列
+                        title:'别名',//数据列名称
+                        sortable:true,//可排序
+                        align:'center'//水平居中
+                    },
+                    {
+                        field:'Miaoshu',//数据列
+                        title:'描述',//数据列名称
+                        sortable:true,//可排序
+                        align:'center'//水平居中
+                    },
+                    {
+                        field:'Num',//数据列
+                        title:'序号',//数据列名称
+                        sortable:true,//可排序
+                        align:'center'//水平居中
+                    }
 
-//获取并发送添加数据
-    $('#demo-add-row').click(function () {
-        var laboratory = {
-            "ChineseName": "",
-            "company": "",
-            "system.id": "",
-            "content": ""
-        };
-        laboratory.labName = $("input[ name = 'labName']").val();
-        if (laboratory.labName == "") {
-            alert("研究室名称不能为空")
-        } else {
-            laboratory.company = $("input[ name = 'company']").val();
-            laboratory["system.id"] = sessionStorage.getItem('systemId');
-            laboratory.content = $('#content').val();
-            $.ajax({
-                type: 'POST',
-                dataType: 'JSON',
-                url: ipValue + '/laboratory/save',
-                data: laboratory,
-                async: false,
-                traditional: true,
-                success: function () {
-                    window.location.reload();
-                }
+                ]
             });
-        }
-    });
-//发送删除数据
-    $('#demo-delete-row').click(function () {
-        if ($("#demo-custom-toolbar").bootstrapTable('getSelections').length == 0) {
-            $("#delete_modal").modal('hide');
-        } else {
-            var a = $("#demo-custom-toolbar").bootstrapTable('getSelections');
-            var idList = [];
-            for (var i = 0; i < a.length; i++) {
-                idList[i] = a[i].id;
-            }
-            $.ajax({
-                type: 'post',
-                dataType: 'JSON',
-                url: ipValue + '/laboratory/deleteByIds',
-                data: {_method: "DELETE", "idList": idList},
-                async: false,
-                traditional: true,
-                success: function () {
-                    window.location.reload();
-                }
-            })
-        }
-    })
-});
-
-
-
-// function updateState(id) {
-//     $('#updateState_btn').click(function () {
-//         $.ajax({
-//             type: 'post',
-//             dataType: 'JSON',
-//             url: ipValue + '/laboratory/updateState',
-//             data: {_method: "put", "labId": id},
-//             async: false,
-//             success: function (data) {
-//                 window.location.reload();
-//             },
-//             error: function () {
-//             }
-//         });
-//
-//     });
-// }
-
-//跳转详情页
-function detail(value, row) {
-    return '<a href="laboratory_detail.html?labId=' + row.id + '">' + value + '</a>'
-}
-
-//判断有没有选中需删除的项
-function delete1() {
-    if ($("#demo-custom-toolbar").bootstrapTable('getSelections').length == 0) {
-        $("#delete_h3").text("请至少选择一条");
-    } else {
-        $("#delete_h3").text("是否删除");
     }
+    init();
+});
+function edit(id) {
+    $('#exampleModal').modal('show');
+}
+function dele(id){
+    alert("删除")
 }
