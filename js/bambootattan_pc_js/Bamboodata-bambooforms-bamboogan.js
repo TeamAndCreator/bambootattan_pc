@@ -7,15 +7,15 @@ $(function(){
     });
     function init(){
         var dataSoure=[
-            {'id':'1','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','Miaoshu':'23','Num':'韩梅梅'},
-            {'id':'2','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'3','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'1','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','Miaoshu':'23','Num':'韩梅梅'},
-            {'id':'2','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'3','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'1','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','Miaoshu':'23','Num':'韩梅梅'},
-            {'id':'2','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'3','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'}
+            {'id':'1','Zhong':'李雷','GanHigh':'LiLei','GanZJ':'kk','GanColor':'LiLei','GanST':'23','GanXT':'韩梅梅','JieHigh':'23','JieXT':'23','JieYWQSG':'23','JieBM':'23','JieGBH':'23','YouGanBM':'23','YouGanBF':'23','GanSFLQ':'55'},
+            {'id':'1','Zhong':'李雷','GanHigh':'LiLei','GanZJ':'kk','GanColor':'LiLei','GanST':'23','GanXT':'韩梅梅','JieHigh':'23','JieXT':'23','JieYWQSG':'23','JieBM':'23','JieGBH':'23','YouGanBM':'23','YouGanBF':'23','GanSFLQ':'55'},
+            {'id':'1','Zhong':'李雷','GanHigh':'LiLei','GanZJ':'kk','GanColor':'LiLei','GanST':'23','GanXT':'韩梅梅','JieHigh':'23','JieXT':'23','JieYWQSG':'23','JieBM':'23','JieGBH':'23','YouGanBM':'23','YouGanBF':'23','GanSFLQ':'55'},
+            {'id':'1','Zhong':'李雷','GanHigh':'LiLei','GanZJ':'kk','GanColor':'LiLei','GanST':'23','GanXT':'韩梅梅','JieHigh':'23','JieXT':'23','JieYWQSG':'23','JieBM':'23','JieGBH':'23','YouGanBM':'23','YouGanBF':'23','GanSFLQ':'55'},
+            {'id':'1','Zhong':'李雷','GanHigh':'LiLei','GanZJ':'kk','GanColor':'LiLei','GanST':'23','GanXT':'韩梅梅','JieHigh':'23','JieXT':'23','JieYWQSG':'23','JieBM':'23','JieGBH':'23','YouGanBM':'23','YouGanBF':'23','GanSFLQ':'55'},
+            {'id':'1','Zhong':'李雷','GanHigh':'LiLei','GanZJ':'kk','GanColor':'LiLei','GanST':'23','GanXT':'韩梅梅','JieHigh':'23','JieXT':'23','JieYWQSG':'23','JieBM':'23','JieGBH':'23','YouGanBM':'23','YouGanBF':'23','GanSFLQ':'55'},
+            {'id':'1','Zhong':'李雷','GanHigh':'LiLei','GanZJ':'kk','GanColor':'LiLei','GanST':'23','GanXT':'韩梅梅','JieHigh':'23','JieXT':'23','JieYWQSG':'23','JieBM':'23','JieGBH':'23','YouGanBM':'23','YouGanBF':'23','GanSFLQ':'55'},
+            {'id':'1','Zhong':'李雷','GanHigh':'LiLei','GanZJ':'kk','GanColor':'LiLei','GanST':'23','GanXT':'韩梅梅','JieHigh':'23','JieXT':'23','JieYWQSG':'23','JieBM':'23','JieGBH':'23','YouGanBM':'23','YouGanBF':'23','GanSFLQ':'55'},
+            {'id':'1','Zhong':'李雷','GanHigh':'LiLei','GanZJ':'kk','GanColor':'LiLei','GanST':'23','GanXT':'韩梅梅','JieHigh':'23','JieXT':'23','JieYWQSG':'23','JieBM':'23','JieGBH':'23','YouGanBM':'23','YouGanBF':'23','GanSFLQ':'55'}
         ];
         $('#data_table').bootstrapTable({
             //url:'',//数据源，请求后台的路径
@@ -40,45 +40,93 @@ $(function(){
                     title:'操作',//数据列名称
                     width:'80px',
                     align:'center',//水平居中
-                    formatter:function(value,row,index){//格式化，自定义内容
-                        var _html = '<button onclick="edit(\''+row.id+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
-                        _html += '<button  onclick="dele(\''+row.id+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>'
-                        return _html;
-                    }
+                    // formatter:function(value,row,index){//格式化，自定义内容
+                    //     var _html = '<button onclick="edit(\''+row.id+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
+                    //     _html += '<button  onclick="dele(\''+row.id+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>'
+                    //     return _html;
+                    // }
                 },
                 {
-                    field:'nameCH',//数据列
-                    title:'中文名',//数据列名称
+                    field:'Zhong',//数据列
+                    title:'种',//数据列名称
                     sortable:true,//可排序
                     align:'center'//水平居中
                 },
                 {
-                    field:'nameEN',//数据列
-                    title:'英文名',//数据列名称
+                    field:'GanHigh',//数据列
+                    title:'竿高度',//数据列名称
                     sortable:true,//可排序
                     align:'center'//水平居中
                 },
                 {
-                    field:'nameLD',//数据列
-                    title:'拉丁名',//数据列名称
+                    field:'GanZJ',//数据列
+                    title:'竿直径',//数据列名称
                     sortable:true,//可排序
                     align:'center'//水平居中
                 },
                 {
-                    field:'nameBN',//数据列
-                    title:'别名',//数据列名称
+                    field:'GanColor',//数据列
+                    title:'竿颜色',//数据列名称
                     sortable:true,//可排序
                     align:'center'//水平居中
                 },
                 {
-                    field:'Miaoshu',//数据列
-                    title:'描述',//数据列名称
+                    field:'GanST',//数据列
+                    title:'竿梢头',//数据列名称
                     sortable:true,//可排序
                     align:'center'//水平居中
                 },
                 {
-                    field:'Num',//数据列
-                    title:'序号',//数据列名称
+                    field:'GanXT',//数据列
+                    title:'竿身形态',//数据列名称
+                    sortable:true,//可排序
+                    align:'center'//水平居中
+                },
+                {
+                    field:'JieHigh',//数据列
+                    title:'节间长度',//数据列名称
+                    sortable:true,//可排序
+                    align:'center'//水平居中
+                },
+                {
+                    field:'JieXT',//数据列
+                    title:'节间形态',//数据列名称
+                    sortable:true,//可排序
+                    align:'center'//水平居中
+                },
+                {
+                    field:'JieYWQSG',//数据列
+                    title:'节间有无气生根',//数据列名称
+                    sortable:true,//可排序
+                    align:'center'//水平居中
+                },
+                {
+                    field:'JieBM',//数据列
+                    title:'节间被毛',//数据列名称
+                    sortable:true,//可排序
+                    align:'center'//水平居中
+                },
+                {
+                    field:'JieGBH',//数据列
+                    title:'节间竿壁厚',//数据列名称
+                    sortable:true,//可排序
+                    align:'center'//水平居中
+                },
+                {
+                    field:'YouGanBM',//数据列
+                    title:'幼时竿被毛',//数据列名称
+                    sortable:true,//可排序
+                    align:'center'//水平居中
+                },
+                {
+                    field:'YouGanBF',//数据列
+                    title:'幼时竿被粉',//数据列名称
+                    sortable:true,//可排序
+                    align:'center'//水平居中
+                },
+                {
+                    field:'GanSFLQ',//数据列
+                    title:'竿环是否隆起',//数据列名称
                     sortable:true,//可排序
                     align:'center'//水平居中
                 }

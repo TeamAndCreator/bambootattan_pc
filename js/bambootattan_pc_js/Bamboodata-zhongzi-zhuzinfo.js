@@ -7,15 +7,15 @@ $(function(){
     });
     function init(){
         var dataSoure=[
-            {'id':'1','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','Miaoshu':'23','Num':'韩梅梅'},
-            {'id':'2','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'3','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'1','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','Miaoshu':'23','Num':'韩梅梅'},
-            {'id':'2','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'3','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'1','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','Miaoshu':'23','Num':'韩梅梅'},
-            {'id':'2','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'3','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'}
+            {'id':'1','ShuBZ':'ll','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','ZhongleiBM':'2','ZhongleiDNA':'3','ZhongleiTXM':'4','GouneiFB':'5','GuowaiFB':'6','Radio':'7','Photo':'8','Miaoshu':'23','Num':'韩梅梅'},
+            {'id':'2','ShuBZ':'ll','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','ZhongleiBM':'2','ZhongleiDNA':'3','ZhongleiTXM':'4','GouneiFB':'5','GuowaiFB':'6','Radio':'7','Photo':'8','Miaoshu':'21','Num':'李雷'},
+            {'id':'3','ShuBZ':'ll','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','ZhongleiBM':'2','ZhongleiDNA':'3','ZhongleiTXM':'4','GouneiFB':'5','GuowaiFB':'6','Radio':'7','Photo':'8','Miaoshu':'21','Num':'李雷'},
+            {'id':'1','ShuBZ':'ll','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','ZhongleiBM':'2','ZhongleiDNA':'3','ZhongleiTXM':'4','GouneiFB':'5','GuowaiFB':'6','Radio':'7','Photo':'8','Miaoshu':'23','Num':'韩梅梅'},
+            {'id':'2','ShuBZ':'ll','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','ZhongleiBM':'2','ZhongleiDNA':'3','ZhongleiTXM':'4','GouneiFB':'5','GuowaiFB':'6','Radio':'7','Photo':'8','Miaoshu':'21','Num':'李雷'},
+            {'id':'3','ShuBZ':'ll','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','ZhongleiBM':'2','ZhongleiDNA':'3','ZhongleiTXM':'4','GouneiFB':'5','GuowaiFB':'6','Radio':'7','Photo':'8','Miaoshu':'21','Num':'李雷'},
+            {'id':'1','ShuBZ':'ll','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','ZhongleiBM':'2','ZhongleiDNA':'3','ZhongleiTXM':'4','GouneiFB':'5','GuowaiFB':'6','Radio':'7','Photo':'8','Miaoshu':'23','Num':'韩梅梅'},
+            {'id':'2','ShuBZ':'ll','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','ZhongleiBM':'2','ZhongleiDNA':'3','ZhongleiTXM':'4','GouneiFB':'5','GuowaiFB':'6','Radio':'7','Photo':'8','Miaoshu':'21','Num':'李雷'},
+            {'id':'3','ShuBZ':'ll','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','ZhongleiBM':'2','ZhongleiDNA':'3','ZhongleiTXM':'4','GouneiFB':'5','GuowaiFB':'6','Radio':'7','Photo':'8','Miaoshu':'21','Num':'李雷'}
         ];
         $('#data_table').bootstrapTable({
             //url:'',//数据源，请求后台的路径
@@ -71,6 +71,48 @@ $(function(){
                     align:'center'//水平居中
                 },
                 {
+                    field:'ZhongleiBM',//数据列
+                    title:'种类编码',//数据列名称
+                    sortable:true,//可排序
+                    align:'center'//水平居中
+                },
+                {
+                    field:'ZhongleiDNA',//数据列
+                    title:'种类DNA码',//数据列名称
+                    sortable:true,//可排序
+                    align:'center'//水平居中
+                },
+                {
+                    field:'ZhongleiTXM',//数据列
+                    title:'种类条形码',//数据列名称
+                    sortable:true,//可排序
+                    align:'center'//水平居中
+                },
+                {
+                    field:'GouneiFB',//数据列
+                    title:'国内分布',//数据列名称
+                    sortable:true,//可排序
+                    align:'center'//水平居中
+                },
+                {
+                    field:'GuowaiFB',//数据列
+                    title:'国外分布',//数据列名称
+                    sortable:true,//可排序
+                    align:'center'//水平居中
+                },
+                {
+                    field:'Radio',//数据列
+                    title:'视频',//数据列名称
+                    sortable:true,//可排序
+                    align:'center'//水平居中
+                },
+                {
+                    field:'Photo',//数据列
+                    title:'图片',//数据列名称
+                    sortable:true,//可排序
+                    align:'center'//水平居中
+                },
+                {
                     field:'Miaoshu',//数据列
                     title:'描述',//数据列名称
                     sortable:true,//可排序
@@ -82,7 +124,6 @@ $(function(){
                     sortable:true,//可排序
                     align:'center'//水平居中
                 }
-
             ]
         });
     }
