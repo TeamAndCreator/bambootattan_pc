@@ -91,35 +91,6 @@
 
 
 
-
-    
-    <!--=================================================
-
-    REQUIRED
-    You must include this in your project.
-
-
-    RECOMMENDED
-    This category must be included but you may modify which plugins or components which should be included in your project.
-
-
-    OPTIONAL
-    Optional plugins. You may choose whether to include it in your project or not.
-
-
-    DEMONSTRATION
-    This is to be removed, used for demonstration purposes only. This category must not be included in your project.
-
-
-    SAMPLE
-    Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
-
-
-    Detailed information and more samples can be found in the document.
-
-    =================================================-->
-        
-
 </head>
 
 <!--TIPS-->
@@ -238,40 +209,89 @@
 					        <h3 class="panel-title">箨片表</h3>
 					    </div>
 					    <div class="panel-body">
-                            <button id="demo-delete-row" class="btn btn-danger" disabled><i class="demo-pli-cross"></i> 删除</button>
-                            <button id="demo-add-row" class="btn btn-success" style="margin-left:85px;margin-bottom: -75px"><i class="demo-pli-plus"></i> 增加</button>
-                            <button id="demo-apdate-row" class="btn btn-info" style="margin-left:15px;margin-bottom: -75px"><i class="demo-pli-cross"></i> 修改</button>
-					        <table id="demo-custom-toolbar" class="demo-add-niftycheck" data-toggle="table"
-					               data-url="data/bs-table.json"
-					               data-toolbar="#demo-delete-row"
-					               data-search="true"
-					               data-show-refresh="true"
-					               data-show-toggle="true"
-					               data-show-columns="true"
-					               data-sort-name="id"
-					               data-page-list="[5, 10, 20]"
-					               data-page-size="5"
-					               data-pagination="true" data-show-pagination-switch="true">
-					            <thead>
-					                <tr>
-					                    <th data-field="state" data-checkbox="true">ID</th>
-					                    <th data-field="id" data-sortable="true" data-formatter="invoiceFormatter">ID</th>
-					                    <th data-field="name" data-sortable="true">Name</th>
-					                    <th data-field="date" data-sortable="true" data-formatter="dateFormatter">Order date</th>
-					                    <th data-field="amount" data-align="center" data-sortable="true" data-sorter="priceSorter">Balance</th>
-					                    <th data-field="status" data-align="center" data-sortable="true" data-formatter="statusFormatter">Status</th>
-					                    <th data-field="track" data-align="center" data-sortable="true" data-formatter="trackFormatter">Tracking Number</th>
-					                </tr>
-					            </thead>
-					        </table>
-					    </div>
-					</div>
-					<!--===================================================-->
+                            <div id="btn_area">
+                                <button id="btn_add" class="btn btn-success" ><i class="demo-pli-plus"></i> 增加</button>
+                                <button id="btn_delete" class="btn btn-danger"><i class="demo-pli-cross"></i> 删除</button>
+                            </div>
+
+
+                            <!--增加按钮的模态框-->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
+                                            <h4 class="modal-title" id="exampleModalLabel">新增</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form-horizontal">
+                                                <div class="panel-body">
+                                                    <div class="form-group">
+                                                        <label for="ZhongBZ" class="col-sm-2 control-label">种标志:</label>
+                                                        <div class="col-sm-4">
+                                                            <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                        </div>
+                                                        <label for="TuopianBYXT" class="col-sm-2 control-label">箨片边缘形态:</label>
+                                                        <div class="col-sm-4">
+                                                            <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="TuopianColor" class="col-sm-2 control-label">箨片颜色:</label>
+                                                        <div class="col-sm-4">
+                                                            <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                        </div>
+                                                        <label for="TuopianSFYTL" class="col-sm-2 control-label">箨片是否易脱落:</label>
+                                                        <div class="col-sm-4">
+                                                            <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="TuopianXDXZ" class="col-sm-2 control-label">箨片先端形状:</label>
+                                                        <div class="col-sm-4">
+                                                            <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                        </div>
+                                                        <label for="TuopianJBXT" class="col-sm-2 control-label">箨片基部形态:</label>
+                                                        <div class="col-sm-4">
+                                                            <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="TuopianXT" class="col-sm-2 control-label">箨片形状:</label>
+                                                        <div class="col-sm-4">
+                                                            <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                        </div>
+                                                        <label for="TuopianBMBF" class="col-sm-2 control-label">箨片背面被毛被粉:</label>
+                                                        <div class="col-sm-4">
+                                                            <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <!--<div class="form-group">-->
+                                                    <label for="TuopianJBTQKD" class="col-sm-2 control-label">箨片基底与箨鞘宽度之比:</label>
+                                                    <div class="col-sm-4">
+                                                        <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                    </div>
+                                                    <!--</div>-->
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                            <button type="button" class="btn btn-primary">保存</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 
 
+                        <table id="data_table" class="table"></table>
+                    </div>
             </div>
             <!--===================================================-->
+        </div>
+
+        <!--===================================================-->
             <!--END CONTENT CONTAINER-->
 
 

@@ -7,15 +7,17 @@ $(function(){
     });
     function init(){
         var dataSoure=[
-            {'id':'1','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','Miaoshu':'23','Num':'韩梅梅'},
-            {'id':'2','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'3','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'1','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','Miaoshu':'23','Num':'韩梅梅'},
-            {'id':'2','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'3','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'1','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','Miaoshu':'23','Num':'韩梅梅'},
-            {'id':'2','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'3','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'}
+            {'id':'1','ZhongBZ':'李雷','TuoqiaoZL':'LiLei','TuoqiaoXDXT':'LiLei','TuoqiaoBMBF':'LiLei','TuoqiaoBYXT':'23'},
+            {'id':'2','ZhongBZ':'李雷','TuoqiaoZL':'LiLei','TuoqiaoXDXT':'LiLei','TuoqiaoBMBF':'LiLei','TuoqiaoBYXT':'23'},
+            {'id':'3','ZhongBZ':'李雷','TuoqiaoZL':'LiLei','TuoqiaoXDXT':'LiLei','TuoqiaoBMBF':'LiLei','TuoqiaoBYXT':'23'},
+            {'id':'4','ZhongBZ':'李雷','TuoqiaoZL':'LiLei','TuoqiaoXDXT':'LiLei','TuoqiaoBMBF':'LiLei','TuoqiaoBYXT':'23'},
+            {'id':'5','ZhongBZ':'李雷','TuoqiaoZL':'LiLei','TuoqiaoXDXT':'LiLei','TuoqiaoBMBF':'LiLei','TuoqiaoBYXT':'23'},
+            {'id':'6','ZhongBZ':'李雷','TuoqiaoZL':'LiLei','TuoqiaoXDXT':'LiLei','TuoqiaoBMBF':'LiLei','TuoqiaoBYXT':'23'},
+            {'id':'7','ZhongBZ':'李雷','TuoqiaoZL':'LiLei','TuoqiaoXDXT':'LiLei','TuoqiaoBMBF':'LiLei','TuoqiaoBYXT':'23'},
+            {'id':'8','ZhongBZ':'李雷','TuoqiaoZL':'LiLei','TuoqiaoXDXT':'LiLei','TuoqiaoBMBF':'LiLei','TuoqiaoBYXT':'23'},
+            {'id':'9','ZhongBZ':'李雷','TuoqiaoZL':'LiLei','TuoqiaoXDXT':'LiLei','TuoqiaoBMBF':'LiLei','TuoqiaoBYXT':'23'},
+            {'id':'10','ZhongBZ':'李雷','TuoqiaoZL':'LiLei','TuoqiaoXDXT':'LiLei','TuoqiaoBMBF':'LiLei','TuoqiaoBYXT':'23'},
+            {'id':'11','ZhongBZ':'李雷','TuoqiaoZL':'LiLei','TuoqiaoXDXT':'LiLei','TuoqiaoBMBF':'LiLei','TuoqiaoBYXT':'23'},
         ];
         $('#data_table').bootstrapTable({
             //url:'',//数据源，请求后台的路径
@@ -33,54 +35,103 @@ $(function(){
             showPaginationSwitch:true,//
             columns:[//列数据
                 {
-                    checkbox:true//有复选框
+                    checkbox:true,//有复选框
+                    cellStyle:function(value,row,index,field){
+                        return{
+                            css:{
+                                'min-width':'36px'
+                            }
+                        };
+                    }
                 },
                 {
                     field:'',//数据列
                     title:'操作',//数据列名称
                     width:'80px',
                     align:'center',//水平居中
-                    formatter:function(value,row,index){//格式化，自定义内容
+                    valign:'middle',
+                    formatter:function(value,row,index,field){//格式化，自定义内容
                         var _html = '<button onclick="edit(\''+row.id+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
                         _html += '<button  onclick="dele(\''+row.id+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>'
                         return _html;
+                    },
+                    cellStyle:function(value,row,index,field){
+                        return{
+                            css:{
+                                'min-width':'80px'
+                            }
+                        };
                     }
                 },
                 {
-                    field:'nameCH',//数据列
-                    title:'中文名',//数据列名称
+                    field:'ZhongBZ',//数据列
+                    title:'种标志',//数据列名称
                     sortable:true,//可排序
-                    align:'center'//水平居中
+                    align:'center',//水平居中
+                    valign:'middle',
+                    cellStyle:function(value,row,index,field){
+                        return {
+                            css:{
+                                'min-width':'80px'
+                            }
+                        };
+                    }
                 },
                 {
-                    field:'nameEN',//数据列
-                    title:'英文名',//数据列名称
+                    field:'TuoqiaoZL',//数据列
+                    title:'箨鞘早落',//数据列名称
                     sortable:true,//可排序
-                    align:'center'//水平居中
+                    align:'center',//水平居中
+                    valign:'middle',
+                    cellStyle:function(value,row,index,field){
+                        return {
+                            css:{
+                                'min-width':'80px'
+                            }
+                        };
+                    }
                 },
                 {
-                    field:'nameLD',//数据列
-                    title:'拉丁名',//数据列名称
+                    field:'TuoqiaoXDXT',//数据列
+                    title:'箨鞘先端形态',//数据列名称
                     sortable:true,//可排序
-                    align:'center'//水平居中
+                    align:'center',//水平居中
+                    valign:'middle',
+                    cellStyle:function(value,row,index,field){
+                        return {
+                            css:{
+                                'min-width':'80px'
+                            }
+                        };
+                    }
                 },
                 {
-                    field:'nameBN',//数据列
-                    title:'别名',//数据列名称
+                    field:'TuoqiaoBMBF',//数据列
+                    title:'箨鞘背面被毛被粉',//数据列名称
                     sortable:true,//可排序
-                    align:'center'//水平居中
+                    align:'center',//水平居中
+                    valign:'middle',
+                    cellStyle:function(value,row,index,field){
+                        return {
+                            css:{
+                                'min-width':'80px'
+                            }
+                        };
+                    }
                 },
                 {
-                    field:'Miaoshu',//数据列
-                    title:'描述',//数据列名称
+                    field:'TuoqiaoBYXT',//数据列
+                    title:'箨鞘边缘形态',//数据列名称
                     sortable:true,//可排序
-                    align:'center'//水平居中
-                },
-                {
-                    field:'Num',//数据列
-                    title:'序号',//数据列名称
-                    sortable:true,//可排序
-                    align:'center'//水平居中
+                    align:'center',//水平居中
+                    valign:'middle',
+                    cellStyle:function(value,row,index,field){
+                        return {
+                            css:{
+                                'min-width':'80px'
+                            }
+                        };
+                    }
                 }
 
             ]
