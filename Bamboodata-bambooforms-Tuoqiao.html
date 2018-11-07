@@ -248,38 +248,27 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
                                         <h4 class="modal-title" id="exampleModalLabel">新增</h4>
                                     </div>
                                     <div class="modal-body">
                                         <form class="form-horizontal">
                                             <div class="panel-body">
                                                 <div class="form-group">
-                                                    <label for="Chinesename" class="col-sm-2 control-label">中文名:</label>
-                                                    <div class="col-sm-4">
-                                                        <input class="form-control input-sm" name="labName" placeholder="" type="text">
-                                                    </div>
-                                                    <label for="Englishname" class="col-sm-2 control-label">英文名:</label>
-                                                    <div class="col-sm-4">
-                                                        <input class="form-control input-sm" name="labName" placeholder="" type="text">
-                                                    </div>
+                                                    <label for="recipient-name" class="control-label">种标志:</label>
+                                                    <input type="text" class="form-control" id="recipient-nam">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="Ladingname" class="col-sm-2 control-label">拉丁名:</label>
-                                                    <div class="col-sm-4">
-                                                        <input class="form-control input-sm" name="labName" placeholder="" type="text">
-                                                    </div>
-                                                    <label for="Biename" class="col-sm-2 control-label">别名:</label>
-                                                    <div class="col-sm-4">
-                                                        <input class="form-control input-sm" name="labName" placeholder="" type="text">
-                                                    </div>
+                                                    <label for="recipient-name" class="control-label">箨鞘是否早落:</label>
+                                                    <input type="text" class="form-control" id="recipient-name">
                                                 </div>
-
                                                 <div class="form-group">
-                                                    <label for="Chinesename" class="col-sm-2 control-label">描述:</label>
-                                                    <div class="col-sm-10">
-                                                        <textarea placeholder="" id="content" rows="5" class="form-control"></textarea>
-                                                    </div>
+                                                    <label for="recipient-name" class="control-label">箨鞘先端形态:</label>
+                                                    <input type="text" class="form-control" id="recipient-na">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="control-label">箨鞘背面被毛被粉:</label>
+                                                    <input type="text" class="form-control" id="recipient-n">
                                                 </div>
                                         </form>
                                     </div>
@@ -293,11 +282,13 @@
                     </div>
 
 
-                    <table id="data_table"></table>
+
+                    <table id="data_table" class="table"></table>
                 </div>
         </div>
         <!--===================================================-->
     </div>
+
 
     <!--===================================================-->
             <!--END CONTENT CONTAINER-->
