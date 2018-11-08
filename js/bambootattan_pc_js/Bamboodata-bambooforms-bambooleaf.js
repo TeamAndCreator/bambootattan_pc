@@ -7,15 +7,17 @@ $(function(){
     });
     function init(){
         var dataSoure=[
-            {'id':'1','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','Miaoshu':'23','Num':'韩梅梅'},
-            {'id':'2','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'3','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'1','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','Miaoshu':'23','Num':'韩梅梅'},
-            {'id':'2','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'3','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'1','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','Miaoshu':'23','Num':'韩梅梅'},
-            {'id':'2','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'3','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'}
+            {'id':'1','zhong':'李雷','Zhuyeform':'LiLei','Zhuyelength':'LiLei','zhuyeheight':'LiLei','zhijyypsm':'23','yepianBMBM':'韩梅梅','yepianBYJC':"kk",'yeshiXZ':'HanMeiMei','yeshihigh':'21','yebinglengh':'李雷','yepianJBXT':'HanMeiMei','yejianXT':'21'},
+            {'id':'2','zhong':'李雷','Zhuyeform':'LiLei','Zhuyelength':'LiLei','zhuyeheight':'LiLei','zhijyypsm':'23','yepianBMBM':'韩梅梅','yepianBYJC':"kk",'yeshiXZ':'HanMeiMei','yeshihigh':'21','yebinglengh':'李雷','yepianJBXT':'HanMeiMei','yejianXT':'21'},
+            {'id':'3','zhong':'李雷','Zhuyeform':'LiLei','Zhuyelength':'LiLei','zhuyeheight':'LiLei','zhijyypsm':'23','yepianBMBM':'韩梅梅','yepianBYJC':"kk",'yeshiXZ':'HanMeiMei','yeshihigh':'21','yebinglengh':'李雷','yepianJBXT':'HanMeiMei','yejianXT':'21'},
+            {'id':'4','zhong':'李雷','Zhuyeform':'LiLei','Zhuyelength':'LiLei','zhuyeheight':'LiLei','zhijyypsm':'23','yepianBMBM':'韩梅梅','yepianBYJC':"kk",'yeshiXZ':'HanMeiMei','yeshihigh':'21','yebinglengh':'李雷','yepianJBXT':'HanMeiMei','yejianXT':'21'},
+            {'id':'5','zhong':'李雷','Zhuyeform':'LiLei','Zhuyelength':'LiLei','zhuyeheight':'LiLei','zhijyypsm':'23','yepianBMBM':'韩梅梅','yepianBYJC':"kk",'yeshiXZ':'HanMeiMei','yeshihigh':'21','yebinglengh':'李雷','yepianJBXT':'HanMeiMei','yejianXT':'21'},
+            {'id':'6','zhong':'李雷','Zhuyeform':'LiLei','Zhuyelength':'LiLei','zhuyeheight':'LiLei','zhijyypsm':'23','yepianBMBM':'韩梅梅','yepianBYJC':"kk",'yeshiXZ':'HanMeiMei','yeshihigh':'21','yebinglengh':'李雷','yepianJBXT':'HanMeiMei','yejianXT':'21'},
+            {'id':'7','zhong':'李雷','Zhuyeform':'LiLei','Zhuyelength':'LiLei','zhuyeheight':'LiLei','zhijyypsm':'23','yepianBMBM':'韩梅梅','yepianBYJC':"kk",'yeshiXZ':'HanMeiMei','yeshihigh':'21','yebinglengh':'李雷','yepianJBXT':'HanMeiMei','yejianXT':'21'},
+            {'id':'8','zhong':'李雷','Zhuyeform':'LiLei','Zhuyelength':'LiLei','zhuyeheight':'LiLei','zhijyypsm':'23','yepianBMBM':'韩梅梅','yepianBYJC':"kk",'yeshiXZ':'HanMeiMei','yeshihigh':'21','yebinglengh':'李雷','yepianJBXT':'HanMeiMei','yejianXT':'21'},
+            {'id':'9','zhong':'李雷','Zhuyeform':'LiLei','Zhuyelength':'LiLei','zhuyeheight':'LiLei','zhijyypsm':'23','yepianBMBM':'韩梅梅','yepianBYJC':"kk",'yeshiXZ':'HanMeiMei','yeshihigh':'21','yebinglengh':'李雷','yepianJBXT':'HanMeiMei','yejianXT':'21'},
+            {'id':'10','zhong':'李雷','Zhuyeform':'LiLei','Zhuyelength':'LiLei','zhuyeheight':'LiLei','zhijyypsm':'23','yepianBMBM':'韩梅梅','yepianBYJC':"kk",'yeshiXZ':'HanMeiMei','yeshihigh':'21','yebinglengh':'李雷','yepianJBXT':'HanMeiMei','yejianXT':'21'},
+            {'id':'11','zhong':'李雷','Zhuyeform':'LiLei','Zhuyelength':'LiLei','zhuyeheight':'LiLei','zhijyypsm':'23','yepianBMBM':'韩梅梅','yepianBYJC':"kk",'yeshiXZ':'HanMeiMei','yeshihigh':'21','yebinglengh':'李雷','yepianJBXT':'HanMeiMei','yejianXT':'21'}
         ];
         $('#data_table').bootstrapTable({
             //url:'',//数据源，请求后台的路径
@@ -33,7 +35,15 @@ $(function(){
             showPaginationSwitch:true,//
             columns:[//列数据
                 {
-                    checkbox:true//有复选框
+                    checkbox:true,//有复选框
+                    valign:'middle',//垂直居中
+                    cellStyle:function(value,row,index,field){
+                        return {
+                            css:{
+                                'min-width':'36px'
+                            }
+                        };
+                    }
                 },
                 {
                     field:'',//数据列
@@ -47,40 +57,148 @@ $(function(){
                     }
                 },
                 {
-                    field:'nameCH',//数据列
-                    title:'中文名',//数据列名称
+                    field:'zhong',//数据列
+                    title:'种标志',//数据列名称
                     sortable:true,//可排序
-                    align:'center'//水平居中
+                    align:'center',//水平居中
+                    cellStyle:function(value,row,index,field){
+                        return {
+                            css:{
+                                'min-width':'80px'
+                            }
+                        };
+                    }
+
                 },
                 {
-                    field:'nameEN',//数据列
-                    title:'英文名',//数据列名称
+                    field:'Zhuyeform',//数据列
+                    title:'竹叶形态',//数据列名称
                     sortable:true,//可排序
-                    align:'center'//水平居中
+                    align:'center',//水平居中
+                    cellStyle:function(value,row,index,field){
+                        return {
+                            css:{
+                                'min-width':'80px'
+                            }
+                        };
+                    }
                 },
                 {
-                    field:'nameLD',//数据列
-                    title:'拉丁名',//数据列名称
+                    field:'Zhuyelength',//数据列
+                    title:'竹叶长度',//数据列名称
                     sortable:true,//可排序
-                    align:'center'//水平居中
+                    align:'center',//水平居中
+                    cellStyle:function(value,row,index,field){
+                        return {
+                            css:{
+                                'min-width':'80px'
+                            }
+                        };
+                    }
                 },
                 {
-                    field:'nameBN',//数据列
-                    title:'别名',//数据列名称
+                    field:'zhuyeheight',//数据列
+                    title:'竹叶宽度',//数据列名称
                     sortable:true,//可排序
-                    align:'center'//水平居中
+                    align:'center',//水平居中
+                    cellStyle:function(value,row,index,field){
+                        return {
+                            css:{
+                                'min-width':'80px'
+                            }
+                        };
+                    }
                 },
                 {
-                    field:'Miaoshu',//数据列
-                    title:'描述',//数据列名称
+                    field:'yepianBMBM',//数据列
+                    title:'叶片背面被毛',//数据列名称
                     sortable:true,//可排序
-                    align:'center'//水平居中
+                    align:'center',//水平居中
+                    cellStyle:function(value,row,index,field){
+                        return {
+                            css:{
+                                'min-width':'80px'
+                            }
+                        };
+                    }
                 },
                 {
-                    field:'Num',//数据列
-                    title:'序号',//数据列名称
+                    field:'yepianBYJC',//数据列
+                    title:'叶片边缘锯齿',//数据列名称
                     sortable:true,//可排序
-                    align:'center'//水平居中
+                    align:'center',//水平居中
+                    cellStyle:function(value,row,index,field){
+                        return {
+                            css:{
+                                'min-width':'80px'
+                            }
+                        };
+                    }
+                },
+                {
+                    field:'yeshiXZ',//数据列
+                    title:'叶舌形状',//数据列名称
+                    sortable:true,//可排序
+                    align:'center',//水平居中
+                    cellStyle:function(value,row,index,field){
+                        return {
+                            css:{
+                                'min-width':'80px'
+                            }
+                        };
+                    }
+                },
+                {
+                    field:'yeshihigh',//数据列
+                    title:'叶舌高度',//数据列名称
+                    sortable:true,//可排序
+                    align:'center',//水平居中
+                    cellStyle:function(value,row,index,field){
+                        return {
+                            css:{
+                                'min-width':'80px'
+                            }
+                        };
+                    }
+                },
+                {
+                    field:'yebingleng',//数据列
+                    title:'叶柄长度',//数据列名称
+                    sortable:true,//可排序
+                    align:'center',//水平居中
+                    cellStyle:function(value,row,index,field){
+                        return {
+                            css:{
+                                'min-width':'80px'
+                            }
+                        };
+                    }
+                },
+                {
+                    field:'yepianJBXT',//数据列
+                    title:'叶片基部形态',//数据列名称
+                    sortable:true,//可排序
+                    align:'center',//水平居中
+                    cellStyle:function(value,row,index,field){
+                        return {
+                            css:{
+                                'min-width':'80px'
+                            }
+                        };
+                    }
+                },
+                {
+                    field:'yejianXT',//数据列
+                    title:'叶尖形态',//数据列名称
+                    sortable:true,//可排序
+                    align:'center',//水平居中
+                    cellStyle:function(value,row,index,field){
+                        return {
+                            css:{
+                                'min-width':'80px'
+                            }
+                        };
+                    }
                 }
 
             ]

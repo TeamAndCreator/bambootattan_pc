@@ -7,15 +7,19 @@ $(function(){
     });
     function init(){
         var dataSoure=[
-            {'id':'1','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','Miaoshu':'23','Num':'韩梅梅'},
-            {'id':'2','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'3','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'1','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','Miaoshu':'23','Num':'韩梅梅'},
-            {'id':'2','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'3','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'1','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','Miaoshu':'23','Num':'韩梅梅'},
-            {'id':'2','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'李雷'},
-            {'id':'3','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii','Num':'李雷'}
+            {'id':'1','nameCH':'泡竹属','nameEN':'Pseudostachyum','nameLD':'LiLei','nameBN':'爆竹、捞篱竹','Miaoshu':'泡竹属，Pseudostachyum，禾本科，仅泡竹P.polymorphum Munro 1种，果无毛，基部托以宿存的稃片与鳞被，果皮坚脆且与种子分离。分布于喜马拉雅山东部、锡金、孟加拉、缅甸、老挝、越南以及我国的云南、广西和广东等地。泡竹地下茎的颈部甚延长，酷似白藤，俗称“泡竹蔃”，用以编制鱼苗分级筛','Num':'1'},
+            {'id':'2','nameCH':'单枝竹属','nameEN':'Monocladus','nameLD':'Monocladus','nameBN':'HanMeiMei','Miaoshu':'单枝竹属，禾本科竹亚科下级分类。亚灌木状竹类。地下茎合轴型。生于海拔300—800米石灰岩石山上或山地密林下。','Num':'2'},
+            {'id':'1','nameCH':'泡竹属','nameEN':'Pseudostachyum','nameLD':'LiLei','nameBN':'爆竹、捞篱竹','Miaoshu':'泡竹属，Pseudostachyum，禾本科，仅泡竹P.polymorphum Munro 1种，果无毛，基部托以宿存的稃片与鳞被，果皮坚脆且与种子分离。分布于喜马拉雅山东部、锡金、孟加拉、缅甸、老挝、越南以及我国的云南、广西和广东等地。泡竹地下茎的颈部甚延长，酷似白藤，俗称“泡竹蔃”，用以编制鱼苗分级筛','Num':'1'},
+            {'id':'2','nameCH':'单枝竹属','nameEN':'Monocladus','nameLD':'Monocladus','nameBN':'HanMeiMei','Miaoshu':'单枝竹属，禾本科竹亚科下级分类。亚灌木状竹类。地下茎合轴型。生于海拔300—800米石灰岩石山上或山地密林下。','Num':'2'},
+            {'id':'1','nameCH':'泡竹属','nameEN':'Pseudostachyum','nameLD':'LiLei','nameBN':'爆竹、捞篱竹','Miaoshu':'泡竹属，Pseudostachyum，禾本科，仅泡竹P.polymorphum Munro 1种，果无毛，基部托以宿存的稃片与鳞被，果皮坚脆且与种子分离。分布于喜马拉雅山东部、锡金、孟加拉、缅甸、老挝、越南以及我国的云南、广西和广东等地。泡竹地下茎的颈部甚延长，酷似白藤，俗称“泡竹蔃”，用以编制鱼苗分级筛','Num':'1'},
+            {'id':'2','nameCH':'单枝竹属','nameEN':'Monocladus','nameLD':'Monocladus','nameBN':'HanMeiMei','Miaoshu':'单枝竹属，禾本科竹亚科下级分类。亚灌木状竹类。地下茎合轴型。生于海拔300—800米石灰岩石山上或山地密林下。','Num':'2'},
+            {'id':'3','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'3'},
+            {'id':'1','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','Miaoshu':'23','Num':'4'},
+            {'id':'2','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'5'},
+            {'id':'3','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'6'},
+            {'id':'1','nameCH':'李雷','nameEN':'LiLei','nameLD':'LiLei','nameBN':'LiLei','Miaoshu':'23','Num':'7'},
+            {'id':'2','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21','Num':'8'},
+            {'id':'3','nameCH':'韩梅梅','nameEN':'HanMeiMei','nameLD':'HanMeiMei','nameBN':'HanMeiMei','Miaoshu':'21iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii','Num':'9'}
             ];
             $('#data_table').bootstrapTable({
                 //url:'',//数据源，请求后台的路径
@@ -28,7 +32,7 @@ $(function(){
                 sortName:'id',//排序字段
                 sortOrder:'asc',//排序类型，asc正序，desc倒序
                 pageList:[5, 10, 20],//每页数量组
-                pageSize:5,//默认每页数量
+                pageSize:10,//默认每页数量
                 pagination:true,//可以分页
                 showPaginationSwitch:true,//
                 columns:[//列数据
