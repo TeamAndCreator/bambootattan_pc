@@ -4,6 +4,33 @@ $(function(){
 		init_form();//初始化表单
         $('#exampleModal').modal('show');//表单模态框
     });
+    $('#btn_delete').on('click',function(){
+        var selectedItems=$("#data_table").bootstrapTable('getSelections');
+        if(selectedItems.length==0){
+            alert("请选择要删除的数据！");
+        }else{
+            var ids=[];
+            for(var i=0;i<selectedItems.length;i++){
+                ids.push(selectedItems[i].genusId);
+            }
+            $.ajax({//批量删除
+                url: baseUrl+'/genus/deleteByIds?ids='+encodeURI(ids.join(',')),
+                type:'DELETE',
+                contentType: 'application/json',//数据类型
+                success:function(res){	        //请求成功回调函数
+                    if(res.code==200){
+                        alert('删除成功');
+                        $("#data_table").bootstrapTable('refresh',{url : baseUrl+'/genus/findAllNoQuery'});
+                    }else{
+                        alert(res.msg);
+                    }
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
+
+                }
+            });
+        }
+    });
 	$('#btn_save').on('click',function () {
 		var genusId = $('#genusId').val();
 		var genusNameCh = $('#genusNameCh').val();
@@ -50,7 +77,7 @@ $(function(){
 				success:function(res){	        //请求成功回调函数
                     if(res.code==200){
                         alert('修改成功');
-                        $("#data_table").bootstrapTable('refresh',{url : baseUrl+'/genus/findAll'} );
+                        $("#data_table").bootstrapTable('refresh',{url : baseUrl+'/genus/findAllNoQuery'} );
                         $('#exampleModal').modal('hide');
                     }else{
                         alert(res.msg);
@@ -61,10 +88,11 @@ $(function(){
 			});
 		}
     });
+
     function init(){
 
             $('#data_table').bootstrapTable({
-                url:baseUrl+'/genus/findAll',//数据源，请求后台的路径
+                url:baseUrl+'/genus/findAllNoQuery',//数据源，请求后台的路径
                 //data:dataSoure,//数据源，json数据
                 toolbar:'#btn_area',//按钮组
                 search:true,//可以搜索
@@ -72,12 +100,29 @@ $(function(){
                 showToggle:true,//可以视图切换
                 showColumns:true,//可以选择列
                 sortName:'id',//排序字段
-                sortOrder:'asc',//排序类型，asc正序，desc倒序
+                sortOrder:'asc',//排序类型，asc正序，desc倒序初始化加載第一頁
                 pageList:[5, 10, 20],//每页数量组
                 pageSize:5,//默认每页数量
                 pagination:true,//可以分页
                 showPaginationSwitch:true,//
-                cache:false,
+                sidePagination:'server',//服務器端分頁
+                //method:'POST',
+                responseHandler:function(res){
+                    return {
+                        "total": res.data.totalElements,//总记录数
+                        "rows": res.data.content        //数据
+                        //"total": 100,//总记录数
+                        //"rows": res.data       //数据
+                    };
+                },
+                queryParams:function(params){
+                    return {
+                        page:params.offset/params.limit,
+                        size:params.limit
+                    }
+                },
+
+                cache:false,//是否使用緩存
                 columns:[//列数据
                     {
                         checkbox:true,//有复选框
@@ -111,6 +156,11 @@ $(function(){
                                 }
                             };
                         }
+                    },
+                    {
+                        field:'genusId',//数据列
+                        title:'genusId',//数据列名称
+                        visible:false
                     },
                     {
                         field:'genusNameCh',//数据列
@@ -230,18 +280,39 @@ function edit(id) {
 
          }
     });
-    $('#exampleModal').modal('show');
 }
 function dele(gid){
-    init_form();
+
+    bootbox.confirm("Are you sure?", function(result) {
+        if (result) {
+            $.niftyNoty({
+                type: 'success',
+                icon : 'pli-like-2 icon-2x',
+                message : 'User confirmed dialog',
+                container : 'floating',
+                timer : 5000
+            });
+        }else{
+            $.niftyNoty({
+                type: 'danger',
+                icon : 'pli-cross icon-2x',
+                message : 'User declined dialog.',
+                container : 'floating',
+                timer : 5000
+            });
+        };
+
+    });
+    return;
+
     $.ajax({
-       url:baseUrl+'/genus/delete/'+gid,//请求路径
+       url:baseUrl+'/genus/delete/'+gid,//请求路径,单个删除
        type:'DELETE',				    //请求方式
        contentType: 'application/json', //数据类型
        success:function(res){	        //请求成功回调函数
            if(res.code==200){
                alert('删除成功');
-               $("#data_table").bootstrapTable('refresh',{url : baseUrl+'/genus/findAll'} );
+               $("#data_table").bootstrapTable('refresh',{url : baseUrl+'/genus/findAllNoQuery'} );
                $('#exampleModal').modal('hide');
            }else{
                alert(res.msg);
@@ -251,6 +322,10 @@ function dele(gid){
        }
     });
 }
+
+
+
+
 //初始化表单元素的值
 function init_form(){
 	$('#genusNameCh').val("");
