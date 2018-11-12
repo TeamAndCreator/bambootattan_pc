@@ -282,47 +282,51 @@ function edit(id) {
     });
 }
 function dele(gid){
-
-    bootbox.confirm("Are you sure?", function(result) {
+    bootbox.confirm("您确定删除数据吗？", function(result) {
         if (result) {
-            $.niftyNoty({
-                type: 'success',
-                icon : 'pli-like-2 icon-2x',
-                message : 'User confirmed dialog',
-                container : 'floating',
-                timer : 5000
+            $.ajax({
+                url:baseUrl+'/genus/delete/'+gid,//请求路径,单个删除
+                type:'DELETE',				    //请求方式
+                contentType: 'application/json', //数据类型
+                success:function(res){	        //请求成功回调函数
+                    if(res.code==200){
+                        //alert('删除成功');
+                        $.niftyNoty({
+                            type: 'success',
+                            icon : 'pli-like-2 icon-2x',
+                            message : '删除成功',
+                            container : 'floating',
+                            timer : 5000
+                        });
+                        $("#data_table").bootstrapTable('refresh',{url : baseUrl+'/genus/findAllNoQuery'} );
+                        $('#exampleModal').modal('hide');
+                    }else{
+                        //alert(res.msg);
+                        $.niftyNoty({
+                            type: 'danger',
+                            icon : 'pli-cross icon-2x',
+                            message : res.msg,
+                            container : 'floating',
+                            timer : 5000
+                        });
+                    }
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){		//请求失败回调函数
+                }
             });
+
         }else{
             $.niftyNoty({
                 type: 'danger',
                 icon : 'pli-cross icon-2x',
-                message : 'User declined dialog.',
+                message : '您取消了删除',
                 container : 'floating',
                 timer : 5000
             });
         };
 
     });
-    return;
-
-    $.ajax({
-       url:baseUrl+'/genus/delete/'+gid,//请求路径,单个删除
-       type:'DELETE',				    //请求方式
-       contentType: 'application/json', //数据类型
-       success:function(res){	        //请求成功回调函数
-           if(res.code==200){
-               alert('删除成功');
-               $("#data_table").bootstrapTable('refresh',{url : baseUrl+'/genus/findAllNoQuery'} );
-               $('#exampleModal').modal('hide');
-           }else{
-               alert(res.msg);
-           }
-       },
-       error:function(XMLHttpRequest, textStatus, errorThrown){		//请求失败回调函数
-       }
-    });
 }
-
 
 
 
