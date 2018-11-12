@@ -682,3 +682,9 @@ body,
   background-color: #8bc34a;
   color: #fff;
 }
+
+/* MODAL HEADER */
+/*======================================*/
+.modal .modal-header {
+  background-color: #8bc34a;
+}
