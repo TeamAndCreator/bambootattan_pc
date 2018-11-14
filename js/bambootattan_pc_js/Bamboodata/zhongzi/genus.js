@@ -12,6 +12,8 @@ $(function(){
 	$('#btn_save').on('click',save);
 	//初始化表格
     init_table();
+    //表单验证
+    $('#registrationForm').bootstrapValidator();
 });
 //初始化表格
 function init_table(){
@@ -142,6 +144,13 @@ function save() {
         },
         callback: function (result) {
             if (result) {
+                var bootstrapValidator = $('#registrationForm').data('bootstrapValidator');
+                //手动触发验证
+                bootstrapValidator.validate();
+                //表单验证不通过，直接return，不往下执行
+                if(!bootstrapValidator.isValid()){
+                    return;
+                }
                 var genusId = $('#genusId').val();
                 var genusNameCh = $('#genusNameCh').val();
                 var genusNameEn = $('#genusNameEn').val();
