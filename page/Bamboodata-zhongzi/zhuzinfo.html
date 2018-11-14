@@ -322,14 +322,14 @@
                                             <div class="form-group">
                                                 <label for="specVidio" class="col-sm-2 control-label">上传视频:</label>
                                                 <div class="col-sm-10">
-                                                    <input id="input-b2" name="specVidio" type="file" class="file"  data-show-preview="false">
+                                                    <input id="specVidio" name="specVidio" type="file" class="file"  data-show-preview="false">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="specImgs" class="col-sm-2 control-label">上传图片:</label>
                                                 <div class="col-sm-10">
-                                                    <input id="input-b3" name="specImgs" type="file" class="file" data-show-preview="false">
+                                                    <input id="specImgs" name="specImgs" type="file" class="file" data-show-preview="false">
                                                 </div>
                                             </div>
 
@@ -339,6 +339,8 @@
                                                     <textarea placeholder="" id="specDesc" name="specDesc" rows="5" class="form-control"></textarea>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <input id="specId" type="hidden" value="">
                                     </form>
                                 </div>
                                 <div class="modal-footer">
@@ -366,9 +368,8 @@
                         </div>
                     </div>
 
-
-                </div>
-                <table id="data_table"></table>
+                <table id="data_table" class="table"></table>
+            </div>
             </div>
         </div>
         <!--===================================================-->

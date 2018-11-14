@@ -38,6 +38,16 @@ function init_table(){
         pagination:true,//可以分页
         showPaginationSwitch:true,//
         sidePagination:'server',//服務器端分頁
+        clickToSelect:true,
+        onDblClickRow:function(row,$element){//双击时候modal隐藏，直接选中
+            $("#genus").val(row.genusNameCh);
+            $("#genusId").val(row.genusId);
+            $("#genusModal").modal('hide');
+    },
+        onClickRow:function(row,$element) {//点击时需要手动点x选中
+            $("#genus").val(row.genusNameCh);
+            $("#genusId").val(row.genusId);
+        },
         //method:'POST',
         responseHandler:function(res){//后台返回数据进行修改，修改成bootstrap-table能够使用的数据格式
             return {
@@ -65,8 +75,8 @@ function init_table(){
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
-                    var _html = '<button onclick="edit(\''+row.genusId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
-                    _html += '<button  onclick="dele(\''+row.genusId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>'
+                    var _html = '<button onclick="edit(\''+row.specId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
+                    _html += '<button  onclick="dele(\''+row.specId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
@@ -243,6 +253,10 @@ function init_genus_table(){
             $("#genusId").val(row.genusId);
             $('#genusModal').modal('hide');
         },
+        onClickRow:function(row, $element){
+            $("#genus").val(row.genusNameCh);
+            $("#genusId").val(row.genusId);
+        },
         //method:'POST',
         responseHandler:function(res){//后台返回数据进行修改，修改成bootstrap-table能够使用的数据格式
             return {
@@ -373,8 +387,8 @@ function save() {
                     "specDesc": specDesc,
                     "specSortNum": specSortNum
                 };
-                if (genusId == "") {//新增
-                    formData.genusId = 0;
+                if (specId == "") {//新增
+                    formData.specId = 0;
                     $.ajax({
                         url: baseUrl + '/spec/save',		//请求路径
                         type: 'POST',			            //请求方式
@@ -448,7 +462,7 @@ function save() {
     });
 }
 
-//修改
+//修改,填充表单元素的数据
 function edit(id) {
     init_form();
     $.ajax({
@@ -458,13 +472,22 @@ function edit(id) {
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
             if(res.code==200){
-                $('#genusId').val(res.data.genusId);
-                $('#genusNameCh').val(res.data.genusNameCh);
-                $('#genusNameEn').val(res.data.genusNameEn);
-                $('#genusNameLd').val(res.data.genusNameLd);
-                $('#genusNameOth').val(res.data.genusNameOth);
-                $('#sortNum').val(res.data.sortNum);
-                $('#genusDesc').val(res.data.genusDesc);
+                $('#specId').val(res.data.specId);
+                $('#specNameCh').val(res.data.specNameCh);
+                $('#specNameEn').val(res.data.specNameEn);
+                $('#specNameLd').val(res.data.specNameLd);
+                $('#specNameOth').val(res.data.specNameOth);
+                $('#specCode').val(res.data.specCode);
+                $('#specBarCode').val(res.data.specBarCode);
+                $('#specDna').val(res.data.specDna);
+                $('#specDomestic').val(res.data.specDomestic);
+                $('#specForeign').val(res.data.specForeign);
+                $('#specVidio').val(res.data.specVidio);
+                $('#specImgs').val(res.data.specImgs);
+                $('#specDesc').val(res.data.specDesc);
+                $('#specSortNum').val(res.data.specSortNum);
+                $('#genus').val(res.data.genus.genusNameCh);
+                $('#genusId').val(res.data.genus.genusId)
                 $('#exampleModal').modal('show');
             }
             else{
@@ -567,7 +590,7 @@ function deles() {
                     var ids=[]; //选中数据的genusId数组
                     for(var i=0;i<selectedItems.length;i++){
                         //循环遍历选中的数据并将genusId放入到ids数组中
-                        ids.push(selectedItems[i].genusId);
+                        ids.push(selectedItems[i].specId);
                     }
                     $.ajax({    //批量删除
                         //现将数据每个元素用‘,(逗号)’分隔拼接成字符串，再用encodeURI进行编码，最后拼接到url的后面
@@ -616,12 +639,21 @@ function deles() {
 }
 //初始化表单元素的值
 function init_form(){
-    $('#genusNameCh').val("");
-    $('#genusNameEn').val("");
-    $('#genusNameLd').val("");
-    $('#genusNameOth').val("");
-    $('#sortNum').val("");
-    $('#genusDesc').val("");
+    $('#genus').val("");
+    $('#specId').val("");
     $('#genusId').val("");
+    $('#specNameCh').val("");
+    $('#specNameEn').val("");
+    $('#specNameLd').val("");
+    $('#specNameOth').val("");
+    $('#specCode').val("");
+    $('#specBarCode').val("");
+    $('#specDna').val("");
+    $('#specDomestic').val("");
+    $('#specForeign').val("");
+    $('#specVidio').val("");
+    $('#specImgs').val("");
+    $('#specDesc').val("");
+    $('#specSortNum').val("");
 }
 
