@@ -29,7 +29,8 @@
     <!--Demo [ DEMONSTRATION ]-->
     <link href="../../css/demo/nifty-demo.min.css" rel="stylesheet">
 
-
+    <!--Dropzone [ OPTIONAL ]-->
+    <link href="../../plugins/dropzone/dropzone.min.css" rel="stylesheet">
 
     <!--Bootstrap Table [ OPTIONAL ]-->
     <link href="../../plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
@@ -37,8 +38,18 @@
 
     <!--X-editable [ OPTIONAL ]-->
     <link href="../../plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">
+    <!--Summernote [ OPTIONAL ]-->
+    <link href="../../plugins/summernote/summernote.min.css" rel="stylesheet">
 
-    <!-- Theme -->
+    <!--Dropzone [ OPTIONAL ]-->
+    <link href="../../plugins/dropzone/dropzone.min.css" rel="stylesheet">
+
+    <!--Animate.css [ OPTIONAL ]-->
+    <link href="../../plugins/animate-css/animate.min.css" rel="stylesheet">
+
+
+
+   <!-- Theme -->
     <link id="theme" href="../../css/themes/type-c/theme-lime.min.css" rel="stylesheet">
 
 
@@ -49,6 +60,8 @@
     <!--=================================================-->
 
     <!--Pace - Page Load Progress Par [OPTIONAL]-->
+    <!-- bambootattan_pc_js common -->
+    <script src="../../js/bambootattan_pc_js/common.js"></script>
     <link href="../../plugins/pace/pace.min.css" rel="stylesheet">
     <!--ipaddress放在前面-->
     <script src="../../plugins/pace/pace.min.js"></script>
@@ -74,7 +87,10 @@
 
     <!--Demo script [ DEMONSTRATION ]-->
     <script src="../../js/demo/nifty-demo.min.js"></script>
+    <script src="../../js/demo/form-file-upload.js"></script>
 
+    <!--font-awesome.css [ OPTIONAL ]-->
+    <link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
     <!--Bootstrap Table Sample [ SAMPLE ]-->
     <script src="../../js/demo/tables-bs-table.js"></script>
@@ -89,11 +105,29 @@
     <!-- bootbox -->
     <script src="../../plugins/bootbox/bootbox.js"></script>
 
+    <!--&lt;!&ndash;Dropzone [ OPTIONAL ]&ndash;&gt;-->
+    <!--<script src="../../plugins/dropzone/dropzone.min.js"></script>-->
+
+
+    <!--&lt;!&ndash;Form File Upload [ SAMPLE ]&ndash;&gt;-->
+    <!--<script src="../../js/demo/form-file-upload.js"></script>-->
+
+
     <!--Bootstrap Table Extension [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
+    <!--Summernote [ OPTIONAL ]-->
+    <script src="../../plugins/summernote/summernote.min.js"></script>
+    <!--=================================================-->
+
+    <!--Bootstrap Datepicker [ OPTIONAL ]-->
+    <script src="../../plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!--Dropzone [ OPTIONAL ]-->
+    <script src="../../plugins/dropzone/dropzone.min.js"></script>
+    <!--Form File Upload [ SAMPLE ]-->
+    <!--<script src="../../js/demo/form-file-upload.js"></script>-->
     <script src="../../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
-    <!-- bambootattan_pc_js common -->
-    <script src="../../js/bambootattan_pc_js/common.js"></script>
+
+
 
 
 
@@ -313,16 +347,56 @@
                                                 <div class="col-sm-4 input-group">
                                                     <input id="genus" class="form-control input-sm" name="genus" placeholder="" type="text">
                                                     <span class="input-group-btn">
-                                                        <button id="btn_select_genus" class="btn btn-default" type="button"><i class=""></i></button>
+                                                        <button id="btn_select_genus" class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
                                                     </span>
                                                     <input id="genusId" type="hidden" value="">
                                                 </div>
                                             </div>
 
+
+
+
+                                            <div  class="form-group">
+
+                                                <!--Dropzonejs using Bootstrap theme-->
+                                                <!--===================================================-->
+
+                                                <div class="bord-top pad-ver">
+                                                    <!-- The fileinput-button span is used to style the file input field as button -->
+                                                    <span class="btn btn-success fileinput-button dz-clickable">
+                                                        <i class="fa fa-plus"></i>
+                                                        <span>上传视频...</span>
+                                                    </span>
+
+                                                    <div class="btn-group pull-right">
+                                                        <button id="dz-upload-btn" class="btn btn-primary" type="submit" disabled="">
+                                                            <i class="fa fa-upload-cloud"></i> Upload
+                                                        </button>
+                                                        <button id="dz-remove-btn" class="btn btn-danger cancel" type="reset" disabled="">
+                                                            <i class="demo-pli-cross"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+
+                                                <div id="dz-previews">
+
+                                                </div>
+                                                <!--===================================================-->
+                                                <!--End Dropzonejs using Bootstrap theme-->
+
+                                            </div>
+
+
+
+
+
+
+
                                             <div class="form-group">
                                                 <label for="specVidio" class="col-sm-2 control-label">上传视频:</label>
                                                 <div class="col-sm-10">
-                                                    <input id="specVidio" name="specVidio" type="file" class="file"  data-show-preview="false">
+                                                    <input id="specVidio" name="specVidio"  type="file" multiple class="file-loading"  data-show-preview="false">
                                                 </div>
                                             </div>
 
@@ -411,7 +485,7 @@
 
                                                 <!--Submenu-->
                                                 <ul class="collapse">
-                                                    <li><a href="../Bamboodata-bambooforms/root.html">地下茎</a></li>
+                                                    <li><a href="../Bamboodata-bambooforms/understem.html">地下茎</a></li>
                                                     <li><a href="../Bamboodata-bambooforms/bamboogan.html">竹竿表</a></li>
                                                     <li><a href="../Bamboodata-bambooforms/Tuoring.html">箨环表</a></li>
                                                     <li><a href="../Bamboodata-bambooforms/Tuoqiao.html">箨鞘表</a></li>
@@ -587,7 +661,7 @@
 
 
 </div>
-<script src="../../js/bambootattan_pc_js/Bamboodata/zhongzi/zhongzi-zhuzinfo.js"></script>
+<script src="../../js/bambootattan_pc_js/Bamboodata/zhongzi/spec.js"></script>
 </body>
 </html>
 
