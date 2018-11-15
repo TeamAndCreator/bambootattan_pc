@@ -20,6 +20,8 @@ $(function(){
     //初始化表格
     init_table();
     init_genus_table();
+    //表单验证
+    $('#registrationForm').bootstrapValidator();
 });
 //初始化表格
 function init_table(){
@@ -486,8 +488,8 @@ function edit(id) {
                 $('#specImgs').val(res.data.specImgs);
                 $('#specDesc').val(res.data.specDesc);
                 $('#specSortNum').val(res.data.specSortNum);
-                $('#genus').val(res.data.genus.genusNameCh);
-                $('#genusId').val(res.data.genus.genusId)
+                $('#genusNameCh').val(res.data.genus.genusNameCh);
+                $('#genusId').val(res.data.genus.genusId);
                 $('#exampleModal').modal('show');
             }
             else{
