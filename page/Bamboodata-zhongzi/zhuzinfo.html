@@ -63,7 +63,7 @@
     <!-- bambootattan_pc_js common -->
     <script src="../../js/bambootattan_pc_js/common.js"></script>
     <link href="../../plugins/pace/pace.min.css" rel="stylesheet">
-    <!--ipaddress放在前面-->
+
     <script src="../../plugins/pace/pace.min.js"></script>
 
 
@@ -88,7 +88,6 @@
     <!--Demo script [ DEMONSTRATION ]-->
     <script src="../../js/demo/nifty-demo.min.js"></script>
     <script src="../../js/demo/form-file-upload.js"></script>
-
     <!--font-awesome.css [ OPTIONAL ]-->
     <link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
@@ -105,13 +104,6 @@
     <!-- bootbox -->
     <script src="../../plugins/bootbox/bootbox.js"></script>
 
-    <!--&lt;!&ndash;Dropzone [ OPTIONAL ]&ndash;&gt;-->
-    <!--<script src="../../plugins/dropzone/dropzone.min.js"></script>-->
-
-
-    <!--&lt;!&ndash;Form File Upload [ SAMPLE ]&ndash;&gt;-->
-    <!--<script src="../../js/demo/form-file-upload.js"></script>-->
-
 
     <!--Bootstrap Table Extension [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
@@ -126,36 +118,10 @@
     <!--Form File Upload [ SAMPLE ]-->
     <!--<script src="../../js/demo/form-file-upload.js"></script>-->
     <script src="../../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+    <!-- bootstrap-validator [ OPTIONAL ]-->
+    <script src="../../plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
 
 
-
-
-
-    <!--=================================================
-
-    REQUIRED
-    You must include this in your project.
-
-
-    RECOMMENDED
-    This category must be included but you may modify which plugins or components which should be included in your project.
-
-
-    OPTIONAL
-    Optional plugins. You may choose whether to include it in your project or not.
-
-
-    DEMONSTRATION
-    This is to be removed, used for demonstration purposes only. This category must not be included in your project.
-
-
-    SAMPLE
-    Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
-
-
-    Detailed information and more samples can be found in the document.
-
-    =================================================-->
 
 
 </head>
@@ -290,11 +256,14 @@
                                 <div class="modal-body">
                                     <form class="form-horizontal">
                                         <div class="panel-body">
-                                            <div class="form-group">
+                                            <div  id="registrationForm" class="form-group">
                                                 <label for="specNameCh" class="col-sm-2 control-label">中文名:</label>
                                                 <div class="col-sm-4">
-                                                    <input id="specNameCh" class="form-control input-sm" name="specNameCh" placeholder="" type="text">
+                                                    <input id="specNameCh" class="form-control input-sm" name="specNameCh" placeholder="" type="text"
+                                                           data-bv-field="specNameCh"   data-bv-group=".col-sm-4" data-bv-notempty="true" data-bv-notempty-message="中文名不能为空">
                                                 </div>
+
+
                                                 <label for="specNameEn" class="col-sm-2 control-label">英文名:</label>
                                                 <div class="col-sm-4">
                                                     <input id="specNameEn" class="form-control input-sm" name="specNameEn" placeholder="" type="text">
@@ -355,6 +324,58 @@
 
 
 
+                                            <div  class="form-group">
+                                                <div class="bord-top pad-ver">
+                                                    <!-- The fileinput-button span is used to style the file input field as button -->
+                                                    <span class="btn btn-success fileinput-button-img dz-clickable">
+                                                        <i class="fa fa-plus"></i>
+                                                        <span>上传图片</span>
+                                                    </span>
+
+                                                    <div class="btn-group pull-right">
+                                                        <button id="dz-upload-img-btn" class="btn btn-primary" type="submit" disabled="">
+                                                            <i class="fa fa-upload-cloud"></i> 下载
+                                                        </button>
+                                                        <button id="dz-remove-img-btn" class="btn btn-danger cancel" type="reset" disabled="">
+                                                            <i class="demo-pli-cross"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+
+                                                <div id="dz-previews-img">
+                                                    <div id="dz-template-img" class="pad-top bord-top">
+                                                        <div class="media">
+                                                            <div class="media-body">
+                                                                <!--This is used as the file preview template-->
+                                                                <div class="media-block">
+                                                                    <div class="media-left">
+                                                                        <img class="dz-img" data-dz-thumbnail>
+                                                                    </div>
+                                                                    <div class="media-body">
+                                                                        <p class="text-main text-bold mar-no text-overflow" data-dz-name></p>
+                                                                        <span class="dz-error text-danger text-sm" data-dz-errormessage></span>
+                                                                        <p class="text-sm" data-dz-size></p>
+                                                                        <div id="dz-total-progress-img" style="opacity:0">
+                                                                            <div class="progress progress-xs active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                                                                <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="media-right">
+                                                                <button data-dz-remove class="btn btn-xs btn-danger dz-cancel"><i class="demo-pli-cross"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--===================================================-->
+                                                <!--End Dropzonejs using Bootstrap theme-->
+
+                                            </div>
+
+
 
                                             <div  class="form-group">
 
@@ -365,12 +386,12 @@
                                                     <!-- The fileinput-button span is used to style the file input field as button -->
                                                     <span class="btn btn-success fileinput-button dz-clickable">
                                                         <i class="fa fa-plus"></i>
-                                                        <span>上传视频...</span>
+                                                        <span>上传视频</span>
                                                     </span>
 
                                                     <div class="btn-group pull-right">
                                                         <button id="dz-upload-btn" class="btn btn-primary" type="submit" disabled="">
-                                                            <i class="fa fa-upload-cloud"></i> Upload
+                                                            <i class="fa fa-upload-cloud"></i> 下载
                                                         </button>
                                                         <button id="dz-remove-btn" class="btn btn-danger cancel" type="reset" disabled="">
                                                             <i class="demo-pli-cross"></i>
@@ -380,7 +401,31 @@
 
 
                                                 <div id="dz-previews">
-
+                                                    <div id="dz-template" class="pad-top bord-top">
+                                                        <div class="media">
+                                                            <div class="media-body">
+                                                                <!--This is used as the file preview template-->
+                                                                <div class="media-block">
+                                                                    <div class="media-left">
+                                                                        <img class="dz-img" data-dz-thumbnail>
+                                                                    </div>
+                                                                    <div class="media-body">
+                                                                        <p class="text-main text-bold mar-no text-overflow" data-dz-name></p>
+                                                                        <span class="dz-error text-danger text-sm" data-dz-errormessage></span>
+                                                                        <p class="text-sm" data-dz-size></p>
+                                                                        <div id="dz-total-progres" style="opacity:0">
+                                                                            <div class="progress progress-xs active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                                                                <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="media-right">
+                                                                <button data-dz-remove class="btn btn-xs btn-danger dz-cancel"><i class="demo-pli-cross"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <!--===================================================-->
                                                 <!--End Dropzonejs using Bootstrap theme-->
@@ -388,33 +433,15 @@
                                             </div>
 
 
-
-
-
-
-
-                                            <div class="form-group">
-                                                <label for="specVidio" class="col-sm-2 control-label">上传视频:</label>
-                                                <div class="col-sm-10">
-                                                    <input id="specVidio" name="specVidio"  type="file" multiple class="file-loading"  data-show-preview="false">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="specImgs" class="col-sm-2 control-label">上传图片:</label>
-                                                <div class="col-sm-10">
-                                                    <input id="specImgs" name="specImgs" type="file" class="file" data-show-preview="false">
-                                                </div>
-                                            </div>
-
                                             <div class="form-group">
                                                 <label for="specDesc" class="col-sm-2 control-label">种描述:</label>
                                                 <div class="col-sm-10">
                                                     <textarea placeholder="" id="specDesc" name="specDesc" rows="5" class="form-control"></textarea>
                                                 </div>
                                             </div>
-                                        </div>
+                                        <!--</div>-->
                                         <input id="specId" type="hidden" value="">
+                                        </div>
                                     </form>
                                 </div>
                                 <div class="modal-footer">
@@ -493,6 +520,7 @@
                                                     <li><a href="../Bamboodata-bambooforms/Tuoshe.html">箨舌表</a></li>
                                                     <li><a href="../Bamboodata-bambooforms/Tuopian.html">箨片表</a></li>
                                                     <li><a href="../Bamboodata-bambooforms/bambooleaf.html">竹叶表</a></li>
+                                                    <li><a href="../Bamboodata-bambooforms/fruit.html">花果形态表</a></li>
                                                 </ul>
                                             </li>
 
@@ -654,13 +682,12 @@
         <!--===================================================-->
 
 
-
-    </div>
+    <!--</div>-->
     <!--===================================================-->
     <!-- END OF CONTAINER -->
 
 
-</div>
+<!--</div>-->
 <script src="../../js/bambootattan_pc_js/Bamboodata/zhongzi/spec.js"></script>
 </body>
 </html>
