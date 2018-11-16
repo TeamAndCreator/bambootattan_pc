@@ -55,7 +55,6 @@
 
 
 
-
     <!--JAVASCRIPT-->
     <!--=================================================-->
 
@@ -235,6 +234,8 @@
             <div id="page-title">
                 <h1 class="page-header text-overflow">种质资源数据</h1>
             </div>
+            <!--Page content-->
+            <div id="page-content">
             <div class="panel">
                 <div class="panel-heading">
                     <h3 class="panel-title">竹种信息</h3>
@@ -325,111 +326,111 @@
 
 
                                             <div  class="form-group">
-                                                <div class="bord-top pad-ver">
-                                                    <!-- The fileinput-button span is used to style the file input field as button -->
-                                                    <span class="btn btn-success fileinput-button-img dz-clickable">
+                                                <label for="genus" class="col-sm-2 control-label">图片:</label>
+                                                <div class="col-sm-10">
+                                                    <div>
+                                                        <!-- The fileinput-button span is used to style the file input field as button -->
+                                                        <span class="btn btn-success fileinput-button-img dz-clickable">
                                                         <i class="fa fa-plus"></i>
                                                         <span>上传图片</span>
                                                     </span>
 
-                                                    <div class="btn-group pull-right">
-                                                        <button id="dz-upload-img-btn" class="btn btn-primary" type="submit" disabled="">
-                                                            <i class="fa fa-upload-cloud"></i> 下载
-                                                        </button>
-                                                        <button id="dz-remove-img-btn" class="btn btn-danger cancel" type="reset" disabled="">
-                                                            <i class="demo-pli-cross"></i>
-                                                        </button>
+                                                        <div class="btn-group pull-right">
+                                                            <button id="dz-upload-img-btn" class="btn btn-primary" type="submit" disabled="">
+                                                                <i class="fa fa-upload-cloud"></i> 下载
+                                                            </button>
+                                                            <button id="dz-remove-img-btn" class="btn btn-danger cancel" type="reset" disabled="">
+                                                                <i class="demo-pli-cross"></i>
+                                                            </button>
+                                                        </div>
                                                     </div>
-                                                </div>
 
 
-                                                <div id="dz-previews-img">
-                                                    <div id="dz-template-img" class="pad-top bord-top">
-                                                        <div class="media">
-                                                            <div class="media-body">
-                                                                <!--This is used as the file preview template-->
-                                                                <div class="media-block">
-                                                                    <div class="media-left">
-                                                                        <img class="dz-img" data-dz-thumbnail>
-                                                                    </div>
-                                                                    <div class="media-body">
-                                                                        <p class="text-main text-bold mar-no text-overflow" data-dz-name></p>
-                                                                        <span class="dz-error text-danger text-sm" data-dz-errormessage></span>
-                                                                        <p class="text-sm" data-dz-size></p>
-                                                                        <div id="dz-total-progress-img" style="opacity:0">
-                                                                            <div class="progress progress-xs active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                                                                                <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                                                    <div id="dz-previews-img">
+                                                        <div id="dz-template-img" class="pad-top bord-top">
+                                                            <div class="media">
+                                                                <div class="media-body">
+                                                                    <!--This is used as the file preview template-->
+                                                                    <div class="media-block">
+                                                                        <div class="media-left">
+                                                                            <img class="dz-img" data-dz-thumbnail>
+                                                                        </div>
+                                                                        <div class="media-body">
+                                                                            <p class="text-main text-bold mar-no text-overflow" data-dz-name></p>
+                                                                            <span class="dz-error text-danger text-sm" data-dz-errormessage></span>
+                                                                            <p class="text-sm" data-dz-size></p>
+                                                                            <div id="dz-total-progress-img" style="opacity:0">
+                                                                                <div class="progress progress-xs active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                                                                    <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="media-right">
-                                                                <button data-dz-remove class="btn btn-xs btn-danger dz-cancel"><i class="demo-pli-cross"></i></button>
+                                                                <div class="media-right">
+                                                                    <button data-dz-remove class="btn btn-xs btn-danger dz-cancel"><i class="demo-pli-cross"></i></button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!--===================================================-->
-                                                <!--End Dropzonejs using Bootstrap theme-->
+
 
                                             </div>
 
 
 
                                             <div  class="form-group">
-
-                                                <!--Dropzonejs using Bootstrap theme-->
-                                                <!--===================================================-->
-
-                                                <div class="bord-top pad-ver">
-                                                    <!-- The fileinput-button span is used to style the file input field as button -->
-                                                    <span class="btn btn-success fileinput-button dz-clickable">
+                                                <label for="genus" class="col-sm-2 control-label">视频:</label>
+                                                <div class="col-sm-10">
+                                                    <div>
+                                                        <!-- The fileinput-button span is used to style the file input field as button -->
+                                                        <span class="btn btn-success fileinput-button dz-clickable">
                                                         <i class="fa fa-plus"></i>
                                                         <span>上传视频</span>
                                                     </span>
 
-                                                    <div class="btn-group pull-right">
-                                                        <button id="dz-upload-btn" class="btn btn-primary" type="submit" disabled="">
-                                                            <i class="fa fa-upload-cloud"></i> 下载
-                                                        </button>
-                                                        <button id="dz-remove-btn" class="btn btn-danger cancel" type="reset" disabled="">
-                                                            <i class="demo-pli-cross"></i>
-                                                        </button>
+                                                        <div class="btn-group pull-right">
+                                                            <button id="dz-upload-btn" class="btn btn-primary" type="submit" disabled="">
+                                                                <i class="fa fa-upload-cloud"></i> 下载
+                                                            </button>
+                                                            <button id="dz-remove-btn" class="btn btn-danger cancel" type="reset" disabled="">
+                                                                <i class="demo-pli-cross"></i>
+                                                            </button>
+                                                        </div>
                                                     </div>
-                                                </div>
 
 
-                                                <div id="dz-previews">
-                                                    <div id="dz-template" class="pad-top bord-top">
-                                                        <div class="media">
-                                                            <div class="media-body">
-                                                                <!--This is used as the file preview template-->
-                                                                <div class="media-block">
-                                                                    <div class="media-left">
-                                                                        <img class="dz-img" data-dz-thumbnail>
-                                                                    </div>
-                                                                    <div class="media-body">
-                                                                        <p class="text-main text-bold mar-no text-overflow" data-dz-name></p>
-                                                                        <span class="dz-error text-danger text-sm" data-dz-errormessage></span>
-                                                                        <p class="text-sm" data-dz-size></p>
-                                                                        <div id="dz-total-progres" style="opacity:0">
-                                                                            <div class="progress progress-xs active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                                                                                <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                                                    <div id="dz-previews">
+                                                        <div id="dz-template" class="pad-top bord-top">
+                                                            <div class="media">
+                                                                <div class="media-body">
+                                                                    <!--This is used as the file preview template-->
+                                                                    <div class="media-block">
+                                                                        <div class="media-left">
+                                                                            <img class="dz-img" data-dz-thumbnail>
+                                                                        </div>
+                                                                        <div class="media-body">
+                                                                            <p class="text-main text-bold mar-no text-overflow" data-dz-name></p>
+                                                                            <span class="dz-error text-danger text-sm" data-dz-errormessage></span>
+                                                                            <p class="text-sm" data-dz-size></p>
+                                                                            <div id="dz-total-progres" style="opacity:0">
+                                                                                <div class="progress progress-xs active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                                                                    <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="media-right">
-                                                                <button data-dz-remove class="btn btn-xs btn-danger dz-cancel"><i class="demo-pli-cross"></i></button>
+                                                                <div class="media-right">
+                                                                    <button data-dz-remove class="btn btn-xs btn-danger dz-cancel"><i class="demo-pli-cross"></i></button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <!--===================================================-->
+                                                    <!--End Dropzonejs using Bootstrap theme-->
                                                 </div>
-                                                <!--===================================================-->
-                                                <!--End Dropzonejs using Bootstrap theme-->
-
                                             </div>
 
 
@@ -488,7 +489,7 @@
                                 <ul id="mainnav-menu" class="list-group">
                                     <li class="active-sub">
                                         <a href="#">
-                                            <i class="demo-psi-tactic"></i>
+                                            <i class="demo-psi-pen-5"></i>
                                             <span class="menu-title">竹藤数据</span>
                                             <i class="arrow"></i>
                                         </a>
@@ -569,7 +570,7 @@
 
                                     <li>
                                         <a href="#">
-                                            <i class="demo-psi-tactic"></i>
+                                            <i class="demo-psi-inbox-full"></i>
                                             <span class="menu-title">系统管理</span>
                                             <i class="arrow"></i>
                                         </a>
@@ -605,7 +606,7 @@
 
                                     <li>
                                         <a href="../serchingyinqing/serchingyinqing.html">
-                                            <i class="demo-psi-tactic"></i>
+                                            <i class="glyphicon glyphicon-search"></i>
                                             <span class="menu-title">搜索引擎</span>
                                             <i class="arrow"></i>
                                         </a>
@@ -613,7 +614,7 @@
 
                                     <li>
                                         <a href="#">
-                                            <i class="demo-psi-tactic"></i>
+                                            <i class="demo-psi-medal-2"></i>
                                             <span class="menu-title">系统监控</span>
                                             <i class="arrow"></i>
                                         </a>
