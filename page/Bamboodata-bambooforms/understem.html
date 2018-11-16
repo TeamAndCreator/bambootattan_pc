@@ -251,17 +251,38 @@
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
                                             <h4 class="modal-title" id="exampleModalLabel">新增</h4>
                                         </div>
+
+
                                         <div class="modal-body">
                                             <form class="form-horizontal">
                                                 <div class="panel-body">
-                                                    <div class="form-group">
-                                                        <label for="recipient-name" class="control-label">种标志:</label>
-                                                        <input type="text" class="form-control" id="recipient-nam">
+                                                    <div  id="registrationForm" class="form-group">
+                                                        <label for="underStem" class="col-sm-2 control-label">地下茎类型:</label>
+                                                        <div class="col-sm-4">
+                                                            <input id="underStem" class="form-control input-sm" name="underStem" placeholder="" type="text"
+                                                                   data-bv-field="underStem"   data-bv-group=".col-sm-4" data-bv-notempty="true" data-bv-notempty-message="地下茎类型不能为空">
+                                                        </div>
+
+
+                                                        <label for="underStemId" class="col-sm-2 control-label">序号:</label>
+                                                        <div class="col-sm-4">
+                                                            <input id="underStemId" class="form-control input-sm" name="underStemId" placeholder="" type="text">
+                                                        </div>
                                                     </div>
+
+
                                                     <div class="form-group">
-                                                        <label for="recipient-name" class="control-label">地下茎类型:</label>
-                                                        <input type="text" class="form-control" id="recipient-name">
+                                                        <label for="spec" class="col-sm-2 control-label">种:</label>
+                                                        <div class="col-sm-4 input-group">
+                                                            <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text">
+                                                            <span class="input-group-btn">
+                                                        <button id="btn_select_spec" class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
+                                                    </span>
+                                                        </div>
+                                                            <input id="specId" type="hidden" value="">
+                                                        </div>
                                                     </div>
+
                                             </form>
                                         </div>
 
@@ -346,8 +367,8 @@
                                                 <a href="#">种质资源数据<i class="arrow"></i></a>
                                                 <!--Submenu-->
                                                 <ul>
-                                                    <li><a href="../Bamboodata-zhongzi/zhuspecie.html">竹种属表</a></li>
-                                                    <li><a href="../Bamboodata-zhongzi/zhuzinfo.html">竹种信息</a></li>
+                                                    <li><a href="../Bamboodata-zhongzi/genus.html">竹种属表</a></li>
+                                                    <li><a href="../Bamboodata-zhongzi/spec.html">竹种信息</a></li>
                                                     <li><a href="../Bamboodata-zhongzi/tengspecie.html">藤种属表</a></li>
                                                     <li><a href="../Bamboodata-zhongzi/tenginfo.html">藤种信息</a></li>
                                                     <li><a href="../Bamboodata-zhongzi/unittable.html">单位表</a></li>
@@ -449,7 +470,6 @@
                                     </li>
 
 
-
                                     <li>
                                         <a href="../serchingyinqing/serchingyinqing.html">
                                             <i class="demo-psi-tactic"></i>
@@ -457,8 +477,7 @@
                                             <i class="arrow"></i>
                                         </a>
                                     </li>
-                                        </ul>
-                                    </li>
+
 
                                     <li>
                                         <a href="#">
