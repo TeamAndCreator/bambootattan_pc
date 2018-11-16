@@ -45,7 +45,7 @@ function init_table(){
             $("#genus").val(row.genusNameCh);
             $("#genusId").val(row.genusId);
             $("#genusModal").modal('hide');
-    },
+        },
         onClickRow:function(row,$element) {//点击时需要手动点x选中
             $("#genus").val(row.genusNameCh);
             $("#genusId").val(row.genusId);
@@ -658,4 +658,3 @@ function init_form(){
     $('#specDesc').val("");
     $('#specSortNum').val("");
 }
-

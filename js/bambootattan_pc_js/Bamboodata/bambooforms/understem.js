@@ -1,10 +1,8 @@
 var queryPageUrl='';
-var queryGenusPageUrl='';
 var querySpecPageUrl='';
 $(function(){
     queryPageUrl = baseUrl+'/understem/findAllNoQuery';
     querySpecPageUrl = baseUrl+'/spec/findAllNoQuery';
-    queryGenusPageUrl = baseUrl+'/genus/findAllNoQuery';
     //新增点击事件
     $('#btn_add').on('click',function () {
         init_form();//初始化表单
@@ -15,14 +13,15 @@ $(function(){
     //保存点击事件
     $('#btn_save').on('click',save);
     //
-    $('#btn_select_genus').on('click',function () {
-        $('#genusModal').modal('show');
-        $('#genus_table').bootstrapTable('refresh',queryGenusPageUrl);
+    $('#btn_select_spec').on('click',function () {
+        $('#specModal').modal('show');
+        $('#spec_table').bootstrapTable('refresh',querySpecPageUrl);
     });
     //初始化表格
     init_table();
     init_spec_table();
-    init_genus_table();
+    // //表单验证
+    // $('#registrationForm').bootstrapValidator();
 });
 //初始化表格
 function init_table(){
@@ -78,8 +77,8 @@ function init_table(){
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
-                    var _html = '<button onclick="edit(\''+row.underStemId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
-                    _html += '<button  onclick="dele(\''+row.underStemId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>'
+                    var _html = '<button onclick="edit(\''+row.specId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
+                    _html += '<button  onclick="dele(\''+row.specId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
@@ -87,7 +86,7 @@ function init_table(){
                 }
             },
             {
-                field:'underStemId',//数据列
+                field:'spec"',//数据列
                 title:'种名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -96,240 +95,39 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 },
                 formatter:function(value,row,index){
-                    return row.genus.genusNameCh;
+                    return row.spec.specNameCh;
                 }
             },
             {
-                field:'underStem',//数据列
+                field:'underStem"',//数据列
                 title:'地下茎类型',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
                 }
             },
 
+            {
+                field:'underStemId',//数据列
+                title:'序号',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field){
+                    return{css:{'min-width':'80px'}};
+                }
+            },
             { field:'genusId',title:'genusId',visible:false }//隐藏不显示
         ]
     });
 }
+
 //初始化种表格
-
 function init_spec_table(){
-        $('#data_table').bootstrapTable({
-            url:queryPageUrl,//数据源，请求后台的路径
-            //data:dataSoure,//数据源，json数据
-            toolbar:'#btn_area',//按钮组
-            search:true,//可以搜索
-            showRefresh:true,//可以刷新
-            showToggle:true,//可以视图切换
-            showColumns:true,//可以选择列
-            sortName:'id',//排序字段
-            sortOrder:'asc',//排序类型，asc正序，desc倒序初始化加載第一頁
-            pageList:[5, 10, 20],//每页数量组
-            pageSize:5,//默认每页数量
-            pagination:true,//可以分页
-            showPaginationSwitch:true,//
-            sidePagination:'server',//服務器端分頁
-            clickToSelect:true,
-            onDblClickRow:function(row,$element){//双击时候modal隐藏，直接选中
-                $("#genus").val(row.genusNameCh);
-                $("#genusId").val(row.genusId);
-                $("#genusModal").modal('hide');
-            },
-            onClickRow:function(row,$element) {//点击时需要手动点x选中
-                $("#genus").val(row.genusNameCh);
-                $("#genusId").val(row.genusId);
-            },
-            //method:'POST',
-            responseHandler:function(res){//后台返回数据进行修改，修改成bootstrap-table能够使用的数据格式
-                return {
-                    "total": res.data.totalElements,//总记录数
-                    "rows": res.data.content        //数据
-                };
-            },
-            queryParams:function(params){//请求参数，向后台传的数据，修改成后台可以接收的数据格式
-                return {
-                    page:params.offset/params.limit,    //页码，就是第几页
-                    size:params.limit                   //每页数量
-                }
-            },
-            cache:false,//是否使用緩存
-            columns:[//列数据
-
-                {
-                    checkbox:true,//有复选框
-                    field:'checkbox'//数据列
-                },
-                {
-                    field:'',//数据列
-                    title:'操作',//数据列名称
-                    width:'80px',
-                    align:'center',//水平居中
-                    valign:'middle',//垂直居中
-                    formatter:function(value,row,index){//格式化，自定义内容
-                        var _html = '<button onclick="edit(\''+row.specId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
-                        _html += '<button  onclick="dele(\''+row.specId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>'
-                        return _html;
-                    },
-                    cellStyle:function(value,row,index,field){
-                        return{css:{'min-width':'80px'}};
-                    }
-                },
-                {
-                    field:'genus',//数据列
-                    title:'属名',//数据列名称
-                    sortable:true,//可排序
-                    align:'center',//水平居中
-                    valign:'middle',//垂直居中
-                    cellStyle:function(value,row,index,field) {
-                        return {css: {'min-width': '80px'}};
-                    },
-                    formatter:function(value,row,index){
-                        return row.genus.genusNameCh;
-                    }
-                },
-                {
-                    field:'specNameCh',//数据列
-                    title:'中文名',//数据列名称
-                    sortable:true,//可排序
-                    align:'center',//水平居中
-                    valign:'middle',//垂直居中
-                    cellStyle:function(value,row,index,field){
-                        return{css:{'min-width':'80px'} };
-                    }
-                },
-                {
-                    field:'specNameEn',//数据列
-                    title:'英文名',//数据列名称
-                    sortable:true,//可排序
-                    align:'center',//水平居中
-                    valign:'middle',//垂直居中
-                    cellStyle:function(value,row,index,field){
-                        return{css:{'min-width':'80px'} };
-                    }
-                },
-                {
-                    field:'specNameLd',//数据列
-                    title:'拉丁名',//数据列名称
-                    sortable:true,//可排序
-                    align:'center',//水平居中
-                    valign:'middle',//垂直居中
-                    cellStyle:function(value,row,index,field){
-                        return{css:{'min-width':'80px'} };
-                    }
-                },
-                {
-                    field:'specNameOth',//数据列
-                    title:'别名',//数据列名称
-                    sortable:true,//可排序
-                    align:'center',//水平居中
-                    valign:'middle',//垂直居中
-                    cellStyle:function(value,row,index,field){
-                        return{css:{'min-width':'80px'} };
-                    }
-                },
-                {
-                    field:'specCode',//数据列
-                    title:'种类编码',//数据列名称
-                    sortable:true,//可排序
-                    align:'center',//水平居中
-                    valign:'middle',//垂直居中
-                    cellStyle:function(value,row,index,field){
-                        return{css:{'min-width':'80px'} };
-                    }
-                },
-                {
-                    field:'specBarCode',//数据列
-                    title:'种类条形码',//数据列名称
-                    sortable:true,//可排序
-                    align:'center',//水平居中
-                    valign:'middle',//垂直居中
-                    cellStyle:function(value,row,index,field){
-                        return{css:{'min-width':'80px'} };
-                    }
-                },
-                {
-                    field:'specDna',//数据列
-                    title:'种类DNA码',//数据列名称
-                    sortable:true,//可排序
-                    align:'center',//水平居中
-                    valign:'middle',//垂直居中
-                    cellStyle:function(value,row,index,field){
-                        return{css:{'min-width':'80px'} };
-                    }
-                },
-                {
-                    field:'specDomestic',//数据列
-                    title:'国内分布',//数据列名称
-                    sortable:true,//可排序
-                    align:'center',//水平居中
-                    valign:'middle',//垂直居中
-                    cellStyle:function(value,row,index,field){
-                        return{css:{'min-width':'80px'} };
-                    }
-                },
-                {
-                    field:'specForeign',//数据列
-                    title:'国外分布',//数据列名称
-                    sortable:true,//可排序
-                    align:'center',//水平居中
-                    valign:'middle',//垂直居中
-                    cellStyle:function(value,row,index,field){
-                        return{css:{'min-width':'80px'} };
-                    }
-                },
-                {
-                    field:'specVidio',//数据列
-                    title:'上传视频',//数据列名称
-                    sortable:true,//可排序
-                    align:'center',//水平居中
-                    valign:'middle',//垂直居中
-                    cellStyle:function(value,row,index,field){
-                        return{css:{'min-width':'80px'} };
-                    }
-                },
-                {
-                    field:'specImgs',//数据列
-                    title:'上传图片',//数据列名称
-                    sortable:true,//可排序
-                    align:'center',//水平居中
-                    valign:'middle',//垂直居中
-                    cellStyle:function(value,row,index,field){
-                        return{css:{'min-width':'80px'} };
-                    }
-                },
-                {
-                    field:'specSortNum',//数据列
-                    title:'序号',//数据列名称
-                    sortable:true,//可排序
-                    align:'center',//水平居中
-                    valign:'middle',//垂直居中
-                    cellStyle:function(value,row,index,field){
-                        return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
-                    }
-                },
-                {
-                    field:'specDesc',//数据列
-                    title:'描述',//数据列名称
-                    sortable:true,//可排序
-                    align:'center',//水平居中
-                    valign:'middle',//垂直居中
-                    cellStyle:function(value,row,index,field){
-                        return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
-                    }
-                },
-
-                { field:'genusId',title:'genusId',visible:false }//隐藏不显示
-            ]
-        });
-    }
-
-//初始化属表格
-function init_genus_table(){
-    $('#genus_table').bootstrapTable({
-        url:queryGenusPageUrl,//数据源，请求后台的路径
+    $('#spec_table').bootstrapTable({
+        url:querySpecPageUrl,//数据源，请求后台的路径
         search:true,//可以搜索
         showRefresh:true,//可以刷新
         showToggle:true,//可以视图切换
@@ -343,13 +141,13 @@ function init_genus_table(){
         sidePagination:'server',//服務器端分頁
         clickToSelect:true,
         onDblClickRow:function(row, $element){
-            $("#genus").val(row.genusNameCh);
-            $("#genusId").val(row.genusId);
-            $('#genusModal').modal('hide');
+            $("#spec").val(row.specNameCh);
+            $("#specId").val(row.specId);
+            $('#specModal').modal('hide');
         },
         onClickRow:function(row, $element){
-            $("#genus").val(row.genusNameCh);
-            $("#genusId").val(row.genusId);
+            $("#spec").val(row.specNameCh);
+            $("#specId").val(row.specId);
         },
         //method:'POST',
         responseHandler:function(res){//后台返回数据进行修改，修改成bootstrap-table能够使用的数据格式
@@ -373,7 +171,20 @@ function init_genus_table(){
                 field:'radio',//数据列
             },
             {
-                field:'genusNameCh',//数据列
+                field:'genus',//数据列
+                title:'属名',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
+                },
+                formatter:function(value,row,index){
+                    return row.genus.genusNameCh;
+                }
+            },
+            {
+                field:'specNameCh',//数据列
                 title:'中文名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -383,47 +194,117 @@ function init_genus_table(){
                 }
             },
             {
-                field:'genusNameEn',//数据列
+                field:'specNameEn',//数据列
                 title:'英文名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
-                    return{ css:{'min-width':'80px'}};
+                    return{css:{'min-width':'80px'} };
                 }
             },
             {
-                field:'genusNameLd',//数据列
+                field:'specNameLd',//数据列
                 title:'拉丁名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'}};
+                    return{css:{'min-width':'80px'} };
                 }
             },
             {
-                field:'genusNameOth',//数据列
+                field:'specNameOth',//数据列
                 title:'别名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'}};
+                    return{css:{'min-width':'80px'} };
                 }
             },
             {
-                field:'sortNum',//数据列
+                field:'specCode',//数据列
+                title:'种类编码',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field){
+                    return{css:{'min-width':'80px'} };
+                }
+            },
+            {
+                field:'specBarCode',//数据列
+                title:'种类条形码',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field){
+                    return{css:{'min-width':'80px'} };
+                }
+            },
+            {
+                field:'specDna',//数据列
+                title:'种类DNA码',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field){
+                    return{css:{'min-width':'80px'} };
+                }
+            },
+            {
+                field:'specDomestic',//数据列
+                title:'国内分布',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field){
+                    return{css:{'min-width':'80px'} };
+                }
+            },
+            {
+                field:'specForeign',//数据列
+                title:'国外分布',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field){
+                    return{css:{'min-width':'80px'} };
+                }
+            },
+            {
+                field:'specVidio',//数据列
+                title:'上传视频',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field){
+                    return{css:{'min-width':'80px'} };
+                }
+            },
+            {
+                field:'specImgs',//数据列
+                title:'上传图片',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field){
+                    return{css:{'min-width':'80px'} };
+                }
+            },
+            {
+                field:'specSortNum',//数据列
                 title:'序号',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'}};
+                    return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
                 }
             },
             {
-                field:'genusDesc',//数据列
+                field:'specDesc',//数据列
                 title:'描述',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -480,16 +361,18 @@ function save() {
                 //     "specImgs": specImgs,
                 //     "specDesc": specDesc,
                 //     "specSortNum": specSortNum
-                var underStem=$('#underStem').val();
-                var underStemId=$('#underStemId').val();
+                 var specId = $('#specId').val();
+                 var underStemId=$('#underStemId').val();
+                 var underStem = $('#underStem').val();
                 var formData = {
-                    "underStem":underStem,
-                    "underStemId":underStemId
+                   "underStemId":underStemId,
+                    "spec":{'specId':specId},
+                    "underStem ":underStem
                 };
                 if (underStemId == "") {//新增
                     formData.specId = 0;
                     $.ajax({
-                        url: baseUrl + '/understem/save',		//请求路径
+                        url: baseUrl + '/underStem/save',		//请求路径
                         type: 'POST',			            //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
@@ -519,7 +402,7 @@ function save() {
                     });
                 } else {//修改
                     $.ajax({
-                        url: baseUrl + '/understem/update',	    //请求路径
+                        url: baseUrl + '/underStem/update',	    //请求路径
                         type: 'PUT',				        //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
@@ -565,31 +448,16 @@ function save() {
 function edit(id) {
     init_form();
     $.ajax({
-        url:baseUrl+'/understem/findId/'+id,		//请求路径
+        url:baseUrl+'/underStem/findId/'+id,		//请求路径
         type:'GET',			                    //请求方式
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
             if(res.code==200){
-                // $('#specId').val(res.data.specId);
-                // $('#specNameCh').val(res.data.specNameCh);
-                // $('#specNameEn').val(res.data.specNameEn);
-                // $('#specNameLd').val(res.data.specNameLd);
-                // $('#specNameOth').val(res.data.specNameOth);
-                // $('#specCode').val(res.data.specCode);
-                // $('#specBarCode').val(res.data.specBarCode);
-                // $('#specDna').val(res.data.specDna);
-                // $('#specDomestic').val(res.data.specDomestic);
-                // $('#specForeign').val(res.data.specForeign);
-                // $('#specVidio').val(res.data.specVidio);
-                // $('#specImgs').val(res.data.specImgs);
-                // $('#specDesc').val(res.data.specDesc);
-                // $('#specSortNum').val(res.data.specSortNum);
-                // $('#genus').val(res.data.genus.genusNameCh);
-                // $('#genusId').val(res.data.genus.genusId)
-                // $('#exampleModal').modal('show');
                 $('#underStemId').val(res.data.underStemId);
-                 $('#underStem').val(res.data.underStem);
+                $('#underStem').val(res.data.underStem);
+                $('#specNameCh').val(res.data.spec.specNameCh);
+                $('#specId').val(res.data.spec.specId);
                 $('#exampleModal').modal('show');
             }
             else{
@@ -621,7 +489,7 @@ function dele(gid){
         callback: function(result) {
             if (result) {
                 $.ajax({
-                    url:baseUrl+'/understem/delete/'+gid,   //请求路径,单个删除
+                    url:baseUrl+'/underStem/delete/'+gid,   //请求路径,单个删除
                     type:'DELETE',				        //请求方式
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
@@ -696,7 +564,7 @@ function deles() {
                     }
                     $.ajax({    //批量删除
                         //现将数据每个元素用‘,(逗号)’分隔拼接成字符串，再用encodeURI进行编码，最后拼接到url的后面
-                        url: baseUrl+'/understem/deleteByIds?ids='+encodeURI(ids.join(',')),
+                        url: baseUrl+'/underStem/deleteByIds?ids='+encodeURI(ids.join(',')),
                         type:'DELETE',
                         contentType: 'application/json',//数据类型
                         success:function(res){	        //请求成功回调函数
@@ -741,7 +609,9 @@ function deles() {
 }
 //初始化表单元素的值
 function init_form(){
+    $('#spec').val("");
     $('#underStemId').val("");
+    $('#specId').val("");
     $('#underStem').val("");
 }
 
