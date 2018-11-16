@@ -252,7 +252,7 @@ function init_genus_table(){
         clickToSelect:true,
         onDblClickRow:function(row, $element){
             $("#genus").val(row.genusNameCh);
-            $("#genusId").val(row.genusId);
+            $("#genusId").val(row.genus.genusNameCh);
             $('#genusModal').modal('hide');
         },
         onClickRow:function(row, $element){
