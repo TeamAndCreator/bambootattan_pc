@@ -6,16 +6,21 @@ $(function(){
     //新增点击事件
     $('#btn_add').on('click',function () {
         init_form();//初始化表单
+        $('#exampleModal .modal-title').html("新增");
         $('#exampleModal').modal('show');//表单模态框
     });
     //批量删除点击事件
     $('#btn_delete').on('click',deles);
     //保存点击事件
     $('#btn_save').on('click',save);
-    //
+    //点击选择属按钮
     $('#btn_select_genus').on('click',function () {
         $('#genusModal').modal('show');
         $('#genus_table').bootstrapTable('refresh',queryGenusPageUrl);
+    });
+    //选择属的模态框关闭时，调用openModalClass，给body元素手动加上 modal-open
+    $('#genusModal').on('hidden.bs.modal',function () {
+        openModalClass();
     });
     //初始化表格
     init_table();
@@ -41,15 +46,6 @@ function init_table(){
         showPaginationSwitch:true,//
         sidePagination:'server',//服務器端分頁
         clickToSelect:true,
-        onDblClickRow:function(row,$element){//双击时候modal隐藏，直接选中
-            $("#genus").val(row.genusNameCh);
-            $("#genusId").val(row.genusId);
-            $("#genusModal").modal('hide');
-        },
-        onClickRow:function(row,$element) {//点击时需要手动点x选中
-            $("#genus").val(row.genusNameCh);
-            $("#genusId").val(row.genusId);
-        },
         //method:'POST',
         responseHandler:function(res){//后台返回数据进行修改，修改成bootstrap-table能够使用的数据格式
             return {
@@ -252,7 +248,7 @@ function init_genus_table(){
         clickToSelect:true,
         onDblClickRow:function(row, $element){
             $("#genus").val(row.genusNameCh);
-            $("#genusId").val(row.genus.genusNameCh);
+            $("#genusId").val(row.genusId);
             $('#genusModal').modal('hide');
         },
         onClickRow:function(row, $element){
@@ -357,6 +353,15 @@ function save() {
         },
         callback: function (result) {
             if (result) {
+
+                var validateForm = $('#registrationForm').data('bootstrapValidator');
+                //手动触发验证
+                validateForm.validate();
+                //表单验证不通过，直接return，不往下执行
+                if(!validateForm.isValid()){
+                    return;
+                }
+
                 var specId = $('#specId').val();
                 var genusId=$('#genusId').val();
                 var specNameCh = $('#specNameCh').val();
@@ -490,6 +495,7 @@ function edit(id) {
                 $('#specSortNum').val(res.data.specSortNum);
                 $('#genusNameCh').val(res.data.genus.genusNameCh);
                 $('#genusId').val(res.data.genus.genusId);
+                $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }
             else{
@@ -657,4 +663,5 @@ function init_form(){
     $('#specImgs').val("");
     $('#specDesc').val("");
     $('#specSortNum').val("");
+    $('#registrationForm').data('bootstrapValidator').resetForm();
 }

@@ -1053,7 +1053,8 @@ if (typeof jQuery === 'undefined') {
 							}
 						}
 
-						$parent.removeClass('has-error has-success').addClass(this.isValidContainer($parent) ? 'has-success' : 'has-error');
+						//$parent.removeClass('has-error has-success').addClass(this.isValidContainer($parent) ? 'has-success' : 'has-error');
+                        $parent.removeClass('has-error has-success').addClass(this.isValidContainer($parent) ? '' : 'has-error');
 						if ($tab) {
 							$tab.removeClass('bv-tab-success').removeClass('bv-tab-error').addClass(this.isValidContainer($tabPane) ? 'bv-tab-success' : 'bv-tab-error');
 						}
