@@ -4,6 +4,7 @@ $(function(){
     //新增点击事件
     $('#btn_add').on('click',function () {
 		init_form();//初始化表单
+        $('#exampleModal .modal-title').html("新增");
         $('#exampleModal').modal('show');//表单模态框
     });
     //批量删除点击事件
@@ -144,11 +145,11 @@ function save() {
         },
         callback: function (result) {
             if (result) {
-                var bootstrapValidator = $('#registrationForm').data('bootstrapValidator');
+                var validateForm = $('#registrationForm').data('bootstrapValidator');
                 //手动触发验证
-                bootstrapValidator.validate();
+                validateForm.validate();
                 //表单验证不通过，直接return，不往下执行
-                if(!bootstrapValidator.isValid()){
+                if(!validateForm.isValid()){
                     return;
                 }
                 var genusId = $('#genusId').val();
@@ -259,6 +260,7 @@ function edit(id) {
                 $('#genusNameOth').val(res.data.genusNameOth);
                 $('#sortNum').val(res.data.sortNum);
                 $('#genusDesc').val(res.data.genusDesc);
+                $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }
             else{
@@ -417,5 +419,6 @@ function init_form(){
     $('#sortNum').val("");
     $('#genusDesc').val("");
     $('#genusId').val("");
+    //$('#registrationForm').data('bootstrapValidator').resetForm();
 }
 
