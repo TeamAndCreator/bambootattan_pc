@@ -1,8 +1,8 @@
 var queryPageUrl='';
 var querySpecPageUrl='';
 $(function(){
-    queryPageUrl = baseUrl+'/understem/findAllNoQuery';
-    querySpecPageUrl = baseUrl+'/spec/findAllNoQuery';
+    queryPageUrl = baseUrl+'/understem/findAllQuery';
+    querySpecPageUrl = baseUrl+'/spec/findAllQuery';
     //新增点击事件
     $('#btn_add').on('click',function () {
         init_form();//初始化表单
