@@ -41,15 +41,6 @@ function init_table(){
         showPaginationSwitch:true,//
         sidePagination:'server',//服務器端分頁
         clickToSelect:true,
-        onDblClickRow:function(row,$element){//双击时候modal隐藏，直接选中
-            $("#spec").val(row.specNameCh);
-            $("#specId").val(row.specId);
-            $("#specModal").modal('hide');
-        },
-        onClickRow:function(row,$element) {//点击时需要手动点x选中
-            $("#spec").val(row.specNameCh);
-            $("#specId").val(row.specId);
-        },
         //method:'POST',
         responseHandler:function(res){//后台返回数据进行修改，修改成bootstrap-table能够使用的数据格式
             return {
@@ -108,7 +99,7 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 }
             },
-
+            /*
             {
                 field:'underStemId',//数据列
                 title:'序号',//数据列名称
@@ -118,8 +109,8 @@ function init_table(){
                 cellStyle:function(value,row,index,field){
                     return{css:{'min-width':'80px'}};
                 }
-            },
-            { field:'genusId',title:'genusId',visible:false }//隐藏不显示
+            },*/
+            { field:'underStemId',title:'underStemId',visible:false }//隐藏不显示
         ]
     });
 }
@@ -143,6 +134,7 @@ function init_spec_table(){
         onDblClickRow:function(row, $element){
             $("#spec").val(row.specNameCh);
             $("#specId").val(row.specId);
+            $("#genusId").val(row.genus.genusId);
             $('#specModal').modal('hide');
         },
         onClickRow:function(row, $element){
@@ -313,7 +305,7 @@ function init_spec_table(){
                     return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
                 }
             },
-            { field:'genusId',title:'genusId',visible:false }//隐藏不显示
+            { field:'specId',title:'specId',visible:false }//隐藏不显示
         ]
     });
 }
@@ -330,43 +322,18 @@ function save() {
         },
         callback: function (result) {
             if (result) {
-                // var specId = $('#specId').val();
-                // var genusId=$('#genusId').val();
-                // var specNameCh = $('#specNameCh').val();
-                // var specNameEn = $('#specNameEn').val();
-                // var specNameLd = $('#specNameLd').val();
-                // var specNameOth = $('#specNameOth').val();
-                // var specCode = $('#specCode').val();
-                // var specBarCode = $('#specBarCode').val();
-                // var specDna = $('#specDna').val();
-                // var specDomestic = $('#specDomestic').val();
-                // var specForeign = $('#specForeign').val();
-                // var specVidio = $('#specVidio').val();
-                // var specImgs = $('#specImgs').val();
-                // var specDesc = $('#specDesc').val();
-                // var specSortNum = $('#specSortNum').val();
-                // var formData = {
-                //     "specId": specId,
-                //     "genus":{'genusId':genusId},
-                //     "specNameCh": specNameCh,
-                //     "specNameEn": specNameEn,
-                //     "specNameLd": specNameLd,
-                //     "specNameOth": specNameOth,
-                //     "specCode": specCode,
-                //     "specBarCode": specBarCode,
-                //     "specDna": specDna,
-                //     "specDomestic": specDomestic,
-                //     "specForeign": specForeign,
-                //     "specVidio": specVidio,
-                //     "specImgs": specImgs,
-                //     "specDesc": specDesc,
-                //     "specSortNum": specSortNum
                  var specId = $('#specId').val();
                  var underStemId=$('#underStemId').val();
                  var underStem = $('#underStem').val();
+                 var genusId='';
                 var formData = {
                    "underStemId":underStemId,
-                    "spec":{'specId':specId},
+                    "spec":{
+                       'specId':specId,
+                        'genus':{
+                           'genusId':genusId
+                        }
+                    },
                     "underStem ":underStem
                 };
                 if (underStemId == "") {//新增
@@ -456,7 +423,7 @@ function edit(id) {
             if(res.code==200){
                 $('#underStemId').val(res.data.underStemId);
                 $('#underStem').val(res.data.underStem);
-                $('#specNameCh').val(res.data.spec.specNameCh);
+                $('#spec').val(res.data.spec.specNameCh);
                 $('#specId').val(res.data.spec.specId);
                 $('#exampleModal').modal('show');
             }
