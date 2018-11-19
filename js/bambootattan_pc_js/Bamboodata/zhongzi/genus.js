@@ -15,6 +15,7 @@ $(function(){
     init_table();
     //表单验证
     $('#registrationForm').bootstrapValidator();
+    $('#demo-summernote').summernote();
 });
 //初始化表格
 function init_table(){
@@ -155,13 +156,14 @@ function save() {
                 if(!validateForm.isValid()){
                     return;
                 }
+                var genusDesc=$('#demo-summernote').summernote('code');
                 var genusId = $('#genusId').val();
                 var genusNameCh = $('#genusNameCh').val();
                 var genusNameEn = $('#genusNameEn').val();
                 var genusNameLd = $('#genusNameLd').val();
                 var genusNameOth = $('#genusNameOth').val();
                 var sortNum = $('#sortNum').val();
-                var genusDesc = $('#genusDesc').val();
+                // var genusDesc = $('#genusDesc').val();
                 var formData={
                     "genusDesc": genusDesc,
                     "genusId": genusId,
@@ -256,6 +258,7 @@ function edit(id) {
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
             if(res.code==200){
+                $('#demo-summernote').summernote('code',res.data.genusDesc);
                 $('#genusId').val(res.data.genusId);
                 $('#genusNameCh').val(res.data.genusNameCh);
                 $('#genusNameEn').val(res.data.genusNameEn);

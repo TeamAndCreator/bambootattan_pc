@@ -25,6 +25,8 @@
     <!--Nifty Premium Icon [ DEMONSTRATION ]-->
     <link href="../../css/demo/nifty-demo-icons.min.css" rel="stylesheet">
 
+    <!--font-awesome.css [ OPTIONAL ]-->
+    <link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
     <!--Demo [ DEMONSTRATION ]-->
     <link href="../../css/demo/nifty-demo.min.css" rel="stylesheet">
@@ -85,6 +87,9 @@
 
     <!--Bootstrap Table [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+
+    <!-- bootbox -->
+    <script src="../../plugins/bootbox/bootbox.js"></script>
 
 
     <!--Bootstrap Table Extension [ OPTIONAL ]-->
@@ -307,21 +312,40 @@
                                                             <span class="input-group-btn">
                                                                 <button id="btn_select_spec" class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
                                                             </span>
+                                                            <input id="underStemId" type="hidden" value="" />
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <input id="underStemId" type="hidden" value="" />
+                                                <!--<input id="underStemId" type="hidden" value="" />-->
                                             </form>
                                         </div>
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                            <button id="btn-save" type="button" class="btn btn-primary">保存</button>
+                                            <button id="btn_save" type="button" class="btn btn-primary">保存</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+
+                            <div class="modal fade" id="specModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" data-backdrop="static">
+                                <div class="modal-dialog modal-lg"  role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
+                                            <h4 class="modal-title">属</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table id="spec_table"></table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                            <button id="btn_spec_ok" type="button" class="btn btn-primary">确认</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         <!-- 数据表格 -->
                         <table id="data_table" class="table"></table>
                     </div>

@@ -86,6 +86,8 @@
 
     <!--Demo script [ DEMONSTRATION ]-->
     <script src="../../js/demo/nifty-demo.min.js"></script>
+    <!--Summernote [ OPTIONAL ]-->
+    <script src="../../plugins/summernote/summernote.min.js"></script>
     <script src="../../js/demo/form-file-upload.js"></script>
     <!--font-awesome.css [ OPTIONAL ]-->
     <link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -107,7 +109,7 @@
     <!--Bootstrap Table Extension [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
     <!--Summernote [ OPTIONAL ]-->
-    <script src="../../plugins/summernote/summernote.min.js"></script>
+    <!--<script src="../../plugins/summernote/summernote.min.js"></script>-->
     <!--=================================================-->
 
     <!--Bootstrap Datepicker [ OPTIONAL ]-->
@@ -248,73 +250,70 @@
 
                     <!--增加按钮的模态框-->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
-                        <div class="modal-dialog" role="document">
+                        <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
                                     <h4 class="modal-title" id="exampleModalLabel">新增</h4>
                                 </div>
+
                                 <div class="modal-body">
                                     <form class="form-horizontal">
                                         <div class="panel-body">
                                             <div  id="registrationForm" class="form-group">
                                                 <label for="specNameCh" class="col-sm-2 control-label">中文名:</label>
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-2">
                                                     <input id="specNameCh" class="form-control input-sm" name="specNameCh" placeholder="" type="text"
                                                            data-bv-field="specNameCh"   data-bv-group=".col-sm-4" data-bv-notempty="true" data-bv-notempty-message="中文名不能为空">
                                                 </div>
-
-
                                                 <label for="specNameEn" class="col-sm-2 control-label">英文名:</label>
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-2">
                                                     <input id="specNameEn" class="form-control input-sm" name="specNameEn" placeholder="" type="text">
                                                 </div>
-                                            </div>
-                                            <div class="form-group">
                                                 <label for="specNameLd" class="col-sm-2 control-label">拉丁名:</label>
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-2">
                                                     <input id="specNameLd" class="form-control input-sm" name="specNameLd" placeholder="" type="text">
-                                                </div>
-                                                <label for="specNameOth" class="col-sm-2 control-label">别名:</label>
-                                                <div class="col-sm-4">
-                                                    <input id="specNameOth" class="form-control input-sm" name="specNameOth" placeholder="" type="text">
                                                 </div>
                                             </div>
 
+
                                             <div class="form-group">
+                                                <label for="specNameOth" class="col-sm-2 control-label">别名:</label>
+                                                <div class="col-sm-2">
+                                                    <input id="specNameOth" class="form-control input-sm" name="specNameOth" placeholder="" type="text">
+                                                </div>
                                                 <label for="specCode" class="col-sm-2 control-label">种类编码:</label>
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-2">
                                                     <input id="specCode" class="form-control input-sm" name="specCode" placeholder="" type="text">
                                                 </div>
                                                 <label for="specBarCode" class="col-sm-2 control-label">种类DNA码:</label>
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-2">
                                                     <input id="specBarCode" class="form-control input-sm" name="specBarCode" placeholder="" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="specDna" class="col-sm-2 control-label">种类条形码:</label>
-                                                <div class="col-sm-4">
-                                                    <input id="specDna" class="form-control input-sm" name="specDna" placeholder="" type="text">
-                                                </div>
-                                                <label for="specDomestic" class="col-sm-2 control-label">国内分布:</label>
-                                                <div class="col-sm-4">
-                                                    <input id="specDomestic" class="form-control input-sm" name="specDomestic" placeholder="" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="specForeign" class="col-sm-2 control-label">国外分布:</label>
-                                                <div class="col-sm-4">
-                                                    <input id="specForeign" class="form-control input-sm" name="specForeign" placeholder="" type="text">
-                                                </div>
-                                                <label for="specSortNum" class="col-sm-2 control-label">序号:</label>
-                                                <div class="col-sm-4">
-                                                    <input id="specSortNum" class="form-control input-sm" name="specSortNum" placeholder="" type="text">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
+                                                <label for="specDna" class="col-sm-2 control-label">种类条形码:</label>
+                                                <div class="col-sm-2">
+                                                    <input id="specDna" class="form-control input-sm" name="specDna" placeholder="" type="text">
+                                                </div>
+                                                <label for="specDomestic" class="col-sm-2 control-label">国内分布:</label>
+                                                <div class="col-sm-2">
+                                                    <input id="specDomestic" class="form-control input-sm" name="specDomestic" placeholder="" type="text">
+                                                </div>
+                                                <label for="specForeign" class="col-sm-2 control-label">国外分布:</label>
+                                                <div class="col-sm-2">
+                                                    <input id="specForeign" class="form-control input-sm" name="specForeign" placeholder="" type="text">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="specSortNum" class="col-sm-2 control-label">序号:</label>
+                                                <div class="col-sm-2">
+                                                    <input id="specSortNum" class="form-control input-sm" name="specSortNum" placeholder="" type="text">
+                                                </div>
                                                 <label for="genus" class="col-sm-2 control-label">属:</label>
-                                                <div class="col-sm-4 input-group">
+                                                <div class="col-sm-2 input-group">
                                                     <input id="genus" class="form-control input-sm" name="genus" placeholder="" type="text">
                                                     <span class="input-group-btn">
                                                         <button id="btn_select_genus" class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
@@ -322,7 +321,6 @@
                                                     <input id="genusId" type="hidden" value="">
                                                 </div>
                                             </div>
-
 
 
                                             <div  class="form-group">
@@ -374,8 +372,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-
                                             </div>
 
 
@@ -433,16 +429,29 @@
                                                 </div>
                                             </div>
 
-
-                                            <div class="form-group">
-                                                <label for="specDesc" class="col-sm-2 control-label">种描述:</label>
-                                                <div class="col-sm-10">
-                                                    <textarea placeholder="" id="specDesc" name="specDesc" rows="5" class="form-control"></textarea>
-                                                </div>
-                                            </div>
-                                        <!--</div>-->
                                         <input id="specId" type="hidden" value="">
                                         </div>
+                                        <div id="page-conten">
+                                            <div class="panel">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title">描述</h3>
+                                                </div>
+                                                <div class="panel-body">
+
+                                                    <!--Summernote-->
+                                                    <!--===================================================-->
+                                                    <div id="demo-summernote">
+                                                        <h4><span
+                                                                style="color: rgb(206, 198, 206); font-family: inherit; line-height: 1.1;"></span><br>
+                                                        </h4><h4><font color="#9c9c94"></font></h4>
+                                                    </div>
+                                                    <!--===================================================-->
+                                                    <!-- End Summernote -->
+
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </form>
                                 </div>
                                 <div class="modal-footer">
@@ -688,7 +697,7 @@
     <!-- END OF CONTAINER -->
 
 
-<!--</div>-->
+</div>
 <script src="../../js/bambootattan_pc_js/Bamboodata/zhongzi/spec.js"></script>
 </body>
 </html>

@@ -1,8 +1,8 @@
 var queryPageUrl='';
 var querySpecPageUrl='';
 $(function(){
-    queryPageUrl = baseUrl+'/understem/findAllNoQuery';
-    querySpecPageUrl = baseUrl+'/spec/findAllNoQuery';
+    queryPageUrl = baseUrl+'/understem/findAllQuery';
+    querySpecPageUrl = baseUrl+'/spec/findAllQuery';
     //新增点击事件
     $('#btn_add').on('click',function () {
         init_form();//初始化表单
@@ -17,6 +17,11 @@ $(function(){
         $('#specModal').modal('show');
         $('#spec_table').bootstrapTable('refresh',querySpecPageUrl);
     });
+    //确认选择的种
+    $('#btn_spec_ok').on('click',selectedSpec);
+
+    //关闭选择种的模态框
+    $("#specModal").on('hidden.bs.modal',openModalClass)
     //初始化表格
     init_table();
     init_spec_table();
@@ -68,8 +73,8 @@ function init_table(){
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
-                    var _html = '<button onclick="edit(\''+row.specId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
-                    _html += '<button  onclick="dele(\''+row.specId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>'
+                    var _html = '<button onclick="edit(\''+row.underStemId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
+                    _html += '<button  onclick="dele(\''+row.underStemId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
@@ -90,7 +95,7 @@ function init_table(){
                 }
             },
             {
-                field:'underStem"',//数据列
+                field:'underStem',//数据列
                 title:'地下茎类型',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -137,10 +142,11 @@ function init_spec_table(){
             $("#genusId").val(row.genus.genusId);
             $('#specModal').modal('hide');
         },
+        /*
         onClickRow:function(row, $element){
             $("#spec").val(row.specNameCh);
             $("#specId").val(row.specId);
-        },
+        },*/
         //method:'POST',
         responseHandler:function(res){//后台返回数据进行修改，修改成bootstrap-table能够使用的数据格式
             return {
@@ -325,7 +331,7 @@ function save() {
                  var specId = $('#specId').val();
                  var underStemId=$('#underStemId').val();
                  var underStem = $('#underStem').val();
-                 var genusId='';
+                 var genusId=$('#genusId').val();
                 var formData = {
                    "underStemId":underStemId,
                     "spec":{
@@ -334,12 +340,12 @@ function save() {
                            'genusId':genusId
                         }
                     },
-                    "underStem ":underStem
+                    "underStem":underStem
                 };
                 if (underStemId == "") {//新增
                     formData.specId = 0;
                     $.ajax({
-                        url: baseUrl + '/underStem/save',		//请求路径
+                        url: baseUrl + '/understem/save',		//请求路径
                         type: 'POST',			            //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
@@ -369,7 +375,7 @@ function save() {
                     });
                 } else {//修改
                     $.ajax({
-                        url: baseUrl + '/underStem/update',	    //请求路径
+                        url: baseUrl + '/understem/update',	    //请求路径
                         type: 'PUT',				        //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
@@ -415,7 +421,7 @@ function save() {
 function edit(id) {
     init_form();
     $.ajax({
-        url:baseUrl+'/underStem/findId/'+id,		//请求路径
+        url:baseUrl+'/understem/findId/'+id,		//请求路径
         type:'GET',			                    //请求方式
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
@@ -456,7 +462,7 @@ function dele(gid){
         callback: function(result) {
             if (result) {
                 $.ajax({
-                    url:baseUrl+'/underStem/delete/'+gid,   //请求路径,单个删除
+                    url:baseUrl+'/understem/delete/'+gid,   //请求路径,单个删除
                     type:'DELETE',				        //请求方式
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
@@ -527,11 +533,11 @@ function deles() {
                     var ids=[]; //选中数据的genusId数组
                     for(var i=0;i<selectedItems.length;i++){
                         //循环遍历选中的数据并将genusId放入到ids数组中
-                        ids.push(selectedItems[i].specId);
+                        ids.push(selectedItems[i].underStemId);
                     }
                     $.ajax({    //批量删除
                         //现将数据每个元素用‘,(逗号)’分隔拼接成字符串，再用encodeURI进行编码，最后拼接到url的后面
-                        url: baseUrl+'/underStem/deleteByIds?ids='+encodeURI(ids.join(',')),
+                        url: baseUrl+'/understem/deleteByIds?ids='+encodeURI(ids.join(',')),
                         type:'DELETE',
                         contentType: 'application/json',//数据类型
                         success:function(res){	        //请求成功回调函数
@@ -572,6 +578,18 @@ function deles() {
                 };
             }
         });
+    }
+}
+
+//选中种
+function selectedSpec() {
+    //选中的数据
+    var selectedSpecItems=$("#spec_table").bootstrapTable('getSelections');
+    if (selectedSpecItems.length==1){
+        $("#spec").val(selectedSpecItems[0].specNameCh);
+        $("#specId").val(selectedSpecItems[0].specId);
+        $("#genusId").val(selectedSpecItems[0].genus.genusId);
+        $("#specModal").modal('hide');
     }
 }
 //初始化表单元素的值

@@ -1,8 +1,8 @@
 var queryPageUrl='';
 var queryGenusPageUrl='';
 $(function(){
-    queryPageUrl = baseUrl+'/spec/findAllNoQuery';
-    queryGenusPageUrl = baseUrl+'/genus/findAllNoQuery';
+    queryPageUrl = baseUrl+'/spec/findAllQuery';
+    queryGenusPageUrl = baseUrl+'/genus/findAllQuery';
     //新增点击事件
     $('#btn_add').on('click',function () {
         init_form();//初始化表单
@@ -56,7 +56,9 @@ function init_table(){
         queryParams:function(params){//请求参数，向后台传的数据，修改成后台可以接收的数据格式
             return {
                 page:params.offset/params.limit,    //页码，就是第几页
-                size:params.limit                   //每页数量
+                size:params.limit,                   //每页数量
+                search:params.search
+
             }
         },
         cache:false,//是否使用緩存
@@ -362,6 +364,7 @@ function save() {
                     return;
                 }
 
+                var specDesc=$('#demo-summernote').summernote('code');
                 var specId = $('#specId').val();
                 var genusId=$('#genusId').val();
                 var specNameCh = $('#specNameCh').val();
@@ -375,7 +378,7 @@ function save() {
                 var specForeign = $('#specForeign').val();
                 var specVidio = $('#specVidio').val();
                 var specImgs = $('#specImgs').val();
-                var specDesc = $('#specDesc').val();
+                // var specDesc = $('#specDesc').val();
                 var specSortNum = $('#specSortNum').val();
                 var formData = {
                     "specId": specId,
@@ -479,6 +482,7 @@ function edit(id) {
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
             if(res.code==200){
+               $('#demo-summernote').summernote('code',res.data.specDesc);
                 $('#specId').val(res.data.specId);
                 $('#specNameCh').val(res.data.specNameCh);
                 $('#specNameEn').val(res.data.specNameEn);
@@ -491,7 +495,7 @@ function edit(id) {
                 $('#specForeign').val(res.data.specForeign);
                 $('#specVidio').val(res.data.specVidio);
                 $('#specImgs').val(res.data.specImgs);
-                $('#specDesc').val(res.data.specDesc);
+                // $('#specDesc').val(res.data.specDesc);
                 $('#specSortNum').val(res.data.specSortNum);
                 $('#genusNameCh').val(res.data.genus.genusNameCh);
                 $('#genusId').val(res.data.genus.genusId);
