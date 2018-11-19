@@ -58,7 +58,6 @@ function init_table(){
                 page:params.offset/params.limit,    //页码，就是第几页
                 size:params.limit,                   //每页数量
                 search:params.search
-
             }
         },
         cache:false,//是否使用緩存
