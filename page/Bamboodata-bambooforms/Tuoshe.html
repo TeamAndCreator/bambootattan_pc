@@ -29,7 +29,11 @@
     <!--Demo [ DEMONSTRATION ]-->
     <link href="../../css/demo/nifty-demo.min.css" rel="stylesheet">
 
+    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
+    <link href="../../css/demo/nifty-demo-icons.min.css" rel="stylesheet">
 
+    <!--font-awesome.css [ OPTIONAL ]-->
+    <link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
     <!--Bootstrap Table [ OPTIONAL ]-->
     <link href="../../plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
@@ -90,7 +94,7 @@
     <!--Bootstrap Table Extension [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
     <script src="../../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
-
+    <script src="../../js/bambootattan_pc_js/common.js"></script>
 
 
 
@@ -241,7 +245,6 @@
                         </div>
 
 
-
                         <!--增加按钮的模态框-->
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
                             <div class="modal-dialog" role="document">
@@ -250,43 +253,91 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
                                         <h4 class="modal-title" id="exampleModalLabel">新增</h4>
                                     </div>
+
                                     <div class="modal-body">
                                         <form class="form-horizontal">
                                             <div class="panel-body">
-                                                <div class="form-group">
-                                                    <label for="recipient-name" class="control-label">种标志:</label>
-                                                    <input type="text" class="form-control" id="recipient-nam">
+                                                <div  id="registrationForm" class="form-group">
+                                                    <div class="form-group">
+                                                        <label for="sheathTongueColor" class="col-sm-3 control-label">箨舌颜色:</label>
+                                                        <div class="col-sm-5">
+                                                            <input id="sheathTongueColor" class="form-control input-sm" name="sheathTongueColor" placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="sheathTongueHeight" class="col-sm-3 control-label">箨舌高度:</label>
+                                                        <div class="col-sm-5">
+                                                            <input id="sheathTongueHeight" class="form-control input-sm" name="sheathTongueHeight" placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="sheathEarMargin" class="col-sm-3 control-label">箨耳边缘繸毛:</label>
+                                                        <div class="col-sm-5">
+                                                            <input id="sheathEarMargin" class="form-control input-sm" name="sheathEarMargin" placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="sheathTongueMarginShape" class="col-sm-3 control-label">箨舌边缘形状:</label>
+                                                        <div class="col-sm-5">
+                                                            <input id="sheathTongueMarginShape" class="form-control input-sm" name="sheathTongueMarginShape" placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="sheathTongueBackPowderv" class="col-sm-3 control-label">箨舌被毛被粉:</label>
+                                                        <div class="col-sm-5">
+                                                            <input id="sheathTongueBackPowderv" class="form-control input-sm" name="sheathTongueBackPowderv" placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="spec" class="col-sm-3 control-label">种:</label>
+                                                        <div class="col-sm-5 input-group">
+                                                            <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text">
+                                                            <input id="specId" type="hidden" value="">
+                                                            <input id="genusId" type="hidden" value="">
+                                                            <span class="input-group-btn">
+                                                                <button id="btn_select_spec" class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
+                                                            </span>
+                                                            <input id="sheTogId" type="hidden" value="" />
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="recipient-name" class="control-label">箨舌颜色:</label>
-                                                    <input type="text" class="form-control" id="recipient-nw">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="recipient-name" class="control-label">箨舌高度:</label>
-                                                    <input type="text" class="form-control" id="recipient-n">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="recipient-name" class="control-label">箨舌被毛被粉:</label>
-                                                    <input type="text" class="form-control" id="recipient-name">
-                                                </div>
+                                            </div>
+                                            <!--<input id="underStemId" type="hidden" value="" />-->
                                         </form>
                                     </div>
-
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                        <button type="button" class="btn btn-primary">保存</button>
+                                        <button id="btn_save" type="button" class="btn btn-primary">保存</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="modal fade" id="specModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" data-backdrop="static">
+                            <div class="modal-dialog modal-lg"  role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
+                                        <h4 class="modal-title">种</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table id="spec_table"></table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                        <button id="btn_spec_ok" type="button" class="btn btn-primary">确认</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table id="data_table" class="table"></table>
                     </div>
-
-
-                    <table id="data_table" class="table"></table>
                 </div>
+            </div>
+            <!--===================================================-->
         </div>
-        <!--===================================================-->
-    </div>
 
 
     <!--===================================================-->
@@ -369,7 +420,7 @@
                                                 <!--Submenu-->
                                                 <ul class="collapse in">
                                                     <li><a href="understem.html">地下茎</a></li>
-                                                    <li><a href="bamboogan.html">竹竿表</a></li>
+                                                    <li><a href="culm.html">竹竿表</a></li>
                                                     <li><a href="Tuoring.html">箨环表</a></li>
                                                     <li><a href="Tuoqiao.html">箨鞘表</a></li>
                                                     <li><a href="Tuoer.html">箨耳表</a></li>
@@ -524,7 +575,7 @@
         <!--===================================================-->
         <footer id="footer" style="text-align: center">
                     <span bigger-120>
-                    <span class="blue bolder">copyright: 2018，安徽农业大学数字农业研究所 技术支持</span>
+                    <span class="blue bolder">安徽农业大学数字农业研究所                             </span> &copy; 2018-2019
                     </span>
         </footer>
         <!--===================================================-->
