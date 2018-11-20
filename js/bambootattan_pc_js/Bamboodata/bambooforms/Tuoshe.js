@@ -115,17 +115,6 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 }
             },
-
-            {
-                field:'sheathEarMargin',//数据列
-                title:'箨耳边缘繸毛',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field) {
-                    return {css: {'min-width': '80px'}};
-                }
-            },
             {
                 field:'sheathTongueMarginShape',//数据列
                 title:'箨舌边缘形状',//数据列名称
@@ -136,7 +125,16 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 }
             },
-
+            {
+                field:'sheathTongueBackPowderv',//数据列
+                title:'箨舌被毛被粉',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
+                }
+            },
             /*
             {
                 field:'underStemId',//数据列
@@ -504,7 +502,7 @@ function dele(gid){
         callback: function(result) {
             if (result) {
                 $.ajax({
-                    url:baseUrl+'/sheathear/delete/'+gid,   //请求路径,单个删除
+                    url:baseUrl+'/sheathtongue/delete/'+gid,   //请求路径,单个删除
                     type:'DELETE',				        //请求方式
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
@@ -579,7 +577,7 @@ function deles() {
                     }
                     $.ajax({    //批量删除
                         //现将数据每个元素用‘,(逗号)’分隔拼接成字符串，再用encodeURI进行编码，最后拼接到url的后面
-                        url: baseUrl+'/sheathear/deleteByIds?ids='+encodeURI(ids.join(',')),
+                        url: baseUrl+'/sheathtongue/deleteByIds?ids='+encodeURI(ids.join(',')),
                         type:'DELETE',
                         contentType: 'application/json',//数据类型
                         success:function(res){	        //请求成功回调函数
@@ -640,8 +638,9 @@ function init_form(){
     $('#sheTogId').val("");
     $('#specId').val("");
     $('#genusId').val("");
-    $('#sheathEarDev').val("");
-    $('#sheathEarShape').val("");
-    $('#sheathEarMargin').val("");
+    $('#sheathTongueColor').val("");
+    $('#sheathTongueHeight').val("");
+    $('#sheathTongueMarginShape').val("");
+    $('#sheathTongueBackPowderv').val("");
 }
 

@@ -24,6 +24,11 @@
 
     <!--Nifty Premium Icon [ DEMONSTRATION ]-->
     <link href="../../css/demo/nifty-demo-icons.min.css" rel="stylesheet">
+    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
+    <link href="../../css/demo/nifty-demo-icons.min.css" rel="stylesheet">
+
+    <!--font-awesome.css [ OPTIONAL ]-->
+    <link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
 
     <!--Demo [ DEMONSTRATION ]-->
@@ -74,7 +79,8 @@
     <!--Demo script [ DEMONSTRATION ]-->
     <script src="../../js/demo/nifty-demo.min.js"></script>
 
-
+    <!-- bootbox -->
+    <script src="../../plugins/bootbox/bootbox.js"></script>
     <!--Bootstrap Table Sample [ SAMPLE ]-->
     <script src="../../js/demo/tables-bs-table.js"></script>
 
@@ -90,7 +96,7 @@
     <!--Bootstrap Table Extension [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
     <script src="../../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
-
+    <script src="../../js/bambootattan_pc_js/common.js"></script>
 
 
 
@@ -222,7 +228,7 @@
             <!--Page Title-->
             <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
             <div id="page-title">
-                <h1 class="page-header text-overflow">花果形态</h1>
+                <h1 class="page-header text-overflow">竹种形态</h1>
             </div>
 
 
@@ -233,7 +239,7 @@
             <!--===================================================-->
             <div class="panel">
                 <div class="panel-heading">
-                    <h3 class="panel-title">箨耳表</h3>
+                    <h3 class="panel-title">花果形态表</h3>
                 </div>
                 <div class="panel-body">
                     <div id="btn_area">
@@ -251,55 +257,121 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
                                     <h4 class="modal-title" id="exampleModalLabel">新增</h4>
                                 </div>
+
+
                                 <div class="modal-body">
-                                    <form class="form-horizontal">
+                                    <form id="registrationForm" class="form-horizontal">
                                         <div class="panel-body">
                                             <div class="form-group">
-                                                <label for="Chinesename" class="col-sm-2 control-label">中文名:</label>
-                                                <div class="col-sm-4">
-                                                    <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                <label for="spikeletShape" class="col-sm-3 control-label">小穗形状:</label>
+                                                <div class="col-sm-5">
+                                                    <input id="spikeletShape" class="form-control input-sm" name="spikeletShape" placeholder="" type="text">
                                                 </div>
-                                                <label for="Englishname" class="col-sm-2 control-label">英文名:</label>
-                                                <div class="col-sm-4">
-                                                    <input class="form-control input-sm" name="labName" placeholder="" type="text">
-                                                </div>
+
                                             </div>
                                             <div class="form-group">
-                                                <label for="Ladingname" class="col-sm-2 control-label">拉丁名:</label>
-                                                <div class="col-sm-4">
-                                                    <input class="form-control input-sm" name="labName" placeholder="" type="text">
-                                                </div>
-                                                <label for="Biename" class="col-sm-2 control-label">别名:</label>
-                                                <div class="col-sm-4">
-                                                    <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                <label for="spikeletBack" class="col-sm-3 control-label">小穗被毛:</label>
+                                                <div class="col-sm-5">
+                                                    <input id="spikeletBack" class="form-control input-sm" name="spikeletBack" placeholder="" type="text">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="Chinesename" class="col-sm-2 control-label">描述:</label>
-                                                <div class="col-sm-10">
-                                                    <textarea placeholder="" id="content" rows="5" class="form-control"></textarea>
+                                                <label for="spikeletFloret" class="col-sm-3 control-label">小穗含花朵数:</label>
+                                                <div class="col-sm-5">
+                                                    <input id="spikeletFloret" class="form-control input-sm" name="spikeletFloret" placeholder="" type="text">
                                                 </div>
                                             </div>
+
+
+                                            <div class="form-group">
+                                                <label for="stamenNum" class="col-sm-3 control-label">雄蕊数目:</label>
+                                                <div class="col-sm-5">
+                                                    <input id="stamenNum" class="form-control input-sm" name="stamenNum" placeholder="" type="text">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="glume" class="col-sm-3 control-label">颖片:</label>
+                                                <div class="col-sm-5">
+                                                    <input id="glume" class="form-control input-sm" name="glume" placeholder="" type="text">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="lodicule" class="col-sm-3 control-label">麟被:</label>
+                                                <div class="col-sm-5">
+                                                    <input id="lodicule" class="form-control input-sm" name="lodicule" placeholder="" type="text">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="palea" class="col-sm-3 control-label">内稃:</label>
+                                                <div class="col-sm-5">
+                                                    <input id="palea" class="form-control input-sm" name="palea" placeholder="" type="text">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="lemma" class="col-sm-3 control-label">外稃:</label>
+                                                <div class="col-sm-5">
+                                                    <input id="lemma" class="form-control input-sm" name="lemma" placeholder="" type="text">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="spec" class="col-sm-3 control-label">种:</label>
+                                                <div class="col-sm-5 input-group">
+                                                    <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text">
+                                                    <input id="specId" type="hidden" value="">
+                                                    <input id="genusId" type="hidden" value="">
+                                                    <span class="input-group-btn">
+                                                                <button id="btn_select_spec" class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
+                                                            </span>
+                                                    <input id="floFruitId" type="hidden" value="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--<input id="underStemId" type="hidden" value="" />-->
                                     </form>
                                 </div>
+
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                    <button type="button" class="btn btn-primary">保存</button>
+                                    <button id="btn_save" type="button" class="btn btn-primary">保存</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
+                    <div class="modal fade" id="specModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" data-backdrop="static">
+                        <div class="modal-dialog modal-lg"  role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
+                                    <h4 class="modal-title">种</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <table id="spec_table"></table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                    <button id="btn_spec_ok" type="button" class="btn btn-primary">确认</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 数据表格 -->
+                    <table id="data_table" class="table"></table>
                 </div>
-
-
-                <table id="data_table"></table>
+            </div>
+                <!--===================================================-->
             </div>
         </div>
-        <!--===================================================-->
-    </div>
 
-    <!--===================================================-->
+
+        <!--===================================================-->
     <!--END CONTENT CONTAINER-->
 
 
@@ -554,7 +626,7 @@
 <!--===================================================-->
 <!-- END OF CONTAINER -->
 
-<script src="../../js/bambootattan_pc_js/Bamboodata/bambooforms/Tuoer.js"></script>
+<script src="../../js/bambootattan_pc_js/Bamboodata/bambooforms/fruit.js"></script>
 </body>
 </html>
 
