@@ -26,6 +26,9 @@
     <link href="../../css/demo/nifty-demo-icons.min.css" rel="stylesheet">
 
 
+    <!--font-awesome.css [ OPTIONAL ]-->
+    <link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
     <!--Demo [ DEMONSTRATION ]-->
     <link href="../../css/demo/nifty-demo.min.css" rel="stylesheet">
 
@@ -84,7 +87,8 @@
     <!--X-editable [ OPTIONAL ]-->
     <script src="../../plugins/x-editable/js/bootstrap-editable.min.js"></script>
 
-
+    <!-- bootbox -->
+    <script src="../../plugins/bootbox/bootbox.js"></script>
     <!--Bootstrap Table [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/bootstrap-table.min.js"></script>
 
@@ -94,7 +98,7 @@
 
     <script src="../../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
 
-
+    <script src="../../js/bambootattan_pc_js/common.js"></script>
 
     <!--=================================================
 
@@ -248,7 +252,6 @@
                         </div>
 
 
-
                         <!--增加按钮的模态框-->
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
                             <div class="modal-dialog" role="document">
@@ -257,49 +260,113 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
                                         <h4 class="modal-title" id="exampleModalLabel">新增</h4>
                                     </div>
+
                                     <div class="modal-body">
                                         <form class="form-horizontal">
                                             <div class="panel-body">
-                                                <div class="form-group">
-                                                    <label for="Chinesename" class="col-sm-2 control-label">中文名:</label>
-                                                    <div class="col-sm-4">
-                                                        <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                <div  id="registrationForm" class="form-group">
+                                                    <div class="form-group">
+                                                        <label for="chemHolocelluloseUnitPercent" class="col-sm-3 control-label">综纤维素:</label>
+                                                        <div class="col-sm-5">
+                                                            <input id="chemHolocelluloseUnitPercent" class="form-control input-sm" name="chemHolocelluloseUnitPercent" placeholder="" type="text">
+                                                        </div>
                                                     </div>
-                                                    <label for="Englishname" class="col-sm-2 control-label">英文名:</label>
-                                                    <div class="col-sm-4">
-                                                        <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                    <div class="form-group">
+                                                        <label for="chemCelluloseUnitPercent" class="col-sm-3 control-label">纤维素:</label>
+                                                        <div class="col-sm-5">
+                                                            <input id="chemCelluloseUnitPercent" class="form-control input-sm" name="chemCelluloseUnitPercent" placeholder="" type="text">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="Ladingname" class="col-sm-2 control-label">拉丁名:</label>
-                                                    <div class="col-sm-4">
-                                                        <input class="form-control input-sm" name="labName" placeholder="" type="text">
-                                                    </div>
-                                                    <label for="Biename" class="col-sm-2 control-label">别名:</label>
-                                                    <div class="col-sm-4">
-                                                        <input class="form-control input-sm" name="labName" placeholder="" type="text">
-                                                    </div>
-                                                </div>
 
-                                                <div class="form-group">
-                                                    <label for="Chinesename" class="col-sm-2 control-label">描述:</label>
-                                                    <div class="col-sm-10">
-                                                        <textarea placeholder="" id="content" rows="5" class="form-control"></textarea>
+                                                    <div class="form-group">
+                                                        <label for="chemACelluloseUnitPercent" class="col-sm-3 control-label">a纤维素:</label>
+                                                        <div class="col-sm-5">
+                                                            <input id="chemACelluloseUnitPercent" class="form-control input-sm" name="chemACelluloseUnitPercent" placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="chemHemicelluloseUnitPercent" class="col-sm-3 control-label">半纤维素:</label>
+                                                        <div class="col-sm-5">
+                                                            <input id="chemHemicelluloseUnitPercent" class="form-control input-sm" name="chemHemicelluloseUnitPercent" placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="chemAcidInsolubleLigninUnitPercent" class="col-sm-3 control-label">酸不溶木质素:</label>
+                                                        <div class="col-sm-5">
+                                                            <input id="chemAcidInsolubleLigninUnitPercent" class="form-control input-sm" name="chemAcidInsolubleLigninUnitPercent" placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="chemBenzeneAlcoholExtractionUnitPercent" class="col-sm-3 control-label">苯醇提取物:</label>
+                                                        <div class="col-sm-5">
+                                                            <input id="chemBenzeneAlcoholExtractionUnitPercent" class="form-control input-sm" name="chemBenzeneAlcoholExtractionUnitPercent" placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="chemHotWaterExtractionUnitPercent" class="col-sm-3 control-label">热水提取物:</label>
+                                                        <div class="col-sm-5">
+                                                            <input id="chemHotWaterExtractionUnitPercent" class="form-control input-sm" name="chemHotWaterExtractionUnitPercent" placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="chemColdWaterExtractionUnitPercent" class="col-sm-3 control-label">冷水提取物:</label>
+                                                        <div class="col-sm-5">
+                                                            <input id="chemColdWaterExtractionUnitPercent" class="form-control input-sm" name="chemColdWaterExtractionUnitPercent" placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="chemAshContentUnitPercent" class="col-sm-3 control-label">灰分:</label>
+                                                        <div class="col-sm-5">
+                                                            <input id="chemAshContentUnitPercent" class="form-control input-sm" name="chemAshContentUnitPercent" placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        <label for="spec" class="col-sm-3 control-label">种:</label>
+                                                        <div class="col-sm-5 input-group">
+                                                            <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text">
+                                                            <input id="specId" type="hidden" value="">
+                                                            <input id="genusId" type="hidden" value="">
+                                                            <span class="input-group-btn">
+                                                                <button id="btn_select_spec" class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
+                                                            </span>
+                                                            <input id="chemId" type="hidden" value="" />
+                                                        </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <!--<input id="underStemId" type="hidden" value="" />-->
                                         </form>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                        <button type="button" class="btn btn-primary">保存</button>
+                                        <button id="btn_save" type="button" class="btn btn-primary">保存</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="modal fade" id="specModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" data-backdrop="static">
+                            <div class="modal-dialog modal-lg"  role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
+                                        <h4 class="modal-title">种</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table id="spec_table"></table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                        <button id="btn_spec_ok" type="button" class="btn btn-primary">确认</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table id="data_table" class="table"></table>
                     </div>
-
-
-                    <table id="data_table"></table>
                 </div>
             </div>
             <!--===================================================-->
