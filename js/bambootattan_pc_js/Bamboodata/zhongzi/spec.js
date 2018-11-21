@@ -60,7 +60,12 @@ function init_table(){
                 search:params.search
             }
         },
+        onColumnSwitch:function(filed,checked){
+            $('#data_table').bootstrapTable('resetView');
+        },
         cache:false,//是否使用緩存
+        fixedColumns: true,//固定列
+        fixedNumber:4,//固定前三列
         columns:[//列数据
 
             {
@@ -76,10 +81,11 @@ function init_table(){
                 formatter:function(value,row,index){//格式化，自定义内容
                     var _html = '<button onclick="edit(\''+row.specId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
                     _html += '<button  onclick="dele(\''+row.specId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>'
+                    _html += '<button  onclick="check(\''+row.specId+'\')"class="btn btn-primary btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="查看"><i class="fa fa-search"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'}};
+                    return{css:{'min-width':'100px'}};
                 }
             },
             {
@@ -205,16 +211,16 @@ function init_table(){
                     return{css:{'min-width':'80px'} };
                 }
             },
-            {
-                field:'specSortNum',//数据列
-                title:'序号',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
-                }
-            },
+            // {
+            //     field:'specSortNum',//数据列
+            //     title:'序号',//数据列名称
+            //     sortable:true,//可排序
+            //     align:'center',//水平居中
+            //     valign:'middle',//垂直居中
+            //     cellStyle:function(value,row,index,field){
+            //         return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
+            //     }
+            // },
             {
                 field:'specDesc',//数据列
                 title:'描述',//数据列名称
@@ -494,7 +500,7 @@ function edit(id) {
                 $('#specForeign').val(res.data.specForeign);
                 $('#specVidio').val(res.data.specVidio);
                 $('#specImgs').val(res.data.specImgs);
-                // $('#specDesc').val(res.data.specDesc);
+                //$('#specDesc').val(res.data.specDesc);
                 $('#specSortNum').val(res.data.specSortNum);
                 $('#genusNameCh').val(res.data.genus.genusNameCh);
                 $('#genusId').val(res.data.genus.genusId);
@@ -648,6 +654,49 @@ function deles() {
         });
     }
 }
+//查看详情
+function check(id) {
+    init_info();
+    $.ajax({
+        url:baseUrl+'/spec/findId/'+id,		//请求路径
+        type:'GET',			                    //请求方式
+        dataType:"JSON",		                //返回数据类型
+        contentType: 'application/json',        //数据类型
+        success:function(res){	                //请求成功回调函数
+            if(res.code==200){
+                $('#specNameCh-info').html(res.data.specNameCh).attr('data-original-title',res.data.specNameCh);
+                $('#specNameEn-info').html(res.data.specNameEn).attr('data-original-title',res.data.specNameEn);
+                $('#specNameLd-info').html(res.data.specNameLd).attr('data-original-title',res.data.specNameLd);
+                $('#specNameOth-info').html(res.data.specNameOth).attr('data-original-title',res.data.specNameOth);
+                $('#specCode-info').html(res.data.specCode).attr('data-original-title',res.data.specCode);
+                $('#specBarCode-info').html(res.data.specBarCode).attr('data-original-title',res.data.specBarCode);
+                $('#specDna-info').html(res.data.specDna).attr('data-original-title',res.data.specDna);
+
+                $('#specDomestic-info').html(res.data.specDomestic).attr('data-original-title',res.data.specDomestic);
+                $('#specForeign-info').html(res.data.specForeign).attr('data-original-title',res.data.specForeign);
+                $('#specVidio-info').html(res.data.specVidio).attr('data-original-title',res.data.specVidio);
+                $('#specImgs-info').html(res.data.specImgs).attr('data-original-title',res.data.specImgs);
+                //$('#specDesc-info').html(res.data.spec.specDesc).attr('data-original-title',res.data.specDesc);
+                //$('#demo-summernote').summernote('code',res.data.specDesc).attr('data-original-title',res.data.specDesc);
+                $('#demo-summernote').html('code',res.data.specDesc);
+                $('#genus-info').html(res.data.genus.genusNameCh).attr('data-original-title',res.data.genusNameCh);
+                $('#exampleModalLabel-info').modal('show');
+            }
+            else{
+                $.niftyNoty({
+                    type: 'danger',
+                    icon: 'pli-cross icon-2x',
+                    message: res.msg,
+                    container: 'floating',
+                    timer: 1000
+                });
+            }
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
+
+        }
+    });
+}
 //初始化表单元素的值
 function init_form(){
     $('#genus').val("");
@@ -665,6 +714,26 @@ function init_form(){
     $('#specVidio').val("");
     $('#specImgs').val("");
     $('#specDesc').val("");
-    $('#specSortNum').val("");
+    // $('#specSortNum').val("");
     $('#registrationForm').data('bootstrapValidator').resetForm();
+}
+//初始化详情元素值
+function init_info(){
+    //$('#genus').val("").attr('data-original-title',"");
+    // $('#specId').val("");
+    $('#genusId').val("").attr('data-original-title',"");
+    $('#specNameCh-info').val("").attr('data-original-title',"");
+    $('#specNameEn-info').val("").attr('data-original-title',"");
+    $('#specNameLd-info').val("").attr('data-original-title',"");
+    $('#specNameOth-info').val("").attr('data-original-title',"");
+    $('#specCode-info').val("").attr('data-original-title',"");
+    $('#specBarCode-info').val("").attr('data-original-title',"");
+    $('#specDna-info').val("").attr('data-original-title',"");
+    $('#specDomestic-info').val("").attr('data-original-title',"");
+    $('#specForeign-info').val("").attr('data-original-title',"");
+    $('#specVidio-info').val("").attr('data-original-title',"");
+    $('#specImgs-info').val("").attr('data-original-title',"");
+    $('#specDesc-info').val("").attr('data-original-title',"");
+    // $('#specSortNum').val("").attr('data-original-title',"");
+    // $('#registrationForm').data('bootstrapValidator').resetForm();
 }

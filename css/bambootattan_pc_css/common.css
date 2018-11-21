@@ -26,3 +26,8 @@
 .tooltip-inner{
     word-break: break-all;
 }
+.bs-checkbox {
+    min-width: 36px;
+    max-width: 36px;
+    width: 36px;
+}

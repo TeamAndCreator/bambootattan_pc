@@ -38,7 +38,8 @@
     <!--Bootstrap Table [ OPTIONAL ]-->
     <link href="../../plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
 
-
+    <!--<!- bootstrap-table-fixed-columns [ OPTIONAL ]&ndash;&gt;-->
+    <link href="../../plugins/bootstrap-table/extensions/fixed-columns/bootstrap-table-fixed-columns.css" rel="stylesheet">
     <!--X-editable [ OPTIONAL ]-->
     <link href="../../plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">
     <!--Summernote [ OPTIONAL ]-->
@@ -50,6 +51,8 @@
     <!--Animate.css [ OPTIONAL ]-->
     <link href="../../plugins/animate-css/animate.min.css" rel="stylesheet">
 
+    <!-- common [ OPTIONAL ] -->
+    <link href="../../css/bambootattan_pc_css/common.css" rel="stylesheet">
 
 
     <!-- Theme -->
@@ -110,6 +113,8 @@
 
     <!--Bootstrap Table Extension [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
+    <!-- Bootstrap Table Extension bootstrap-table-fixed-columns [ OPTIONAL ]-->
+    <script src="../../plugins/bootstrap-table/extensions/fixed-columns/bootstrap-table-fixed-columns.js"></script>
     <!--Summernote [ OPTIONAL ]-->
     <!--<script src="../../plugins/summernote/summernote.min.js"></script>-->
     <!--=================================================-->
@@ -186,7 +191,6 @@
                     <ul class="nav navbar-top-links pull-left">
                         <li class="tgl-menu-btn">
                             <a class="mainnav-toggle" href="#">
-                                <!--<i class="demo-pli-view-list"></i>-->
                                 <i class="glyphicon glyphicon-menu-left"></i>
                             </a>
                         </li>
@@ -198,7 +202,6 @@
                         <li id="dropdown-user" class="dropdown">
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
                                 <span class="pull-right">
-                                    <!--<img class="img-circle img-user media-object" src="img/profile-photos/1.png" alt="Profile Picture">-->
                                     <i class="demo-pli-male ic-user"></i>
                                 </span>
                                 <div class="username hidden-xs">欢迎您</div>
@@ -457,11 +460,13 @@
                                                             <p id="culmNode-check" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                         </div>
 
-                                                        <label for="spec" class="col-sm-2 control-label">种:</label>
+                                                        <label for="spec-check" class="col-sm-2 control-label">种:</label>
                                                         <div class="col-sm-2 input-group">
-                                                            <p id="spec-check" class="form-control-static bord-all pad-hor-sm"></p>
+                                                            <p id="spec-check" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                         </div>
                                                     </div>
+
+
                                                 </div>
                                         </div>
                                         <div class="modal-footer">
@@ -558,6 +563,7 @@
                                         <a href="#">
                                             <i class="demo-psi-pen-5"></i>
                                             <span class="menu-title">竹藤数据</span>
+                                            <i class="arrow"></i>
                                         </a>
 
                                         <!--Submenu-->
@@ -568,7 +574,7 @@
                                                 <ul>
                                                     <li><a href="../Bamboodata-zhongzi/genus.html">竹种属表</a></li>
                                                     <li><a href="../Bamboodata-zhongzi/spec.html">竹种信息</a></li>
-                                                    <li><a href="../Bamboodata-zhongzi/tengspecie.html">藤种属表</a></li>
+                                                    <li><a href="../Bamboodata-zhongzi/rattangenus.html">藤种属表</a></li>
                                                     <li><a href="../Bamboodata-zhongzi/tenginfo.html">藤种信息</a></li>
                                                     <li><a href="../Bamboodata-zhongzi/unittable.html">单位表</a></li>
                                                     <li><a href="../Bamboodata-zhongzi/radio.html">上传视频的地方</a></li>
