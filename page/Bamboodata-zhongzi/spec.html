@@ -35,6 +35,9 @@
     <!--Bootstrap Table [ OPTIONAL ]-->
     <link href="../../plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
 
+    <!--<!- bootstrap-table-fixed-columns [ OPTIONAL ]&ndash;&gt;-->
+    <link href="../../plugins/bootstrap-table/extensions/fixed-columns/bootstrap-table-fixed-columns.css" rel="stylesheet">
+
 
     <!--X-editable [ OPTIONAL ]-->
     <link href="../../plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">
@@ -46,7 +49,8 @@
 
     <!--Animate.css [ OPTIONAL ]-->
     <link href="../../plugins/animate-css/animate.min.css" rel="stylesheet">
-
+    <!-- common [ OPTIONAL ] -->
+    <link href="../../css/bambootattan_pc_css/common.css" rel="stylesheet">
 
 
    <!-- Theme -->
@@ -108,9 +112,12 @@
 
     <!--Bootstrap Table Extension [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
+    <!-- Bootstrap Table Extension bootstrap-table-fixed-columns [ OPTIONAL ]-->
+    <script src="../../plugins/bootstrap-table/extensions/fixed-columns/bootstrap-table-fixed-columns.js"></script>
     <!--Summernote [ OPTIONAL ]-->
     <!--<script src="../../plugins/summernote/summernote.min.js"></script>-->
     <!--=================================================-->
+
 
     <!--Bootstrap Datepicker [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
@@ -238,255 +245,374 @@
             </div>
             <!--Page content-->
             <div id="page-content">
-            <div class="panel">
-                <div class="panel-heading">
-                    <h3 class="panel-title">竹种信息</h3>
-                </div>
-                <div class="panel-body">
-                    <div id="btn_area">
-                        <button id="btn_add" class="btn btn-success" ><i class="demo-pli-plus"></i> 增加</button>
-                        <button id="btn_delete" class="btn btn-danger"><i class="demo-pli-cross"></i> 删除</button>
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">竹种信息</h3>
                     </div>
+                    <div class="panel-body">
+                        <div id="btn_area">
+                            <button id="btn_add" class="btn btn-success" ><i class="demo-pli-plus"></i> 增加</button>
+                            <button id="btn_delete" class="btn btn-danger"><i class="demo-pli-cross"></i> 删除</button>
+                        </div>
 
-                    <!--增加按钮的模态框-->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
-                                    <h4 class="modal-title" id="exampleModalLabel">新增</h4>
+                        <!--增加按钮的模态框-->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
+                                        <h4 class="modal-title" id="exampleModalLabel">新增</h4>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <form class="form-horizontal">
+                                            <div class="panel-body">
+                                                <div  id="registrationForm" class="form-group">
+                                                    <label for="specNameCh" class="col-sm-2 control-label">中文名:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="specNameCh" class="form-control input-sm" name="specNameCh" placeholder="" type="text"
+                                                               data-bv-field="specNameCh"   data-bv-group=".col-sm-4" data-bv-notempty="true" data-bv-notempty-message="中文名不能为空">
+                                                    </div>
+                                                    <label for="specNameEn" class="col-sm-2 control-label">英文名:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="specNameEn" class="form-control input-sm" name="specNameEn" placeholder="" type="text">
+                                                    </div>
+                                                    <label for="specNameLd" class="col-sm-2 control-label">拉丁名:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="specNameLd" class="form-control input-sm" name="specNameLd" placeholder="" type="text">
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label for="specNameOth" class="col-sm-2 control-label">别名:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="specNameOth" class="form-control input-sm" name="specNameOth" placeholder="" type="text">
+                                                    </div>
+                                                    <label for="specCode" class="col-sm-2 control-label">种类编码:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="specCode" class="form-control input-sm" name="specCode" placeholder="" type="text">
+                                                    </div>
+                                                    <label for="specBarCode" class="col-sm-2 control-label">种类DNA码:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="specBarCode" class="form-control input-sm" name="specBarCode" placeholder="" type="text">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="specDna" class="col-sm-2 control-label">种类条形码:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="specDna" class="form-control input-sm" name="specDna" placeholder="" type="text">
+                                                    </div>
+                                                    <label for="specDomestic" class="col-sm-2 control-label">国内分布:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="specDomestic" class="form-control input-sm" name="specDomestic" placeholder="" type="text">
+                                                    </div>
+                                                    <label for="specForeign" class="col-sm-2 control-label">国外分布:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="specForeign" class="form-control input-sm" name="specForeign" placeholder="" type="text">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="specSortNum" class="col-sm-2 control-label">序号:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="specSortNum" class="form-control input-sm" name="specSortNum" placeholder="" type="text">
+                                                    </div>
+
+                                                    <label for="genus" class="col-sm-2 control-label">属:</label>
+                                                    <div class="col-sm-2 input-group">
+                                                        <input id="genus" class="form-control input-sm" name="genus" placeholder="" type="text">
+                                                        <span class="input-group-btn">
+                                                            <button id="btn_select_genus" class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
+                                                        </span>
+                                                        <input id="genusId" type="hidden" value="">
+                                                    </div>
+                                                </div>
+
+
+                                                <div  class="form-group">
+                                                    <label for="genus" class="col-sm-2 control-label">图片:</label>
+                                                    <div class="col-sm-10">
+                                                        <div>
+                                                            <!-- The fileinput-button span is used to style the file input field as button -->
+                                                            <span class="btn btn-success fileinput-button-img dz-clickable">
+                                                            <i class="fa fa-plus"></i>
+                                                            <span>上传图片</span>
+                                                        </span>
+
+                                                            <div class="btn-group pull-right">
+                                                                <button id="dz-upload-img-btn" class="btn btn-primary" type="submit" disabled="">
+                                                                    <i class="fa fa-upload-cloud"></i> 下载
+                                                                </button>
+                                                                <button id="dz-remove-img-btn" class="btn btn-danger cancel" type="reset" disabled="">
+                                                                    <i class="demo-pli-cross"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div id="dz-previews-img">
+                                                            <div id="dz-template-img" class="pad-top bord-top">
+                                                                <div class="media">
+                                                                    <div class="media-body">
+                                                                        <!--This is used as the file preview template-->
+                                                                        <div class="media-block">
+                                                                            <div class="media-left">
+                                                                                <img class="dz-img" data-dz-thumbnail>
+                                                                            </div>
+                                                                            <div class="media-body">
+                                                                                <p class="text-main text-bold mar-no text-overflow" data-dz-name></p>
+                                                                                <span class="dz-error text-danger text-sm" data-dz-errormessage></span>
+                                                                                <p class="text-sm" data-dz-size></p>
+                                                                                <div id="dz-total-progress-img" style="opacity:0">
+                                                                                    <div class="progress progress-xs active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                                                                        <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="media-right">
+                                                                        <button data-dz-remove class="btn btn-xs btn-danger dz-cancel"><i class="demo-pli-cross"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div  class="form-group">
+                                                    <label for="genus" class="col-sm-2 control-label">视频:</label>
+                                                    <div class="col-sm-10">
+                                                        <div>
+                                                            <!-- The fileinput-button span is used to style the file input field as button -->
+                                                            <span class="btn btn-success fileinput-button dz-clickable">
+                                                            <i class="fa fa-plus"></i>
+                                                            <span>上传视频</span>
+                                                        </span>
+
+                                                            <div class="btn-group pull-right">
+                                                                <button id="dz-upload-btn" class="btn btn-primary" type="submit" disabled="">
+                                                                    <i class="fa fa-upload-cloud"></i> 下载
+                                                                </button>
+                                                                <button id="dz-remove-btn" class="btn btn-danger cancel" type="reset" disabled="">
+                                                                    <i class="demo-pli-cross"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div id="dz-previews">
+                                                            <div id="dz-template" class="pad-top bord-top">
+                                                                <div class="media">
+                                                                    <div class="media-body">
+                                                                        <!--This is used as the file preview template-->
+                                                                        <div class="media-block">
+                                                                            <div class="media-left">
+                                                                                <img class="dz-img" data-dz-thumbnail>
+                                                                            </div>
+                                                                            <div class="media-body">
+                                                                                <p class="text-main text-bold mar-no text-overflow" data-dz-name></p>
+                                                                                <span class="dz-error text-danger text-sm" data-dz-errormessage></span>
+                                                                                <p class="text-sm" data-dz-size></p>
+                                                                                <div id="dz-total-progres" style="opacity:0">
+                                                                                    <div class="progress progress-xs active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                                                                        <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="media-right">
+                                                                        <button data-dz-remove class="btn btn-xs btn-danger dz-cancel"><i class="demo-pli-cross"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--===================================================-->
+                                                        <!--End Dropzonejs using Bootstrap theme-->
+                                                    </div>
+                                                </div>
+
+                                            <input id="specId" type="hidden" value="">
+                                            </div>
+                                            <div id="page-conten">
+                                                <div class="panel">
+                                                    <div class="panel-heading">
+                                                        <h3 class="panel-title">描述</h3>
+                                                    </div>
+                                                    <div class="panel-body">
+
+                                                        <!--Summernote-->
+                                                        <!--===================================================-->
+                                                        <div id="demo-summernote">
+                                                            <h4><span
+                                                                    style="color: rgb(206, 198, 206); font-family: inherit; line-height: 1.1;"></span><br>
+                                                            </h4><h4><font color="#9c9c94"></font></h4>
+                                                        </div>
+                                                        <!--===================================================-->
+                                                        <!-- End Summernote -->
+
+
+
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                        <button id="btn_save" type="button" class="btn btn-primary">保存</button>
+                                    </div>
                                 </div>
+                            </div>
+                        </div>
 
-                                <div class="modal-body">
-                                    <form class="form-horizontal">
-                                        <div class="panel-body">
-                                            <div  id="registrationForm" class="form-group">
-                                                <label for="specNameCh" class="col-sm-2 control-label">中文名:</label>
+                        <!--增加查看的模态框-->
+                        <div class="modal fade" id="exampleModal-check" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
+                                        <h4 class="modal-title" id="exampleModalLabel-info">详情</h4>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <div class="form-horizontal">
+                                            <div class="form-group">
+                                                <label for="specNameCh-info" class="col-sm-2 control-label">中文名:</label>
                                                 <div class="col-sm-2">
-                                                    <input id="specNameCh" class="form-control input-sm" name="specNameCh" placeholder="" type="text"
-                                                           data-bv-field="specNameCh"   data-bv-group=".col-sm-4" data-bv-notempty="true" data-bv-notempty-message="中文名不能为空">
+                                                    <p id="specNameCh-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
-                                                <label for="specNameEn" class="col-sm-2 control-label">英文名:</label>
+                                                <label for="specNameEn-info" class="col-sm-2 control-label">英文名:</label>
                                                 <div class="col-sm-2">
-                                                    <input id="specNameEn" class="form-control input-sm" name="specNameEn" placeholder="" type="text">
+                                                    <p id="specNameEn-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
-                                                <label for="specNameLd" class="col-sm-2 control-label">拉丁名:</label>
+                                                <label for="specNameLd-info" class="col-sm-2 control-label">拉丁名:</label>
                                                 <div class="col-sm-2">
-                                                    <input id="specNameLd" class="form-control input-sm" name="specNameLd" placeholder="" type="text">
+                                                    <p id="specNameLd-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
                                             </div>
 
 
                                             <div class="form-group">
-                                                <label for="specNameOth" class="col-sm-2 control-label">别名:</label>
+                                                <label for="specNameOth-info" class="col-sm-2 control-label">别名:</label>
                                                 <div class="col-sm-2">
-                                                    <input id="specNameOth" class="form-control input-sm" name="specNameOth" placeholder="" type="text">
+                                                    <p id="specNameOth-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
-                                                <label for="specCode" class="col-sm-2 control-label">种类编码:</label>
+                                                <label for="specCode-info" class="col-sm-2 control-label">种类编码:</label>
                                                 <div class="col-sm-2">
-                                                    <input id="specCode" class="form-control input-sm" name="specCode" placeholder="" type="text">
+                                                    <p id="specCode-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
-                                                <label for="specBarCode" class="col-sm-2 control-label">种类DNA码:</label>
+                                                <label for="specBarCode-info" class="col-sm-2 control-label">种类条形码:</label>
                                                 <div class="col-sm-2">
-                                                    <input id="specBarCode" class="form-control input-sm" name="specBarCode" placeholder="" type="text">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="specDna" class="col-sm-2 control-label">种类条形码:</label>
-                                                <div class="col-sm-2">
-                                                    <input id="specDna" class="form-control input-sm" name="specDna" placeholder="" type="text">
-                                                </div>
-                                                <label for="specDomestic" class="col-sm-2 control-label">国内分布:</label>
-                                                <div class="col-sm-2">
-                                                    <input id="specDomestic" class="form-control input-sm" name="specDomestic" placeholder="" type="text">
-                                                </div>
-                                                <label for="specForeign" class="col-sm-2 control-label">国外分布:</label>
-                                                <div class="col-sm-2">
-                                                    <input id="specForeign" class="form-control input-sm" name="specForeign" placeholder="" type="text">
+                                                    <p id="specBarCode-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="specSortNum" class="col-sm-2 control-label">序号:</label>
+                                                <label for="specDna-info" class="col-sm-2 control-label">种类DNA码:</label>
                                                 <div class="col-sm-2">
-                                                    <input id="specSortNum" class="form-control input-sm" name="specSortNum" placeholder="" type="text">
+                                                    <p id="specDna-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
+                                                <label for="specDomestic-info" class="col-sm-2 control-label">国内分布:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="specDomestic-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                                <label for="specForeign-info" class="col-sm-2 control-label">国外分布:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="specForeign-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="specVidio-info" class="col-sm-2 control-label">上传视频:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="specVidio-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                                <label for="specImgs-info" class="col-sm-2 control-label">上传图片:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="specImgs-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                                <label for="specDesc-info" class="col-sm-2 control-label">描述:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="specDesc-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+
                                                 <label for="genus" class="col-sm-2 control-label">属:</label>
                                                 <div class="col-sm-2 input-group">
-                                                    <input id="genus" class="form-control input-sm" name="genus" placeholder="" type="text">
-                                                    <span class="input-group-btn">
-                                                        <button id="btn_select_genus" class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
-                                                    </span>
-                                                    <input id="genusId" type="hidden" value="">
+                                                    <p id="genus-info" class="form-control-static bord-all pad-hor-sm"></p>
                                                 </div>
                                             </div>
 
 
-                                            <div  class="form-group">
-                                                <label for="genus" class="col-sm-2 control-label">图片:</label>
-                                                <div class="col-sm-10">
-                                                    <div>
-                                                        <!-- The fileinput-button span is used to style the file input field as button -->
-                                                        <span class="btn btn-success fileinput-button-img dz-clickable">
-                                                        <i class="fa fa-plus"></i>
-                                                        <span>上传图片</span>
-                                                    </span>
+                                            <div id="page-conten-info">
+                                                <div class="panel">
+                                                    <div class="panel-heading">
+                                                        <h3 class="panel-title">描述</h3>
+                                                    </div>
+                                                    <div class="panel-body">
 
-                                                        <div class="btn-group pull-right">
-                                                            <button id="dz-upload-img-btn" class="btn btn-primary" type="submit" disabled="">
-                                                                <i class="fa fa-upload-cloud"></i> 下载
-                                                            </button>
-                                                            <button id="dz-remove-img-btn" class="btn btn-danger cancel" type="reset" disabled="">
-                                                                <i class="demo-pli-cross"></i>
-                                                            </button>
+                                                        <!--Summernote-->
+                                                        <!--===================================================-->
+                                                        <div id="demo-summernote-info">
+                                                            <h4><span
+                                                                    style="color: rgb(206, 198, 206); font-family: inherit; line-height: 1.1;"></span><br>
+                                                            </h4><h4><font color="#9c9c94"></font></h4>
                                                         </div>
+                                                        <!--===================================================-->
+                                                        <!-- End Summernote -->
+
                                                     </div>
-
-
-                                                    <div id="dz-previews-img">
-                                                        <div id="dz-template-img" class="pad-top bord-top">
-                                                            <div class="media">
-                                                                <div class="media-body">
-                                                                    <!--This is used as the file preview template-->
-                                                                    <div class="media-block">
-                                                                        <div class="media-left">
-                                                                            <img class="dz-img" data-dz-thumbnail>
-                                                                        </div>
-                                                                        <div class="media-body">
-                                                                            <p class="text-main text-bold mar-no text-overflow" data-dz-name></p>
-                                                                            <span class="dz-error text-danger text-sm" data-dz-errormessage></span>
-                                                                            <p class="text-sm" data-dz-size></p>
-                                                                            <div id="dz-total-progress-img" style="opacity:0">
-                                                                                <div class="progress progress-xs active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                                                                                    <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="media-right">
-                                                                    <button data-dz-remove class="btn btn-xs btn-danger dz-cancel"><i class="demo-pli-cross"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-
-                                            <div  class="form-group">
-                                                <label for="genus" class="col-sm-2 control-label">视频:</label>
-                                                <div class="col-sm-10">
-                                                    <div>
-                                                        <!-- The fileinput-button span is used to style the file input field as button -->
-                                                        <span class="btn btn-success fileinput-button dz-clickable">
-                                                        <i class="fa fa-plus"></i>
-                                                        <span>上传视频</span>
-                                                    </span>
-
-                                                        <div class="btn-group pull-right">
-                                                            <button id="dz-upload-btn" class="btn btn-primary" type="submit" disabled="">
-                                                                <i class="fa fa-upload-cloud"></i> 下载
-                                                            </button>
-                                                            <button id="dz-remove-btn" class="btn btn-danger cancel" type="reset" disabled="">
-                                                                <i class="demo-pli-cross"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div id="dz-previews">
-                                                        <div id="dz-template" class="pad-top bord-top">
-                                                            <div class="media">
-                                                                <div class="media-body">
-                                                                    <!--This is used as the file preview template-->
-                                                                    <div class="media-block">
-                                                                        <div class="media-left">
-                                                                            <img class="dz-img" data-dz-thumbnail>
-                                                                        </div>
-                                                                        <div class="media-body">
-                                                                            <p class="text-main text-bold mar-no text-overflow" data-dz-name></p>
-                                                                            <span class="dz-error text-danger text-sm" data-dz-errormessage></span>
-                                                                            <p class="text-sm" data-dz-size></p>
-                                                                            <div id="dz-total-progres" style="opacity:0">
-                                                                                <div class="progress progress-xs active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                                                                                    <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="media-right">
-                                                                    <button data-dz-remove class="btn btn-xs btn-danger dz-cancel"><i class="demo-pli-cross"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--===================================================-->
-                                                    <!--End Dropzonejs using Bootstrap theme-->
-                                                </div>
-                                            </div>
-
-                                        <input id="specId" type="hidden" value="">
-                                        </div>
-                                        <div id="page-conten">
-                                            <div class="panel">
-                                                <div class="panel-heading">
-                                                    <h3 class="panel-title">描述</h3>
-                                                </div>
-                                                <div class="panel-body">
-
-                                                    <!--Summernote-->
-                                                    <!--===================================================-->
-                                                    <div id="demo-summernote">
-                                                        <h4><span
-                                                                style="color: rgb(206, 198, 206); font-family: inherit; line-height: 1.1;"></span><br>
-                                                        </h4><h4><font color="#9c9c94"></font></h4>
-                                                    </div>
-                                                    <!--===================================================-->
-                                                    <!-- End Summernote -->
-
                                                 </div>
                                             </div>
                                         </div>
-
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                    <button id="btn_save" type="button" class="btn btn-primary">保存</button>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal fade" id="genusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" data-backdrop="static">
-                        <div class="modal-dialog modal-lg"  role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
-                                    <h4 class="modal-title">属</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <table id="genus_table"></table>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                    <button type="button" class="btn btn-primary">确认</button>
+
+
+
+                        <div class="modal fade" id="genusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" data-backdrop="static">
+                            <div class="modal-dialog modal-lg"  role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
+                                        <h4 class="modal-title">属</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table id="genus_table"></table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                        <button id="btn_genus_ok" type="button" class="btn btn-primary">确认</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <!-- 数据表格 -->
 
-                <table id="data_table" class="table"></table>
+                        <table id="data_table" class="table"></table>
+                    </div>
+                </div>
             </div>
-            </div>
-        </div>
         <!--===================================================-->
-    </div>
+        </div>
 
-    <!--===================================================-->
+        <!--===================================================-->
             <nav id="mainnav-container">
                 <div id="mainnav">
 
@@ -511,7 +637,7 @@
                                                 <ul class="collapse in">
                                                     <li><a href="genus.html">竹种属表</a></li>
                                                     <li class="active-link"><a href="spec.html">竹种信息</a></li>
-                                                    <li><a href="tengspecie.html">藤种属表</a></li>
+                                                    <li><a href="rattangenus.html">藤种属表</a></li>
                                                     <li><a href="tenginfo.html">藤种信息</a></li>
                                                     <li><a href="unittable.html">单位表</a></li>
                                                     <li><a href="radio.html">上传视频的地方</a></li>

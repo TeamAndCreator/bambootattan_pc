@@ -30,26 +30,43 @@
     <link href="../../css/demo/nifty-demo.min.css" rel="stylesheet">
 
 
-        
+    <!--Dropzone [ OPTIONAL ]-->
+    <link href="../../plugins/dropzone/dropzone.min.css" rel="stylesheet">
+
     <!--Bootstrap Table [ OPTIONAL ]-->
     <link href="../../plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
 
-
+    <!--<!- bootstrap-table-fixed-columns [ OPTIONAL ]&ndash;&gt;-->
+    <link href="../../plugins/bootstrap-table/extensions/fixed-columns/bootstrap-table-fixed-columns.css" rel="stylesheet">
     <!--X-editable [ OPTIONAL ]-->
     <link href="../../plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">
+    <!--Summernote [ OPTIONAL ]-->
+    <link href="../../plugins/summernote/summernote.min.css" rel="stylesheet">
+
+    <!--Dropzone [ OPTIONAL ]-->
+    <link href="../../plugins/dropzone/dropzone.min.css" rel="stylesheet">
+
+    <!--Animate.css [ OPTIONAL ]-->
+    <link href="../../plugins/animate-css/animate.min.css" rel="stylesheet">
+
+    <!-- common [ OPTIONAL ] -->
+    <link href="../../css/bambootattan_pc_css/common.css" rel="stylesheet">
+
+
     <!-- Theme -->
     <link id="theme" href="../../css/themes/type-c/theme-lime.min.css" rel="stylesheet">
 
 
 
 
-
-    
     <!--JAVASCRIPT-->
     <!--=================================================-->
 
     <!--Pace - Page Load Progress Par [OPTIONAL]-->
+    <!-- bambootattan_pc_js common -->
+    <script src="../../js/bambootattan_pc_js/common.js"></script>
     <link href="../../plugins/pace/pace.min.css" rel="stylesheet">
+
     <script src="../../plugins/pace/pace.min.js"></script>
 
 
@@ -70,11 +87,14 @@
 
 
     <!--=================================================-->
-    
+
     <!--Demo script [ DEMONSTRATION ]-->
     <script src="../../js/demo/nifty-demo.min.js"></script>
+    <!--Summernote [ OPTIONAL ]-->
+    <script src="../../plugins/summernote/summernote.min.js"></script>
+    <!--font-awesome.css [ OPTIONAL ]-->
+    <link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
-    
     <!--Bootstrap Table Sample [ SAMPLE ]-->
     <script src="../../js/demo/tables-bs-table.js"></script>
 
@@ -85,15 +105,32 @@
 
     <!--Bootstrap Table [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <!-- bootbox -->
+    <script src="../../plugins/bootbox/bootbox.js"></script>
 
 
     <!--Bootstrap Table Extension [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
+    <!-- Bootstrap Table Extension bootstrap-table-fixed-columns [ OPTIONAL ]-->
+    <script src="../../plugins/bootstrap-table/extensions/fixed-columns/bootstrap-table-fixed-columns.js"></script>
+    <!--Summernote [ OPTIONAL ]-->
+    <!--<script src="../../plugins/summernote/summernote.min.js"></script>-->
+    <!--=================================================-->
+
+    <!--Bootstrap Datepicker [ OPTIONAL ]-->
+    <script src="../../plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!--Dropzone [ OPTIONAL ]-->
+    <script src="../../plugins/dropzone/dropzone.min.js"></script>
+    <!--Form File Upload [ SAMPLE ]-->
+    <!--<script src="../../js/demo/form-file-upload.js"></script>-->
     <script src="../../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+    <!-- bootstrap-validator [ OPTIONAL ]-->
+    <script src="../../plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
 
 
 
-    
+
+
     <!--=================================================
 
     REQUIRED
@@ -244,59 +281,210 @@
 
                             <!--增加按钮的模态框-->
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
-                                <div class="modal-dialog" role="document">
+                                <div class="modal-dialog modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
                                             <h4 class="modal-title" id="exampleModalLabel">新增</h4>
                                         </div>
+
                                         <div class="modal-body">
                                             <form class="form-horizontal">
                                                 <div class="panel-body">
-                                                    <div class="form-group">
-                                                        <label for="Chinesename" class="col-sm-2 control-label">中文名:</label>
-                                                        <div class="col-sm-4">
-                                                            <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                    <div  id="registrationForm" class="form-group">
+                                                        <label for="leafShape" class="col-sm-2 control-label">竹叶形态:</label>
+                                                        <div class="col-sm-3">
+                                                            <input id="leafShape" class="form-control input-sm" name="leafShape" placeholder="" type="text">
                                                         </div>
-                                                        <label for="Englishname" class="col-sm-2 control-label">英文名:</label>
-                                                        <div class="col-sm-4">
-                                                            <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                        <label for="leafLength" class="col-sm-2 control-label">竹叶长度:</label>
+                                                        <div class="col-sm-3">
+                                                            <input id="leafLength" class="form-control input-sm" name="leafLength" placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        <label for="leafWidth" class="col-sm-2 control-label">竹叶宽度:</label>
+                                                        <div class="col-sm-3">
+                                                            <input id="leafWidth" class="form-control input-sm" name="leafWidth" placeholder="" type="text">
+                                                        </div>
+                                                        <label for="leafBack" class="col-sm-2 control-label">叶片背面被毛:</label>
+                                                        <div class="col-sm-3">
+                                                            <input id="leafBack" class="form-control input-sm" name="leafBack" placeholder="" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="Ladingname" class="col-sm-2 control-label">拉丁名:</label>
-                                                        <div class="col-sm-4">
-                                                            <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                        <label for="leafMargin" class="col-sm-2 control-label">叶片边缘锯齿:</label>
+                                                        <div class="col-sm-3">
+                                                            <input id="leafMargin" class="form-control input-sm" name="leafMargin" placeholder="" type="text">
                                                         </div>
-                                                        <label for="Biename" class="col-sm-2 control-label">别名:</label>
-                                                        <div class="col-sm-4">
-                                                            <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                        <label for="leafTongueShape" class="col-sm-2 control-label">叶舌形状:</label>
+                                                        <div class="col-sm-3">
+                                                            <input id="leafTongueShape" class="form-control input-sm" name="leafTongueShape" placeholder="" type="text">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for="Chinesename" class="col-sm-2 control-label">描述:</label>
-                                                        <div class="col-sm-10">
-                                                            <textarea placeholder="" id="content" rows="5" class="form-control"></textarea>
+                                                        <label for="leafTongueHeight" class="col-sm-2 control-label">叶舌高度:</label>
+                                                        <div class="col-sm-3">
+                                                            <input id="leafTongueHeight" class="form-control input-sm" name="leafTongueHeight" placeholder="" type="text">
+                                                        </div>
+                                                        <label for="leafStalkLength" class="col-sm-2 control-label">叶柄长度:</label>
+                                                        <div class="col-sm-3">
+                                                            <input id="leafStalkLength" class="form-control input-sm" name="leafStalkLength" placeholder="" type="text">
                                                         </div>
                                                     </div>
+                                                    <div class="form-group">
+                                                        <label for="leafBaseShape" class="col-sm-2 control-label">叶片基部形态:</label>
+                                                        <div class="col-sm-3">
+                                                            <input id="leafBaseShape" class="form-control input-sm" name="leafBaseShape" placeholder="" type="text">
+                                                        </div>
+                                                        <label for="leafTopShape" class="col-sm-2 control-label">叶尖形态:</label>
+                                                        <div class="col-sm-3">
+                                                            <input id="leafTopShape" class="form-control input-sm" name="leafTopShape" placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+
+                                                 
+
+                                                    <div class="form-group">
+                                                        <label for="culmNode" class="col-sm-2 control-label">竿环是否隆起:</label>
+                                                        <div class="col-sm-3">
+                                                            <input id="culmNode" class="form-control input-sm" name="culmNode" placeholder="" type="text">
+                                                        </div>
+                                                        <label for="spec" class="col-sm-2 control-label">种:</label>
+                                                        <div class="col-sm-3 input-group">
+                                                            <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text">
+                                                            <input id="specId" type="hidden" value="">
+                                                            <input id="genusId" type="hidden" value="">
+                                                            <span class="input-group-btn">
+                                                                <button id="btn_select_spec" class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
+                                                            </span>
+                                                            <input id="culmId" type="hidden" value="" />
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                            <button type="button" class="btn btn-primary">保存</button>
+                                            <button id="btn_save" type="button" class="btn btn-primary">保存</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+
+
+
+                            <!--增加查看的模态框-->
+                            <div class="modal fade" id="exampleModal-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
+                                            <h4 class="modal-title" id="exampleModalLabel-info">详情</h4>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <div class="form-horizontal">
+                                                <div class="form-group">
+                                                    <label for="leafShape-info" class="col-sm-2 control-label">竹叶形态:</label>
+                                                    <div class="col-sm-2">
+                                                        <p id="leafShape-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                    </div>
+                                                    <label for="leafLength-info" class="col-sm-2 control-label">竹叶长度:</label>
+                                                    <div class="col-sm-2">
+                                                        <p id="leafLength-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                    </div>
+                                                    <label for="leafWidth-info" class="col-sm-2 control-label">竹叶宽度:</label>
+                                                    <div class="col-sm-2">
+                                                        <p id="leafWidth-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label for="leafBack-info" class="col-sm-2 control-label">叶片背面被毛:</label>
+                                                    <div class="col-sm-2">
+                                                        <p id="leafBack-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                    </div>
+                                                    <label for="leafMargin-info" class="col-sm-2 control-label">叶片边缘锯齿:</label>
+                                                    <div class="col-sm-2">
+                                                        <p id="leafMargin-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                    </div>
+                                                    <label for="leafTongueShape-info" class="col-sm-2 control-label">叶舌形状:</label>
+                                                    <div class="col-sm-2">
+                                                        <p id="leafTongueShape-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="leafTongueHeight-info" class="col-sm-2 control-label">叶舌高度:</label>
+                                                    <div class="col-sm-2">
+                                                        <p id="leafTongueHeight-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                    </div>
+                                                    <label for="leafStalkLength-info" class="col-sm-2 control-label">叶柄长度:</label>
+                                                    <div class="col-sm-2">
+                                                        <p id="leafStalkLength-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                    </div>
+                                                    <label for="leafBaseShape" class="col-sm-2 control-label">叶片基部形态:</label>
+                                                    <div class="col-sm-2">
+                                                        <p id="leafBaseShape-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="leafTopShape-info" class="col-sm-2 control-label">叶尖形态:</label>
+                                                    <div class="col-sm-2">
+                                                        <p id="leafTopShape-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                    </div>
+
+
+                                                    <label for="spec-info" class="col-sm-2 control-label">种:</label>
+                                                    <div class="col-sm-2 input-group">
+                                                        <p id="spec-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="modal fade" id="specModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" data-backdrop="static">
+                                <div class="modal-dialog modal-lg"  role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
+                                            <h4 class="modal-title">种</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table id="spec_table"></table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                            <button id="btn_spec_ok" type="button" class="btn btn-primary">确认</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 数据表格 -->
+                            <table id="data_table" class="table"></table>
                         </div>
-
-
-                        <table id="data_table" class="table"></table>
                     </div>
+                <!--===================================================-->
             </div>
-            <!--===================================================-->
         </div>
+
 
         <!--===================================================-->
             <!--END CONTENT CONTAINER-->
@@ -366,7 +554,7 @@
                                                 <ul class="collapse">
                                                     <li><a href="../Bamboodata-zhongzi/genus.html">竹种属表</a></li>
                                                     <li><a href="../Bamboodata-zhongzi/spec.html">竹种信息</a></li>
-                                                    <li><a href="../Bamboodata-zhongzi/tengspecie.html">藤种属表</a></li>
+                                                    <li><a href="../Bamboodata-zhongzi/rattangenus.html">藤种属表</a></li>
                                                     <li><a href="../Bamboodata-zhongzi/tenginfo.html">藤种信息</a></li>
                                                     <li><a href="../Bamboodata-zhongzi/unittable.html">单位表</a></li>
                                                     <li class="active-link"><a href="../Bamboodata-zhongzi/radio.html">上传视频的地方</a></li>
@@ -586,7 +774,7 @@
                         <p class="text-semibold text-main">Boxed Layout</p>
                         <div class="pad-btm">
                             <div class="pull-right">
-                                <input id="demo-box-lay" class="toggle-switch" type="checkbox">
+                                <input id="demo-box-lay" class="toggle-switch" type="infobox">
                                 <label for="demo-box-lay"></label>
                             </div>
                             Boxed Layout
@@ -602,7 +790,7 @@
                         <p class="text-semibold text-main">Animations</p>
                         <div class="pad-btm">
                             <div class="pull-right">
-                                <input id="demo-anim" class="toggle-switch" type="checkbox" checked>
+                                <input id="demo-anim" class="toggle-switch" type="infobox" infoed>
                                 <label for="demo-anim"></label>
                             </div>
                             Enable Animations
@@ -629,7 +817,7 @@
                         <p class="text-semibold text-main text-lg">Header / Navbar</p>
                         <div>
                             <div class="pull-right">
-                                <input id="demo-navbar-fixed" class="toggle-switch" type="checkbox">
+                                <input id="demo-navbar-fixed" class="toggle-switch" type="infobox">
                                 <label for="demo-navbar-fixed"></label>
                             </div>
                             Fixed Position
@@ -640,7 +828,7 @@
                         <p class="text-semibold text-main text-lg">Footer</p>
                         <div class="pad-btm">
                             <div class="pull-right">
-                                <input id="demo-footer-fixed" class="toggle-switch" type="checkbox">
+                                <input id="demo-footer-fixed" class="toggle-switch" type="infobox">
                                 <label for="demo-footer-fixed"></label>
                             </div>
                             Fixed Position
@@ -655,28 +843,28 @@
                                 <p class="text-semibold text-main">Navigation</p>
                                 <div class="mar-btm">
                                     <div class="pull-right">
-                                        <input id="demo-nav-fixed" class="toggle-switch" type="checkbox">
+                                        <input id="demo-nav-fixed" class="toggle-switch" type="infobox">
                                         <label for="demo-nav-fixed"></label>
                                     </div>
                                     Fixed Position
                                 </div>
                                 <div class="mar-btm">
                                     <div class="pull-right">
-                                        <input id="demo-nav-profile" class="toggle-switch" type="checkbox" checked>
+                                        <input id="demo-nav-profile" class="toggle-switch" type="infobox" infoed>
                                         <label for="demo-nav-profile"></label>
                                     </div>
                                     Widget Profil <small class="label label-primary">New</small>
                                 </div>
                                 <div class="mar-btm">
                                     <div class="pull-right">
-                                        <input id="demo-nav-shortcut" class="toggle-switch" type="checkbox" checked>
+                                        <input id="demo-nav-shortcut" class="toggle-switch" type="infobox" infoed>
                                         <label for="demo-nav-shortcut"></label>
                                     </div>
                                     Shortcut Buttons
                                 </div>
                                 <div class="mar-btm">
                                     <div class="pull-right">
-                                        <input id="demo-nav-coll" class="toggle-switch" type="checkbox">
+                                        <input id="demo-nav-coll" class="toggle-switch" type="infobox">
                                         <label for="demo-nav-coll"></label>
                                     </div>
                                     Collapsed Mode
@@ -697,35 +885,35 @@
                                 <p class="text-semibold text-main">Aside</p>
                                 <div class="mar-btm">
                                     <div class="pull-right">
-                                        <input id="demo-asd-vis" class="toggle-switch" type="checkbox">
+                                        <input id="demo-asd-vis" class="toggle-switch" type="infobox">
                                         <label for="demo-asd-vis"></label>
                                     </div>
                                     Visible
                                 </div>
                                 <div class="mar-btm">
                                     <div class="pull-right">
-                                        <input id="demo-asd-fixed" class="toggle-switch" type="checkbox" checked>
+                                        <input id="demo-asd-fixed" class="toggle-switch" type="infobox" infoed>
                                         <label for="demo-asd-fixed"></label>
                                     </div>
                                     Fixed Position
                                 </div>
                                 <div class="mar-btm">
                                     <div class="pull-right">
-                                        <input id="demo-asd-float" class="toggle-switch" type="checkbox" checked>
+                                        <input id="demo-asd-float" class="toggle-switch" type="infobox" infoed>
                                         <label for="demo-asd-float"></label>
                                     </div>
                                     Floating <span class="label label-primary">New</span>
                                 </div>
                                 <div class="mar-btm">
                                     <div class="pull-right">
-                                        <input id="demo-asd-align" class="toggle-switch" type="checkbox">
+                                        <input id="demo-asd-align" class="toggle-switch" type="infobox">
                                         <label for="demo-asd-align"></label>
                                     </div>
                                     Left Side
                                 </div>
                                 <div>
                                     <div class="pull-right">
-                                        <input id="demo-asd-themes" class="toggle-switch" type="checkbox">
+                                        <input id="demo-asd-themes" class="toggle-switch" type="infobox">
                                         <label for="demo-asd-themes"></label>
                                     </div>
                                     Dark Version

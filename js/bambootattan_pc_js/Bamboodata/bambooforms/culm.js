@@ -12,7 +12,7 @@ $(function(){
     $('#btn_delete').on('click',deles);
     //保存点击事件
     $('#btn_save').on('click',save);
-    //
+
     $('#btn_select_spec').on('click',function () {
         $('#specModal').modal('show');
         $('#spec_table').bootstrapTable('refresh',querySpecPageUrl);
@@ -65,6 +65,8 @@ function init_table(){
             $('[data-toggle="tooltip"]').tooltip();
         },
         cache:false,//是否使用緩存
+        fixedColumns: true,//固定列
+        fixedNumber:4,//固定前四列
         columns:[//列数据
 
             {
@@ -80,7 +82,7 @@ function init_table(){
                 formatter:function(value,row,index){//格式化，自定义内容
                     var _html = '<button onclick="edit(\''+row.culmId+'\')" class="btn btn-info btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="修改"><i class="demo-psi-pen-5"></i></button>';
                     _html += '<button  onclick="dele(\''+row.culmId+'\')"class="btn btn-danger btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="删除"><i class="demo-pli-cross"></i></button>';
-                    _html += '<button  onclick="check(\''+row.culmId+'\')"class="btn btn-primary btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="查看"><i class="glyphicon glyphicon-search"></i></button>'
+                    _html += '<button  onclick="check(\''+row.culmId+'\')"class="btn btn-primary btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="查看"><i class="fa fa-search"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
@@ -88,7 +90,7 @@ function init_table(){
                 }
             },
             {
-                field:'spec"',//数据列
+                field:'spec',//数据列
                 title:'种名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -113,7 +115,6 @@ function init_table(){
             {
                 field:'culmDiameter',//数据列
                 title:'竿直径',//数据列名称
-                visible:false,
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -124,7 +125,7 @@ function init_table(){
             {
                 field:'culmColor',//数据列
                 title:'竿颜色',//数据列名称
-                visible:false,
+                // visible:false,
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -136,7 +137,7 @@ function init_table(){
                 field:'culmTop',//数据列
                 title:'竿稍头',//数据列名称
                 sortable:true,//可排序
-                visible:false,
+                // visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -157,7 +158,7 @@ function init_table(){
                 field:'internodeLength',//数据列
                 title:'节间长度',//数据列名称
                 sortable:true,//可排序
-                visible:false,
+                // visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -178,7 +179,7 @@ function init_table(){
                 field:'internodeAerialRoot',//数据列
                 title:'节间有无气生根',//数据列名称
                 sortable:true,//可排序
-                visible:false,
+                // visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -189,7 +190,7 @@ function init_table(){
                 field:'internodeBack',//数据列
                 title:'节间被毛',//数据列名称
                 sortable:true,//可排序
-                visible:false,
+                // visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -200,7 +201,7 @@ function init_table(){
                 field:'internodeCulmWall',//数据列
                 title:'节间竿壁厚',//数据列名称
                 sortable:true,//可排序
-                visible:false,
+                // visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -221,7 +222,7 @@ function init_table(){
                 field:'youngStemPowder',//数据列
                 title:'幼时竿被粉',//数据列名称
                 sortable:true,//可排序
-                visible:false,
+                // visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -757,7 +758,7 @@ function deles() {
         });
     }
 }
-//查看信息
+//查看详情
 function check(id) {
     init_info();
     $.ajax({
@@ -769,7 +770,7 @@ function check(id) {
             if(res.code==200){
                 $('#culmHeight-check').html(res.data.culmHeight).attr('data-original-title',res.data.culmHeight);
                 $('#culmDiameter-check').html(res.data.culmDiameter).attr('data-original-title',res.data.culmDiameter);
-                $('#culmColor-check').html(res.data.culmColor).attr('data-original-title',res.data.culmHeight);
+                $('#culmColor-check').html(res.data.culmColor).attr('data-original-title',res.data.culmColor);
                 $('#culmTop-check').html(res.data.culmTop).attr('data-original-title',res.data.culmTop);
                 $('#culmStem-check').html(res.data.culmStem).attr('data-original-title',res.data.culmStem);
                 $('#internodeLength-check').html(res.data.internodeLength).attr('data-original-title',res.data.internodeLength);

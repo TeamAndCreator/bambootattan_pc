@@ -38,6 +38,8 @@
     <!--X-editable [ OPTIONAL ]-->
     <link href="../../plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">
 
+    <!-- common [ OPTIONAL ] -->
+    <link href="../../css/bambootattan_pc_css/common.css" rel="stylesheet">
 
 
     <!-- Theme -->
@@ -250,62 +252,92 @@
                         </div>
 
 
-
                         <!--增加按钮的模态框-->
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
-                            <div class="modal-dialog" role="document">
+                            <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
                                         <h4 class="modal-title" id="exampleModalLabel">新增</h4>
                                     </div>
+
+
                                     <div class="modal-body">
                                         <form class="form-horizontal">
                                             <div class="panel-body">
-                                                <div class="form-group">
-                                                    <label for="Chinesename" class="col-sm-2 control-label">中文名:</label>
-                                                    <div class="col-sm-4">
-                                                        <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                <div  id="registrationForm" class="form-group">
+                                                    <label for="rattanGenusNameCh" class="col-sm-2 control-label">中文名:</label>
+                                                    <div class="col-sm-3">
+                                                        <input id="rattanGenusNameCh" class="form-control input-sm" name="rattanGenusNameCh" placeholder="" type="text"
+                                                               data-bv-field="rattanGenusNameCh"   data-bv-group=".col-sm-4" data-bv-notempty="true" data-bv-notempty-message="中文名不能为空">
                                                     </div>
-                                                    <label for="Englishname" class="col-sm-2 control-label">英文名:</label>
-                                                    <div class="col-sm-4">
-                                                        <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                    <label for="rattanGenusNameEn" class="col-sm-2 control-label">英文名:</label>
+                                                    <div class="col-sm-3">
+                                                        <input id="rattanGenusNameEn" class="form-control input-sm" name="rattanGenusNameEn" placeholder="" type="text">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="Ladingname" class="col-sm-2 control-label">拉丁名:</label>
-                                                    <div class="col-sm-4">
-                                                        <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                    <label for="rattanGenusNameLd" class="col-sm-2 control-label">拉丁名:</label>
+                                                    <div class="col-sm-3">
+                                                        <input id="rattanGenusNameLd" class="form-control input-sm" name="rattanGenusNameLd" placeholder="" type="text">
                                                     </div>
-                                                    <label for="Biename" class="col-sm-2 control-label">别名:</label>
-                                                    <div class="col-sm-4">
-                                                        <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                    <label for="rattanGenusNameOth" class="col-sm-2 control-label">别名:</label>
+                                                    <div class="col-sm-3">
+                                                        <input id="rattanGenusNameOth" class="form-control input-sm" name="rattanGenusNameOth" placeholder="" type="text">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="Chinesename" class="col-sm-2 control-label">描述:</label>
-                                                    <div class="col-sm-10">
-                                                        <textarea placeholder="" id="content" rows="5" class="form-control"></textarea>
+                                                    <label for="sortNum" class="col-sm-2 control-label">序号:</label>
+                                                    <div class="col-sm-3">
+                                                        <input id="sortNum" class="form-control input-sm" name="sortNum" placeholder="" type="text">
                                                     </div>
                                                 </div>
+
+
+
+
+                                                <input id="rattanGenusId" type="hidden" value="" />
+                                            </div>
+
+                                            <div id="page-conten">
+                                                <div class="panel">
+                                                    <div class="panel-heading">
+                                                        <h3 class="panel-title">描述</h3>
+                                                    </div>
+                                                    <div class="panel-body">
+
+                                                        <!--Summernote-->
+                                                        <!--===================================================-->
+                                                        <div id="demo-summernote">
+                                                            <h4><span
+                                                                    style="color: rgb(206, 198, 206); font-family: inherit; line-height: 1.1;"></span><br>
+                                                            </h4><h4><font color="#9c9c94"></font></h4>
+                                                        </div>
+                                                        <!--===================================================-->
+                                                        <!-- End Summernote -->
+
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                        <button type="button" class="btn btn-primary">保存</button>
+                                        <button id="btn_save" type="button" class="btn btn-primary">保存</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- 数据表格 -->
+                        <table id="data_table" class="table"></table>
                     </div>
-
-
-                    <table id="data_table" class="table"></table>
                 </div>
             </div>
             <!--===================================================-->
         </div>
+
 
 
 
@@ -377,7 +409,7 @@
                                             <ul class="collapse in">
                                                 <li><a href="genus.html">竹种属表</a></li>
                                                 <li><a href="spec.html">竹种信息</a></li>
-                                                <li class="active-link"><a href="tengspecie.html">藤种属表</a></li>
+                                                <li class="active-link"><a href="rattangenus.html">藤种属表</a></li>
                                                 <li><a href="tenginfo.html">藤种信息</a></li>
                                                 <li><a href="unittable.html">单位表</a></li>
                                                 <li><a href="radio.html">上传视频的地方</a></li>
@@ -563,7 +595,7 @@
 <!-- END OF CONTAINER -->
 
 </div>
-<script src="../../js/bambootattan_pc_js/Bamboodata/zhongzi/genus.js"></script>
+<script src="../../js/bambootattan_pc_js/Bamboodata/zhongzi/rattanGenus.js"></script>
 </body>
 </html>
 
