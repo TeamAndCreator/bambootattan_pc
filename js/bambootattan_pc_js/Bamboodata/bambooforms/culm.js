@@ -1,7 +1,7 @@
 var queryPageUrl='';
 var querySpecPageUrl='';
 $(function(){
-    queryPageUrl = baseUrl+'/sheathtongue/findAllQuery';
+    queryPageUrl = baseUrl+'/culm/findAllQuery';
     querySpecPageUrl = baseUrl+'/spec/findAllQuery';
     //新增点击事件
     $('#btn_add').on('click',function () {
@@ -21,7 +21,8 @@ $(function(){
     $('#btn_spec_ok').on('click',selectedSpec);
 
     //关闭选择种的模态框
-    $("#specModal").on('hidden.bs.modal',openModalClass)
+    $("#specModal").on('hidden.bs.modal',openModalClass);
+
     //初始化表格
     init_table();
     init_spec_table();
@@ -60,6 +61,9 @@ function init_table(){
                 search:params.search
             }
         },
+        onPostBody:function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        },
         cache:false,//是否使用緩存
         columns:[//列数据
 
@@ -74,12 +78,13 @@ function init_table(){
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
-                    var _html = '<button onclick="edit(\''+row.sheTogId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
-                    _html += '<button  onclick="dele(\''+row.sheTogId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>'
+                    var _html = '<button onclick="edit(\''+row.culmId+'\')" class="btn btn-info btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="修改"><i class="demo-psi-pen-5"></i></button>';
+                    _html += '<button  onclick="dele(\''+row.culmId+'\')"class="btn btn-danger btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="删除"><i class="demo-pli-cross"></i></button>';
+                    _html += '<button  onclick="check(\''+row.culmId+'\')"class="btn btn-primary btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="查看"><i class="glyphicon glyphicon-search"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'}};
+                    return{css:{'min-width':'100px'}};
                 }
             },
             {
@@ -96,8 +101,8 @@ function init_table(){
                 }
             },
             {
-                field:'sheathTongueColor',//数据列
-                title:'箨舌颜色',//数据列名称
+                field:'culmHeight',//数据列
+                title:'竿高度',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -106,8 +111,9 @@ function init_table(){
                 }
             },
             {
-                field:'sheathTongueHeight',//数据列
-                title:'箨舌高度',//数据列名称
+                field:'culmDiameter',//数据列
+                title:'竿直径',//数据列名称
+                visible:false,
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -116,8 +122,9 @@ function init_table(){
                 }
             },
             {
-                field:'sheathTongueMarginShape',//数据列
-                title:'箨舌边缘形状',//数据列名称
+                field:'culmColor',//数据列
+                title:'竿颜色',//数据列名称
+                visible:false,
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -126,8 +133,19 @@ function init_table(){
                 }
             },
             {
-                field:'sheathTongueBackPowderv',//数据列
-                title:'箨舌被毛被粉',//数据列名称
+                field:'culmTop',//数据列
+                title:'竿稍头',//数据列名称
+                sortable:true,//可排序
+                visible:false,
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
+                }
+            },
+            {
+                field:'culmStem',//数据列
+                title:'竿身形态',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -135,6 +153,92 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 }
             },
+            {
+                field:'internodeLength',//数据列
+                title:'节间长度',//数据列名称
+                sortable:true,//可排序
+                visible:false,
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
+                }
+            },
+            {
+                field:'internodeShape',//数据列
+                title:'节间形态',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
+                }
+            },
+            {
+                field:'internodeAerialRoot',//数据列
+                title:'节间有无气生根',//数据列名称
+                sortable:true,//可排序
+                visible:false,
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
+                }
+            },
+            {
+                field:'internodeBack',//数据列
+                title:'节间被毛',//数据列名称
+                sortable:true,//可排序
+                visible:false,
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
+                }
+            },
+            {
+                field:'internodeCulmWall',//数据列
+                title:'节间竿壁厚',//数据列名称
+                sortable:true,//可排序
+                visible:false,
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
+                }
+            },
+            {
+                field:'youngStemBack',//数据列
+                title:'幼时竿被毛',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
+                }
+            },
+            {
+                field:'youngStemPowder',//数据列
+                title:'幼时竿被粉',//数据列名称
+                sortable:true,//可排序
+                visible:false,
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
+                }
+            },
+            {
+                field:'culmNode',//数据列
+                title:'竿环是否隆起',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
+                }
+            },
+
             /*
             {
                 field:'underStemId',//数据列
@@ -146,9 +250,10 @@ function init_table(){
                     return{css:{'min-width':'80px'}};
                 }
             },*/
-            { field:'sheTogId',title:'sheTogId',visible:false }//隐藏不显示
+            { field:'culmId',title:'culmId',visible:false }//隐藏不显示
         ]
     });
+
 }
 
 //初始化种表格
@@ -360,29 +465,50 @@ function save() {
         callback: function (result) {
             if (result) {
                 var specId = $('#specId').val();
-                var sheTogId=$('#sheTogId').val();
-                var sheathTongueColor = $('#sheathTongueColor').val();
-                var sheathTongueHeight = $('#sheathTongueHeight').val();
-                var sheathTongueMarginShape = $('#sheathTongueMarginShape').val();
-                var sheathTongueBackPowderv = $('#sheathTongueBackPowderv').val();
+                var culmId=$('#culmId').val();
+                var culmHeight = $('#culmHeight').val();
+                var culmDiameter = $('#culmDiameter').val();
+                var culmColor = $('#culmColor').val();
+                var culmTop = $('#culmTop').val();
+                var culmStem=$('#culmStem').val();
+                var internodeLength = $('#internodeLength').val();
+                var internodeShape = $('#internodeShape').val();
+                var internodeAerialRoot = $('#internodeAerialRoot').val();
+
+                var internodeBack = $('#internodeBack').val();
+                var internodeCulmWall=$('#internodeCulmWall').val();
+                var youngStemBack = $('#youngStemBack').val();
+                var youngStemPowder = $('#youngStemPowder').val();
+                var culmNode = $('#culmNode').val();
                 var genusId=$('#genusId').val();
                 var formData = {
-                    "sheTogId":sheTogId,
+                    "culmId":culmId,
                     "spec":{
                         'specId':specId,
                         'genus':{
                             'genusId':genusId
                         }
                     },
-                    "sheathTongueColor":sheathTongueColor,
-                    "sheathTongueHeight":sheathTongueHeight,
-                    "sheathTongueMarginShape":sheathTongueMarginShape,
-                    "sheathTongueBackPowderv":sheathTongueBackPowderv
+                    "culmHeight":culmHeight,
+                    "culmDiameter":culmDiameter,
+                    "culmColor":culmColor,
+                    "culmTop":culmTop,
+                    "culmStem": culmStem,
+                    "internodeLength":internodeLength,
+                    "internodeShape": internodeShape,
+                    "internodeAerialRoot": internodeAerialRoot,
+
+                    "internodeBack": internodeBack,
+                    "internodeCulmWall":internodeCulmWall,
+                    "youngStemBack":youngStemBack,
+                    "youngStemPowder": youngStemPowder,
+                    "culmNode":culmNode
+
                 };
-                if (sheTogId == "") {//新增
+                if (culmId == "") {//新增
                     formData.specId = 0;
                     $.ajax({
-                        url: baseUrl + '/sheathtongue/save',		//请求路径
+                        url: baseUrl + '/culm/save',		//请求路径
                         type: 'POST',			            //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
@@ -412,7 +538,7 @@ function save() {
                     });
                 } else {//修改
                     $.ajax({
-                        url: baseUrl + '/sheathtongue/update',	    //请求路径
+                        url: baseUrl + '/culm/update',	    //请求路径
                         type: 'PUT',				        //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
@@ -458,17 +584,27 @@ function save() {
 function edit(id) {
     init_form();
     $.ajax({
-        url:baseUrl+'/sheathtongue/findId/'+id,		//请求路径
+        url:baseUrl+'/culm/findId/'+id,		//请求路径
         type:'GET',			                    //请求方式
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
             if(res.code==200){
-                $('#sheTogId').val(res.data.sheTogId);
-                $('#sheathTongueColor').val(res.data.sheathTongueColor);
-                $('#sheathTongueHeight').val(res.data.sheathTongueHeight);
-                $('#sheathTongueMarginShape').val(res.data.sheathTongueMarginShape);
-                $('#sheathTongueBackPowderv').val(res.data.sheathTongueBackPowderv);
+                $('#culmId').val(res.data.culmId);
+                $('#culmHeight').val(res.data.culmHeight);
+                $('#culmDiameter').val(res.data.culmDiameter);
+                $('#culmColor').val(res.data.culmColor);
+                $('#culmTop').val(res.data.culmTop);
+                $('#culmStem').val(res.data.culmStem);
+                $('#internodeLength').val(res.data.internodeLength);
+                $('#internodeShape').val(res.data.internodeShape);
+                $('#internodeAerialRoot').val(res.data.internodeAerialRoot);
+                $('#internodeBack').val(res.data.internodeBack);
+                $('#internodeCulmWall').val(res.data.internodeCulmWall);
+                $('#youngStemBack').val(res.data.youngStemBack);
+                $('#youngStemPowder').val(res.data.youngStemPowder);
+                $('#culmNode').val(res.data.culmNode);
+
                 $('#spec').val(res.data.spec.specNameCh);
                 $('#specId').val(res.data.spec.specId);
                 $('#exampleModal .modal-title').html("修改");
@@ -503,7 +639,7 @@ function dele(gid){
         callback: function(result) {
             if (result) {
                 $.ajax({
-                    url:baseUrl+'/sheathtongue/delete/'+gid,   //请求路径,单个删除
+                    url:baseUrl+'/culm/delete/'+gid,   //请求路径,单个删除
                     type:'DELETE',				        //请求方式
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
@@ -574,11 +710,11 @@ function deles() {
                     var ids=[]; //选中数据的genusId数组
                     for(var i=0;i<selectedItems.length;i++){
                         //循环遍历选中的数据并将genusId放入到ids数组中
-                        ids.push(selectedItems[i].sheTogId);
+                        ids.push(selectedItems[i].culmId);
                     }
                     $.ajax({    //批量删除
                         //现将数据每个元素用‘,(逗号)’分隔拼接成字符串，再用encodeURI进行编码，最后拼接到url的后面
-                        url: baseUrl+'/sheathtongue/deleteByIds?ids='+encodeURI(ids.join(',')),
+                        url: baseUrl+'/culm/deleteByIds?ids='+encodeURI(ids.join(',')),
                         type:'DELETE',
                         contentType: 'application/json',//数据类型
                         success:function(res){	        //请求成功回调函数
@@ -621,7 +757,49 @@ function deles() {
         });
     }
 }
+//查看信息
+function check(id) {
+    init_info();
+    $.ajax({
+        url:baseUrl+'/culm/findId/'+id,		//请求路径
+        type:'GET',			                    //请求方式
+        dataType:"JSON",		                //返回数据类型
+        contentType: 'application/json',        //数据类型
+        success:function(res){	                //请求成功回调函数
+            if(res.code==200){
+                $('#culmHeight-check').html(res.data.culmHeight).attr('data-original-title',res.data.culmHeight);
+                $('#culmDiameter-check').html(res.data.culmDiameter).attr('data-original-title',res.data.culmDiameter);
+                $('#culmColor-check').html(res.data.culmColor).attr('data-original-title',res.data.culmHeight);
+                $('#culmTop-check').html(res.data.culmTop).attr('data-original-title',res.data.culmTop);
+                $('#culmStem-check').html(res.data.culmStem).attr('data-original-title',res.data.culmStem);
+                $('#internodeLength-check').html(res.data.internodeLength).attr('data-original-title',res.data.internodeLength);
+                $('#internodeShape-check').html(res.data.internodeShape).attr('data-original-title',res.data.internodeShape);
+                $('#internodeAerialRoot-check').html(res.data.internodeAerialRoot).attr('data-original-title',res.data.internodeAerialRoot);
 
+                $('#internodeBack-check').html(res.data.internodeBack).attr('data-original-title',res.data.internodeBack);
+                $('#internodeCulmWall-check').html(res.data.internodeCulmWall).attr('data-original-title',res.data.internodeCulmWall);
+                $('#youngStemBack-check').html(res.data.youngStemBack).attr('data-original-title',res.data.youngStemBack);
+                $('#youngStemPowder-check').html(res.data.youngStemPowder).attr('data-original-title',res.data.youngStemPowder);
+                $('#culmNode-check').html(res.data.culmNode).attr('data-original-title',res.data.culmNode);
+
+                $('#spec-check').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
+                $('#exampleModal-check').modal('show');
+            }
+            else{
+                $.niftyNoty({
+                    type: 'danger',
+                    icon: 'pli-cross icon-2x',
+                    message: res.msg,
+                    container: 'floating',
+                    timer: 1000
+                });
+            }
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
+
+        }
+    });
+}
 //选中种
 function selectedSpec() {
     //选中的数据
@@ -636,12 +814,37 @@ function selectedSpec() {
 //初始化表单元素的值
 function init_form(){
     $('#spec').val("");
-    $('#sheTogId').val("");
+    $('#culmId').val("");
     $('#specId').val("");
     $('#genusId').val("");
-    $('#sheathTongueColor').val("");
-    $('#sheathTongueHeight').val("");
-    $('#sheathTongueMarginShape').val("");
-    $('#sheathTongueBackPowderv').val("");
+    $('#culmHeight').val("");
+    $('#culmDiameter').val("");
+    $('#culmColor').val("");
+    $('#culmTop').val("");
+    $('#culmStem').val("");
+    $('#internodeLength').val("");
+    $('#internodeShape').val("");
+    $('#internodeAerialRoot').val("");
+    $('#internodeBack').val("");
+    $('#internodeCulmWall').val("");
+    $('#youngStemBack').val("");
+    $('#youngStemPowder').val("");
+    $('#culmNode').val("");
 }
-
+//初始化详情元素的值
+function init_info(){
+    $('#spec-check').val("").attr('data-original-title',"");//清除鼠标停留显示的内容，就是提示内容
+    $('#culmHeight-check').val("").attr('data-original-title',"");
+    $('#culmDiameter-check').val("").attr('data-original-title',"");
+    $('#culmColor-check').val("").attr('data-original-title',"");
+    $('#culmTop-check').val("").attr('data-original-title',"");
+    $('#culmStem-check').val("").attr('data-original-title',"");
+    $('#internodeLength-check').val("").attr('data-original-title',"");
+    $('#internodeShape-check').val("").attr('data-original-title',"");
+    $('#internodeAerialRoot-check').val("").attr('data-original-title',"");
+    $('#internodeBack-check').val("").attr('data-original-title',"");
+    $('#internodeCulmWall-check').val("").attr('data-original-title',"");
+    $('#youngStemBack-check').val("").attr('data-original-title',"");
+    $('#youngStemPowder-check').val("").attr('data-original-title',"");
+    $('#culmNode-check').val("").attr('data-original-title',"");
+}

@@ -1,0 +1,28 @@
+.pad-top-sm {
+    padding-top: 5px
+}
+
+.pad-btm-sm {
+    padding-bottom: 5px
+}
+
+.pad-lft-sm {
+    padding-left: 5px
+}
+
+.pad-rgt-sm {
+    padding-right: 5px
+}
+
+.pad-hor-sm {
+    padding-left: 5px;
+    padding-right: 5px
+}
+
+.pad-ver-sm {
+    padding-top: 5px;
+    padding-bottom: 5px
+}
+.tooltip-inner{
+    word-break: break-all;
+}

@@ -432,6 +432,7 @@ function edit(id) {
                 $('#underStem').val(res.data.underStem);
                 $('#spec').val(res.data.spec.specNameCh);
                 $('#specId').val(res.data.spec.specId);
+                $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }
             else{

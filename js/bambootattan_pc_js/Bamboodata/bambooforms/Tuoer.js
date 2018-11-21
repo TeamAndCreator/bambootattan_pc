@@ -460,6 +460,7 @@ function edit(id) {
                 $('#sheathEarMargin').val(res.data.sheathEarMargin);
                 $('#spec').val(res.data.spec.specNameCh);
                 $('#specId').val(res.data.spec.specId);
+                $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }
             else{

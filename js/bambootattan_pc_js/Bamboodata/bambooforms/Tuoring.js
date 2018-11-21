@@ -446,6 +446,7 @@ function edit(id) {
                 $('#spec').val(res.data.spec.specNameCh);
                 $('#specId').val(res.data.spec.specId);
                 $('#genusId').val(res.data.spec.genus.genusId);
+                $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }
             else{

@@ -39,8 +39,6 @@
     <link href="../../plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">
 
 
-
-
     <!-- Theme -->
     <link id="theme" href="../../css/themes/type-c/theme-lime.min.css" rel="stylesheet">
 
@@ -93,6 +91,7 @@
 
     <!--Bootstrap Table Extension [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
+
     <script src="../../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
 
 
@@ -250,63 +249,230 @@
                         </div>
 
 
-
                         <!--增加按钮的模态框-->
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
-                            <div class="modal-dialog" role="document">
+                            <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
                                         <h4 class="modal-title" id="exampleModalLabel">新增</h4>
                                     </div>
+
                                     <div class="modal-body">
                                         <form class="form-horizontal">
                                             <div class="panel-body">
-                                                <div class="form-group">
-                                                    <label for="Chinesename" class="col-sm-2 control-label">中文名:</label>
-                                                    <div class="col-sm-4">
-                                                        <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                <div  id="registrationForm" class="form-group">
+                                                    <label for="culmHeight" class="col-sm-2 control-label">竿高度:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="culmHeight" class="form-control input-sm" name="culmHeight" placeholder="" type="text">
                                                     </div>
-                                                    <label for="Englishname" class="col-sm-2 control-label">英文名:</label>
-                                                    <div class="col-sm-4">
-                                                        <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                    <label for="culmDiameter" class="col-sm-2 control-label">竿直径:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="culmDiameter" class="form-control input-sm" name="culmDiameter" placeholder="" type="text">
+                                                    </div>
+                                                    <label for="culmColor" class="col-sm-2 control-label">竿颜色:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="culmColor" class="form-control input-sm" name="culmColor" placeholder="" type="text">
                                                     </div>
                                                 </div>
+
+
                                                 <div class="form-group">
-                                                    <label for="Ladingname" class="col-sm-2 control-label">拉丁名:</label>
-                                                    <div class="col-sm-4">
-                                                        <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                    <label for="culmTop" class="col-sm-2 control-label">竿稍头:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="culmTop" class="form-control input-sm" name="culmTop" placeholder="" type="text">
                                                     </div>
-                                                    <label for="Biename" class="col-sm-2 control-label">别名:</label>
-                                                    <div class="col-sm-4">
-                                                        <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                    <label for="culmStem" class="col-sm-2 control-label">竿身形态:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="culmStem" class="form-control input-sm" name="culmStem" placeholder="" type="text">
+                                                    </div>
+                                                    <label for="internodeLength" class="col-sm-2 control-label">节间长度:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="internodeLength" class="form-control input-sm" name="internodeLength" placeholder="" type="text">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="Chinesename" class="col-sm-2 control-label">描述:</label>
-                                                    <div class="col-sm-10">
-                                                        <textarea placeholder="" id="content" rows="5" class="form-control"></textarea>
+                                                    <label for="internodeShape" class="col-sm-2 control-label">节间形态:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="internodeShape" class="form-control input-sm" name="internodeShape" placeholder="" type="text">
+                                                    </div>
+                                                    <label for="internodeAerialRoot" class="col-sm-2 control-label">节间有无气生根:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="internodeAerialRoot" class="form-control input-sm" name="internodeAerialRoot" placeholder="" type="text">
+                                                    </div>
+                                                    <label for="internodeBack" class="col-sm-2 control-label">节间被毛:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="internodeBack" class="form-control input-sm" name="internodeBack" placeholder="" type="text">
                                                     </div>
                                                 </div>
+
+                                                <div class="form-group">
+                                                    <label for="internodeCulmWall" class="col-sm-2 control-label">节间竿壁厚:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="internodeCulmWall" class="form-control input-sm" name="internodeCulmWall" placeholder="" type="text">
+                                                    </div>
+                                                    <label for="youngStemBack" class="col-sm-2 control-label">幼时竿被毛:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="youngStemBack" class="form-control input-sm" name="youngStemBack" placeholder="" type="text">
+                                                    </div>
+                                                    <label for="youngStemPowder" class="col-sm-2 control-label">幼时竿被粉:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="youngStemPowder" class="form-control input-sm" name="youngStemPowder" placeholder="" type="text">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="culmNode" class="col-sm-2 control-label">竿环是否隆起:</label>
+                                                    <div class="col-sm-2">
+                                                        <input id="culmNode" class="form-control input-sm" name="culmNode" placeholder="" type="text">
+                                                    </div>
+
+                                                    <label for="spec" class="col-sm-2 control-label">种:</label>
+                                                    <div class="col-sm-2 input-group">
+                                                        <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text">
+                                                        <input id="specId" type="hidden" value="">
+                                                        <input id="genusId" type="hidden" value="">
+                                                        <span class="input-group-btn">
+                                                                <button id="btn_select_spec" class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
+                                                            </span>
+                                                        <input id="culmId" type="hidden" value="" />
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                        <button type="button" class="btn btn-primary">保存</button>
+                                        <button id="btn_save" type="button" class="btn btn-primary">保存</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
+
+
+                        <!--增加查看的模态框-->
+                        <div class="modal fade" id="exampleModal-check" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
+                                        <h4 class="modal-title" id="exampleModalLabel-check">详情</h4>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <div class="form-horizontal">
+                                            <div class="form-group">
+                                                <label for="culmHeight-check" class="col-sm-2 control-label">竿高度:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="culmHeight-check" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                                <label for="culmDiameter-check" class="col-sm-2 control-label">竿直径:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="culmDiameter-check" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                                <label for="culmColor-check" class="col-sm-2 control-label">竿颜色:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="culmColor-check" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="culmTop-check" class="col-sm-2 control-label">竿稍头:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="culmTop-check" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                                <label for="culmStem-check" class="col-sm-2 control-label">竿身形态:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="culmStem-check" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                                <label for="internodeLength-check" class="col-sm-2 control-label">节间长度:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="internodeLength-check" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="internodeShape-check" class="col-sm-2 control-label">节间形态:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="internodeShape-check" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                                <label for="internodeAerialRoot-check" class="col-sm-2 control-label">节间有无气生根:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="internodeAerialRoot-check" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                                <label for="internodeBack" class="col-sm-2 control-label">节间被毛:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="internodeBack-check" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="internodeCulmWall-check" class="col-sm-2 control-label">节间竿壁厚:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="internodeCulmWall-check" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                                <label for="youngStemBack" class="col-sm-2 control-label">幼时竿被毛:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="youngStemBack-check" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                                <label for="youngStemPowder" class="col-sm-2 control-label">幼时竿被粉:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="youngStemPowder-check" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="culmNode-check" class="col-sm-2 control-label">竿环是否隆起:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="culmNode-check" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+
+                                                <label for="spec" class="col-sm-2 control-label">种:</label>
+                                                <div class="col-sm-2 input-group">
+                                                    <p id="spec-check" class="form-control-static bord-all pad-hor-sm"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="modal fade" id="specModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" data-backdrop="static">
+                            <div class="modal-dialog modal-lg"  role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
+                                        <h4 class="modal-title">种</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table id="spec_table"></table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                        <button id="btn_spec_ok" type="button" class="btn btn-primary">确认</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 数据表格 -->
+                        <table id="data_table" class="table"></table>
                     </div>
-
-
-                    <table id="data_table"></table>
                 </div>
+                <!--===================================================-->
             </div>
-            <!--===================================================-->
         </div>
-
         <!--===================================================-->
     <!--END CONTENT CONTAINER-->
 
