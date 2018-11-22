@@ -13,6 +13,7 @@ $(function(){
 	$('#btn_save').on('click',save);
 	//初始化表格
     init_table();
+    init_sunmmernote();
     //表单验证
     $('#registrationForm').bootstrapValidator();
     $('#demo-summernote').summernote();
@@ -65,11 +66,12 @@ function init_table(){
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
                     var _html = '<button onclick="edit(\''+row.genusId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
-                    _html += '<button  onclick="dele(\''+row.genusId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>'
+                    _html += '<button  onclick="dele(\''+row.genusId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
+                    _html += '<button  onclick="check(\''+row.genusId+'\')"class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="查看"><i class="fa fa-search"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'}};
+                    return{css:{'min-width':'100px'}};
                 }
             },
             {
@@ -416,6 +418,42 @@ function deles() {
         });
     }
 }
+//查看详情
+function check(id) {
+    init_info();
+    $.ajax({
+        url:baseUrl+'/genus/findId/'+id,		//请求路径
+        type:'GET',			                    //请求方式
+        dataType:"JSON",		                //返回数据类型
+        contentType: 'application/json',        //数据类型
+        success:function(res){	                //请求成功回调函数
+            if(res.code==200){
+                $('#genusNameCh-info').html(res.data.genusNameCh).attr('data-original-title',res.data.genusNameCh);
+                $('#genusNameEn-info').html(res.data.genusNameEn).attr('data-original-title',res.data.genusNameEn);
+                $('#genusNameLd-info').html(res.data.genusNameLd).attr('data-original-title',res.data.genusNameLd);
+                $('#genusNameOth-info').html(res.data.genusNameOth).attr('data-original-title',res.data.genusNameOth);
+                $('#sortNum-info').html(res.data.sortNum).attr('data-original-title',res.data.sortNum);
+                //$('#specDesc-info').html(res.data.spec.specDesc).attr('data-original-title',res.data.specDesc);
+                //$('#demo-summernote').summernote('code',res.data.specDesc).attr('data-original-title',res.data.specDesc);
+                $('#demo-summernote-info').summernote('code',res.data.genusDesc);
+                //$('#genus-info').html(res.data.genus.genusNameCh).attr('data-original-title',res.data.genusNameCh);
+                $('#exampleModal-info').modal('show');
+            }
+            else{
+                $.niftyNoty({
+                    type: 'danger',
+                    icon: 'pli-cross icon-2x',
+                    message: res.msg,
+                    container: 'floating',
+                    timer: 1000
+                });
+            }
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
+
+        }
+    });
+}
 //初始化表单元素的值
 function init_form(){
     $('#genusNameCh').val("");
@@ -428,3 +466,24 @@ function init_form(){
     //$('#registrationForm').data('bootstrapValidator').resetForm();
 }
 
+//初始化详情元素值
+function init_info(){
+
+    $('#genusId').val("").attr('data-original-title',"");
+    $('#genusNameCh-info').val("").attr('data-original-title',"");
+    $('#genusNameEn-info').val("").attr('data-original-title',"");
+    $('#genusNameLd-info').val("").attr('data-original-title',"");
+    $('#genusNameOth-info').val("").attr('data-original-title',"");
+    $('#sortNum-info').val("").attr('data-original-title',"");
+    $('#genusDesc-info').val("").attr('data-original-title',"");
+
+}
+//设置富文本的高度
+function init_sunmmernote(){
+    $('#demo-summernote').summernote({
+        height: 244,                 // set editor height
+        minHeight: null,             // set minimum height of editor
+        maxHeight: null,             // set maximum height of editor
+        focus: true                  // set focus to editable area after initializing summernote
+    });
+}

@@ -13,6 +13,7 @@ $(function(){
     $('#btn_save').on('click',save);
     //初始化表格
     init_table();
+    init_sunmmernote();
     //表单验证
     $('#registrationForm').bootstrapValidator();
     $('#demo-summernote').summernote();
@@ -64,16 +65,17 @@ function init_table(){
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
-                    var _html = '<button onclick="edit(\''+row.rattanGenusId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
-                    _html += '<button  onclick="dele(\''+row.rattanGenusId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>'
+                    var _html = '<button onclick="edit(\''+row.genusId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
+                    _html += '<button  onclick="dele(\''+row.genusId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
+                    _html += '<button  onclick="check(\''+row.genusId+'\')"class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="查看"><i class="fa fa-search"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'}};
+                    return{css:{'min-width':'100px'}};
                 }
             },
             {
-                field:'rattanGenusNameCh',//数据列
+                field:'genusNameCh',//数据列
                 title:'中文名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -83,7 +85,7 @@ function init_table(){
                 }
             },
             {
-                field:'rattanGenusNameEn',//数据列
+                field:'genusNameEn',//数据列
                 title:'英文名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -93,7 +95,7 @@ function init_table(){
                 }
             },
             {
-                field:'rattanGenusNameLd',//数据列
+                field:'genusNameLd',//数据列
                 title:'拉丁名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -103,7 +105,7 @@ function init_table(){
                 }
             },
             {
-                field:'rattanGenusNameOth',//数据列
+                field:'genusNameOth',//数据列
                 title:'别名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -123,7 +125,7 @@ function init_table(){
                 }
             },
             {
-                field:'rattanGenusDesc',//数据列
+                field:'genusDesc',//数据列
                 title:'描述',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -132,7 +134,7 @@ function init_table(){
                     return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
                 }
             },
-            { field:'rattanGenusId',title:'rattanGenusId',visible:false }//隐藏不显示
+            { field:'genusId',title:'genusId',visible:false }//隐藏不显示
         ]
     });
 }
@@ -156,25 +158,24 @@ function save() {
                 if(!validateForm.isValid()){
                     return;
                 }
-                var rattanGenusDesc=$('#demo-summernote').summernote('code');
-                var rattanGenusId = $('#rattanGenusId').val();
-                var rattanGenusNameCh = $('#rattanGenusNameCh').val();
-                var rattanGenusNameEn = $('#rattanGenusNameEn').val();
-                var rattanGenusNameLd = $('#rattanGenusNameLd').val();
-                var rattanGenusNameOth = $('#rattanGenusNameOth').val();
+                var genusDesc=$('#demo-summernote').summernote('code');
+                var genusId = $('#genusId').val();
+                var genusNameCh = $('#genusNameCh').val();
+                var genusNameEn = $('#genusNameEn').val();
+                var genusNameLd = $('#genusNameLd').val();
+                var genusNameOth = $('#genusNameOth').val();
                 var sortNum = $('#sortNum').val();
-                // var rattanGenusDesc = $('#rattanGenusDesc').val();
                 var formData={
-                    "rattanGenusDesc": rattanGenusDesc,
-                    "rattanGenusId": rattanGenusId,
-                    "rattanGenusNameCh": rattanGenusNameCh,
-                    "rattanGenusNameEn": rattanGenusNameEn,
-                    "rattanGenusNameLd": rattanGenusNameLd,
-                    "rattanGenusNameOth": rattanGenusNameOth,
+                    "genusDesc": genusDesc,
+                    "genusId": genusId,
+                    "genusNameCh": genusNameCh,
+                    "genusNameEn": genusNameEn,
+                    "genusNameLd": genusNameLd,
+                    "genusNameOth": genusNameOth,
                     "sortNum": sortNum
                 };
-                if (rattanGenusId == "") {//新增
-                    formData.rattanGenusId = 0;
+                if (genusId == "") {//新增
+                    formData.genusId = 0;
                     $.ajax({
                         url: baseUrl + '/rattanGenus/save',		//请求路径
                         type: 'POST',			            //请求方式
@@ -206,7 +207,7 @@ function save() {
                     });
                 } else {//修改
                     $.ajax({
-                        url: baseUrl + '/rattanGenus/update',	    //请求路径
+                        url: baseUrl + '/genus/update',	    //请求路径
                         type: 'PUT',				        //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
@@ -258,14 +259,13 @@ function edit(id) {
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
             if(res.code==200){
-                $('#demo-summernote').summernote('code',res.data.rattanGenusDesc);
-                $('#rattanGenusId').val(res.data.rattanGenusId);
-                $('#rattanGenusNameCh').val(res.data.rattanGenusNameCh);
-                $('#rattanGenusNameEn').val(res.data.rattanGenusNameEn);
-                $('#rattanGenusNameLd').val(res.data.rattanGenusNameLd);
-                $('#rattanGenusNameOth').val(res.data.rattanGenusNameOth);
+                $('#demo-summernote').summernote('code',res.data.genusDesc);
+                $('#genusId').val(res.data.genusId);
+                $('#genusNameCh').val(res.data.genusNameCh);
+                $('#genusNameEn').val(res.data.genusNameEn);
+                $('#genusNameLd').val(res.data.genusNameLd);
+                $('#genusNameOth').val(res.data.genusNameOth);
                 $('#sortNum').val(res.data.sortNum);
-                $('#rattanGenusDesc').val(res.data.rattanGenusDesc);
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }
@@ -366,10 +366,10 @@ function deles() {
             },
             callback: function(result) {//点击按钮的回调事件，result:false-取消，true-确认
                 if (result) {   //确认
-                    var ids=[]; //选中数据的rattanGenusId数组
+                    var ids=[]; //选中数据的genusId数组
                     for(var i=0;i<selectedItems.length;i++){
-                        //循环遍历选中的数据并将rattanGenusId放入到ids数组中
-                        ids.push(selectedItems[i].rattanGenusId);
+                        //循环遍历选中的数据并将genusId放入到ids数组中
+                        ids.push(selectedItems[i].genusId);
                     }
                     $.ajax({    //批量删除
                         //现将数据每个元素用‘,(逗号)’分隔拼接成字符串，再用encodeURI进行编码，最后拼接到url的后面
@@ -416,15 +416,70 @@ function deles() {
         });
     }
 }
+//查看详情
+function check(id) {
+    init_info();
+    $.ajax({
+        url:baseUrl+'/rattanGenus/findId/'+id,		//请求路径
+        type:'GET',			                    //请求方式
+        dataType:"JSON",		                //返回数据类型
+        contentType: 'application/json',        //数据类型
+        success:function(res){	                //请求成功回调函数
+            if(res.code==200){
+                $('#genusNameCh-info').html(res.data.genusNameCh).attr('data-original-title',res.data.genusNameCh);
+                $('#genusNameEn-info').html(res.data.genusNameEn).attr('data-original-title',res.data.genusNameEn);
+                $('#genusNameLd-info').html(res.data.genusNameLd).attr('data-original-title',res.data.genusNameLd);
+                $('#genusNameOth-info').html(res.data.genusNameOth).attr('data-original-title',res.data.genusNameOth);
+                $('#sortNum-info').html(res.data.sortNum).attr('data-original-title',res.data.sortNum);
+                //$('#specDesc-info').html(res.data.spec.specDesc).attr('data-original-title',res.data.specDesc);
+                //$('#demo-summernote').summernote('code',res.data.specDesc).attr('data-original-title',res.data.specDesc);
+                $('#demo-summernote-info').summernote('code',res.data.genusDesc);
+                //$('#genus-info').html(res.data.genus.genusNameCh).attr('data-original-title',res.data.genusNameCh);
+                $('#exampleModal-info').modal('show');
+            }
+            else{
+                $.niftyNoty({
+                    type: 'danger',
+                    icon: 'pli-cross icon-2x',
+                    message: res.msg,
+                    container: 'floating',
+                    timer: 1000
+                });
+            }
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
+
+        }
+    });
+}
 //初始化表单元素的值
 function init_form(){
-    $('#rattanGenusNameCh').val("");
-    $('#rattanGenusNameEn').val("");
-    $('#rattanGenusNameLd').val("");
-    $('#rattanGenusNameOth').val("");
+    $('#genusNameCh').val("");
+    $('#genusNameEn').val("");
+    $('#genusNameLd').val("");
+    $('#genusNameOth').val("");
     $('#sortNum').val("");
-    $('#rattanGenusDesc').val("");
-    $('#rattanGenusId').val("");
+    $('#genusDesc').val("");
+    $('#genusId').val("");
     //$('#registrationForm').data('bootstrapValidator').resetForm();
 }
+//初始化详情元素值
+function init_info(){
 
+    $('#genusId').val("").attr('data-original-title',"");
+    $('#genusNameCh-info').val("").attr('data-original-title',"");
+    $('#genusNameEn-info').val("").attr('data-original-title',"");
+    $('#genusNameLd-info').val("").attr('data-original-title',"");
+    $('#genusNameOth-info').val("").attr('data-original-title',"");
+    $('#sortNum-info').val("").attr('data-original-title',"");
+    $('#genusDesc-info').val("").attr('data-original-title',"");
+
+}
+function init_sunmmernote(){
+    $('#demo-summernote').summernote({
+        height: 244,                 // set editor height
+        minHeight: null,             // set minimum height of editor
+        maxHeight: null,             // set maximum height of editor
+        focus: true                  // set focus to editable area after initializing summernote
+    });
+}

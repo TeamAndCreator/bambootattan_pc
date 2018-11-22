@@ -76,10 +76,11 @@ function init_table(){
                 formatter:function(value,row,index){//格式化，自定义内容
                     var _html = '<button onclick="edit(\''+row.sheEarId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
                     _html += '<button  onclick="dele(\''+row.sheEarId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>'
+                    _html += '<button  onclick="check(\''+row.sheEarId+'\')"class="btn btn-primary btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="查看"><i class="fa fa-search"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'}};
+                    return{css:{'min-width':'100px'}};
                 }
             },
             {
@@ -610,6 +611,38 @@ function deles() {
         });
     }
 }
+//查看详情
+function check(id) {
+    init_info();
+    $.ajax({
+        url:baseUrl+'/sheathear/findId/'+id,		//请求路径
+        type:'GET',			                    //请求方式
+        dataType:"JSON",		                //返回数据类型
+        contentType: 'application/json',        //数据类型
+        success:function(res){	                //请求成功回调函数
+            if(res.code==200){
+                $('#sheathEarDev-info').html(res.data.sheathEarDev).attr('data-original-title',res.data.sheathEarDev);
+                $('#sheathEarShape-info').html(res.data.sheathEarShape).attr('data-original-title',res.data.sheathEarShape);
+                $('#sheathEarMargin-info').html(res.data.sheathEarMargin).attr('data-original-title',res.data.sheathEarMargin);
+
+                $('#spec-check').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
+                $('#exampleModal-check').modal('show');
+            }
+            else{
+                $.niftyNoty({
+                    type: 'danger',
+                    icon: 'pli-cross icon-2x',
+                    message: res.msg,
+                    container: 'floating',
+                    timer: 1000
+                });
+            }
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
+
+        }
+    });
+}
 
 //选中种
 function selectedSpec() {
@@ -632,4 +665,10 @@ function init_form(){
     $('#sheathEarShape').val("");
     $('#sheathEarMargin').val("");
 }
-
+//初始化详情元素的值
+function init_info(){
+    $('#spec-check').val("").attr('data-original-title',"");//清除鼠标停留显示的内容，就是提示内容
+    $('#sheathEarDev-info').val("").attr('data-original-title',"");
+    $('#sheathEarShape-info').val("").attr('data-original-title',"");
+    $('#sheathEarMargin-info').val("").attr('data-original-title',"");
+}

@@ -346,6 +346,82 @@
                         </div>
                     </div>
 
+                    <!--增加查看的模态框-->
+                    <div class="modal fade" id="exampleModal-check" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
+                                    <h4 class="modal-title" id="exampleModalLabel-check">详情</h4>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="form-horizontal">
+                                        <div class="form-group">
+                                            <label for="spikeletShape-info" class="col-sm-2 control-label">小穗形状:</label>
+                                            <div class="col-sm-3">
+                                                <p id="spikeletShape-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                            </div>
+                                            <label for="spikeletBack-info" class="col-sm-2 control-label">小穗被毛:</label>
+                                            <div class="col-sm-3">
+                                                <p id="spikeletBack-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="spikeletFloret-info" class="col-sm-2 control-label">小穗含花朵数:</label>
+                                            <div class="col-sm-3">
+                                                <p id="spikeletFloret-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                            </div>
+                                            <label for="stamenNum-info" class="col-sm-2 control-label">雄蕊数目:</label>
+                                            <div class="col-sm-3">
+                                                <p id="stamenNum-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="glume-info" class="col-sm-2 control-label">颖片:</label>
+                                            <div class="col-sm-3">
+                                                <p id="glume-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                            </div>
+                                            <label for="lodicule-info" class="col-sm-2 control-label">内稃:</label>
+                                            <div class="col-sm-2">
+                                                <p id="lodicule-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="palea-info" class="col-sm-2 control-label">外稃:</label>
+                                            <div class="col-sm-3">
+                                                <p id="palea-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                            </div>
+                                            <label for="lemma-info" class="col-sm-2 control-label">箨舌被毛被粉:</label>
+                                            <div class="col-sm-3">
+                                                <p id="lemma-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label for="spec-check" class="col-sm-2 control-label">种:</label>
+                                            <div class="col-sm-3 input-group">
+                                                <p id="spec-check" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
 
                     <div class="modal fade" id="specModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" data-backdrop="static">
                         <div class="modal-dialog modal-lg"  role="document">
@@ -442,7 +518,7 @@
                                             <li><a href="../Bamboodata-zhongzi/genus.html">竹种属表</a></li>
                                             <li><a href="../Bamboodata-zhongzi/spec.html">竹种信息</a></li>
                                             <li><a href="../Bamboodata-zhongzi/rattangenus.html">藤种属表</a></li>
-                                            <li><a href="../Bamboodata-zhongzi/tenginfo.html">藤种信息</a></li>
+                                            <li><a href="../Bamboodata-zhongzi/rattanspec.html">藤种信息</a></li>
                                             <li><a href="../Bamboodata-zhongzi/unittable.html">单位表</a></li>
                                             <li><a href="../Bamboodata-zhongzi/radio.html">上传视频的地方</a></li>
                                         </ul>
@@ -454,11 +530,11 @@
                                         <ul class="collapse in">
                                             <li><a href="understem.html">地下茎</a></li>
                                             <li><a href="culm.html">竹竿表</a></li>
-                                            <li><a href="Tuoring.html">箨环表</a></li>
-                                            <li><a href="Tuoqiao.html">箨鞘表</a></li>
+                                            <li><a href="sheathnode.html">箨环表</a></li>
+                                            <li><a href="sheath.html">箨鞘表</a></li>
                                             <li ><a href="Tuoer.html">箨耳表</a></li>
-                                            <li><a href="Tuoshe.html">箨舌表</a></li>
-                                            <li><a href="Tuopian.html">箨片表</a></li>
+                                            <li><a href="sheathtongue.html">箨舌表</a></li>
+                                            <li><a href="sheathshell.html">箨片表</a></li>
                                             <li><a href="bambooleaf.html">竹叶表</a></li>
                                             <li class="active-link"><a href="fruit.html">花果形态表</a></li>
                                         </ul>

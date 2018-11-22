@@ -25,6 +25,7 @@ $(function(){
     //初始化表格
     init_table();
     init_spec_table();
+    init_info();
     // //表单验证
     // $('#registrationForm').bootstrapValidator();
 });
@@ -75,11 +76,12 @@ function init_table(){
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
                     var _html = '<button onclick="edit(\''+row.floFruitId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
-                    _html += '<button  onclick="dele(\''+row.floFruitId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>'
+                    _html += '<button  onclick="dele(\''+row.floFruitId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
+                    _html += '<button  onclick="check(\''+row.floFruitId+'\')"class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="查看"><i class="fa fa-search"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'}};
+                    return{css:{'min-width':'100px'}};
                 }
             },
             {
@@ -673,7 +675,43 @@ function deles() {
         });
     }
 }
+//查看详情
+function check(id) {
+    init_info();
+    $.ajax({
+        url:baseUrl+'/flowerfruit/findId/'+id,		//请求路径
+        type:'GET',			                    //请求方式
+        dataType:"JSON",		                //返回数据类型
+        contentType: 'application/json',        //数据类型
+        success:function(res){	                //请求成功回调函数
+            if(res.code==200){
+                $('#spikeletShape-info').html(res.data.spikeletShape).attr('data-original-title',res.data.spikeletShape);
+                $('#spikeletBack-info').html(res.data.spikeletBack).attr('data-original-title',res.data.spikeletBack);
+                $('#spikeletFloret-info').html(res.data.spikeletFloret).attr('data-original-title',res.data.spikeletFloret);
+                $('#stamenNum-info').html(res.data.stamenNum).attr('data-original-title',res.data.stamenNum);
+                $('#glume-info').html(res.data.glume).attr('data-original-title',res.data.glume);
+                $('#lodicule-info').html(res.data.lodicule).attr('data-original-title',res.data.lodicule);
+                $('#palea-info').html(res.data.palea).attr('data-original-title',res.data.palea);
+                $('#lemma-info').html(res.data.lemma).attr('data-original-title',res.data.lemma);
 
+                $('#spec-check').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
+                $('#exampleModal-check').modal('show');
+            }
+            else{
+                $.niftyNoty({
+                    type: 'danger',
+                    icon: 'pli-cross icon-2x',
+                    message: res.msg,
+                    container: 'floating',
+                    timer: 1000
+                });
+            }
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
+
+        }
+    });
+}
 //选中种
 function selectedSpec() {
     //选中的数据
@@ -700,4 +738,16 @@ function init_form(){
     $('#palea').val("");
     $('#lemma').val("");
 }
-
+//初始化详情元素的值
+function init_info(){
+    $('#spec-check').val("").attr('data-original-title',"");//清除鼠标停留显示的内容，就是提示内容
+    $('#spikeletShape-info').val("").attr('data-original-title',"");
+    $('#spikeletBack-info').val("").attr('data-original-title',"");
+    $('#spikeletFloret-info').val("").attr('data-original-title',"");
+    $('#stamenNum-info').val("").attr('data-original-title',"");
+    $('#culmStem-info').val("").attr('data-original-title',"");
+    $('#glume-info').val("").attr('data-original-title',"");
+    $('#lodicule-info').val("").attr('data-original-title',"");
+    $('#palea-info').val("").attr('data-original-title',"");
+    $('#lemma-info').val("").attr('data-original-title',"");
+}
