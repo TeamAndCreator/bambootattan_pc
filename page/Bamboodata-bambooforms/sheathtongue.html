@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>箨鞘表 | Nifty - Admin Template</title>
+    <title>箨舌表 | Nifty - Admin Template</title>
 
 
     <!--STYLESHEET-->
@@ -22,6 +22,12 @@
     <link href="../../css/nifty.min.css" rel="stylesheet">
 
 
+    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
+    <link href="../../css/demo/nifty-demo-icons.min.css" rel="stylesheet">
+
+
+    <!--Demo [ DEMONSTRATION ]-->
+    <link href="../../css/demo/nifty-demo.min.css" rel="stylesheet">
 
     <!--Nifty Premium Icon [ DEMONSTRATION ]-->
     <link href="../../css/demo/nifty-demo-icons.min.css" rel="stylesheet">
@@ -29,24 +35,18 @@
     <!--font-awesome.css [ OPTIONAL ]-->
     <link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
-
-    <!--Demo [ DEMONSTRATION ]-->
-    <link href="../../css/demo/nifty-demo.min.css" rel="stylesheet">
-
-
-
     <!--Bootstrap Table [ OPTIONAL ]-->
     <link href="../../plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
 
 
     <!--X-editable [ OPTIONAL ]-->
     <link href="../../plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">
+
     <!-- common [ OPTIONAL ] -->
     <link href="../../css/bambootattan_pc_css/common.css" rel="stylesheet">
 
     <!-- Theme -->
     <link id="theme" href="../../css/themes/type-c/theme-lime.min.css" rel="stylesheet">
-
 
 
 
@@ -88,18 +88,18 @@
     <!--X-editable [ OPTIONAL ]-->
     <script src="../../plugins/x-editable/js/bootstrap-editable.min.js"></script>
 
-    <!-- bootbox -->
-    <script src="../../plugins/bootbox/bootbox.js"></script>
+
     <!--Bootstrap Table [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/bootstrap-table.min.js"></script>
-
+    <!-- bootbox -->
+    <script src="../../plugins/bootbox/bootbox.js"></script>
 
     <!--Bootstrap Table Extension [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
-
     <script src="../../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
-
     <script src="../../js/bambootattan_pc_js/common.js"></script>
+
+
 
     <!--=================================================
 
@@ -235,19 +235,17 @@
 
             <!--Page content-->
             <div id="page-content">
-
             <!--Custom Toolbar-->
                 <!--===================================================-->
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title">箨鞘表</h3>
+                        <h3 class="panel-title">箨舌表</h3>
                     </div>
                     <div class="panel-body">
                         <div id="btn_area">
                             <button id="btn_add" class="btn btn-success" ><i class="demo-pli-plus"></i> 增加</button>
                             <button id="btn_delete" class="btn btn-danger"><i class="demo-pli-cross"></i> 删除</button>
                         </div>
-
 
 
                         <!--增加按钮的模态框-->
@@ -259,64 +257,54 @@
                                         <h4 class="modal-title" id="exampleModalLabel">新增</h4>
                                     </div>
 
-
                                     <div class="modal-body">
-                                        <form id="registrationForm" class="form-horizontal">
+                                        <form class="form-horizontal">
                                             <div class="panel-body">
-                                                <div class="form-group">
-                                                    <label for="sheathShedTime" class="col-sm-3 control-label">箨鞘早落:</label>
-                                                    <div class="col-sm-5">
-                                                        <input id="sheathShedTime" class="form-control input-sm" name="sheathShedTime" placeholder="" type="text"
-                                                               data-bv-field="sheathShedTime"   data-bv-group=".col-sm-4" data-bv-notempty="true" data-bv-notempty-message="箨鞘是否隆起">
+                                                <div  id="registrationForm" class="form-group">
+                                                    <div class="form-group">
+                                                        <label for="sheathTongueColor" class="col-sm-3 control-label">箨舌颜色:</label>
+                                                        <div class="col-sm-5">
+                                                            <input id="sheathTongueColor" class="form-control input-sm" name="sheathTongueColor" placeholder="" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="sheathTongueHeight" class="col-sm-3 control-label">箨舌高度:</label>
+                                                        <div class="col-sm-5">
+                                                            <input id="sheathTongueHeight" class="form-control input-sm" name="sheathTongueHeight" placeholder="" type="text">
+                                                        </div>
                                                     </div>
 
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="sheathChar" class="col-sm-3 control-label">箨鞘质地:</label>
-                                                    <div class="col-sm-5">
-                                                        <input id="sheathChar" class="form-control input-sm" name="sheathChar" placeholder="" type="text">
+                                                    <div class="form-group">
+                                                        <label for="sheathTongueMarginShape" class="col-sm-3 control-label">箨舌边缘形状:</label>
+                                                        <div class="col-sm-5">
+                                                            <input id="sheathTongueMarginShape" class="form-control input-sm" name="sheathTongueMarginShape" placeholder="" type="text">
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="form-group">
-                                                    <label for="sheathTopForm" class="col-sm-3 control-label">箨鞘先端形态:</label>
-                                                    <div class="col-sm-5">
-                                                        <input id="sheathTopForm" class="form-control input-sm" name="sheathChar" placeholder="" type="text">
+                                                    <div class="form-group">
+                                                        <label for="sheathTongueBackPowderv" class="col-sm-3 control-label">箨舌被毛被粉:</label>
+                                                        <div class="col-sm-5">
+                                                            <input id="sheathTongueBackPowderv" class="form-control input-sm" name="sheathTongueBackPowderv" placeholder="" type="text">
+                                                        </div>
                                                     </div>
-                                                </div>
 
-
-                                                <div class="form-group">
-                                                    <label for="sheathBackPowder" class="col-sm-3 control-label">箨鞘背面被毛被粉:</label>
-                                                    <div class="col-sm-5">
-                                                        <input id="sheathBackPowder" class="form-control input-sm" name="sheathBackPowder" placeholder="" type="text">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="sheathMarginForm" class="col-sm-3 control-label">箨鞘边缘形态:</label>
-                                                    <div class="col-sm-5">
-                                                        <input id="sheathMarginForm" class="form-control input-sm" name="sheathMarginForm" placeholder="" type="text">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="spec" class="col-sm-3 control-label">种:</label>
-                                                    <div class="col-sm-5 input-group">
-                                                        <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text">
-                                                        <input id="specId" type="hidden" value="">
-                                                        <input id="genusId" type="hidden" value="">
-                                                        <span class="input-group-btn">
+                                                    <div class="form-group">
+                                                        <label for="spec" class="col-sm-3 control-label">种:</label>
+                                                        <div class="col-sm-5 input-group">
+                                                            <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text">
+                                                            <input id="specId" type="hidden" value="">
+                                                            <input id="genusId" type="hidden" value="">
+                                                            <span class="input-group-btn">
                                                                 <button id="btn_select_spec" class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
                                                             </span>
-                                                        <input id="sheNodeId" type="hidden" value="" />
+                                                            <input id="sheTogId" type="hidden" value="" />
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <!--<input id="underStemId" type="hidden" value="" />-->
                                         </form>
                                     </div>
-
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                                         <button id="btn_save" type="button" class="btn btn-primary">保存</button>
@@ -324,6 +312,66 @@
                                 </div>
                             </div>
                         </div>
+                        <!--增加查看的模态框-->
+                        <div class="modal fade" id="exampleModal-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
+                                        <h4 class="modal-title" id="exampleModalLabel-check">详情</h4>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <div class="form-horizontal">
+                                            <div class="form-group">
+                                                <label for="sheathTongueColor-info" class="col-sm-2 control-label">箨舌颜色:</label>
+                                                <div class="col-sm-3">
+                                                    <p id="sheathTongueColor-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="sheathTongueHeight-info" class="col-sm-2 control-label">箨舌高度:</label>
+                                                <div class="col-sm-3">
+                                                    <p id="sheathTongueHeight-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="sheathTongueMarginShape-info" class="col-sm-2 control-label">箨舌边缘形状:</label>
+                                                <div class="col-sm-3">
+                                                    <p id="sheathTongueMarginShape-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="sheathTongueBackPowderv-info" class="col-sm-2 control-label">箨舌被毛被粉:</label>
+                                                <div class="col-sm-3">
+                                                    <p id="sheathTongueBackPowderv-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
+
+
+
+
+                                            <div class="form-group">
+
+                                                <label for="spec-info" class="col-sm-2 control-label">种:</label>
+                                                <div class="col-sm-3 input-group">
+                                                    <p id="spec-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
 
 
                         <div class="modal fade" id="specModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" data-backdrop="static">
@@ -421,7 +469,7 @@
                                                     <li><a href="../Bamboodata-zhongzi/genus.html">竹种属表</a></li>
                                                     <li><a href="../Bamboodata-zhongzi/spec.html">竹种信息</a></li>
                                                     <li><a href="../Bamboodata-zhongzi/rattangenus.html">藤种属表</a></li>
-                                                    <li><a href="../Bamboodata-zhongzi/tenginfo.html">藤种信息</a></li>
+                                                    <li><a href="../Bamboodata-zhongzi/rattanspec.html">藤种信息</a></li>
                                                     <li><a href="../Bamboodata-zhongzi/unittable.html">单位表</a></li>
                                                     <li><a href="../Bamboodata-zhongzi/radio.html">上传视频的地方</a></li>
                                                 </ul>
@@ -433,11 +481,11 @@
                                                 <ul class="collapse in">
                                                     <li><a href="understem.html">地下茎</a></li>
                                                     <li><a href="culm.html">竹竿表</a></li>
-                                                    <li><a href="Tuoring.html">箨环表</a></li>
-                                                    <li class="active-link"><a href="Tuoqiao.html">箨鞘表</a></li>
+                                                    <li><a href="sheathnode.html">箨环表</a></li>
+                                                    <li><a href="sheath.html">箨鞘表</a></li>
                                                     <li><a href="Tuoer.html">箨耳表</a></li>
-                                                    <li><a href="Tuoshe.html">箨舌表</a></li>
-                                                    <li><a href="Tuopian.html">箨片表</a></li>
+                                                    <li class="active-link"><a href="sheathtongue.html">箨舌表</a></li>
+                                                    <li><a href="sheathshell.html">箨片表</a></li>
                                                     <li><a href="bambooleaf.html">竹叶表</a></li>
                                                     <li><a href="fruit.html">花果形态表</a></li>
                                                 </ul>
@@ -484,6 +532,7 @@
 
                                         </ul>
                                     </li>
+
 
                                     <li>
                                         <a href="#">
@@ -607,8 +656,9 @@
     <!-- END OF CONTAINER -->
 
 
+
 </div>
-<script src="../../js/bambootattan_pc_js/Bamboodata/bambooforms/Tuoqiao.js"></script>
+<script src="../../js/bambootattan_pc_js/Bamboodata/bambooforms/sheathtongue.js"></script>
 </body>
 </html>
 

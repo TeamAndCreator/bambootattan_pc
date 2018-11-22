@@ -24,7 +24,8 @@
 
     <!--Nifty Premium Icon [ DEMONSTRATION ]-->
     <link href="../../css/demo/nifty-demo-icons.min.css" rel="stylesheet">
-
+    <!--font-awesome.css [ OPTIONAL ]-->
+    <link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
     <!--Demo [ DEMONSTRATION ]-->
     <link href="../../css/demo/nifty-demo.min.css" rel="stylesheet">
@@ -318,18 +319,89 @@
                                 </div>
                             </div>
                         </div>
+                        <!--查看的模态框-->
+                        <div class="modal fade" id="exampleModal-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-info" data-backdrop="static">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
+                                        <h4 class="modal-title" id="exampleModalLabel-info">详情</h4>
+                                    </div>
 
-                        <!-- 数据表格 -->
+                                    <div class="modal-body">
+                                        <div class="form-horizontal">
+                                            <div class="form-group">
+                                                <label for="genusNameCh-info" class="col-sm-2 control-label">中文名:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="genusNameCh-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                                <label for="genusNameEn-info" class="col-sm-2 control-label">英文名:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="genusNameEn-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="genusNameLd-info" class="col-sm-2 control-label">拉丁名:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="genusNameLd-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                                <label for="genusNameOth-info" class="col-sm-2 control-label">别名:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="genusNameOth-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="sortNum-info" class="col-sm-2 control-label">序号:</label>
+                                                <div class="col-sm-2">
+                                                    <p id="sortNum-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
+
+
+
+
+
+
+                                            <div id="page-conten-info">
+                                                <div class="panel">
+                                                    <div class="panel-heading">
+                                                        <h3 class="panel-title">描述</h3>
+                                                    </div>
+                                                    <div class="panel-body">
+
+                                                        <!--Summernote-->
+                                                        <!--===================================================-->
+                                                        <div id="demo-summernote-info">
+                                                            <h4><span
+                                                                    style="color: rgb(206, 198, 206); font-family: inherit; line-height: 1.1;"></span><br>
+                                                            </h4><h4><font color="#9c9c94"></font></h4>
+                                                        </div>
+                                                        <!--===================================================-->
+                                                        <!-- End Summernote -->
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <table id="data_table" class="table"></table>
                     </div>
+                </div>
             </div>
-        </div>
-        <!--===================================================-->
-    </div>
-
-
-
             <!--===================================================-->
+        </div>
+
+
+        <!--===================================================-->
             <!--END CONTENT CONTAINER-->
 
 
@@ -363,7 +435,7 @@
                                                     <li class="active-link"><a href="genus.html">竹种属表</a></li>
                                                     <li><a href="spec.html">竹种信息</a></li>
                                                     <li><a href="rattangenus.html">藤种属表</a></li>
-                                                    <li><a href="tenginfo.html">藤种信息</a></li>
+                                                    <li><a href="rattanspec.html">藤种信息</a></li>
                                                     <li><a href="unittable.html">单位表</a></li>
                                                     <li><a href="radio.html">上传视频的地方</a></li>
                                                 </ul>
@@ -375,11 +447,11 @@
                                                 <ul class="collapse">
                                                     <li><a href="../Bamboodata-bambooforms/understem.html">地下茎</a></li>
                                                     <li><a href="../Bamboodata-bambooforms/culm.html">竹竿表</a></li>
-                                                    <li><a href="../Bamboodata-bambooforms/Tuoring.html">箨环表</a></li>
-                                                    <li><a href="../Bamboodata-bambooforms/Tuoqiao.html">箨鞘表</a></li>
+                                                    <li><a href="../Bamboodata-bambooforms/sheathnode.html">箨环表</a></li>
+                                                    <li><a href="../Bamboodata-bambooforms/sheath.html">箨鞘表</a></li>
                                                     <li><a href="../Bamboodata-bambooforms/Tuoer.html">箨耳表</a></li>
-                                                    <li><a href="../Bamboodata-bambooforms/Tuoshe.html">箨舌表</a></li>
-                                                    <li><a href="../Bamboodata-bambooforms/Tuopian.html">箨片表</a></li>
+                                                    <li><a href="../Bamboodata-bambooforms/sheathtongue.html">箨舌表</a></li>
+                                                    <li><a href="../Bamboodata-bambooforms/sheathshell.html">箨片表</a></li>
                                                     <li><a href="../Bamboodata-bambooforms/bambooleaf.html">竹叶表</a></li>
                                                     <li><a href="../Bamboodata-bambooforms/fruit.html">花果形态表</a></li>
                                                 </ul>

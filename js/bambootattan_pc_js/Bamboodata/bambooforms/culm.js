@@ -26,6 +26,7 @@ $(function(){
     //初始化表格
     init_table();
     init_spec_table();
+    init_info();
     // //表单验证
     // $('#registrationForm').bootstrapValidator();
 });
@@ -80,7 +81,7 @@ function init_table(){
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
-                    var _html = '<button onclick="edit(\''+row.culmId+'\')" class="btn btn-info btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="修改"><i class="demo-psi-pen-5"></i></button>';
+                    var _html = '<button onclick="edit(\''+row.culmId+'\')" class="btn btn-info btn-xs add-tooltip" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
                     _html += '<button  onclick="dele(\''+row.culmId+'\')"class="btn btn-danger btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="删除"><i class="demo-pli-cross"></i></button>';
                     _html += '<button  onclick="check(\''+row.culmId+'\')"class="btn btn-primary btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="查看"><i class="fa fa-search"></i></button>'
                     return _html;

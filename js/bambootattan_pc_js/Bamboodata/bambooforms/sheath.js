@@ -25,6 +25,7 @@ $(function(){
     //初始化表格
     init_table();
     init_spec_table();
+    init_info();
     // //表单验证
     // $('#registrationForm').bootstrapValidator();
 });
@@ -75,11 +76,12 @@ function init_table(){
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
                     var _html = '<button onclick="edit(\''+row.sheId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
-                    _html += '<button  onclick="dele(\''+row.sheId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>'
+                    _html += '<button  onclick="dele(\''+row.sheId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
+                    _html += '<button  onclick="check(\''+row.sheId+'\')"class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="查看"><i class="fa fa-search"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'}};
+                    return{css:{'min-width':'100px'}};
                 }
             },
             {
@@ -636,7 +638,42 @@ function deles() {
         });
     }
 }
+//查看详情
+function check(id) {
+    init_info();
+    $.ajax({
+        url:baseUrl+'/sheath/findId/'+id,		//请求路径
+        type:'GET',			                    //请求方式
+        dataType:"JSON",		                //返回数据类型
+        contentType: 'application/json',        //数据类型
+        success:function(res){	                //请求成功回调函数
+            if(res.code==200){
+                $('#sheathShedTime-info').html(res.data.sheathShedTime).attr('data-original-title',res.data.sheathShedTime);
+                $('#sheathChar-info').html(res.data.sheathChar).attr('data-original-title',res.data.sheathChar);
+                $('#culmColor-info').html(res.data.culmColor).attr('data-original-title',res.data.culmColor);
+                $('#sheathTopForm-info').html(res.data.sheathTopForm).attr('data-original-title',res.data.sheathTopForm);
+                $('#culmStem-info').html(res.data.culmStem).attr('data-original-title',res.data.culmStem);
+                $('#sheathBackPowder-info').html(res.data.sheathBackPowder).attr('data-original-title',res.data.sheathBackPowder);
+                $('#sheathMarginForm-info').html(res.data.sheathMarginForm).attr('data-original-title',res.data.sheathMarginForm);
 
+                $('#spec-check').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
+                $('#exampleModal-check').modal('show');
+            }
+            else{
+                $.niftyNoty({
+                    type: 'danger',
+                    icon: 'pli-cross icon-2x',
+                    message: res.msg,
+                    container: 'floating',
+                    timer: 1000
+                });
+            }
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
+
+        }
+    });
+}
 //选中种
 function selectedSpec() {
     //选中的数据
@@ -648,6 +685,8 @@ function selectedSpec() {
         $("#specModal").modal('hide');
     }
 }
+
+
 //初始化表单元素的值
 function init_form(){
     $('#spec').val("");
@@ -660,4 +699,14 @@ function init_form(){
     $('#sheathBackPowder').val("");
     $('#sheathMarginForm').val("");
 }
-
+//初始化详情元素的值
+function init_info(){
+    $('#spec-check').val("").attr('data-original-title',"");//清除鼠标停留显示的内容，就是提示内容
+    $('#sheathShedTime-info').val("").attr('data-original-title',"");
+    $('#sheathChar-info').val("").attr('data-original-title',"");
+    $('#culmColor-info').val("").attr('data-original-title',"");
+    $('#sheathTopForm-info').val("").attr('data-original-title',"");
+    $('#culmStem-info').val("").attr('data-original-title',"");
+    $('#sheathBackPowder-info').val("").attr('data-original-title',"");
+    $('#sheathMarginForm-info').val("").attr('data-original-title',"");
+}

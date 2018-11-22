@@ -1,7 +1,7 @@
 var queryPageUrl='';
 var querySpecPageUrl='';
 $(function(){
-    queryPageUrl = baseUrl+'/sheathshell/findAllQuery';
+    queryPageUrl = baseUrl+'/sheathnode/findAllQuery';
     querySpecPageUrl = baseUrl+'/spec/findAllQuery';
     //新增点击事件
     $('#btn_add').on('click',function () {
@@ -21,8 +21,7 @@ $(function(){
     $('#btn_spec_ok').on('click',selectedSpec);
 
     //关闭选择种的模态框
-    $("#specModal").on('hidden.bs.modal',openModalClass);
-
+    $("#specModal").on('hidden.bs.modal',openModalClass)
     //初始化表格
     init_table();
     init_spec_table();
@@ -61,12 +60,7 @@ function init_table(){
                 search:params.search
             }
         },
-        onPostBody:function(){
-            $('[data-toggle="tooltip"]').tooltip();
-        },
         cache:false,//是否使用緩存
-        fixedColumns: true,//固定列
-        fixedNumber:3,//固定前三列
         columns:[//列数据
 
             {
@@ -80,9 +74,9 @@ function init_table(){
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
-                    var _html = '<button onclick="edit(\''+row.sheShellId+'\')" class="btn btn-info btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="修改"><i class="demo-psi-pen-5"></i></button>';
-                    _html += '<button  onclick="dele(\''+row.sheShellId+'\')"class="btn btn-danger btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="删除"><i class="demo-pli-cross"></i></button>';
-                    _html += '<button  onclick="check(\''+row.sheShellId+'\')"class="btn btn-primary btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="查看"><i class="glyphicon glyphicon-search"></i></button>'
+                    var _html = '<button onclick="edit(\''+row.sheNodeId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
+                    _html += '<button  onclick="dele(\''+row.sheNodeId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
+                    _html += '<button  onclick="check(\''+row.sheNodeId+'\')"class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="查看"><i class="fa fa-search"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
@@ -103,8 +97,8 @@ function init_table(){
                 }
             },
             {
-                field:'sheathShellShape',//数据列
-                title:'箨片形态',//数据列名称
+                field:'sheathNode',//数据列
+                title:'箨鞘是否隆起',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -113,8 +107,8 @@ function init_table(){
                 }
             },
             {
-                field:'sheathShellColor',//数据列
-                title:'箨片颜色',//数据列名称
+                field:'sheathNodeBack',//数据列
+                title:'箨环被毛',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -122,71 +116,6 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 }
             },
-            {
-                field:'sheathShellFall',//数据列
-                title:'箨片是否易脱落',//数据列名称
-                // visible:false,
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field) {
-                    return {css: {'min-width': '80px'}};
-                }
-            },
-            {
-                field:'sheathShellTopShape',//数据列
-                title:'箨片先端形状',//数据列名称
-                sortable:true,//可排序
-                // visible:false,
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field) {
-                    return {css: {'min-width': '80px'}};
-                }
-            },
-            {
-                field:'sheathShellBaseShape',//数据列
-                title:'箨片基部形态',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field) {
-                    return {css: {'min-width': '80px'}};
-                }
-            },
-            {
-                field:'sheathShellMargin',//数据列
-                title:'箨片边缘形态',//数据列名称
-                sortable:true,//可排序
-                // visible:false,
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field) {
-                    return {css: {'min-width': '80px'}};
-                }
-            },
-            {
-                field:'sheathShellBackPowder',//数据列
-                title:'箨片背面被毛被粉',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field) {
-                    return {css: {'min-width': '80px'}};
-                }
-            },
-            {
-                field:'sheathRatioOf',//数据列
-                title:'箨片基部与箨鞘宽度之比\n',//数据列名称
-                sortable:true,//可排序
-                // visible:false,
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field) {
-                    return {css: {'min-width': '80px'}};
-                }
-            },
-
             /*
             {
                 field:'underStemId',//数据列
@@ -198,10 +127,9 @@ function init_table(){
                     return{css:{'min-width':'80px'}};
                 }
             },*/
-            { field:'sheShellId',title:'sheShellId',visible:false }//隐藏不显示
+            { field:'sheNodeId',title:'sheNodeId',visible:false }//隐藏不显示
         ]
     });
-
 }
 
 //初始化种表格
@@ -413,39 +341,25 @@ function save() {
         callback: function (result) {
             if (result) {
                 var specId = $('#specId').val();
-                var sheShellId=$('#sheShellId').val();
-                var sheathShellShape = $('#sheathShellShape').val();
-                var sheathShellColor = $('#sheathShellColor').val();
-                var sheathShellFall = $('#sheathShellFall').val();
-                var sheathShellTopShapeShape = $('#sheathShellTopShapeShape').val();
-                var sheathShellBaseShape=$('#sheathShellBaseShape').val();
-                var sheathShellMargin = $('#sheathShellMargin').val();
-                var sheathShellBackPowder = $('#sheathShellBackPowder').val();
-                var sheathRatioOf = $('#sheathRatioOf').val();
-
+                var sheNodeId=$('#sheNodeId').val();
+                var sheathNode = $('#sheathNode').val();
+                var sheathNodeBack=$('#sheathNodeBack').val();
                 var genusId=$('#genusId').val();
                 var formData = {
-                    "sheShellId":sheShellId,
+                    "sheNodeId":sheNodeId,
                     "spec":{
                         'specId':specId,
                         'genus':{
                             'genusId':genusId
                         }
                     },
-                    "sheathShellShape":sheathShellShape,
-                    "sheathShellColor":sheathShellColor,
-                    "sheathShellFall":sheathShellFall,
-                    "sheathShellTopShapeShape":sheathShellTopShapeShape,
-                    "sheathShellBaseShape": sheathShellBaseShape,
-                    "sheathShellMargin":sheathShellMargin,
-                    "sheathShellBackPowder": sheathShellBackPowder,
-                    "sheathRatioOf": sheathRatioOf
-
+                    "sheathNode":sheathNode,
+                    "sheathNodeBack":sheathNodeBack
                 };
-                if (sheShellId == "") {//新增
+                if (sheNodeId == "") {//新增
                     formData.specId = 0;
                     $.ajax({
-                        url: baseUrl + '/sheathshell/save',		//请求路径
+                        url: baseUrl + '/sheathnode/save',		//请求路径
                         type: 'POST',			            //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
@@ -475,7 +389,7 @@ function save() {
                     });
                 } else {//修改
                     $.ajax({
-                        url: baseUrl + '/sheathshell/update',	    //请求路径
+                        url: baseUrl + '/sheathnode/update',	    //请求路径
                         type: 'PUT',				        //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
@@ -521,25 +435,18 @@ function save() {
 function edit(id) {
     init_form();
     $.ajax({
-        url:baseUrl+'/sheathshell/findId/'+id,		//请求路径
+        url:baseUrl+'/sheathnode/findId/'+id,		//请求路径
         type:'GET',			                    //请求方式
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
             if(res.code==200){
-                $('#sheShellId').val(res.data.sheShellId);
-                $('#sheathShellShape').val(res.data.sheathShellShape);
-                $('#sheathShellColor').val(res.data.sheathShellColor);
-                $('#sheathShellFall').val(res.data.sheathShellFall);
-                $('#sheathShellTopShapeShape').val(res.data.sheathShellTopShapeShape);
-                $('#sheathShellBaseShape').val(res.data.sheathShellBaseShape);
-                $('#sheathShellMargin').val(res.data.sheathShellMargin);
-                $('#sheathShellBackPowder').val(res.data.sheathShellBackPowder);
-                $('#sheathRatioOf').val(res.data.sheathRatioOf);
-
-
+                $('#sheNodeId').val(res.data.sheNodeId);
+                $('#sheathNode').val(res.data.sheathNode);
+                $('#sheathNodeBack').val(res.data.sheathNodeBack);
                 $('#spec').val(res.data.spec.specNameCh);
                 $('#specId').val(res.data.spec.specId);
+                $('#genusId').val(res.data.spec.genus.genusId);
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }
@@ -572,7 +479,7 @@ function dele(gid){
         callback: function(result) {
             if (result) {
                 $.ajax({
-                    url:baseUrl+'/sheathshell/delete/'+gid,   //请求路径,单个删除
+                    url:baseUrl+'/sheathnode/delete/'+gid,   //请求路径,单个删除
                     type:'DELETE',				        //请求方式
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
@@ -643,11 +550,11 @@ function deles() {
                     var ids=[]; //选中数据的genusId数组
                     for(var i=0;i<selectedItems.length;i++){
                         //循环遍历选中的数据并将genusId放入到ids数组中
-                        ids.push(selectedItems[i].sheShellId);
+                        ids.push(selectedItems[i].sheNodeId);
                     }
                     $.ajax({    //批量删除
                         //现将数据每个元素用‘,(逗号)’分隔拼接成字符串，再用encodeURI进行编码，最后拼接到url的后面
-                        url: baseUrl+'/sheathshell/deleteByIds?ids='+encodeURI(ids.join(',')),
+                        url: baseUrl+'/sheathnode/deleteByIds?ids='+encodeURI(ids.join(',')),
                         type:'DELETE',
                         contentType: 'application/json',//数据类型
                         success:function(res){	        //请求成功回调函数
@@ -694,20 +601,14 @@ function deles() {
 function check(id) {
     init_info();
     $.ajax({
-        url:baseUrl+'/sheathshell/findId/'+id,		//请求路径
+        url:baseUrl+'/sheathnode/findId/'+id,		//请求路径
         type:'GET',			                    //请求方式
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
             if(res.code==200){
-                $('#sheathShellShape-info').html(res.data.sheathShellShape).attr('data-original-title',res.data.sheathShellShape);
-                $('#sheathShellColor-info').html(res.data.sheathShellColor).attr('data-original-title',res.data.sheathShellColor);
-                $('#sheathShellFall-info').html(res.data.sheathShellFall).attr('data-original-title',res.data.sheathShellFall);
-                $('#sheathShellTopShape-info').html(res.data.sheathShellTopShape).attr('data-original-title',res.data.sheathShellTopShape);
-                $('#sheathShellBaseShape-info').html(res.data.sheathShellBaseShape).attr('data-original-title',res.data.sheathShellBaseShape);
-                $('#sheathShellMargin-info').html(res.data.sheathShellMargin).attr('data-original-title',res.data.sheathShellMargin);
-                $('#sheathShellBackPowder-info').html(res.data.sheathShellBackPowder).attr('data-original-title',res.data.sheathShellBackPowder);
-                $('#sheathRatioOf-info').html(res.data.sheathRatioOf).attr('data-original-title',res.data.sheathRatioOf);
+                $('#sheathNode-info').html(res.data.sheathNode).attr('data-original-title',res.data.sheathNode);
+                $('#sheathNodeBack-info').html(res.data.sheathNodeBack).attr('data-original-title',res.data.sheathNodeBack);
 
 
                 $('#spec-info').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
@@ -742,29 +643,14 @@ function selectedSpec() {
 //初始化表单元素的值
 function init_form(){
     $('#spec').val("");
-    $('#sheShellId').val("");
+    $('#sheNodeId').val("");
     $('#specId').val("");
     $('#genusId').val("");
-    $('#sheathShellShape').val("");
-    $('#sheathShellColor').val("");
-    $('#sheathShellFall').val("");
-    $('#sheathShellTopShapeShape').val("");
-    $('#sheathShellBaseShape').val("");
-    $('#sheathShellMargin').val("");
-    $('#sheathShellBackPowder').val("");
-    $('#sheathRatioOf').val("");
-
+    $('#sheathNode').val("");
+    $('#sheathNodeBack').val("");
 }
 //初始化详情元素的值
 function init_info(){
-    $('#spec-info').val("").attr('data-original-title',"");//清除鼠标停留显示的内容，就是提示内容
-    $('#sheathShellShape-info').val("").attr('data-original-title',"");
-    $('#sheathShellColor-info').val("").attr('data-original-title',"");
-    $('#sheathShellFall-info').val("").attr('data-original-title',"");
-    $('#sheathShellTopShape-info').val("").attr('data-original-title',"");
-    $('#sheathShellBaseShape').val("").attr('data-original-title',"");
-    $('#sheathShellMargin-info').val("").attr('data-original-title',"");
-    $('#sheathShellBackPowder-info').val("").attr('data-original-title',"");
-    $('#sheathRatioOf-info').val("").attr('data-original-title',"");
-
+    $('#sheathNode-info').val("").attr('data-original-title',"");//清除鼠标停留显示的内容，就是提示内容
+    $('#sheathNodeBack-info').val("").attr('data-original-title',"");
 }
