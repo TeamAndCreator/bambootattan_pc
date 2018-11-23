@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>藤种性质 | Nifty - Admin Template</title>
+    <title>竹种性质 | Nifty - Admin Template</title>
 
 
     <!--STYLESHEET-->
@@ -20,7 +20,8 @@
 
     <!--Nifty Stylesheet [ REQUIRED ]-->
     <link href="../../css/nifty.min.css" rel="stylesheet">
-
+    <!--font-awesome.css [ OPTIONAL ]-->
+    <link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
     <!--Nifty Premium Icon [ DEMONSTRATION ]-->
     <link href="../../css/demo/nifty-demo-icons.min.css" rel="stylesheet">
@@ -37,9 +38,9 @@
 
     <!--X-editable [ OPTIONAL ]-->
     <link href="../../plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">
-
     <!-- common [ OPTIONAL ] -->
     <link href="../../css/bambootattan_pc_css/common.css" rel="stylesheet">
+
 
     <!-- Theme -->
     <link id="theme" href="../../css/themes/type-c/theme-lime.min.css" rel="stylesheet">
@@ -77,7 +78,8 @@
 
     <!--Demo script [ DEMONSTRATION ]-->
     <script src="../../js/demo/nifty-demo.min.js"></script>
-
+    <!-- common [ OPTIONAL ] -->
+    <script src="../../js/bambootattan_pc_js/common.js"></script>
 
     <!--Bootstrap Table Sample [ SAMPLE ]-->
     <script src="../../js/demo/tables-bs-table.js"></script>
@@ -85,7 +87,8 @@
 
     <!--X-editable [ OPTIONAL ]-->
     <script src="../../plugins/x-editable/js/bootstrap-editable.min.js"></script>
-
+    <!-- bootbox -->
+    <script src="../../plugins/bootbox/bootbox.js"></script>
 
     <!--Bootstrap Table [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/bootstrap-table.min.js"></script>
@@ -225,7 +228,7 @@
             <!--Page Title-->
             <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
             <div id="page-title">
-                <h1 class="page-header text-overflow">藤种性质</h1>
+                <h1 class="page-header text-overflow">竹种性质</h1>
             </div>
 
 
@@ -241,7 +244,7 @@
                 <!--===================================================-->
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title">导管形态特征</h3>
+                        <h3 class="panel-title">纤管形态</h3>
                     </div>
                     <div class="panel-body">
                         <div id="btn_area">
@@ -259,53 +262,136 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
                                         <h4 class="modal-title" id="exampleModalLabel">新增</h4>
                                     </div>
+
+
                                     <div class="modal-body">
-                                        <form class="form-horizontal">
+                                        <form id="registrationForm" class="form-horizontal">
                                             <div class="panel-body">
                                                 <div class="form-group">
-                                                    <label for="Chinesename" class="col-sm-2 control-label">中文名:</label>
-                                                    <div class="col-sm-4">
-                                                        <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                    <label for="vbmRadialDiameterUnitMicrom" class="col-sm-3 control-label">维管束径向直径:</label>
+                                                    <div class="col-sm-5">
+                                                        <input id="vbmRadialDiameterUnitMicrom" class="form-control input-sm" name="vbmRadialDiameterUnitMicrom" placeholder="" type="text"
+                                                               data-bv-field="vbmRadialDiameterUnitMicrom"   data-bv-group=".col-sm-4" data-bv-notempty="true" data-bv-notempty-message="箨鞘是否隆起">
                                                     </div>
-                                                    <label for="Englishname" class="col-sm-2 control-label">英文名:</label>
-                                                    <div class="col-sm-4">
-                                                        <input class="form-control input-sm" name="labName" placeholder="" type="text">
-                                                    </div>
+
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="Ladingname" class="col-sm-2 control-label">拉丁名:</label>
-                                                    <div class="col-sm-4">
-                                                        <input class="form-control input-sm" name="labName" placeholder="" type="text">
-                                                    </div>
-                                                    <label for="Biename" class="col-sm-2 control-label">别名:</label>
-                                                    <div class="col-sm-4">
-                                                        <input class="form-control input-sm" name="labName" placeholder="" type="text">
+                                                    <label for="vbmChordDiameterUnitMicrom" class="col-sm-3 control-label">维管束弦径直径:</label>
+                                                    <div class="col-sm-5">
+                                                        <input id="vbmChordDiameterUnitMicrom" class="form-control input-sm" name="vbmChordDiameterUnitMicrom" placeholder="" type="text">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="Chinesename" class="col-sm-2 control-label">描述:</label>
-                                                    <div class="col-sm-10">
-                                                        <textarea placeholder="" id="content" rows="5" class="form-control"></textarea>
+                                                    <label for="vbmDensityUnitVcmidu" class="col-sm-3 control-label">维管束密度:</label>
+                                                    <div class="col-sm-5">
+                                                        <input id="vbmDensityUnitVcmidu" class="form-control input-sm" name="vbmDensityUnitVcmidu" placeholder="" type="text">
                                                     </div>
                                                 </div>
+
+
+
+                                                <div class="form-group">
+                                                    <label for="spec" class="col-sm-3 control-label">种:</label>
+                                                    <div class="col-sm-5 input-group">
+                                                        <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text">
+                                                        <input id="specId" type="hidden" value="">
+                                                        <input id="genusId" type="hidden" value="">
+                                                        <span class="input-group-btn">
+                                                                <button id="btn_select_spec" class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
+                                                            </span>
+                                                        <input id="vbmId" type="hidden" value="" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--<input id="underStemId" type="hidden" value="" />-->
                                         </form>
                                     </div>
+
+
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                        <button type="button" class="btn btn-primary">保存</button>
+                                        <button id="btn_save" type="button" class="btn btn-primary">保存</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!--增加查看的模态框-->
+                        <div class="modal fade" id="exampleModal-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
+                                        <h4 class="modal-title" id="exampleModalLabel-info">详情</h4>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <div class="form-horizontal">
+                                            <div class="form-group">
+                                                <label for="vbmRadialDiameterUnitMicrom-info" class="col-sm-3 control-label">维管束径向直径:</label>
+                                                <div class="col-sm-5">
+                                                    <p id="vbmRadialDiameterUnitMicrom-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="vbmChordDiameterUnitMicrom-info" class="col-sm-3 control-label">维管束弦径直径:</label>
+                                                <div class="col-sm-5">
+                                                    <p id="vbmChordDiameterUnitMicrom-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="vbmDensityUnitVcmidu-info" class="col-sm-3 control-label">维管束密度:</label>
+                                                <div class="col-sm-5">
+                                                    <p id="vbmDensityUnitVcmidu-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="form-group">
+                                                <label for="spec-info" class="col-sm-3 control-label">种:</label>
+                                                <div class="col-sm-5 input-group">
+                                                    <p id="spec-info" class="form-control-static bord-all pad-hor-sm"></p>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="modal fade" id="specModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" data-backdrop="static">
+                            <div class="modal-dialog modal-lg"  role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
+                                        <h4 class="modal-title">种</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table id="spec_table"></table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                        <button id="btn_spec_ok" type="button" class="btn btn-primary">确认</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table id="data_table" class="table"></table>
                     </div>
-
-
-                    <table id="data_table"></table>
                 </div>
             </div>
             <!--===================================================-->
         </div>
+        <!--===============================================
 
         <!--===================================================-->
     <!--END CONTENT CONTAINER-->
@@ -398,33 +484,34 @@
                                         </ul>
                                     </li>
 
-                                    <li class="collapse">
+                                    <li class="collapse in">
                                         <a href="#">竹种性质<i class="arrow"></i></a>
                                         <!--Submenu-->
-                                        <ul class="collapse">
-                                            <li><a href="../Bamboodata-Bamboonature/chemical.html">化学性质表</a></li>
-                                            <li><a href="../Bamboodata-Bamboonature/mechanical.html">力学性质表</a></li>
-                                            <li><a href="../Bamboodata-Bamboonature/physical.html">物理性质表</a></li>
-                                            <li><a href="../Bamboodata-Bamboonature/structural.html">结构性质表</a></li>
-                                            <li><a href="../Bamboodata-Bamboonature/fiber.html">纤维形态特征表</a></li>
-                                            <li><a href="../Bamboodata-Bamboonature/tissue.html">组织比量表</a></li>
-                                            <li><a href="../Bamboodata-Bamboonature/catneter.html">导管形态特征表</a></li>
-                                            <li><a href="../Bamboodata-Bamboonature/fiberpipe.html">纤管形态特征表</a></li>
+                                        <ul class="collapse in">
+                                            <li><a href="chemistry.html">化学性质表</a></li>
+                                            <li><a href="mechanics.html">力学性质表</a></li>
+                                            <li><a href="physical.html">物理性质表</a></li>
+                                            <li><a href="tissue.html">结构性质表</a></li>
+                                            <li><a href="fibermorphology.html">纤维形态特征表</a></li>
+                                            <li><a href="tissue.html">组织比量表</a></li>
+                                            <li><a href="cathermorphology.html">导管形态特征表</a></li>
+                                            <li class="active-link"><a href="vascularbundelmorphology.html">纤管形态特征表</a></li>
                                         </ul>
                                     </li>
 
-                                    <li class="collapse in">
+
+                                    <li>
                                         <a href="#">藤种性质<i class="arrow"></i></a>
                                         <!--Submenu-->
-                                        <ul class="collapse in">
-                                            <li><a href="chemical.html">化学性质表</a></li>
-                                            <li><a href="mechanical.html">力学性质表</a></li>
-                                            <li><a href="physical.html">物理性质表</a></li>
-                                            <li><a href="structural.html">结构性质表</a></li>
-                                            <li><a href="fiber.html">纤维形态特征表</a></li>
-                                            <li><a href="tissue.html">组织比量表</a></li>
-                                            <li class="active-link"><a href="catneter.html">导管形态特征表</a></li>
-                                            <li><a href="fiberpipe.html">纤管形态特征表</a></li>
+                                        <ul class="collapse">
+                                            <li><a href="../Bamboodata-Tengnature/chemistry.html">化学性质表</a></li>
+                                            <li><a href="../Bamboodata-Tengnature/mechanics.html">力学性质表</a></li>
+                                            <li><a href="../Bamboodata-Tengnature/physical.html">物理性质表</a></li>
+                                            <li><a href="../Bamboodata-Tengnature/structural.html">结构性质表</a></li>
+                                            <li><a href="../Bamboodata-Tengnature/fiber.html">纤维形态特征表</a></li>
+                                            <li><a href="../Bamboodata-Tengnature/tissue.html">组织比量表</a></li>
+                                            <li><a href="../Bamboodata-Tengnature/catneter.html">导管形态特征表</a></li>
+                                            <li><a href="../Bamboodata-Tengnature/vascularbundelmorphology.html">纤管形态特征表</a></li>
                                         </ul>
                                     </li>
 
@@ -433,7 +520,7 @@
                                         <a href="#">藤种形态<i class="arrow"></i></a>
                                         <!--Submenu-->
                                         <ul class="collapse">
-                                            <li><a href="tengform.html">藤种形态表</a></li>
+                                            <li><a href="../Bamboodata-Tengnature/tengform.html">藤种形态表</a></li>
                                         </ul>
                                     </li>
 
@@ -474,6 +561,7 @@
                                     </li>
                                 </ul>
                             </li>
+
 
 
                             <li>
@@ -561,9 +649,8 @@
 <!-- END OF CONTAINER -->
 
 
-
 </div>
-<script src="../../js/bambootattan_pc_js/Bamboodata/Tengnature/catneter.js"></script>
 </body>
+<script src="../../js/bambootattan_pc_js/Bamboodata/Bamboonature/vascularbundelmorphology.js"></script>
 </html>
 

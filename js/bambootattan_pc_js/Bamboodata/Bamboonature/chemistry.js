@@ -75,11 +75,12 @@ function init_table(){
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
                     var _html = '<button onclick="edit(\''+row.chemId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
-                    _html += '<button  onclick="dele(\''+row.chemId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>'
+                    _html += '<button  onclick="dele(\''+row.chemId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
+                    _html += '<button  onclick="check(\''+row.chemId+'\')"class="btn btn-primary btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="查看"><i class="fa fa-search"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'}};
+                    return{css:{'min-width':'100px'}};
                 }
             },
             {
@@ -540,6 +541,7 @@ function edit(id) {
                 $('#spec').val(res.data.spec.specNameCh);
                 $('#specId').val(res.data.spec.specId);
                 $('#genusId').val(res.data.spec.genus.genusId);
+                $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }
             else{
@@ -611,7 +613,44 @@ function dele(gid){
         }
     });
 }
+//查看详情
+function check(id) {
+    init_info();
+    $.ajax({
+        url:baseUrl+'/chemistry/findId/'+id,		//请求路径
+        type:'GET',			                    //请求方式
+        dataType:"JSON",		                //返回数据类型
+        contentType: 'application/json',        //数据类型
+        success:function(res){	                //请求成功回调函数
+            if(res.code==200){
+                $('#chemHolocelluloseUnitPercent-info').html(res.data.chemHolocelluloseUnitPercent).attr('data-original-title',res.data.chemHolocelluloseUnitPercent);
+                $('#chemCelluloseUnitPercent-info').html(res.data.chemCelluloseUnitPercent).attr('data-original-title',res.data.chemCelluloseUnitPercent);
+                $('#chemACelluloseUnitPercent-info').html(res.data.chemACelluloseUnitPercent).attr('data-original-title',res.data.chemACelluloseUnitPercent);
+                $('#chemHemicelluloseUnitPercent-info').html(res.data.chemHemicelluloseUnitPercent).attr('data-original-title',res.data.chemHemicelluloseUnitPercent);
+                $('#chemAcidInsolubleLigninUnitPercent-info').html(res.data.chemAcidInsolubleLigninUnitPercent).attr('data-original-title',res.data.chemAcidInsolubleLigninUnitPercent);
+                $('#chemBenzeneAlcoholExtractionUnitPercent-info').html(res.data.chemBenzeneAlcoholExtractionUnitPercent).attr('data-original-title',res.data.chemBenzeneAlcoholExtractionUnitPercent);
+                $('#chemHotWaterExtractionUnitPercent-info').html(res.data.chemHotWaterExtractionUnitPercent).attr('data-original-title',res.data.chemHotWaterExtractionUnitPercent);
+                $('#chemColdWaterExtractionUnitPercent-info').html(res.data.chemColdWaterExtractionUnitPercent).attr('data-original-title',res.data.chemColdWaterExtractionUnitPercent);
+                $('#chemAshContentUnitPercent-info').html(res.data.chemAshContentUnitPercent).attr('data-original-title',res.data.chemAshContentUnitPercent);
 
+                $('#spec-info').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
+                $('#exampleModal-info').modal('show');
+            }
+            else{
+                $.niftyNoty({
+                    type: 'danger',
+                    icon: 'pli-cross icon-2x',
+                    message: res.msg,
+                    container: 'floating',
+                    timer: 1000
+                });
+            }
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
+
+        }
+    });
+}
 //批量删除
 function deles() {
     //选中的数据
@@ -718,4 +757,16 @@ function init_form(){
     $('#chemAshContentUnitPercent').val("");
 
 }
-
+//初始化详情元素的值
+function init_info(){
+    $('#spec-info').val("").attr('data-original-title',"");//清除鼠标停留显示的内容，就是提示内容
+    $('#chemHolocelluloseUnitPercent-info').val("").attr('data-original-title',"");
+    $('#chemHolocelluloseUnitPercent-info').val("").attr('data-original-title',"");
+    $('#chemACelluloseUnitPercent-info').val("").attr('data-original-title',"");
+    $('#chemHemicelluloseUnitPercent-info').val("").attr('data-original-title',"");
+    $('#chemAcidInsolubleLigninUnitPercent-info').val("").attr('data-original-title',"");
+    $('#chemBenzeneAlcoholExtractionUnitPercent-info').val("").attr('data-original-title',"");
+    $('#chemHotWaterExtractionUnitPercent-info').val("").attr('data-original-title',"");
+    $('#chemColdWaterExtractionUnitPercent-checkinfo').val("").attr('data-original-title',"");
+    $('#chemAshContentUnitPercent-checkinfo').val("").attr('data-original-title',"");
+}

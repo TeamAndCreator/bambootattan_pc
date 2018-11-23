@@ -501,9 +501,8 @@ function edit(id) {
                 $('#specForeign').val(res.data.specForeign);
                 $('#specVidio').val(res.data.specVidio);
                 $('#specImgs').val(res.data.specImgs);
-                //$('#specDesc').val(res.data.specDesc);
                 $('#specSortNum').val(res.data.specSortNum);
-                $('#genusNameCh').val(res.data.genus.genusNameCh);
+                $('#genus').val(res.data.genus.genusNameCh);
                 $('#genusId').val(res.data.genus.genusId);
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
