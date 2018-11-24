@@ -436,7 +436,7 @@ function save() {
                     });
                 } else {//修改
                     $.ajax({
-                        url: baseUrl + '/spec/update',	    //请求路径
+                        url: baseUrl + '/rattanSpec/update',	    //请求路径
                         type: 'PUT',				        //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
@@ -503,7 +503,7 @@ function edit(id) {
                 $('#specImgs').val(res.data.specImgs);
                 //$('#specDesc').val(res.data.specDesc);
                 $('#specSortNum').val(res.data.specSortNum);
-                $('#genusNameCh').val(res.data.genus.genusNameCh);
+                $('#genus').val(res.data.genus.genusNameCh);
                 $('#genusId').val(res.data.genus.genusId);
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');

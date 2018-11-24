@@ -1,7 +1,7 @@
 var queryPageUrl='';
 var querySpecPageUrl='';
 $(function(){
-    queryPageUrl = baseUrl+'/understem/findAllQuery';
+    queryPageUrl = baseUrl+'/structure/findAllQuery';
     querySpecPageUrl = baseUrl+'/spec/findAllQuery';
     //新增点击事件
     $('#btn_add').on('click',function () {
@@ -25,6 +25,7 @@ $(function(){
     //初始化表格
     init_table();
     init_spec_table();
+    init_info();
     // //表单验证
     // $('#registrationForm').bootstrapValidator();
 });
@@ -74,9 +75,9 @@ function init_table(){
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
-                    var _html = '<button onclick="edit(\''+row.underStemId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
-                    _html += '<button  onclick="dele(\''+row.underStemId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
-                    _html += '<button  onclick="check(\''+row.underStemId+'\')"class="btn btn-primary btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="查看"><i class="glyphicon glyphicon-search"></i></button>'
+                    var _html = '<button onclick="edit(\''+row.stId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
+                    _html += '<button  onclick="dele(\''+row.stId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
+                    _html += '<button  onclick="check(\''+row.stId+'\')"class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="查看"><i class="fa fa-search"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
@@ -84,7 +85,7 @@ function init_table(){
                 }
             },
             {
-                field:'spec"',//数据列
+                field:'spec',//数据列
                 title:'种名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -97,8 +98,38 @@ function init_table(){
                 }
             },
             {
-                field:'underStem',//数据列
-                title:'地下茎类型',//数据列名称
+                field:'stStemDiameterUnitMm',//数据列
+                title:'胸高处杆径',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
+                }
+            },
+            {
+                field:'stWallThicknessUnitMm',//数据列
+                title:'壁厚',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
+                }
+            },
+            {
+                field:'stMaximumInternodeLengthUnitCm',//数据列
+                title:'最长节间长',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
+                }
+            },
+            {
+                field:'stRattanDiameterUnitMm',//数据列
+                title:'2m处的藤径',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -117,7 +148,7 @@ function init_table(){
                     return{css:{'min-width':'80px'}};
                 }
             },*/
-            { field:'underStemId',title:'underStemId',visible:false }//隐藏不显示
+            { field:'stId',title:'stId',visible:false }//隐藏不显示
         ]
     });
 }
@@ -330,24 +361,30 @@ function save() {
         },
         callback: function (result) {
             if (result) {
-                 var specId = $('#specId').val();
-                 var underStemId=$('#underStemId').val();
-                 var underStem = $('#underStem').val();
-                 var genusId=$('#genusId').val();
+                var specId = $('#specId').val();
+                var stId=$('#stId').val();
+                var stStemDiameterUnitMm = $('#stStemDiameterUnitMm').val();
+                var stWallThicknessUnitMm=$('#stWallThicknessUnitMm').val();
+                var stMaximumInternodeLengthUnitCm=$('#stMaximumInternodeLengthUnitCm').val();
+                var stRattanDiameterUnitMm = $('#stRattanDiameterUnitMm').val();
+                var genusId=$('#genusId').val();
                 var formData = {
-                   "underStemId":underStemId,
+                    "stId":stId,
                     "spec":{
-                       'specId':specId,
+                        'specId':specId,
                         'genus':{
-                           'genusId':genusId
+                            'genusId':genusId
                         }
                     },
-                    "underStem":underStem
+                    "stStemDiameterUnitMm":stStemDiameterUnitMm,
+                    "stWallThicknessUnitMm":stWallThicknessUnitMm,
+                    "stMaximumInternodeLengthUnitCm":stMaximumInternodeLengthUnitCm,
+                    "stRattanDiameterUnitMm":stRattanDiameterUnitMm
                 };
-                if (underStemId == "") {//新增
+                if (stId == "") {//新增
                     formData.specId = 0;
                     $.ajax({
-                        url: baseUrl + '/understem/save',		//请求路径
+                        url: baseUrl + '/structure/save',		//请求路径
                         type: 'POST',			            //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
@@ -377,7 +414,7 @@ function save() {
                     });
                 } else {//修改
                     $.ajax({
-                        url: baseUrl + '/understem/update',	    //请求路径
+                        url: baseUrl + '/structure/update',	    //请求路径
                         type: 'PUT',				        //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
@@ -423,16 +460,22 @@ function save() {
 function edit(id) {
     init_form();
     $.ajax({
-        url:baseUrl+'/understem/findId/'+id,		//请求路径
+        url:baseUrl+'/structure/findId/'+id,		//请求路径
         type:'GET',			                    //请求方式
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
             if(res.code==200){
-                $('#underStemId').val(res.data.underStemId);
-                $('#underStem').val(res.data.underStem);
+                $('#stId').val(res.data.stId);
+                $('#stStemDiameterUnitMm').val(res.data.stStemDiameterUnitMm);
+                $('#stWallThicknessUnitMm').val(res.data.stWallThicknessUnitMm);
+                $('#stMaximumInternodeLengthUnitCm').val(res.data.stMaximumInternodeLengthUnitCm);
+                $('#stRattanDiameterUnitMm').val(res.data.stRattanDiameterUnitMm);
+
+
                 $('#spec').val(res.data.spec.specNameCh);
                 $('#specId').val(res.data.spec.specId);
+                $('#genusId').val(res.data.spec.genus.genusId);
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }
@@ -465,7 +508,7 @@ function dele(gid){
         callback: function(result) {
             if (result) {
                 $.ajax({
-                    url:baseUrl+'/understem/delete/'+gid,   //请求路径,单个删除
+                    url:baseUrl+'/structure/delete/'+gid,   //请求路径,单个删除
                     type:'DELETE',				        //请求方式
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
@@ -536,11 +579,11 @@ function deles() {
                     var ids=[]; //选中数据的genusId数组
                     for(var i=0;i<selectedItems.length;i++){
                         //循环遍历选中的数据并将genusId放入到ids数组中
-                        ids.push(selectedItems[i].underStemId);
+                        ids.push(selectedItems[i].stId);
                     }
                     $.ajax({    //批量删除
                         //现将数据每个元素用‘,(逗号)’分隔拼接成字符串，再用encodeURI进行编码，最后拼接到url的后面
-                        url: baseUrl+'/understem/deleteByIds?ids='+encodeURI(ids.join(',')),
+                        url: baseUrl+'/structure/deleteByIds?ids='+encodeURI(ids.join(',')),
                         type:'DELETE',
                         contentType: 'application/json',//数据类型
                         success:function(res){	        //请求成功回调函数
@@ -587,13 +630,17 @@ function deles() {
 function check(id) {
     init_info();
     $.ajax({
-        url:baseUrl+'/understem/findId/'+id,		//请求路径
+        url:baseUrl+'/structure/findId/'+id,		//请求路径
         type:'GET',			                    //请求方式
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
             if(res.code==200){
-                $('#underStem-info').html(res.data.underStem).attr('data-original-title',res.data.underStem);
+                $('#stStemDiameterUnitMm-info').html(res.data.stStemDiameterUnitMm).attr('data-original-title',res.data.stStemDiameterUnitMm);
+                $('#stWallThicknessUnitMm-info').html(res.data.stWallThicknessUnitMm).attr('data-original-title',res.data.stWallThicknessUnitMm);
+                $('#stMaximumInternodeLengthUnitCm-info').html(res.data.stMaximumInternodeLengthUnitCm).attr('data-original-title',res.data.stMaximumInternodeLengthUnitCm);
+                $('#stRattanDiameterUnitMm-info').html(res.data.stRattanDiameterUnitMm).attr('data-original-title',res.data.stRattanDiameterUnitMm);
+
                 $('#spec-info').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
                 $('#exampleModal-info').modal('show');
             }
@@ -623,16 +670,24 @@ function selectedSpec() {
         $("#specModal").modal('hide');
     }
 }
+
+
 //初始化表单元素的值
 function init_form(){
     $('#spec').val("");
-    $('#underStemId').val("");
+    $('#stId').val("");
     $('#specId').val("");
     $('#genusId').val("");
-    $('#underStem').val("");
+    $('#stStemDiameterUnitMm').val("");
+    $('#stWallThicknessUnitMm').val("");
+    $('#stMaximumInternodeLengthUnitCm').val("");
+    $('#stRattanDiameterUnitMm').val("");
 }
 //初始化详情元素的值
 function init_info(){
-    $('#underStem-info').val("").attr('data-original-title',"");//清除鼠标停留显示的内容，就是提示内容
-    $('#spec-info').val("").attr('data-original-title',"");
+    $('#spec-check').val("").attr('data-original-title',"");//清除鼠标停留显示的内容，就是提示内容
+    $('#stStemDiameterUnitMm-info').val("").attr('data-original-title',"");
+    $('#stWallThicknessUnitMm-info').val("").attr('data-original-title',"");
+    $('#stMaximumInternodeLengthUnitCm-info').val("").attr('data-original-title',"");
+    $('#stRattanDiameterUnitMm-info').val("").attr('data-original-title',"");
 }

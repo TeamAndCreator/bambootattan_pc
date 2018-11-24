@@ -1,7 +1,7 @@
 var queryPageUrl='';
 var querySpecPageUrl='';
 $(function(){
-    queryPageUrl = baseUrl+'/physics/findAllQuery';
+    queryPageUrl = baseUrl+'/cathermorphology/findAllQuery';
     querySpecPageUrl = baseUrl+'/spec/findAllQuery';
     //新增点击事件
     $('#btn_add').on('click',function () {
@@ -74,12 +74,13 @@ function init_table(){
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
-                    var _html = '<button onclick="edit(\''+row.phyId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
-                    _html += '<button  onclick="dele(\''+row.phyId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>'
+                    var _html = '<button onclick="edit(\''+row.chmId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
+                    _html += '<button  onclick="dele(\''+row.chmId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
+                    _html += '<button  onclick="check(\''+row.chmId+'\')"class="btn btn-primary btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="查看"><i class="fa fa-search"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'}};
+                    return{css:{'min-width':'100px'}};
                 }
             },
             {
@@ -96,8 +97,8 @@ function init_table(){
                 }
             },
             {
-                field:'phyRelativeUnitPercent',//数据列
-                title:'综纤维素',//数据列名称
+                field:'chmCatheterLenghtUnitMicrom',//数据列
+                title:'导管长度',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -106,8 +107,8 @@ function init_table(){
                 }
             },
             {
-                field:'phyAbsoluteUnitPercent',//数据列
-                title:'纤维素',//数据列名称
+                field:'chmCatheterDiameterUnitMicrom',//数据列
+                title:'导管直径',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -116,8 +117,8 @@ function init_table(){
                 }
             },
             {
-                field:'phyGreenDensityUnitMidu',//数据列
-                title:'a纤维素',//数据列名称
+                field:'chmCatheterDensityUnitVcmidu',//数据列
+                title:'导管密度',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -126,59 +127,8 @@ function init_table(){
                 }
             },
             {
-                field:'phyBasicDensityUnitMidu',//数据列
-                title:'半纤维素',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field) {
-                    return {css: {'min-width': '80px'}};
-                }
-            },
-            {
-                field:'phyAirDryDensityUnitMidu',//数据列
-                title:'酸不溶木质素',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field) {
-                    return {css: {'min-width': '80px'}};
-                }
-            },
-
-            {
-                field:'phyAbsoluteDryDensityUnitMidu',//数据列
-                title:'苯醇提取物',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field) {
-                    return {css: {'min-width': '80px'}};
-                }
-            },
-            {
-                field:'phyAirDryingLineUnitPercent',//数据列
-                title:'热水提取物',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field) {
-                    return {css: {'min-width': '80px'}};
-                }
-            },
-            {
-                field:'phyWholeDryLineUnitPercent',//数据列
-                title:'冷水提取物',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field) {
-                    return {css: {'min-width': '80px'}};
-                }
-            },
-            {
-                field:'phyAirDryVolumeUnitPercent',//数据列
-                title:'灰分',//数据列名称
+                field:'chmIndex',//数据列
+                title:'导管形状指数',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -197,7 +147,7 @@ function init_table(){
                     return{css:{'min-width':'80px'}};
                 }
             },*/
-            { field:'phyId',title:'phyId',visible:false }//隐藏不显示
+            { field:'chmId',title:'chmId',visible:false }//隐藏不显示
         ]
     });
 }
@@ -411,41 +361,30 @@ function save() {
         callback: function (result) {
             if (result) {
                 var specId = $('#specId').val();
-                var phyId=$('#phyId').val();
-                var phyRelativeUnitPercent = $('#phyRelativeUnitPercent').val();
-                var phyAbsoluteUnitPercent = $('#phyAbsoluteUnitPercent').val();
-                var phyGreenDensityUnitMidu = $('#phyGreenDensityUnitMidu').val();
-                var phyBasicDensityUnitMidu=$('#phyBasicDensityUnitMidu').val();
-                var phyAirDryDensityUnitMidu = $('#phyAirDryDensityUnitMidu').val();
-                var phyAbsoluteDryDensityUnitMidu = $('#phyRelativeUnitPercent').val();
-                var phyAirDryingLineUnitPercent = $('#phyAirDryingLineUnitPercent').val();
-                var phyWholeDryLineUnitPercent = $('#phyWholeDryLineUnitPercent').val();
-                var phyAirDryVolumeUnitPercent = $('#phyAirDryVolumeUnitPercent').val();
-
+                var chmId=$('#chmId').val();
+                var chmCatheterLenghtUnitMicrom = $('#chmCatheterLenghtUnitMicrom').val();
+                var chmCatheterDiameterUnitMicrom = $('#chmCatheterDiameterUnitMicrom').val();
+                var chmCatheterDensityUnitVcmidu = $('#chmCatheterDensityUnitVcmidu').val();
+                var chmIndex=$('#chmIndex').val();
 
                 var genusId=$('#genusId').val();
                 var formData = {
-                    "phyId":phyId,
+                    "chmId":chmId,
                     "spec":{
                         'specId':specId,
                         'genus':{
                             'genusId':genusId
                         }
                     },
-                    "phyRelativeUnitPercent":phyRelativeUnitPercent,
-                    "phyAbsoluteUnitPercent":phyAbsoluteUnitPercent,
-                    "phyGreenDensityUnitMidu":phyGreenDensityUnitMidu,
-                    "phyAirDryDensityUnitMidu":phyAirDryDensityUnitMidu,
-                    "phyBasicDensityUnitMidu":phyBasicDensityUnitMidu,
-                    "phyAbsoluteDryDensityUnitMidu":phyAbsoluteDryDensityUnitMidu,
-                    "phyAirDryingLineUnitPercent":phyAirDryingLineUnitPercent,
-                    "phyWholeDryLineUnitPercent":phyWholeDryLineUnitPercent,
-                    "phyAirDryVolumeUnitPercent":phyAirDryVolumeUnitPercent
+                    "chmCatheterLenghtUnitMicrom":chmCatheterLenghtUnitMicrom,
+                    "chmCatheterDiameterUnitMicrom":chmCatheterDiameterUnitMicrom,
+                    "chmCatheterDensityUnitVcmidu":chmCatheterDensityUnitVcmidu,
+                    "chmIndex":chmIndex
                 };
-                if (phyId == "") {//新增
+                if (chmId == "") {//新增
                     formData.specId = 0;
                     $.ajax({
-                        url: baseUrl + '/physics/save',		//请求路径
+                        url: baseUrl + '/cathermorphology/save',		//请求路径
                         type: 'POST',			            //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
@@ -475,7 +414,7 @@ function save() {
                     });
                 } else {//修改
                     $.ajax({
-                        url: baseUrl + '/physics/update',	    //请求路径
+                        url: baseUrl + '/cathermorphology/update',	    //请求路径
                         type: 'PUT',				        //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
@@ -521,25 +460,21 @@ function save() {
 function edit(id) {
     init_form();
     $.ajax({
-        url:baseUrl+'/physics/findId/'+id,		//请求路径
+        url:baseUrl+'/cathermorphology/findId/'+id,		//请求路径
         type:'GET',			                    //请求方式
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
             if(res.code==200){
-                $('#phyId').val(res.data.phyId);
-                $('#phyRelativeUnitPercent').val(res.data.phyRelativeUnitPercent);
-                $('#phyAbsoluteUnitPercent').val(res.data.phyAbsoluteUnitPercent);
-                $('#phyGreenDensityUnitMidu').val(res.data.phyGreenDensityUnitMidu);
-                $('#phyBasicDensityUnitMidu').val(res.data.phyBasicDensityUnitMidu);
-                $('#phyAirDryDensityUnitMidu').val(res.data.phyAirDryDensityUnitMidu);
-                $('#phyAbsoluteDryDensityUnitMidu').val(res.data.phyAbsoluteDryDensityUnitMidu);
-                $('#phyAirDryingLineUnitPercent').val(res.data.phyAirDryingLineUnitPercent);
-                $('#phyWholeDryLineUnitPercent').val(res.data.phyWholeDryLineUnitPercent);
-                $('#phyAirDryVolumeUnitPercent').val(res.data.phyAirDryVolumeUnitPercent);
+                $('#chmId').val(res.data.chmId);
+                $('#chmCatheterLenghtUnitMicrom').val(res.data.chmCatheterLenghtUnitMicrom);
+                $('#chmCatheterDiameterUnitMicrom').val(res.data.chmCatheterDiameterUnitMicrom);
+                $('#chmCatheterDensityUnitVcmidu').val(res.data.chmCatheterDensityUnitVcmidu);
+                $('#chmIndex').val(res.data.chmIndex);
                 $('#spec').val(res.data.spec.specNameCh);
                 $('#specId').val(res.data.spec.specId);
                 $('#genusId').val(res.data.spec.genus.genusId);
+                $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }
             else{
@@ -571,7 +506,7 @@ function dele(gid){
         callback: function(result) {
             if (result) {
                 $.ajax({
-                    url:baseUrl+'/physics/delete/'+gid,   //请求路径,单个删除
+                    url:baseUrl+'/cathermorphology/delete/'+gid,   //请求路径,单个删除
                     type:'DELETE',				        //请求方式
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
@@ -611,7 +546,39 @@ function dele(gid){
         }
     });
 }
+//查看详情
+function check(id) {
+    init_info();
+    $.ajax({
+        url:baseUrl+'/cathermorphology/findId/'+id,		//请求路径
+        type:'GET',			                    //请求方式
+        dataType:"JSON",		                //返回数据类型
+        contentType: 'application/json',        //数据类型
+        success:function(res){	                //请求成功回调函数
+            if(res.code==200){
+                $('#chmCatheterLenghtUnitMicrom-info').html(res.data.chmCatheterLenghtUnitMicrom).attr('data-original-title',res.data.chmCatheterLenghtUnitMicrom);
+                $('#chmCatheterDiameterUnitMicrom-info').html(res.data.chmCatheterDiameterUnitMicrom).attr('data-original-title',res.data.chmCatheterDiameterUnitMicrom);
+                $('#chmCatheterDensityUnitVcmidu-info').html(res.data.chmCatheterDensityUnitVcmidu).attr('data-original-title',res.data.chmCatheterDensityUnitVcmidu);
+                $('#chmIndex-info').html(res.data.chmIndex).attr('data-original-title',res.data.chmIndex);
 
+                $('#spec-info').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
+                $('#exampleModal-info').modal('show');
+            }
+            else{
+                $.niftyNoty({
+                    type: 'danger',
+                    icon: 'pli-cross icon-2x',
+                    message: res.msg,
+                    container: 'floating',
+                    timer: 1000
+                });
+            }
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
+
+        }
+    });
+}
 //批量删除
 function deles() {
     //选中的数据
@@ -642,11 +609,11 @@ function deles() {
                     var ids=[]; //选中数据的genusId数组
                     for(var i=0;i<selectedItems.length;i++){
                         //循环遍历选中的数据并将genusId放入到ids数组中
-                        ids.push(selectedItems[i].phyId);
+                        ids.push(selectedItems[i].chmId);
                     }
                     $.ajax({    //批量删除
                         //现将数据每个元素用‘,(逗号)’分隔拼接成字符串，再用encodeURI进行编码，最后拼接到url的后面
-                        url: baseUrl+'/physics/deleteByIds?ids='+encodeURI(ids.join(',')),
+                        url: baseUrl+'/cathermorphology/deleteByIds?ids='+encodeURI(ids.join(',')),
                         type:'DELETE',
                         contentType: 'application/json',//数据类型
                         success:function(res){	        //请求成功回调函数
@@ -704,29 +671,20 @@ function selectedSpec() {
 //初始化表单元素的值
 function init_form(){
     $('#spec').val("");
-    $('#phyId').val("");
+    $('#chmId').val("");
     $('#specId').val("");
     $('#genusId').val("");
-    $('#phyRelativeUnitPercent').val("");
-    $('#phyAbsoluteUnitPercent').val("");
-    $('#phyGreenDensityUnitMidu').val("");
-    $('#phyBasicDensityUnitMidu').val("");
-    $('#phyAirDryDensityUnitMidu').val("");
-    $('#phyAbsoluteDryDensityUnitMidu').val("");
-    $('#phyAirDryingLineUnitPercent').val("");
-    $('#phyWholeDryLineUnitPercent').val("");
-    $('#phyAirDryVolumeUnitPercent').val("");
-
-    $('#phyWholeDryVolumeUnitPercent').val("");
-    $('#phyAirShrinkageUnitPercent').val("");
-    $('#phyAirShrinkageChordwiseUnitPercent').val("");
-    $('#phyAirShrinkageRadialUnitPercent').val("");
-    $('#phyAirShrinkageEdnwiseUnitPercent').val("");
-    $('#phyAirShrinkageVolumeUnitPercent').val("");
-    $('#phyWholeShrinkageChordwiseUnitPercent').val("");
-    $('#phyWholeShrinkageRadialUnitPercent').val("");
-    $('#phyWholeShrinkageEdnwiseUnitPercent').val("");
-    $('#phyWholeShrinkageVolumeUnitPercent').val("");
+    $('#chmCatheterLenghtUnitMicrom').val("");
+    $('#chmCatheterDiameterUnitMicrom').val("");
+    $('#chmCatheterDensityUnitVcmidu').val("");
+    $('#chmIndex').val("");
 
 }
-
+//初始化详情元素的值
+function init_info(){
+    $('#spec-info').val("").attr('data-original-title',"");//清除鼠标停留显示的内容，就是提示内容
+    $('#chmCatheterLenghtUnitMicrom-info').val("").attr('data-original-title',"");
+    $('#chmCatheterLenghtUnitMicrom-info').val("").attr('data-original-title',"");
+    $('#chmCatheterDensityUnitVcmidu-info').val("").attr('data-original-title',"");
+    $('#chmIndex-info').val("").attr('data-original-title',"");
+}
