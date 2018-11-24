@@ -433,10 +433,7 @@ function check(id) {
                 $('#genusNameLd-info').html(res.data.genusNameLd).attr('data-original-title',res.data.genusNameLd);
                 $('#genusNameOth-info').html(res.data.genusNameOth).attr('data-original-title',res.data.genusNameOth);
                 $('#sortNum-info').html(res.data.sortNum).attr('data-original-title',res.data.sortNum);
-                //$('#specDesc-info').html(res.data.spec.specDesc).attr('data-original-title',res.data.specDesc);
-                //$('#demo-summernote').summernote('code',res.data.specDesc).attr('data-original-title',res.data.specDesc);
                 $('#demo-summernote-info').summernote('code',res.data.genusDesc);
-                //$('#genus-info').html(res.data.genus.genusNameCh).attr('data-original-title',res.data.genusNameCh);
                 $('#exampleModal-info').modal('show');
             }
             else{
@@ -486,4 +483,11 @@ function init_sunmmernote(){
         maxHeight: null,             // set maximum height of editor
         focus: true                  // set focus to editable area after initializing summernote
     });
+    $('#demo-summernote-info').summernote({
+        height: 244,                 // set editor height
+        minHeight: null,             // set minimum height of editor
+        maxHeight: null,             // set maximum height of editor
+        focus: true                 // set focus to editable area after initializing summernot
+    })
+    $('#demo-summernote-info').summernote('disable');
 }

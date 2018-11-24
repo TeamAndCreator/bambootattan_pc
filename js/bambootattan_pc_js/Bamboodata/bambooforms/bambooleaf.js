@@ -21,11 +21,11 @@ $(function(){
     $('#btn_spec_ok').on('click',selectedSpec);
 
     //关闭选择种的模态框
-    $("#specModal").on('hidden.bs.modal',openModalClass);
-
+    $("#specModal").on('hidden.bs.modal',openModalClass)
     //初始化表格
     init_table();
     init_spec_table();
+    init_info();
     // //表单验证
     // $('#registrationForm').bootstrapValidator();
 });
@@ -61,12 +61,7 @@ function init_table(){
                 search:params.search
             }
         },
-        onPostBody:function(){
-            $('[data-toggle="tooltip"]').tooltip();
-        },
         cache:false,//是否使用緩存
-        fixedColumns: true,//固定列
-        fixedNumber:3,//固定前三列
         columns:[//列数据
 
             {
@@ -80,9 +75,9 @@ function init_table(){
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
-                    var _html = '<button onclick="edit(\''+row.leafId+'\')" class="btn btn-info btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="修改"><i class="demo-psi-pen-5"></i></button>';
-                    _html += '<button  onclick="dele(\''+row.leafId+'\')"class="btn btn-danger btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="删除"><i class="demo-pli-cross"></i></button>';
-                    _html += '<button  onclick="check(\''+row.leafId+'\')"class="btn btn-primary btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="查看"><i class="glyphicon glyphicon-search"></i></button>'
+                    var _html = '<button onclick="edit(\''+row.leafId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
+                    _html += '<button  onclick="dele(\''+row.leafId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
+                    _html += '<button  onclick="check(\''+row.leafId+'\')"class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="查看"><i class="fa fa-search"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
@@ -90,7 +85,7 @@ function init_table(){
                 }
             },
             {
-                field:'spec',//数据列
+                field:'spec"',//数据列
                 title:'种名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -125,7 +120,6 @@ function init_table(){
             {
                 field:'leafWidth',//数据列
                 title:'竹叶宽度',//数据列名称
-                // visible:false,
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -137,7 +131,6 @@ function init_table(){
                 field:'leafBack',//数据列
                 title:'叶片背面被毛',//数据列名称
                 sortable:true,//可排序
-                // visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -158,7 +151,6 @@ function init_table(){
                 field:'leafTongueShape',//数据列
                 title:'叶舌形状',//数据列名称
                 sortable:true,//可排序
-                // visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -179,7 +171,6 @@ function init_table(){
                 field:'leafStalkLength',//数据列
                 title:'叶柄长度',//数据列名称
                 sortable:true,//可排序
-                // visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -190,7 +181,6 @@ function init_table(){
                 field:'leafBaseShape',//数据列
                 title:'叶片基部形态',//数据列名称
                 sortable:true,//可排序
-                // visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -201,13 +191,13 @@ function init_table(){
                 field:'leafTopShape',//数据列
                 title:'叶尖形态',//数据列名称
                 sortable:true,//可排序
-                // visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
                     return {css: {'min-width': '80px'}};
                 }
             },
+
             /*
             {
                 field:'underStemId',//数据列
@@ -222,7 +212,6 @@ function init_table(){
             { field:'leafId',title:'leafId',visible:false }//隐藏不显示
         ]
     });
-
 }
 
 //初始化种表格
@@ -436,16 +425,15 @@ function save() {
                 var specId = $('#specId').val();
                 var leafId=$('#leafId').val();
                 var leafShape = $('#leafShape').val();
+                var leafStalkLength = $('#leafStalkLength').val();
                 var leafLength = $('#leafLength').val();
                 var leafWidth = $('#leafWidth').val();
-                var leafBack = $('#leafBack').val();
-                var leafMargin=$('#leafMargin').val();
+                var leafBack=$('#leafBack').val();
+                var leafMargin = $('#leafMargin').val();
                 var leafTongueShape = $('#leafTongueShape').val();
                 var leafTongueHeight = $('#leafTongueHeight').val();
-                var leafStalkLength = $('#leafStalkLength').val();
-
-                var leafBaseShape = $('#leafBaseShape').val();
                 var leafTopShape=$('#leafTopShape').val();
+                var leafBaseShape=$('leafBaseShape').val;
                 var genusId=$('#genusId').val();
                 var formData = {
                     "leafId":leafId,
@@ -456,17 +444,15 @@ function save() {
                         }
                     },
                     "leafShape":leafShape,
+                    "leafStalkLength":leafStalkLength,
                     "leafLength":leafLength,
                     "leafWidth":leafWidth,
-                    "leafBack":leafBack,
-                    "leafMargin": leafMargin,
-                    "leafTongueShape":leafTongueShape,
+                    "leafBack": leafBack,
+                    "leafMargin":leafMargin,
+                    "leafTongueShape": leafTongueShape,
                     "leafTongueHeight": leafTongueHeight,
-                    "leafStalkLength": leafStalkLength,
-
-                    "leafBaseShape": leafBaseShape,
+                    "leafBaseShape":leafBaseShape,
                     "leafTopShape":leafTopShape
-
                 };
                 if (leafId == "") {//新增
                     formData.specId = 0;
@@ -555,18 +541,15 @@ function edit(id) {
             if(res.code==200){
                 $('#leafId').val(res.data.leafId);
                 $('#leafShape').val(res.data.leafShape);
+                $('#leafStalkLength').val(res.data.leafStalkLength);
                 $('#leafLength').val(res.data.leafLength);
                 $('#leafWidth').val(res.data.leafWidth);
                 $('#leafBack').val(res.data.leafBack);
-                $('#leafMargin').val(res.data.leafMargin);
+                $('#leafMargin').val(res.data.leafTongueShape);
                 $('#leafTongueShape').val(res.data.leafTongueShape);
                 $('#leafTongueHeight').val(res.data.leafTongueHeight);
-                $('#leafStalkLength').val(res.data.leafStalkLength);
                 $('#leafBaseShape').val(res.data.leafBaseShape);
                 $('#leafTopShape').val(res.data.leafTopShape);
-                $('#youngStemBack').val(res.data.youngStemBack);
-                $('#youngStemPowder').val(res.data.youngStemPowder);
-                $('#leafNode').val(res.data.leafNode);
 
                 $('#spec').val(res.data.spec.specNameCh);
                 $('#specId').val(res.data.spec.specId);
@@ -731,16 +714,17 @@ function check(id) {
         success:function(res){	                //请求成功回调函数
             if(res.code==200){
                 $('#leafShape-info').html(res.data.leafShape).attr('data-original-title',res.data.leafShape);
+                $('#leafStalkLength-info').html(res.data.leafStalkLength).attr('data-original-title',res.data.leafStalkLength);
                 $('#leafLength-info').html(res.data.leafLength).attr('data-original-title',res.data.leafLength);
                 $('#leafWidth-info').html(res.data.leafWidth).attr('data-original-title',res.data.leafWidth);
                 $('#leafBack-info').html(res.data.leafBack).attr('data-original-title',res.data.leafBack);
                 $('#leafMargin-info').html(res.data.leafMargin).attr('data-original-title',res.data.leafMargin);
                 $('#leafTongueShape-info').html(res.data.leafTongueShape).attr('data-original-title',res.data.leafTongueShape);
                 $('#leafTongueHeight-info').html(res.data.leafTongueHeight).attr('data-original-title',res.data.leafTongueHeight);
-                $('#leafStalkLength-info').html(res.data.leafStalkLength).attr('data-original-title',res.data.leafStalkLength);
 
                 $('#leafBaseShape-info').html(res.data.leafBaseShape).attr('data-original-title',res.data.leafBaseShape);
                 $('#leafTopShape-info').html(res.data.leafTopShape).attr('data-original-title',res.data.leafTopShape);
+
                 $('#spec-info').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
                 $('#exampleModal-info').modal('show');
             }
@@ -777,13 +761,13 @@ function init_form(){
     $('#specId').val("");
     $('#genusId').val("");
     $('#leafShape').val("");
+    $('#leafStalkLength').val("");
     $('#leafLength').val("");
     $('#leafWidth').val("");
     $('#leafBack').val("");
     $('#leafMargin').val("");
     $('#leafTongueShape').val("");
     $('#leafTongueHeight').val("");
-    $('#leafStalkLength').val("");
     $('#leafBaseShape').val("");
     $('#leafTopShape').val("");
 }
@@ -791,13 +775,14 @@ function init_form(){
 function init_info(){
     $('#spec-info').val("").attr('data-original-title',"");//清除鼠标停留显示的内容，就是提示内容
     $('#leafShape-info').val("").attr('data-original-title',"");
+    $('#leafStalkLength-info').val("").attr('data-original-title',"");
     $('#leafLength-info').val("").attr('data-original-title',"");
     $('#leafWidth-info').val("").attr('data-original-title',"");
     $('#leafBack-info').val("").attr('data-original-title',"");
     $('#leafMargin-info').val("").attr('data-original-title',"");
     $('#leafTongueShape-info').val("").attr('data-original-title',"");
     $('#leafTongueHeight-info').val("").attr('data-original-title',"");
-    $('#leafStalkLength-info').val("").attr('data-original-title',"");
+
     $('#leafBaseShape-info').val("").attr('data-original-title',"");
     $('#leafTopShape-info').val("").attr('data-original-title',"");
 }

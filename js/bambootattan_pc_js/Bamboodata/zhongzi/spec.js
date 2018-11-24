@@ -677,6 +677,7 @@ function check(id) {
                 $('#specVidio-info').html(res.data.specVidio).attr('data-original-title',res.data.specVidio);
                 $('#specImgs-info').html(res.data.specImgs).attr('data-original-title',res.data.specImgs);
                 $('#demo-summernote-info').summernote('code',res.data.specDesc);
+
                 $('#genus-info').html(res.data.genus.genusNameCh).attr('data-original-title',res.data.genus.genusNameCh);
                 $('#exampleModal-info').modal('show');
             }
@@ -735,11 +736,19 @@ function init_info(){
     // $('#specSortNum').val("").attr('data-original-title',"");
     // $('#registrationForm').data('bootstrapValidator').resetForm();
 }
+//设置富文本
 function init_sunmmernote(){
     $('#demo-summernote').summernote({
-        height: 344,                 // set editor height
+        height: 244,                 // set editor height
         minHeight: null,             // set minimum height of editor
         maxHeight: null,             // set maximum height of editor
         focus: true                  // set focus to editable area after initializing summernote
     });
+    $('#demo-summernote-info').summernote({
+        height: 244,                 // set editor height
+        minHeight: null,             // set minimum height of editor
+        maxHeight: null,             // set maximum height of editor
+        focus: true                 // set focus to editable area after initializing summernot
+    })
+    $('#demo-summernote-info').summernote('disable');
 }

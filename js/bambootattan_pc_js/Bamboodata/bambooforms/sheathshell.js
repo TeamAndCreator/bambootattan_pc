@@ -21,11 +21,11 @@ $(function(){
     $('#btn_spec_ok').on('click',selectedSpec);
 
     //关闭选择种的模态框
-    $("#specModal").on('hidden.bs.modal',openModalClass);
-
+    $("#specModal").on('hidden.bs.modal',openModalClass)
     //初始化表格
     init_table();
     init_spec_table();
+    init_info();
     // //表单验证
     // $('#registrationForm').bootstrapValidator();
 });
@@ -61,12 +61,7 @@ function init_table(){
                 search:params.search
             }
         },
-        onPostBody:function(){
-            $('[data-toggle="tooltip"]').tooltip();
-        },
         cache:false,//是否使用緩存
-        fixedColumns: true,//固定列
-        fixedNumber:3,//固定前三列
         columns:[//列数据
 
             {
@@ -80,9 +75,9 @@ function init_table(){
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
-                    var _html = '<button onclick="edit(\''+row.sheShellId+'\')" class="btn btn-info btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="修改"><i class="demo-psi-pen-5"></i></button>';
-                    _html += '<button  onclick="dele(\''+row.sheShellId+'\')"class="btn btn-danger btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="删除"><i class="demo-pli-cross"></i></button>';
-                    _html += '<button  onclick="check(\''+row.sheShellId+'\')"class="btn btn-primary btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="查看"><i class="glyphicon glyphicon-search"></i></button>'
+                    var _html = '<button onclick="edit(\''+row.sheShellId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
+                    _html += '<button  onclick="dele(\''+row.sheShellId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
+                    _html += '<button  onclick="check(\''+row.sheShellId+'\')"class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="查看"><i class="fa fa-search"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
@@ -90,7 +85,7 @@ function init_table(){
                 }
             },
             {
-                field:'spec',//数据列
+                field:'spec"',//数据列
                 title:'种名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -104,7 +99,7 @@ function init_table(){
             },
             {
                 field:'sheathShellShape',//数据列
-                title:'箨片形态',//数据列名称
+                title:'箨片形状',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -125,7 +120,6 @@ function init_table(){
             {
                 field:'sheathShellFall',//数据列
                 title:'箨片是否易脱落',//数据列名称
-                // visible:false,
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -137,7 +131,6 @@ function init_table(){
                 field:'sheathShellTopShape',//数据列
                 title:'箨片先端形状',//数据列名称
                 sortable:true,//可排序
-                // visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -158,7 +151,6 @@ function init_table(){
                 field:'sheathShellMargin',//数据列
                 title:'箨片边缘形态',//数据列名称
                 sortable:true,//可排序
-                // visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -179,14 +171,12 @@ function init_table(){
                 field:'sheathRatioOf',//数据列
                 title:'箨片基部与箨鞘宽度之比',//数据列名称
                 sortable:true,//可排序
-                // visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
                     return {css: {'min-width': '80px'}};
                 }
             },
-
             /*
             {
                 field:'underStemId',//数据列
@@ -201,7 +191,6 @@ function init_table(){
             { field:'sheShellId',title:'sheShellId',visible:false }//隐藏不显示
         ]
     });
-
 }
 
 //初始化种表格
@@ -415,14 +404,13 @@ function save() {
                 var specId = $('#specId').val();
                 var sheShellId=$('#sheShellId').val();
                 var sheathShellShape = $('#sheathShellShape').val();
+                var sheathRatioOf = $('#sheathRatioOf').val();
                 var sheathShellColor = $('#sheathShellColor').val();
                 var sheathShellFall = $('#sheathShellFall').val();
-                var sheathShellTopShape = $('#sheathShellTopShape').val();
-                var sheathShellBaseShape=$('#sheathShellBaseShape').val();
+                var sheathShellTopShape=$('#sheathShellTopShape').val();
+                var sheathShellBaseShape = $('#sheathShellBaseShape').val();
                 var sheathShellMargin = $('#sheathShellMargin').val();
                 var sheathShellBackPowder = $('#sheathShellBackPowder').val();
-                var sheathRatioOf = $('#sheathRatioOf').val();
-
                 var genusId=$('#genusId').val();
                 var formData = {
                     "sheShellId":sheShellId,
@@ -433,14 +421,13 @@ function save() {
                         }
                     },
                     "sheathShellShape":sheathShellShape,
+                    "sheathRatioOf":sheathRatioOf,
                     "sheathShellColor":sheathShellColor,
                     "sheathShellFall":sheathShellFall,
-                    "sheathShellTopShape":sheathShellTopShape,
-                    "sheathShellBaseShape": sheathShellBaseShape,
-                    "sheathShellMargin":sheathShellMargin,
-                    "sheathShellBackPowder": sheathShellBackPowder,
-                    "sheathRatioOf": sheathRatioOf
-
+                    "sheathShellTopShape": sheathShellTopShape,
+                    "sheathShellBaseShape":sheathShellBaseShape,
+                    "sheathShellMargin": sheathShellMargin,
+                    "sheathShellBackPowder": sheathShellBackPowder
                 };
                 if (sheShellId == "") {//新增
                     formData.specId = 0;
@@ -529,15 +516,13 @@ function edit(id) {
             if(res.code==200){
                 $('#sheShellId').val(res.data.sheShellId);
                 $('#sheathShellShape').val(res.data.sheathShellShape);
+                $('#sheathRatioOf').val(res.data.sheathRatioOf);
                 $('#sheathShellColor').val(res.data.sheathShellColor);
                 $('#sheathShellFall').val(res.data.sheathShellFall);
-                $('#sheathShellTopShapeShape').val(res.data.sheathShellTopShapeShape);
+                $('#sheathShellTopShape').val(res.data.sheathShellTopShape);
                 $('#sheathShellBaseShape').val(res.data.sheathShellBaseShape);
                 $('#sheathShellMargin').val(res.data.sheathShellMargin);
                 $('#sheathShellBackPowder').val(res.data.sheathShellBackPowder);
-                $('#sheathRatioOf').val(res.data.sheathRatioOf);
-
-
                 $('#spec').val(res.data.spec.specNameCh);
                 $('#specId').val(res.data.spec.specId);
                 $('#exampleModal .modal-title').html("修改");
@@ -701,14 +686,13 @@ function check(id) {
         success:function(res){	                //请求成功回调函数
             if(res.code==200){
                 $('#sheathShellShape-info').html(res.data.sheathShellShape).attr('data-original-title',res.data.sheathShellShape);
+                $('#sheathRatioOf-info').html(res.data.sheathRatioOf).attr('data-original-title',res.data.sheathRatioOf);
                 $('#sheathShellColor-info').html(res.data.sheathShellColor).attr('data-original-title',res.data.sheathShellColor);
                 $('#sheathShellFall-info').html(res.data.sheathShellFall).attr('data-original-title',res.data.sheathShellFall);
                 $('#sheathShellTopShape-info').html(res.data.sheathShellTopShape).attr('data-original-title',res.data.sheathShellTopShape);
                 $('#sheathShellBaseShape-info').html(res.data.sheathShellBaseShape).attr('data-original-title',res.data.sheathShellBaseShape);
                 $('#sheathShellMargin-info').html(res.data.sheathShellMargin).attr('data-original-title',res.data.sheathShellMargin);
                 $('#sheathShellBackPowder-info').html(res.data.sheathShellBackPowder).attr('data-original-title',res.data.sheathShellBackPowder);
-                $('#sheathRatioOf-info').html(res.data.sheathRatioOf).attr('data-original-title',res.data.sheathRatioOf);
-
 
                 $('#spec-info').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
                 $('#exampleModal-info').modal('show');
@@ -746,25 +730,24 @@ function init_form(){
     $('#specId').val("");
     $('#genusId').val("");
     $('#sheathShellShape').val("");
+    $('#sheathRatioOf').val("");
     $('#sheathShellColor').val("");
     $('#sheathShellFall').val("");
     $('#sheathShellTopShape').val("");
     $('#sheathShellBaseShape').val("");
     $('#sheathShellMargin').val("");
     $('#sheathShellBackPowder').val("");
-    $('#sheathRatioOf').val("");
-
 }
 //初始化详情元素的值
 function init_info(){
     $('#spec-info').val("").attr('data-original-title',"");//清除鼠标停留显示的内容，就是提示内容
     $('#sheathShellShape-info').val("").attr('data-original-title',"");
+    $('#sheathRatioOf-info').val("").attr('data-original-title',"");
     $('#sheathShellColor-info').val("").attr('data-original-title',"");
     $('#sheathShellFall-info').val("").attr('data-original-title',"");
+    $('#culmStem-info').val("").attr('data-original-title',"");
     $('#sheathShellTopShape-info').val("").attr('data-original-title',"");
-    $('#sheathShellBaseShape').val("").attr('data-original-title',"");
+    $('#sheathShellBaseShape-info').val("").attr('data-original-title',"");
     $('#sheathShellMargin-info').val("").attr('data-original-title',"");
     $('#sheathShellBackPowder-info').val("").attr('data-original-title',"");
-    $('#sheathRatioOf-info').val("").attr('data-original-title',"");
-
 }

@@ -1,7 +1,7 @@
 var queryPageUrl='';
 var querySpecPageUrl='';
 $(function(){
-    queryPageUrl = baseUrl+'/tCathermorphology/findAllQuery';
+    queryPageUrl = baseUrl+'/tCathetermorphology/findAllQuery';
     querySpecPageUrl = baseUrl+'/spec/findAllQuery';
     //新增点击事件
     $('#btn_add').on('click',function () {
@@ -76,7 +76,7 @@ function init_table(){
                 formatter:function(value,row,index){//格式化，自定义内容
                     var _html = '<button onclick="edit(\''+row.chmId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
                     _html += '<button  onclick="dele(\''+row.chmId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
-                    _html += '<button  onclick="check(\''+row.chmId+'\')"class="btn btn-primary btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="查看"><i class="fa fa-search"></i></button>'
+                    _html += '<button  onclick="check(\''+row.chmId+'\')"class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="查看"><i class="fa fa-search"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
@@ -384,7 +384,7 @@ function save() {
                 if (chmId == "") {//新增
                     formData.specId = 0;
                     $.ajax({
-                        url: baseUrl + '/tCathermorphology/save',		//请求路径
+                        url: baseUrl + '/tCathetermorphology/save',		//请求路径
                         type: 'POST',			            //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
@@ -414,7 +414,7 @@ function save() {
                     });
                 } else {//修改
                     $.ajax({
-                        url: baseUrl + '/tCathermorphology/update',	    //请求路径
+                        url: baseUrl + '/tCathetermorphology/update',	    //请求路径
                         type: 'PUT',				        //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
@@ -460,7 +460,7 @@ function save() {
 function edit(id) {
     init_form();
     $.ajax({
-        url:baseUrl+'/tCathermorphology/findId/'+id,		//请求路径
+        url:baseUrl+'/tCathetermorphology/findId/'+id,		//请求路径
         type:'GET',			                    //请求方式
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
@@ -506,7 +506,7 @@ function dele(gid){
         callback: function(result) {
             if (result) {
                 $.ajax({
-                    url:baseUrl+'/tCathermorphology/delete/'+gid,   //请求路径,单个删除
+                    url:baseUrl+'/tCathetermorphology/delete/'+gid,   //请求路径,单个删除
                     type:'DELETE',				        //请求方式
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
@@ -550,7 +550,7 @@ function dele(gid){
 function check(id) {
     init_info();
     $.ajax({
-        url:baseUrl+'/tCathermorphology/findId/'+id,		//请求路径
+        url:baseUrl+'/tCathetermorphology/findId/'+id,		//请求路径
         type:'GET',			                    //请求方式
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
@@ -613,7 +613,7 @@ function deles() {
                     }
                     $.ajax({    //批量删除
                         //现将数据每个元素用‘,(逗号)’分隔拼接成字符串，再用encodeURI进行编码，最后拼接到url的后面
-                        url: baseUrl+'/tCathermorphology/deleteByIds?ids='+encodeURI(ids.join(',')),
+                        url: baseUrl+'/tCathetermorphology/deleteByIds?ids='+encodeURI(ids.join(',')),
                         type:'DELETE',
                         contentType: 'application/json',//数据类型
                         success:function(res){	        //请求成功回调函数
