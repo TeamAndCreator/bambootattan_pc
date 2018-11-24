@@ -74,9 +74,9 @@ function init_table(){
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
-                    var _html = '<button onclick="edit(\''+row.stId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
-                    _html += '<button  onclick="dele(\''+row.stId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
-                    _html += '<button  onclick="check(\''+row.stId+'\')"class="btn btn-primary btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="查看"><i class="fa fa-search"></i></button>'
+                    var _html = '<button onclick="edit(\''+row.tpId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
+                    _html += '<button  onclick="dele(\''+row.tpId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
+                    _html += '<button  onclick="check(\''+row.tpId+'\')"class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="查看"><i class="fa fa-search"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
@@ -361,7 +361,7 @@ function save() {
         callback: function (result) {
             if (result) {
                 var specId = $('#specId').val();
-                var stId=$('#stId').val();
+                var tpId=$('#tpId').val();
                 var tpFiberPeoportionUnitPercent = $('#tpFiberPeoportionUnitPercent').val();
                 var tpVesselProportionUnitPercent = $('#tpVesselProportionUnitPercent').val();
                 var tpSieveTubeProportionUnitPercent = $('#tpSieveTubeProportionUnitPercent').val();
@@ -369,7 +369,7 @@ function save() {
 
                 var genusId=$('#genusId').val();
                 var formData = {
-                    "stId":stId,
+                    "tpId":tpId,
                     "spec":{
                         'specId':specId,
                         'genus':{
@@ -381,7 +381,7 @@ function save() {
                     "tpSieveTubeProportionUnitPercent":tpSieveTubeProportionUnitPercent,
                     "tpParenchymaCellProportionUnitPercent":tpParenchymaCellProportionUnitPercent
                 };
-                if (stId == "") {//新增
+                if (tpId == "") {//新增
                     formData.specId = 0;
                     $.ajax({
                         url: baseUrl + '/tissueproportion/save',		//请求路径
@@ -466,7 +466,7 @@ function edit(id) {
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
             if(res.code==200){
-                $('#stId').val(res.data.stId);
+                $('#tpId').val(res.data.tpId);
                 $('#tpFiberPeoportionUnitPercent').val(res.data.tpFiberPeoportionUnitPercent);
                 $('#tpVesselProportionUnitPercent').val(res.data.tpVesselProportionUnitPercent);
                 $('#tpSieveTubeProportionUnitPercent').val(res.data.tpSieveTubeProportionUnitPercent);
@@ -609,7 +609,7 @@ function deles() {
                     var ids=[]; //选中数据的genusId数组
                     for(var i=0;i<selectedItems.length;i++){
                         //循环遍历选中的数据并将genusId放入到ids数组中
-                        ids.push(selectedItems[i].stId);
+                        ids.push(selectedItems[i].tpId);
                     }
                     $.ajax({    //批量删除
                         //现将数据每个元素用‘,(逗号)’分隔拼接成字符串，再用encodeURI进行编码，最后拼接到url的后面
@@ -671,7 +671,7 @@ function selectedSpec() {
 //初始化表单元素的值
 function init_form(){
     $('#spec').val("");
-    $('#stId').val("");
+    $('#tpId').val("");
     $('#specId').val("");
     $('#genusId').val("");
     $('#tpFiberPeoportionUnitPercent').val("");

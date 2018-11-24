@@ -61,8 +61,6 @@ function init_table(){
             }
         },
         cache:false,//是否使用緩存
-        fixedColumns: true,//固定列
-        fixedNumber:4,//固定前四列
         columns:[//列数据
 
             {
@@ -78,7 +76,7 @@ function init_table(){
                 formatter:function(value,row,index){//格式化，自定义内容
                     var _html = '<button onclick="edit(\''+row.phyId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
                     _html += '<button  onclick="dele(\''+row.phyId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
-                    _html += '<button  onclick="check(\''+row.phyId+'\')"class="btn btn-primary btn-xs add-tooltip" data-toggle="tooltip" data-placement="top" data-original-title="查看"><i class="fa fa-search"></i></button>'
+                    _html += '<button  onclick="check(\''+row.phyId+'\')"class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="查看"><i class="fa fa-search"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
@@ -86,7 +84,7 @@ function init_table(){
                 }
             },
             {
-                field:'spec',//数据列
+                field:'spec"',//数据列
                 title:'种名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -170,16 +168,6 @@ function init_table(){
                 }
             },
             {
-                field:'phyWholeDryLineUnitPercent',//数据列
-                title:'湿材到全干（线干缩率）',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field) {
-                    return {css: {'min-width': '80px'}};
-                }
-            },
-            {
                 field:'phyAirDryVolumeUnitPercent',//数据列
                 title:'湿材到气干（体积缩率）',//数据列名称
                 sortable:true,//可排序
@@ -199,6 +187,7 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 }
             },
+
             {
                 field:'phyAirShrinkageUnitPercent',//数据列
                 title:'气干缩率',//数据列名称
@@ -219,17 +208,6 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 }
             },
-            {
-                field:'phyAirShrinkageRadialUnitPercent',//数据列
-                title:'气干缩率（径向）',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field) {
-                    return {css: {'min-width': '80px'}};
-                }
-            },
-
             {
                 field:'phyAirShrinkageEdnwiseUnitPercent',//数据列
                 title:'气干缩率（纵向）',//数据列名称
@@ -260,8 +238,6 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 }
             },
-
-
             {
                 field:'phyWholeShrinkageRadialUnitPercent',//数据列
                 title:'全干缩率（径向）',//数据列名称
@@ -292,6 +268,8 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 }
             },
+
+
 
 
             /*
@@ -529,19 +507,24 @@ function save() {
                 var phyAirDryingLineUnitPercent = $('#phyAirDryingLineUnitPercent').val();
                 var phyWholeDryLineUnitPercent = $('#phyWholeDryLineUnitPercent').val();
                 var phyAirDryVolumeUnitPercent = $('#phyAirDryVolumeUnitPercent').val();
-
-
-                var phyWholeDryVolumeUnitPercent = $('#phyWholeDryVolumeUnitPercent').val();
                 var phyAirShrinkageUnitPercent=$('#phyAirShrinkageUnitPercent').val();
-                var phyAirShrinkageChordwiseUnitPercent = $('#phyAirShrinkageChordwiseUnitPercent').val();
-                var phyAirShrinkageRadialUnitPercent = $('#phyAirShrinkageRadialUnitPercent').val();
-                var phyAirShrinkageEdnwiseUnitPercent = $('#phyAirShrinkageEdnwiseUnitPercent').val();
-                var phyAirShrinkageVolumeUnitPercent= $('#phyAirShrinkageVolumeUnitPercent').val();
-                var phyWholeShrinkageChordwiseUnitPercent = $('#phyWholeShrinkageChordwiseUnitPercent').val();
+                var phyAirShrinkageChordwiseUnitPercent=$('#phyAirShrinkageChordwiseUnitPercent').val();
+                var phyAirShrinkageRadialUnitPercent=$('#phyAirShrinkageRadialUnitPercent').val();
 
-                var phyWholeShrinkageRadialUnitPercent = $('#phyWholeShrinkageRadialUnitPercent').val();
-                var phyWholeShrinkageEdnwiseUnitPercent= $('#phyWholeShrinkageEdnwiseUnitPercent').val();
-                var phyWholeShrinkageVolumeUnitPercent = $('#phyWholeShrinkageVolumeUnitPercent').val();
+                var phyAirShrinkageEdnwiseUnitPercent=$('#phyAirShrinkageEdnwiseUnitPercent').val();
+
+                var phyAirShrinkageVolumeUnitPercent=$('#phyAirShrinkageVolumeUnitPercent').val();
+
+                var phyWholeShrinkageChordwiseUnitPercent=$('#phyWholeShrinkageChordwiseUnitPercent').val();
+
+                var phyWholeShrinkageRadialUnitPercent=$('#phyWholeShrinkageRadialUnitPercent').val();
+
+                var phyWholeShrinkageEdnwiseUnitPercent=$('#phyWholeShrinkageEdnwiseUnitPercent').val();
+                var phyWholeShrinkageVolumeUnitPercent=$('#phyWholeShrinkageVolumeUnitPercent').val();
+
+
+
+
 
                 var genusId=$('#genusId').val();
                 var formData = {
@@ -561,17 +544,16 @@ function save() {
                     "phyAirDryingLineUnitPercent":phyAirDryingLineUnitPercent,
                     "phyWholeDryLineUnitPercent":phyWholeDryLineUnitPercent,
                     "phyAirDryVolumeUnitPercent":phyAirDryVolumeUnitPercent,
-
-                    "phyWholeDryVolumeUnitPercent":phyWholeDryVolumeUnitPercent,
+                    "phyWholeDryVolumeUnitPercent": phyWholeDryVolumeUnitPercent,
                     "phyAirShrinkageUnitPercent": phyAirShrinkageUnitPercent,
                     "phyAirShrinkageChordwiseUnitPercent": phyAirShrinkageChordwiseUnitPercent,
                     "phyAirShrinkageRadialUnitPercent": phyAirShrinkageRadialUnitPercent,
                     "phyAirShrinkageEdnwiseUnitPercent": phyAirShrinkageEdnwiseUnitPercent,
-                    "phyAirShrinkageVolumeUnitPercent": phyAirShrinkageVolumeUnitPercent,
-                    "phyWholeShrinkageChordwiseUnitPercent": phyWholeShrinkageChordwiseUnitPercent,
+                    "phyAirShrinkageVolumeUnitPercent":phyAirShrinkageVolumeUnitPercent,
+                    "phyWholeShrinkageChordwiseUnitPercent":phyWholeShrinkageChordwiseUnitPercent,
                     "phyWholeShrinkageRadialUnitPercent": phyWholeShrinkageRadialUnitPercent,
                     "phyWholeShrinkageEdnwiseUnitPercent": phyWholeShrinkageEdnwiseUnitPercent,
-                    "phyWholeShrinkageVolumeUnitPercent": phyWholeShrinkageVolumeUnitPercent,
+                    "phyWholeShrinkageVolumeUnitPercent":phyWholeShrinkageVolumeUnitPercent
                 };
                 if (phyId == "") {//新增
                     formData.specId = 0;
@@ -669,18 +651,20 @@ function edit(id) {
                 $('#phyWholeDryLineUnitPercent').val(res.data.phyWholeDryLineUnitPercent);
                 $('#phyAirDryVolumeUnitPercent').val(res.data.phyAirDryVolumeUnitPercent);
 
+
                 $('#phyWholeDryVolumeUnitPercent').val(res.data.phyWholeDryVolumeUnitPercent);
                 $('#phyAirShrinkageUnitPercent').val(res.data.phyAirShrinkageUnitPercent);
                 $('#phyAirShrinkageChordwiseUnitPercent').val(res.data.phyAirShrinkageChordwiseUnitPercent);
                 $('#phyAirShrinkageRadialUnitPercent').val(res.data.phyAirShrinkageRadialUnitPercent);
                 $('#phyAirShrinkageEdnwiseUnitPercent').val(res.data.phyAirShrinkageEdnwiseUnitPercent);
                 $('#phyAirShrinkageVolumeUnitPercent').val(res.data.phyAirShrinkageVolumeUnitPercent);
-
-
                 $('#phyWholeShrinkageChordwiseUnitPercent').val(res.data.phyWholeShrinkageChordwiseUnitPercent);
+
                 $('#phyWholeShrinkageRadialUnitPercent').val(res.data.phyWholeShrinkageRadialUnitPercent);
                 $('#phyWholeShrinkageEdnwiseUnitPercent').val(res.data.phyWholeShrinkageEdnwiseUnitPercent);
                 $('#phyWholeShrinkageVolumeUnitPercent').val(res.data.phyWholeShrinkageVolumeUnitPercent);
+
+
 
 
                 $('#spec').val(res.data.spec.specNameCh);
@@ -758,7 +742,44 @@ function dele(gid){
         }
     });
 }
+//查看详情
+function check(id) {
+    init_info();
+    $.ajax({
+        url:baseUrl+'/physics/findId/'+id,		//请求路径
+        type:'GET',			                    //请求方式
+        dataType:"JSON",		                //返回数据类型
+        contentType: 'application/json',        //数据类型
+        success:function(res){	                //请求成功回调函数
+            if(res.code==200){
+                $('#phyRelativeUnitPercent-info').html(res.data.phyRelativeUnitPercent).attr('data-original-title',res.data.phyRelativeUnitPercent);
+                $('#phyAbsoluteUnitPercent-info').html(res.data.phyAbsoluteUnitPercent).attr('data-original-title',res.data.phyAbsoluteUnitPercent);
+                $('#phyGreenDensityUnitMidu-info').html(res.data.phyGreenDensityUnitMidu).attr('data-original-title',res.data.phyGreenDensityUnitMidu);
+                $('#phyBasicDensityUnitMidu-info').html(res.data.phyBasicDensityUnitMidu).attr('data-original-title',res.data.phyBasicDensityUnitMidu);
+                $('#phyAirDryDensityUnitMidu-info').html(res.data.phyAirDryDensityUnitMidu).attr('data-original-title',res.data.phyAirDryDensityUnitMidu);
+                $('#phyAbsoluteDryDensityUnitMidu-info').html(res.data.phyAbsoluteDryDensityUnitMidu).attr('data-original-title',res.data.phyAbsoluteDryDensityUnitMidu);
+                $('#phyAirDryingLineUnitPercent-info').html(res.data.phyAirDryingLineUnitPercent).attr('data-original-title',res.data.phyAirDryingLineUnitPercent);
+                $('#phyWholeDryLineUnitPercent-info').html(res.data.phyWholeDryLineUnitPercent).attr('data-original-title',res.data.phyWholeDryLineUnitPercent);
+                $('#phyAirDryVolumeUnitPercent-info').html(res.data.phyAirDryVolumeUnitPercent).attr('data-original-title',res.data.phyAirDryVolumeUnitPercent);
 
+                $('#spec-info').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
+                $('#exampleModal-info').modal('show');
+            }
+            else{
+                $.niftyNoty({
+                    type: 'danger',
+                    icon: 'pli-cross icon-2x',
+                    message: res.msg,
+                    container: 'floating',
+                    timer: 1000
+                });
+            }
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
+
+        }
+    });
+}
 //批量删除
 function deles() {
     //选中的数据
@@ -836,59 +857,7 @@ function deles() {
         });
     }
 }
-//查看详情
-function check(id) {
-    init_info();
-    $.ajax({
-        url:baseUrl+'/physics/findId/'+id,		//请求路径
-        type:'GET',			                    //请求方式
-        dataType:"JSON",		                //返回数据类型
-        contentType: 'application/json',        //数据类型
-        success:function(res){	                //请求成功回调函数
-            if(res.code==200){
-                $('#phyRelativeUnitPercent-info').html(res.data.phyRelativeUnitPercent).attr('data-original-title',res.data.phyRelativeUnitPercent);
-                $('#phyAbsoluteUnitPercent-info').html(res.data.phyAbsoluteUnitPercent).attr('data-original-title',res.data.phyAbsoluteUnitPercent);
-                $('#phyGreenDensityUnitMidu-info').html(res.data.phyGreenDensityUnitMidu).attr('data-original-title',res.data.phyGreenDensityUnitMidu);
-                $('#phyBasicDensityUnitMidu-info').html(res.data.phyBasicDensityUnitMidu).attr('data-original-title',res.data.phyBasicDensityUnitMidu);
-                $('#phyAirDryDensityUnitMidu-info').html(res.data.phyAirDryDensityUnitMidu).attr('data-original-title',res.data.phyAirDryDensityUnitMidu);
-                $('#phyAbsoluteDryDensityUnitMidu-info').html(res.data.phyAbsoluteDryDensityUnitMidu).attr('data-original-title',res.data.phyAbsoluteDryDensityUnitMidu);
 
-                $('#phyAirDryingLineUnitPercent-info').html(res.data.phyAirDryingLineUnitPercent).attr('data-original-title',res.data.phyAirDryingLineUnitPercent);
-                $('#phyWholeDryLineUnitPercent-info').html(res.data.phyWholeDryLineUnitPercent).attr('data-original-title',res.data.phyWholeDryLineUnitPercent);
-                $('#phyAirDryVolumeUnitPercent-info').html(res.data.phyAirDryVolumeUnitPercent).attr('data-original-title',res.data.phyAirDryVolumeUnitPercent);
-
-                $('#phyWholeDryVolumeUnitPercent-info').html(res.data.phyWholeDryVolumeUnitPercent).attr('data-original-title',res.data.phyWholeDryVolumeUnitPercent);
-                $('#phyAirShrinkageUnitPercent-info').html(res.data.phyAirShrinkageUnitPercent).attr('data-original-title',res.data.phyAirShrinkageUnitPercent);
-                $('#phyAirShrinkageChordwiseUnitPercent-info').html(res.data.phyAirShrinkageChordwiseUnitPercent).attr('data-original-title',res.data.phyAirShrinkageChordwiseUnitPercent);
-                $('#phyAirShrinkageRadialUnitPercent-info').html(res.data.phyAirShrinkageRadialUnitPercent).attr('data-original-title',res.data.phyAirShrinkageRadialUnitPercent);
-                $('#phyAirShrinkageEdnwiseUnitPercent-info').html(res.data.phyAirShrinkageEdnwiseUnitPercent).attr('data-original-title',res.data.phyAirShrinkageEdnwiseUnitPercent);
-                $('#phyAirShrinkageVolumeUnitPercent-info').html(res.data.phyAirShrinkageVolumeUnitPercent).attr('data-original-title',res.data.phyAirShrinkageVolumeUnitPercent);
-
-                $('#phyWholeShrinkageChordwiseUnitPercent-info').html(res.data.phyAirShrinkageChordwiseUnitPercent).attr('data-original-title',res.data.phyAirShrinkageChordwiseUnitPercent);
-                $('#phyWholeShrinkageRadialUnitPercent-info').html(res.data.phyAirShrinkageRadialUnitPercent).attr('data-original-title',res.data.phyAirShrinkageRadialUnitPercent);
-                $('#phyWholeShrinkageEdnwiseUnitPercent-info').html(res.data.phyAirShrinkageEdnwiseUnitPercent).attr('data-original-title',res.data.phyAirShrinkageEdnwiseUnitPercent);
-                $('#phyWholeShrinkageVolumeUnitPercent-info').html(res.data.phyWholeShrinkageVolumeUnitPercent).attr('data-original-title',res.data.phyWholeShrinkageVolumeUnitPercent);
-
-
-
-                $('#spec-info').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
-                $('#exampleModal-info').modal('show');
-            }
-            else{
-                $.niftyNoty({
-                    type: 'danger',
-                    icon: 'pli-cross icon-2x',
-                    message: res.msg,
-                    container: 'floating',
-                    timer: 1000
-                });
-            }
-        },
-        error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
-
-        }
-    });
-}
 //选中种
 function selectedSpec() {
     //选中的数据
@@ -927,6 +896,7 @@ function init_form(){
     $('#phyWholeShrinkageEdnwiseUnitPercent').val("");
     $('#phyWholeShrinkageVolumeUnitPercent').val("");
 
+
 }
 //初始化详情元素的值
 function init_info(){
@@ -938,20 +908,17 @@ function init_info(){
     $('#phyAirDryDensityUnitMidu-info').val("").attr('data-original-title',"");
     $('#phyAbsoluteDryDensityUnitMidu-info').val("").attr('data-original-title',"");
     $('#phyAirDryingLineUnitPercent-info').val("").attr('data-original-title',"");
-    $('#phyWholeDryLineUnitPercent-info').val("").attr('data-original-title',"");
-    $('#phyAirDryVolumeUnitPercent-info').val("").attr('data-original-title',"");
+    $('#phyWholeDryLineUnitPercent-checkinfo').val("").attr('data-original-title',"");
+    $('#phyAirDryVolumeUnitPercent-checkinfo').val("").attr('data-original-title',"");
 
-    $('#phyWholeDryVolumeUnitPercent-info').val("").attr('data-original-title',"");
-    $('#phyAirShrinkageUnitPercent-info').val("").attr('data-original-title',"");
-    $('#phyAirShrinkageChordwiseUnitPercent-info').val("").attr('data-original-title',"");
-    $('#phyAirShrinkageRadialUnitPercent-info').val("").attr('data-original-title',"");
-    $('#phyAirShrinkageEdnwiseUnitPercent-info').val("").attr('data-original-title',"");
-    $('#phyAirShrinkageVolumeUnitPercent-info').val("").attr('data-original-title',"");
-
-
-    $('#phyWholeShrinkageChordwiseUnitPercent-info').val("").attr('data-original-title',"");
-    $('#phyWholeShrinkageRadialUnitPercent-info').val("").attr('data-original-title',"");
-    $('#phyWholeShrinkageEdnwiseUnitPercent-info').val("").attr('data-original-title',"");
-    $('#phyWholeShrinkageVolumeUnitPercent-info').val("").attr('data-original-title',"");
+    $('#phyWholeDryVolumeUnitPercent-checkinfo').val("").attr('data-original-title',"");
+    $('#phyAirShrinkageUnitPercent-checkinfo').val("").attr('data-original-title',"");
+    $('#phyAirShrinkageChordwiseUnitPercent-checkinfo').val("").attr('data-original-title',"");
+    $('#phyAirShrinkageRadialUnitPercent-checkinfo').val("").attr('data-original-title',"");
+    $('#phyAirShrinkageEdnwiseUnitPercent-checkinfo').val("").attr('data-original-title',"");
+    $('#phyAirShrinkageVolumeUnitPercent-checkinfo').val("").attr('data-original-title',"");
+    $('#phyWholeShrinkageChordwiseUnitPercent-checkinfo').val("").attr('data-original-title',"");
+    $('#phyWholeShrinkageRadialUnitPercent-checkinfo').val("").attr('data-original-title',"");
+    $('#phyWholeShrinkageEdnwiseUnitPercent-checkinfo').val("").attr('data-original-title',"");
+    $('#phyWholeShrinkageVolumeUnitPercent-checkinfo').val("").attr('data-original-title',"");
 }
-

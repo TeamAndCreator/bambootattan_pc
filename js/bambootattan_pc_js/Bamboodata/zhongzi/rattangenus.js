@@ -475,6 +475,7 @@ function init_info(){
     $('#genusDesc-info').val("").attr('data-original-title',"");
 
 }
+//设置富文本的
 function init_sunmmernote(){
     $('#demo-summernote').summernote({
         height: 244,                 // set editor height
@@ -482,4 +483,11 @@ function init_sunmmernote(){
         maxHeight: null,             // set maximum height of editor
         focus: true                  // set focus to editable area after initializing summernote
     });
+    $('#demo-summernote-info').summernote({
+        height: 244,                 // set editor height
+        minHeight: null,             // set minimum height of editor
+        maxHeight: null,             // set maximum height of editor
+        focus: true                 // set focus to editable area after initializing summernot
+    })
+    $('#demo-summernote-info').summernote('disable');
 }
