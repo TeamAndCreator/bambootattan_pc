@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>藤种性质-组织比量 | Nifty - Admin Template</title>
-
+    <link rel="icon" href="../../img/image/favicon.ico"/>
+    <title>组织比量 | Nifty - Admin Template</title>
 
     <!--STYLESHEET-->
     <!--=================================================-->
@@ -99,6 +99,7 @@
     <script src="../../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
     <script src="../../js/bambootattan_pc_js/common.js"></script>
 
+
     <!--=================================================
 
     REQUIRED
@@ -165,14 +166,6 @@
                 </ul>
                 <ul class="nav navbar-top-links pull-right">
                     <li class="dropdown">
-                        <a id="demo-lang-switch" class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
-                                <span class="lang-selected">
-                                   <a href="../../index.html">
-                                        <i class="glyphicon glyphicon-home"></i> 首页
-                                    </a>
-                                </span>
-                        </a>
-                    </li>
                         <!--User dropdown-->
                         <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                     <li id="dropdown-user" class="dropdown">
@@ -234,7 +227,7 @@
             <!--Page Title-->
             <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
             <div id="page-title">
-                <h1 class="page-header text-overflow">藤种性质</h1>
+                <h1 class="page-header text-overflow">竹种性质</h1>
             </div>
 
 
@@ -250,14 +243,13 @@
                 <!--===================================================-->
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title">组织比量表</h3>
+                        <h3 class="panel-title">组织比量</h3>
                     </div>
                     <div class="panel-body">
                         <div id="btn_area">
                             <button id="btn_add" class="btn btn-success" ><i class="demo-pli-plus"></i> 增加</button>
                             <button id="btn_delete" class="btn btn-danger"><i class="demo-pli-cross"></i> 删除</button>
                         </div>
-
 
 
                         <!--增加按钮的模态框-->
@@ -375,8 +367,6 @@
                                             </div>
 
 
-
-
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -457,7 +447,7 @@
                                             <li><a href="../Bamboodata-bambooforms/culm.html">竹竿表</a></li>
                                             <li><a href="../Bamboodata-bambooforms/sheathnode.html">箨环表</a></li>
                                             <li><a href="../Bamboodata-bambooforms/sheath.html">箨鞘表</a></li>
-                                            <li><a href="../Bamboodata-bambooforms/Tuoer.html">箨耳表</a></li>
+                                            <li><a href="../Bamboodata-bambooforms/sheathear.html">箨耳表</a></li>
                                             <li><a href="../Bamboodata-bambooforms/sheathtongue.html">箨舌表</a></li>
                                             <li><a href="../Bamboodata-bambooforms/sheathshell.html">箨片表</a></li>
                                             <li><a href="../Bamboodata-bambooforms/bambooleaf.html">竹叶表</a></li>
@@ -465,40 +455,43 @@
                                         </ul>
                                     </li>
 
-                                    <li>
+                                    <li class="collapse in">
                                         <a href="#">竹种性质<i class="arrow"></i></a>
                                         <!--Submenu-->
-                                        <ul class="collapse">
-                                            <li><a href="../Bamboodata-Bamboonature/chemistry.html">化学性质表</a></li>
-                                            <li><a href="../Bamboodata-Bamboonature/mechanics.html">力学性质表</a></li>
-                                            <li><a href="../Bamboodata-Bamboonature/physical.html">物理性质表</a></li>
-                                            <li><a href="../Bamboodata-Bamboonature/tissue.html">结构性质表</a></li>
-                                            <li><a href="../Bamboodata-Bamboonature/fibermorphology.html">纤维形态特征表</a></li>
-                                            <li><a href="../Bamboodata-Bamboonature/tissue.html">组织比量表</a></li>
-                                            <li><a href="../Bamboodata-Bamboonature/cathermorphology.html">导管形态特征表</a></li>
-                                            <li><a href="../Bamboodata-Bamboonature/vascularbundelmorphology.html">纤管形态特征表</a></li>
+                                        <ul class="collapse in">
+                                            <li><a href="chemistry.html">化学性质表</a></li>
+                                            <li><a href="mechanics.html">力学性质表</a></li>
+                                            <li><a href="physical.html">物理性质表</a></li>
+                                            <li><a href="structure.html">结构性质表</a></li>
+                                            <li><a href="fibermorphology.html">纤维形态特征表</a></li>
+                                            <li class="active-link"><a href="tissueproportion.html">组织比量表</a></li>
+                                            <li><a href="cathermorphology.html">导管形态特征表</a></li>
+                                            <li><a href="vascularbundelmorphology.html">纤管形态特征表</a></li>
                                         </ul>
                                     </li>
 
-                                    <li class="collapse in">
+
+                                    <li>
                                         <a href="#">藤种性质<i class="arrow"></i></a>
-                                    <ul class="collapse in">
-                                        <li><a href="chemistry.html">化学性质表</a></li>
-                                        <li><a href="mechanics.html">力学性质表</a></li>
-                                        <li><a href="physical.html">物理性质表</a></li>
-                                        <li><a href="structural.html">结构性质表</a></li>
-                                        <li><a href="fiber.html">纤维形态特征表</a></li>
-                                        <li class="active-link"><a href="tissue.html">组织比量表</a></li>
-                                        <li><a href="cathermorphology.html">导管形态特征表</a></li>
-                                        <li><a href="vascularbundelmorphology.html">纤管形态特征表</a></li>
-                                    </ul>
+                                        <!--Submenu-->
+                                        <ul class="collapse">
+                                            <li><a href="../Bamboodata-Tengnature/chemistry.html">化学性质表</a></li>
+                                            <li><a href="../Bamboodata-Tengnature/mechanics.html">力学性质表</a></li>
+                                            <li><a href="../Bamboodata-Tengnature/physical.html">物理性质表</a></li>
+                                            <li><a href="../Bamboodata-Tengnature/structure.html">结构性质表</a></li>
+                                            <li><a href="../Bamboodata-Tengnature/fiber.html">纤维形态特征表</a></li>
+                                            <li><a href="../Bamboodata-Tengnature/tTissueproportion.html">组织比量表</a></li>
+                                            <li><a href="../Bamboodata-Tengnature/cathermorphology.html">导管形态特征表</a></li>
+                                            <li><a href="../Bamboodata-Tengnature/vascularbundelmorphology.html">纤管形态特征表</a></li>
+                                        </ul>
                                     </li>
+
 
                                     <li>
                                         <a href="#">藤种形态<i class="arrow"></i></a>
                                         <!--Submenu-->
                                         <ul class="collapse">
-                                            <li><a href="tengform.html">藤种形态表</a></li>
+                                            <li><a href="../Bamboodata-Tengnature/tengform.html">藤种形态表</a></li>
                                         </ul>
                                     </li>
 
@@ -626,9 +619,8 @@
 <!-- END OF CONTAINER -->
 
 
-
 </div>
+<script src="../../js/bambootattan_pc_js/Bamboodata/Bamboonature/tissueproportion.js"></script>
 </body>
-<script src="../../js/bambootattan_pc_js/Bamboodata/Tengnature/tissueproportion.js"></script>
 </html>
 

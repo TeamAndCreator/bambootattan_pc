@@ -84,7 +84,7 @@ function init_table(){
                 }
             },
             {
-                field:'spec"',//数据列
+                field:'spec',//数据列
                 title:'种名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -684,7 +684,8 @@ function init_form(){
 function init_info(){
     $('#spec-info').val("").attr('data-original-title',"");//清除鼠标停留显示的内容，就是提示内容
     $('#tpFiberPeoportionUnitPercent-info').val("").attr('data-original-title',"");
-    $('#tpFiberPeoportionUnitPercent-info').val("").attr('data-original-title',"");
+    $('#tpVesselProportionUnitPercent-info').val("").attr('data-original-title',"");
     $('#tpSieveTubeProportionUnitPercent-info').val("").attr('data-original-title',"");
     $('#tpParenchymaCellProportionUnitPercent-info').val("").attr('data-original-title',"");
 }
+

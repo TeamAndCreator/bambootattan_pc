@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>组织比量 | Nifty - Admin Template</title>
+    <link rel="icon" href="../../img/image/favicon.ico"/>
+    <title>藤种-结构性质 | Nifty - Admin Template</title>
+
 
     <!--STYLESHEET-->
     <!--=================================================-->
@@ -25,14 +27,13 @@
     <link href="../../css/demo/nifty-demo-icons.min.css" rel="stylesheet">
 
 
+    <!--font-awesome.css [ OPTIONAL ]-->
+    <link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
     <!--Demo [ DEMONSTRATION ]-->
     <link href="../../css/demo/nifty-demo.min.css" rel="stylesheet">
 
-    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
-    <link href="../../css/demo/nifty-demo-icons.min.css" rel="stylesheet">
 
-    <!--font-awesome.css [ OPTIONAL ]-->
-    <link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
     <!--Bootstrap Table [ OPTIONAL ]-->
     <link href="../../plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
@@ -46,6 +47,8 @@
 
     <!-- Theme -->
     <link id="theme" href="../../css/themes/type-c/theme-lime.min.css" rel="stylesheet">
+
+
 
 
 
@@ -87,16 +90,21 @@
     <!--X-editable [ OPTIONAL ]-->
     <script src="../../plugins/x-editable/js/bootstrap-editable.min.js"></script>
 
-
-    <!--Bootstrap Table [ OPTIONAL ]-->
-    <script src="../../plugins/bootstrap-table/bootstrap-table.min.js"></script>
     <!-- bootbox -->
     <script src="../../plugins/bootbox/bootbox.js"></script>
+    <!--Bootstrap Table [ OPTIONAL ]-->
+    <script src="../../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+
 
     <!--Bootstrap Table Extension [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
+
     <script src="../../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+
     <script src="../../js/bambootattan_pc_js/common.js"></script>
+
+
+
 
 
     <!--=================================================
@@ -165,6 +173,14 @@
                 </ul>
                 <ul class="nav navbar-top-links pull-right">
                     <li class="dropdown">
+                        <a id="demo-lang-switch" class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
+                                <span class="lang-selected">
+                                   <a href="../../index.html">
+                                        <i class="glyphicon glyphicon-home"></i> 首页
+                                    </a>
+                                </span>
+                        </a>
+                    </li>
                         <!--User dropdown-->
                         <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                     <li id="dropdown-user" class="dropdown">
@@ -226,7 +242,7 @@
             <!--Page Title-->
             <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
             <div id="page-title">
-                <h1 class="page-header text-overflow">竹种性质</h1>
+                <h1 class="page-header text-overflow">藤种性质</h1>
             </div>
 
 
@@ -242,13 +258,14 @@
                 <!--===================================================-->
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title">组织比量</h3>
+                        <h3 class="panel-title">结构性质表</h3>
                     </div>
                     <div class="panel-body">
                         <div id="btn_area">
                             <button id="btn_add" class="btn btn-success" ><i class="demo-pli-plus"></i> 增加</button>
                             <button id="btn_delete" class="btn btn-danger"><i class="demo-pli-cross"></i> 删除</button>
                         </div>
+
 
 
                         <!--增加按钮的模态框-->
@@ -265,32 +282,32 @@
                                         <form id="registrationForm" class="form-horizontal">
                                             <div class="panel-body">
                                                 <div class="form-group">
-                                                    <label for="tpFiberPeoportionUnitPercent" class="col-sm-3 control-label">纤维比量:</label>
+                                                    <label for="stStemDiameterUnitMm" class="col-sm-3 control-label">胸高处杆径:</label>
                                                     <div class="col-sm-5">
-                                                        <input id="tpFiberPeoportionUnitPercent" class="form-control input-sm" name="tpFiberPeoportionUnitPercent" placeholder="" type="text"
-                                                               data-bv-field="tpFiberPeoportionUnitPercent"   data-bv-group=".col-sm-4" data-bv-notempty="true" data-bv-notempty-message="箨鞘是否隆起">
+                                                        <input id="stStemDiameterUnitMm" class="form-control input-sm" name="sheathShedTime" placeholder="" type="text"
+                                                               data-bv-field="sheathShedTime"   data-bv-group=".col-sm-4" data-bv-notempty="true" data-bv-notempty-message="箨鞘是否隆起">
                                                     </div>
 
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="tpVesselProportionUnitPercent" class="col-sm-3 control-label">导管比量:</label>
+                                                    <label for="stWallThicknessUnitMm" class="col-sm-3 control-label">壁厚:</label>
                                                     <div class="col-sm-5">
-                                                        <input id="tpVesselProportionUnitPercent" class="form-control input-sm" name="tpVesselProportionUnitPercent" placeholder="" type="text">
+                                                        <input id="stWallThicknessUnitMm" class="form-control input-sm" name="sheathChar" placeholder="" type="text">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="tpSieveTubeProportionUnitPercent" class="col-sm-3 control-label">筛管比量:</label>
+                                                    <label for="stMaximumInternodeLengthUnitCm" class="col-sm-3 control-label">最长节间长:</label>
                                                     <div class="col-sm-5">
-                                                        <input id="tpSieveTubeProportionUnitPercent" class="form-control input-sm" name="tpSieveTubeProportionUnitPercent" placeholder="" type="text">
+                                                        <input id="stMaximumInternodeLengthUnitCm" class="form-control input-sm" name="sheathChar" placeholder="" type="text">
                                                     </div>
                                                 </div>
 
 
                                                 <div class="form-group">
-                                                    <label for="tpParenchymaCellProportionUnitPercent" class="col-sm-3 control-label">薄壁细胞比量:</label>
+                                                    <label for="stRattanDiameterUnitMm" class="col-sm-3 control-label">2m处的藤径:</label>
                                                     <div class="col-sm-5">
-                                                        <input id="tpParenchymaCellProportionUnitPercent" class="form-control input-sm" name="tpParenchymaCellProportionUnitPercent" placeholder="" type="text">
+                                                        <input id="stRattanDiameterUnitMm" class="form-control input-sm" name="sheathBackPowder" placeholder="" type="text">
                                                     </div>
                                                 </div>
 
@@ -312,7 +329,6 @@
                                         </form>
                                     </div>
 
-
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                                         <button id="btn_save" type="button" class="btn btn-primary">保存</button>
@@ -320,6 +336,7 @@
                                 </div>
                             </div>
                         </div>
+
 
                         <!--增加查看的模态框-->
                         <div class="modal fade" id="exampleModal-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
@@ -333,40 +350,34 @@
                                     <div class="modal-body">
                                         <div class="form-horizontal">
                                             <div class="form-group">
-                                                <label for="tpFiberPeoportionUnitPercent-info" class="col-sm-3 control-label">导管长度:</label>
-                                                <div class="col-sm-5">
-                                                    <p id="tpFiberPeoportionUnitPercent-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                <label for="stStemDiameterUnitMm-info" class="col-sm-2 control-label">胸高处杆径:</label>
+                                                <div class="col-sm-3">
+                                                    <p id="stStemDiameterUnitMm-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="tpVesselProportionUnitPercent-info" class="col-sm-3 control-label">导管直径:</label>
-                                                <div class="col-sm-5">
-                                                    <p id="tpVesselProportionUnitPercent-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="tpSieveTubeProportionUnitPercent-info" class="col-sm-3 control-label">导管密度:</label>
-                                                <div class="col-sm-5">
-                                                    <p id="tpSieveTubeProportionUnitPercent-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                <label for="stWallThicknessUnitMm-info" class="col-sm-2 control-label">壁厚:</label>
+                                                <div class="col-sm-3">
+                                                    <p id="stWallThicknessUnitMm-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
                                             </div>
 
 
                                             <div class="form-group">
-                                                <label for="tpParenchymaCellProportionUnitPercent-info" class="col-sm-3 control-label">导管形状指数:</label>
-                                                <div class="col-sm-5">
-                                                    <p id="tpParenchymaCellProportionUnitPercent-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                <label for="stMaximumInternodeLengthUnitCm-info" class="col-sm-2 control-label">最长节间长:</label>
+                                                <div class="col-sm-3">
+                                                    <p id="stMaximumInternodeLengthUnitCm-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                                <label for="stRattanDiameterUnitMm-info" class="col-sm-2 control-label">2m处的藤径:</label>
+                                                <div class="col-sm-3">
+                                                    <p id="stRattanDiameterUnitMm-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
                                             </div>
+
                                             <div class="form-group">
-                                                <label for="spec-info" class="col-sm-3 control-label">种:</label>
-                                                <div class="col-sm-5 input-group">
-                                                    <p id="spec-info" class="form-control-static bord-all pad-hor-sm"></p>
+                                                <label for="spec-info" class="col-sm-2 control-label">种:</label>
+                                                <div class="col-sm-2 input-group">
+                                                    <p id="spec-info" class="form-control-static bord-all pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
                                             </div>
-
-
-
 
                                         </div>
                                     </div>
@@ -396,51 +407,18 @@
                                 </div>
                             </div>
                         </div>
+
                         <table id="data_table" class="table"></table>
                     </div>
                 </div>
+                <!--===================================================-->
             </div>
-            <!--===================================================-->
         </div>
 
         <!--===================================================-->
     <!--END CONTENT CONTAINER-->
 
 
-
-    <!--ASIDE-->
-    <!--===================================================-->
-    <aside id="aside-container">
-        <div id="aside">
-            <div class="nano">
-                <div class="nano-content">
-
-                    <!--Nav tabs-->
-                    <!--================================-->
-                    <ul class="nav nav-tabs nav-justified">
-                        <li class="active">
-                            <a href="#demo-asd-tab-1" data-toggle="tab">
-                                <i class="demo-pli-speech-bubble-7"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#demo-asd-tab-2" data-toggle="tab">
-                                <i class="demo-pli-information icon-fw"></i> Report
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#demo-asd-tab-3" data-toggle="tab">
-                                <i class="demo-pli-wrench icon-fw"></i> Settings
-                            </a>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-    </aside>
-    <!--===================================================-->
-    <!--END ASIDE-->
 
 
     <!--MAIN NAVIGATION-->
@@ -486,7 +464,7 @@
                                             <li><a href="../Bamboodata-bambooforms/culm.html">竹竿表</a></li>
                                             <li><a href="../Bamboodata-bambooforms/sheathnode.html">箨环表</a></li>
                                             <li><a href="../Bamboodata-bambooforms/sheath.html">箨鞘表</a></li>
-                                            <li><a href="../Bamboodata-bambooforms/Tuoer.html">箨耳表</a></li>
+                                            <li><a href="../Bamboodata-bambooforms/sheathear.html">箨耳表</a></li>
                                             <li><a href="../Bamboodata-bambooforms/sheathtongue.html">箨舌表</a></li>
                                             <li><a href="../Bamboodata-bambooforms/sheathshell.html">箨片表</a></li>
                                             <li><a href="../Bamboodata-bambooforms/bambooleaf.html">竹叶表</a></li>
@@ -494,43 +472,41 @@
                                         </ul>
                                     </li>
 
-                                    <li class="collapse in">
+                                    <li>
                                         <a href="#">竹种性质<i class="arrow"></i></a>
                                         <!--Submenu-->
-                                        <ul class="collapse in">
-                                            <li><a href="chemistry.html">化学性质表</a></li>
-                                            <li><a href="mechanics.html">力学性质表</a></li>
-                                            <li><a href="physical.html">物理性质表</a></li>
-                                            <li><a href="tissue.html">结构性质表</a></li>
-                                            <li><a href="fibermorphology.html">纤维形态特征表</a></li>
-                                            <li class="active-link"><a href="tissue.html">组织比量表</a></li>
-                                            <li><a href="cathermorphology.html">导管形态特征表</a></li>
-                                            <li><a href="vascularbundelmorphology.html">纤管形态特征表</a></li>
+                                        <ul class="collapse">
+                                            <li class="active-link"><a href="../Bamboodata-Bamboonature/chemistry.html">化学性质表</a></li>
+                                            <li><a href="../Bamboodata-Bamboonature/mechanics.html">力学性质表</a></li>
+                                            <li><a href="../Bamboodata-Bamboonature/physical.html">物理性质表</a></li>
+                                            <li><a href="../Bamboodata-Bamboonature/tissueproportion.html">结构性质表</a></li>
+                                            <li><a href="../Bamboodata-Bamboonature/fibermorphology.html">纤维形态特征表</a></li>
+                                            <li><a href="../Bamboodata-Bamboonature/tissueproportion.html">组织比量表</a></li>
+                                            <li><a href="../Bamboodata-Bamboonature/cathermorphology.html">导管形态特征表</a></li>
+                                            <li><a href="../Bamboodata-Bamboonature/vascularbundelmorphology.html">纤管形态特征表</a></li>
                                         </ul>
                                     </li>
 
-
-                                    <li>
+                                    <li class="collapse in">
                                         <a href="#">藤种性质<i class="arrow"></i></a>
                                         <!--Submenu-->
-                                        <ul class="collapse">
-                                            <li><a href="../Bamboodata-Tengnature/chemistry.html">化学性质表</a></li>
-                                            <li><a href="../Bamboodata-Tengnature/mechanics.html">力学性质表</a></li>
-                                            <li><a href="../Bamboodata-Tengnature/physical.html">物理性质表</a></li>
-                                            <li><a href="../Bamboodata-Tengnature/structural.html">结构性质表</a></li>
-                                            <li><a href="../Bamboodata-Tengnature/fiber.html">纤维形态特征表</a></li>
-                                            <li><a href="../Bamboodata-Tengnature/tissue.html">组织比量表</a></li>
-                                            <li><a href="../Bamboodata-Tengnature/cathermorphology.html">导管形态特征表</a></li>
-                                            <li><a href="../Bamboodata-Tengnature/vascularbundelmorphology.html">纤管形态特征表</a></li>
-                                        </ul>
+                                    <ul class="collapse in">
+                                        <li><a href="chemistry.html">化学性质表</a></li>
+                                        <li><a href="mechanics.html">力学性质表</a></li>
+                                        <li><a href="physical.html">物理性质表</a></li>
+                                        <li class="active-link"><a href="structure.html">结构性质表</a></li>
+                                        <li><a href="fiber.html">纤维形态特征表</a></li>
+                                        <li><a href="tTissueproportion.html">组织比量表</a></li>
+                                        <li><a href="cathermorphology.html">导管形态特征表</a></li>
+                                        <li><a href="vascularbundelmorphology.html">纤管形态特征表</a></li>
+                                    </ul>
                                     </li>
-
 
                                     <li>
                                         <a href="#">藤种形态<i class="arrow"></i></a>
                                         <!--Submenu-->
                                         <ul class="collapse">
-                                            <li><a href="../Bamboodata-Tengnature/tengform.html">藤种形态表</a></li>
+                                            <li><a href="tengform.html">藤种形态表</a></li>
                                         </ul>
                                     </li>
 
@@ -658,8 +634,10 @@
 <!-- END OF CONTAINER -->
 
 
+
+
 </div>
-<script src="../../js/bambootattan_pc_js/Bamboodata/Bamboonature/tissueproportion.js"></script>
+<script src="../../js/bambootattan_pc_js/Bamboodata/Tengnature/structure.js"></script>
 </body>
 </html>
 
