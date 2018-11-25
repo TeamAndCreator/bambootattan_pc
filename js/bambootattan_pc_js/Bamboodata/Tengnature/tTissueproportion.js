@@ -688,3 +688,4 @@ function init_info(){
     $('#tpSieveTubeProportionUnitPercent-info').val("").attr('data-original-title',"");
     $('#tpParenchymaCellProportionUnitPercent-info').val("").attr('data-original-title',"");
 }
+
