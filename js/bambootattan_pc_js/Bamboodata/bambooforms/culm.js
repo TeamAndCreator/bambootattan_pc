@@ -62,8 +62,8 @@ function init_table(){
                 search:params.search
             }
         },
-        onPostBody:function(){
-            $('[data-toggle="tooltip"]').tooltip();
+        onColumnSwitch:function(filed,checked){
+            $('#data_table').bootstrapTable('resetView');
         },
         cache:false,//是否使用緩存
         fixedColumns: true,//固定列

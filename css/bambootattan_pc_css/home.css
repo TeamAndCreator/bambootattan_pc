@@ -13,11 +13,12 @@ html,body{
     margin : auto;
     /*width : 1200px;*/
 }
-                   /*时间登录注册*/
+/*时间登录注册*/
 .htop{
     height: 40px;
     background-image: linear-gradient(-360deg, #ccc, #fff);
     position : relative;
+    z-index: 9999;
 }
 .htop-l{
     color : #999;
@@ -26,36 +27,44 @@ html,body{
 }
 .htop-r{
     float : right ;
-   line-height : 40px;
+    line-height : 40px;
 }
 .htop-r ul li a{
     color : #424242;
 }
 
-                        /*导航栏*/
- .list-item{
+/*导航栏*/
+.list-item{
     float : left;
     margin : 0 43px;
     height : 47px;
 }
- .list-item a{
+.list-item a{
     color : #fff;
     font-size : 20px;
     font-weight : 700;
     display : inline-block;
     padding : 0 5px;
 }
- .list-item a:hover{
-     text-decoration : none;
-     color : #fff;
- }
+.list-item a:hover{
+    text-decoration : none;
+    color : #fff;
+}
 
                           /*内容区*/
 
+.home-body{
+    margin-top:-40px;
+}
+
 .footer{
-    margin-bottom:50px;
-    margin-top : 40px;
-    text-align : center;
+    /*margin-bottom:50px;*/
+    /*margin-top : 40px;*/
+    /*text-align : center;*/
+    position: fixed;
+    bottom: 50px;
+    text-align: center;
+    width: 100%;
 }
 
 

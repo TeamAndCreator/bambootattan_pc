@@ -154,7 +154,7 @@ $(document).ready(function() {
             if(file.type.toLowerCase().indexOf('image')==-1)
                return false;
         },*/
-        acceptedFiles:'image/*',
+        acceptedFiles:'image/*',//所有图片类型
         previewTemplate: previewTemplateImg,
         autoQueue: false, // Make sure the files aren't queued until manually added
         previewsContainer: "#dz-previews-img", // Define the container to display the previews
