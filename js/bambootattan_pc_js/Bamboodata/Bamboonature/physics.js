@@ -503,7 +503,7 @@ function save() {
                 var phyGreenDensityUnitMidu = $('#phyGreenDensityUnitMidu').val();
                 var phyBasicDensityUnitMidu=$('#phyBasicDensityUnitMidu').val();
                 var phyAirDryDensityUnitMidu = $('#phyAirDryDensityUnitMidu').val();
-                var phyAbsoluteDryDensityUnitMidu = $('#phyRelativeUnitPercent').val();
+                var phyAbsoluteDryDensityUnitMidu = $('#phyAbsoluteDryDensityUnitMidu').val();
                 var phyAirDryingLineUnitPercent = $('#phyAirDryingLineUnitPercent').val();
                 var phyWholeDryLineUnitPercent = $('#phyWholeDryLineUnitPercent').val();
                 var phyAirDryVolumeUnitPercent = $('#phyAirDryVolumeUnitPercent').val();
@@ -521,6 +521,7 @@ function save() {
 
                 var phyWholeShrinkageEdnwiseUnitPercent=$('#phyWholeShrinkageEdnwiseUnitPercent').val();
                 var phyWholeShrinkageVolumeUnitPercent=$('#phyWholeShrinkageVolumeUnitPercent').val();
+                var phyWholeDryVolumeUnitPercent=$('#phyWholeDryVolumeUnitPercent').val();
 
 
 
@@ -762,6 +763,22 @@ function check(id) {
                 $('#phyWholeDryLineUnitPercent-info').html(res.data.phyWholeDryLineUnitPercent).attr('data-original-title',res.data.phyWholeDryLineUnitPercent);
                 $('#phyAirDryVolumeUnitPercent-info').html(res.data.phyAirDryVolumeUnitPercent).attr('data-original-title',res.data.phyAirDryVolumeUnitPercent);
 
+
+                $('#phyWholeDryVolumeUnitPercent-info').html(res.data.phyWholeDryVolumeUnitPercent).attr('data-original-title',res.data.phyWholeDryVolumeUnitPercent);
+                $('#phyAirShrinkageUnitPercent-info').html(res.data.phyAirShrinkageUnitPercent).attr('data-original-title',res.data.phyAirShrinkageUnitPercent);
+                $('#phyAirShrinkageChordwiseUnitPercent-info').html(res.data.phyAirShrinkageChordwiseUnitPercent).attr('data-original-title',res.data.phyAirShrinkageChordwiseUnitPercent);
+                $('#phyAirShrinkageRadialUnitPercent-info').html(res.data.phyAirShrinkageRadialUnitPercent).attr('data-original-title',res.data.phyAirShrinkageRadialUnitPercent);
+
+                $('#phyAirShrinkageEdnwiseUnitPercent-info').html(res.data.phyAirShrinkageEdnwiseUnitPercent).attr('data-original-title',res.data.phyAirShrinkageEdnwiseUnitPercent);
+                $('#phyAirShrinkageVolumeUnitPercent-info').html(res.data.phyAirShrinkageVolumeUnitPercent).attr('data-original-title',res.data.phyAirShrinkageVolumeUnitPercent);
+                $('#phyWholeShrinkageChordwiseUnitPercent-info').html(res.data.phyWholeShrinkageChordwiseUnitPercent).attr('data-original-title',res.data.phyWholeShrinkageChordwiseUnitPercent);
+                $('#phyWholeShrinkageRadialUnitPercent-info').html(res.data.phyWholeShrinkageRadialUnitPercent).attr('data-original-title',res.data.phyWholeShrinkageRadialUnitPercent);
+
+                $('#phyWholeShrinkageEdnwiseUnitPercent-info').html(res.data.phyWholeShrinkageEdnwiseUnitPercent).attr('data-original-title',res.data.phyWholeShrinkageEdnwiseUnitPercent);
+                $('#phyWholeShrinkageVolumeUnitPercent-info').html(res.data.phyWholeShrinkageVolumeUnitPercent).attr('data-original-title',res.data.phyWholeShrinkageVolumeUnitPercent);
+
+
+
                 $('#spec-info').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
                 $('#exampleModal-info').modal('show');
             }
@@ -902,23 +919,23 @@ function init_form(){
 function init_info(){
     $('#spec-info').val("").attr('data-original-title',"");//清除鼠标停留显示的内容，就是提示内容
     $('#phyRelativeUnitPercent-info').val("").attr('data-original-title',"");
-    $('#phyRelativeUnitPercent-info').val("").attr('data-original-title',"");
+    $('#phyAbsoluteUnitPercent-info').val("").attr('data-original-title',"");
     $('#phyGreenDensityUnitMidu-info').val("").attr('data-original-title',"");
     $('#phyBasicDensityUnitMidu-info').val("").attr('data-original-title',"");
     $('#phyAirDryDensityUnitMidu-info').val("").attr('data-original-title',"");
     $('#phyAbsoluteDryDensityUnitMidu-info').val("").attr('data-original-title',"");
     $('#phyAirDryingLineUnitPercent-info').val("").attr('data-original-title',"");
-    $('#phyWholeDryLineUnitPercent-checkinfo').val("").attr('data-original-title',"");
-    $('#phyAirDryVolumeUnitPercent-checkinfo').val("").attr('data-original-title',"");
+    $('#phyWholeDryLineUnitPercent-info').val("").attr('data-original-title',"");
+    $('#phyAirDryVolumeUnitPercent-info').val("").attr('data-original-title',"");
 
-    $('#phyWholeDryVolumeUnitPercent-checkinfo').val("").attr('data-original-title',"");
-    $('#phyAirShrinkageUnitPercent-checkinfo').val("").attr('data-original-title',"");
-    $('#phyAirShrinkageChordwiseUnitPercent-checkinfo').val("").attr('data-original-title',"");
-    $('#phyAirShrinkageRadialUnitPercent-checkinfo').val("").attr('data-original-title',"");
-    $('#phyAirShrinkageEdnwiseUnitPercent-checkinfo').val("").attr('data-original-title',"");
-    $('#phyAirShrinkageVolumeUnitPercent-checkinfo').val("").attr('data-original-title',"");
-    $('#phyWholeShrinkageChordwiseUnitPercent-checkinfo').val("").attr('data-original-title',"");
-    $('#phyWholeShrinkageRadialUnitPercent-checkinfo').val("").attr('data-original-title',"");
-    $('#phyWholeShrinkageEdnwiseUnitPercent-checkinfo').val("").attr('data-original-title',"");
-    $('#phyWholeShrinkageVolumeUnitPercent-checkinfo').val("").attr('data-original-title',"");
+    $('#phyWholeDryVolumeUnitPercent-info').val("").attr('data-original-title',"");
+    $('#phyAirShrinkageUnitPercent-info').val("").attr('data-original-title',"");
+    $('#phyAirShrinkageChordwiseUnitPercent-info').val("").attr('data-original-title',"");
+    $('#phyAirShrinkageRadialUnitPercent-info').val("").attr('data-original-title',"");
+    $('#phyAirShrinkageEdnwiseUnitPercent-info').val("").attr('data-original-title',"");
+    $('#phyAirShrinkageVolumeUnitPercent-info').val("").attr('data-original-title',"");
+    $('#phyWholeShrinkageChordwiseUnitPercent-info').val("").attr('data-original-title',"");
+    $('#phyWholeShrinkageRadialUnitPercent-info').val("").attr('data-original-title',"");
+    $('#phyWholeShrinkageEdnwiseUnitPercent-info').val("").attr('data-original-title',"");
+    $('#phyWholeShrinkageVolumeUnitPercent-info').val("").attr('data-original-title',"");
 }
