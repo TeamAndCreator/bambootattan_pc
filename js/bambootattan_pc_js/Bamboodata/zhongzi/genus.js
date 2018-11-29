@@ -433,7 +433,9 @@ function check(id) {
                 $('#genusNameLd-info').html(res.data.genusNameLd).attr('data-original-title',res.data.genusNameLd);
                 $('#genusNameOth-info').html(res.data.genusNameOth).attr('data-original-title',res.data.genusNameOth);
                 $('#sortNum-info').html(res.data.sortNum).attr('data-original-title',res.data.sortNum);
-                $('#demo-summernote-info').summernote('code',res.data.genusDesc);
+                //$('#demo-summernote-info').summernote('code',res.data.genusDesc);
+                $('#genusDesc-info').html(res.data.genusDesc);
+               // $('#genusDesc-info').html(res.data.genusDesc).attr('data-original-title',res.data.genusDesc);
                 $('#exampleModal-info').modal('show');
             }
             else{
@@ -473,6 +475,7 @@ function init_info(){
     $('#genusNameOth-info').val("").attr('data-original-title',"");
     $('#sortNum-info').val("").attr('data-original-title',"");
     $('#genusDesc-info').val("").attr('data-original-title',"");
+
 
 }
 //设置富文本的高度
