@@ -523,7 +523,6 @@ function save() {
                 var phyWholeShrinkageVolumeUnitPercent=$('#phyWholeShrinkageVolumeUnitPercent').val();
                 var phyWholeDryVolumeUnitPercent=$('#phyWholeDryVolumeUnitPercent').val();
 
-
                 var genusId=$('#genusId').val();
                 var formData = {
                     "phyId":phyId,

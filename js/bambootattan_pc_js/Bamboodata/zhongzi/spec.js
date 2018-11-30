@@ -24,7 +24,9 @@ $(function(){
     });
     //初始化表格
     init_table();
+    //初始化属的表格
     init_genus_table();
+    //初始化富文本框
     init_sunmmernote();
     //表单验证
     $('#registrationForm').bootstrapValidator();
@@ -676,8 +678,9 @@ function check(id) {
                 $('#specForeign-info').html(res.data.specForeign).attr('data-original-title',res.data.specForeign);
                 $('#specVidio-info').html(res.data.specVidio).attr('data-original-title',res.data.specVidio);
                 $('#specImgs-info').html(res.data.specImgs).attr('data-original-title',res.data.specImgs);
-                $('#demo-summernote-info').summernote('code',res.data.specDesc);
-
+                //$('#demo-summernote-info').summernote('code',res.data.specDesc);
+                //$('#specDesc-info').html(res.data.specDesc).attr('data-original-title',res.data.specDesc);
+                $('#specDesc-info').html(res.data.specDesc);
                 $('#genus-info').html(res.data.genus.genusNameCh).attr('data-original-title',res.data.genus.genusNameCh);
                 $('#exampleModal-info').modal('show');
             }
@@ -718,9 +721,6 @@ function init_form(){
 }
 //初始化详情元素值
 function init_info(){
-    //$('#genus').val("").attr('data-original-title',"");
-    // $('#specId').val("");
-    //$('#genusId').val("").attr('data-original-title',"");
     $('#specNameCh-info').val("").attr('data-original-title',"");
     $('#specNameEn-info').val("").attr('data-original-title',"");
     $('#specNameLd-info').val("").attr('data-original-title',"");
@@ -744,11 +744,11 @@ function init_sunmmernote(){
         maxHeight: null,             // set maximum height of editor
         focus: true                  // set focus to editable area after initializing summernote
     });
-    $('#demo-summernote-info').summernote({
-        height: 244,                 // set editor height
-        minHeight: null,             // set minimum height of editor
-        maxHeight: null,             // set maximum height of editor
-        focus: true                 // set focus to editable area after initializing summernot
-    })
-    $('#demo-summernote-info').summernote('disable');
+    // $('#demo-summernote-info').summernote({
+    //     height: 244,                 // set editor height
+    //     minHeight: null,             // set minimum height of editor
+    //     maxHeight: null,             // set maximum height of editor
+    //     focus: true                 // set focus to editable area after initializing summernot
+    // })
+    // $('#demo-summernote-info').summernote('disable');
 }
