@@ -23,11 +23,52 @@
     padding-top: 5px;
     padding-bottom: 5px
 }
+
+.pad-all-sm {
+    margin: 5px
+}
+
+.mar-all-sm {
+    margin: 5px
+}
+
+.mar-top-sm {
+    margin-top: 5px;
+}
+
+.mar-btm-sm {
+    margin-bottom: 5px
+}
+
+.mar-lft-sm {
+    margin-left: 5px
+}
+
+.mar-rgt-sm {
+    margin-right: 5px
+}
+
+.mar-hor-sm {
+    margin-left: 5px;
+    margin-right: 5px
+}
+
+.mar-ver-sm {
+    margin-top: 5px;
+    margin-bottom: 5px
+}
+
+
 .tooltip-inner{
     word-break: break-all;
 }
+
+
 .bs-checkbox {
     min-width: 36px;
     max-width: 36px;
     width: 36px;
+}
+.modal-full-screen{
+    width:100%;
 }

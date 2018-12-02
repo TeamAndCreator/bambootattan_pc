@@ -67,7 +67,7 @@ function init_table(){
         },
         cache:false,//是否使用緩存
         fixedColumns: true,//固定列
-        fixedNumber:4,//固定前四列
+        fixedNumber:3,//固定前四列
         columns:[//列数据
 
             {
@@ -117,6 +117,7 @@ function init_table(){
                 field:'culmDiameter',//数据列
                 title:'竿直径',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -126,7 +127,7 @@ function init_table(){
             {
                 field:'culmColor',//数据列
                 title:'竿颜色',//数据列名称
-                // visible:false,
+                visible:false,
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -138,7 +139,7 @@ function init_table(){
                 field:'culmTop',//数据列
                 title:'竿稍头',//数据列名称
                 sortable:true,//可排序
-                // visible:false,
+                 visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -159,7 +160,7 @@ function init_table(){
                 field:'internodeLength',//数据列
                 title:'节间长度',//数据列名称
                 sortable:true,//可排序
-                // visible:false,
+                 visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -180,7 +181,7 @@ function init_table(){
                 field:'internodeAerialRoot',//数据列
                 title:'节间有无气生根',//数据列名称
                 sortable:true,//可排序
-                // visible:false,
+                 visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -191,7 +192,7 @@ function init_table(){
                 field:'internodeBack',//数据列
                 title:'节间被毛',//数据列名称
                 sortable:true,//可排序
-                // visible:false,
+                 visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -202,7 +203,7 @@ function init_table(){
                 field:'internodeCulmWall',//数据列
                 title:'节间竿壁厚',//数据列名称
                 sortable:true,//可排序
-                // visible:false,
+                 visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -223,7 +224,7 @@ function init_table(){
                 field:'youngStemPowder',//数据列
                 title:'幼时竿被粉',//数据列名称
                 sortable:true,//可排序
-                // visible:false,
+                 visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {

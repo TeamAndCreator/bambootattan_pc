@@ -128,13 +128,14 @@ function init_table(){
                 field:'genusDesc',//数据列
                 title:'描述',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
                     return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
                 }
             },
-            { field:'genusId',title:'genusId',visible:false }//隐藏不显示
+            { field:'genusId',title:'genusId',visible:false}//隐藏不显示
         ]
     });
 }

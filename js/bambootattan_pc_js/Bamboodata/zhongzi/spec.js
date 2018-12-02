@@ -67,8 +67,8 @@ function init_table(){
             $('#data_table').bootstrapTable('resetView');
         },
         cache:false,//是否使用緩存
-        fixedColumns: true,//固定列
-        fixedNumber:4,//固定前三列
+        // fixedColumns: true,//固定列
+        // fixedNumber:4,//固定前三列
         columns:[//列数据
 
             {
@@ -138,6 +138,7 @@ function init_table(){
                 field:'specNameOth',//数据列
                 title:'别名',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
@@ -158,6 +159,7 @@ function init_table(){
                 field:'specBarCode',//数据列
                 title:'种类条形码',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
@@ -168,6 +170,7 @@ function init_table(){
                 field:'specDna',//数据列
                 title:'种类DNA码',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
@@ -188,6 +191,7 @@ function init_table(){
                 field:'specForeign',//数据列
                 title:'国外分布',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
@@ -198,6 +202,7 @@ function init_table(){
                 field:'specVidio',//数据列
                 title:'上传视频',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
@@ -208,6 +213,7 @@ function init_table(){
                 field:'specImgs',//数据列
                 title:'上传图片',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
@@ -228,6 +234,7 @@ function init_table(){
                 field:'specDesc',//数据列
                 title:'描述',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){

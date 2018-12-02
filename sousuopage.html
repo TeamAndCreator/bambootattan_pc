@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--Open Sans Font [ OPTIONAL ]-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/bambootattan_pc_css/sousupage.css">
+    <link rel="stylesheet" href="css/bambootattan_pc_css/common.css">
+    <!--Bootstrap Stylesheet [ REQUIRED ]-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--Nifty Stylesheet [ REQUIRED ]-->
+    <link href="css/nifty.min.css" rel="stylesheet">
+    <!--jQuery [ REQUIRED ]-->
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <!--BootstrapJS [ RECOMMENDED ]-->
+    <script src="js/bootstrap.min.js"></script>
+    <script language="JavaScript" type="text/javascript">
+
+        function startTime() {
+            var today = new Date();//定义日期对象
+            var yyyy = today.getFullYear();//通过日期对象的getFullYear()方法返回年
+            var MM = today.getMonth() + 1;//通过日期对象的getMonth()方法返回年
+            var dd = today.getDate();//通过日期对象的getDate()方法返回年
+            var hh = today.getHours();//通过日期对象的getHours方法返回小时
+            var mm = today.getMinutes();//通过日期对象的getMinutes方法返回分钟
+            var ss = today.getSeconds();//通过日期对象的getSeconds方法返回秒
+            // 如果分钟或小时的值小于10，则在其值前加0，比如如果时间是下午3点20分9秒的话，则显示15：20：09
+            MM = checkTime(MM);
+            dd = checkTime(dd);
+            mm = checkTime(mm);
+            ss = checkTime(ss);
+            var day; //用于保存星期（getDay()方法得到星期编号）
+            if (today.getDay() == 0) day = "星期日 "
+            if (today.getDay() == 1) day = "星期一 "
+            if (today.getDay() == 2) day = "星期二 "
+            if (today.getDay() == 3) day = "星期三 "
+            if (today.getDay() == 4) day = "星期四 "
+            if (today.getDay() == 5) day = "星期五 "
+            if (today.getDay() == 6) day = "星期六 "
+            document.getElementById('nowDateTimeSpan').innerHTML = yyyy + "-" + MM + "-" + dd + " " + hh + ":" + mm + ":" + ss + "   " + day;
+            setTimeout('startTime()', 1000);//每一秒中重新加载startTime()方法
+        }
+
+        function checkTime(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+
+    </script>
+</head>
+<body onload="startTime();">
+
+<!-- 时间-->
+<div class="htop" style="position:fixed;width:100%;">
+    <div class="htop-l">
+        <span id="nowDateTimeSpan"></span>
+    </div>
+    <div class="htop-r">
+        <ul class="list-inline">
+            <li>
+                <a href="page-login.html">登录</a>
+            </li>
+            <li>
+                <a href="pages-register.html">注册</a>
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="pad-top pad-btm" style="margin-top:40px;position:fixed;z-index: 9999;background-color: #ecf0f5;width: 100%;">
+        <div class="input-group">
+            <input id="kw" type="text" class="form-control" placeholder="搜你想搜的" name="word" size="30" baiduSug="1" style="width:600px;">
+            <button  class="btn btn-success">检索</button>
+        </div>
+    </div>
+</div>
+
+<div class="container pad-btm" style="margin-top:100px;">
+
+    <div class="media">
+        <div class="media-body" style="padding-top: 2px">
+            <h4 class="media-heading"><a href="page/Bamboodata-zhongzi/spec-detail.html"><b>竹种属表</b></a></h4>
+            1234444444444
+        </div>
+        <div class="media-right media-middle">
+            <a href="javascript:void">
+                <img class="media-object" src="img/image/logo.png" height="64" width="64">
+            </a>
+        </div>
+    </div>
+    <div class="media">
+        <div class="media-left media-middle">
+            <a href="javascript:void">
+                <img class="media-object" src="img/image/logo.png" height="64" width="64">
+            </a>
+        </div>
+
+        <!--<div class="media-right media-middle">-->
+            <!--<a href="javascript:void">-->
+                <!--<img class="media-object" src="img/image/logo.png" height="64" width="64">-->
+            <!--</a>-->
+        <!--</div>-->
+        <div class="media-body">
+            <h4 class="media-heading"><a href="page/Bamboodata-zhongzi/spec-detail.html"><b>竹种属表</b></a></h4>
+            1234444444444
+        </div>
+    </div>
+
+    <div class="media">
+        <div class="media-left media-middle">
+            <a href="#">
+                <img class="media-object" src="img/image/login_bg.jpg" height="64" width="64">
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">Middle aligned media</h4>
+            ...
+        </div>
+    </div>
+
+
+    <div class="media">
+        <div class="media-body">
+            <h4 class="media-heading">Media heading 12</h4>
+            1234444444444 12
+        </div>
+    </div>
+    <div class="media">
+        <div class="media-body">
+            <h4 class="media-heading">Media heading 12</h4>
+            1234444444444 12
+        </div>
+    </div>
+    <div class="media">
+        <div class="media-body">
+            <h4 class="media-heading">Media heading 12</h4>
+            1234444444444 12
+        </div>
+    </div>
+    <div class="media">
+        <div class="media-body">
+            <h4 class="media-heading">Media heading 12</h4>
+            1234444444444 12
+        </div>
+    </div>
+    <div class="media">
+        <div class="media-body">
+            <h4 class="media-heading">Media heading 12</h4>
+            1234444444444 12
+        </div>
+    </div>
+    <div class="media">
+        <div class="media-body">
+            <h4 class="media-heading">Media heading 12</h4>
+            1234444444444 12
+        </div>
+    </div>
+    <div class="media">
+        <div class="media-body">
+            <h4 class="media-heading">Media heading 12</h4>
+            1234444444444 12
+        </div>
+    </div>
+
+    <div class="panel panel-success">
+    <div class="panel-heading">Panel heading without title</div>
+    <div class="panel-body">
+        Panel content
+    </div>
+    </div>
+
+        <div class="panel panel-danger">
+            <div class="panel-heading">Panel heading without title</div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">Panel heading without title</div>
+        <div class="panel-body">
+            Panel content
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
