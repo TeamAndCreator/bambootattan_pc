@@ -399,7 +399,7 @@ function save() {
                 var mechCompressionStrenghtUnitMpa = $('#mechCompressionStrenghtUnitMpa').val();
                 var mechShearStrenghtUnitMpa=$('#mechShearStrenghtUnitMpa').val();
                 var mechTensileStrenghtUnitMpa = $('#mechTensileStrenghtUnitMpa').val();
-                var mechImpactDuctilityUnitRenxiang = $('#mechBendingModulusElastictyUnitGpa').val();
+                var mechImpactDuctilityUnitRenxiang = $('#mechImpactDuctilityUnitRenxiang').val();
                 var mechComplianceUnitRouliang = $('#mechComplianceUnitRouliang').val();
 
                 var genusId=$('#genusId').val();
@@ -732,7 +732,7 @@ function init_form(){
 function init_info(){
     $('#spec-info').val("").attr('data-original-title',"");//清除鼠标停留显示的内容，就是提示内容
     $('#mechBendingModulusElastictyUnitGpa').val("").attr('data-original-title',"");
-    $('#mechBendingModulusElastictyUnitGpa').val("").attr('data-original-title',"");
+    $('#mechBendingStrenghtUnitMpa').val("").attr('data-original-title',"");
     $('#mechCompressionStrenghtUnitMpa-info').val("").attr('data-original-title',"");
     $('#mechShearStrenghtUnitMpa-info').val("").attr('data-original-title',"");
     $('#mechTensileStrenghtUnitMpa-info').val("").attr('data-original-title',"");

@@ -550,7 +550,7 @@ function dele(gid){
                                 container : 'floating',
                                 timer : 2000
                             });
-                            $("#data_table").bootstrapTable('refresh',{url :queryPageUrl} );
+                            $("#data_table").bootstrapTable('refresh',{url :queryPageUrl} );//刷新表格
                             $('#exampleModal').modal('hide');
                         }else{
                             $.niftyNoty({
