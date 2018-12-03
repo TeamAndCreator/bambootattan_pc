@@ -72,3 +72,6 @@
 .modal-full-screen{
     width:100%;
 }
+#mainnav-menu li a{
+    font-size: 17px;
+}
