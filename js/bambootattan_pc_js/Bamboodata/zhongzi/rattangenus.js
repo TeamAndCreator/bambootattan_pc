@@ -128,6 +128,7 @@ function init_table(){
                 field:'genusDesc',//数据列
                 title:'描述',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
@@ -433,7 +434,8 @@ function check(id) {
                 $('#sortNum-info').html(res.data.sortNum).attr('data-original-title',res.data.sortNum);
                 //$('#specDesc-info').html(res.data.spec.specDesc).attr('data-original-title',res.data.specDesc);
                 //$('#demo-summernote').summernote('code',res.data.specDesc).attr('data-original-title',res.data.specDesc);
-                $('#demo-summernote-info').summernote('code',res.data.genusDesc);
+                //$('#demo-summernote-info').summernote('code',res.data.genusDesc);
+                $('#genusDesc-info').html(res.data.genusDesc);
                 //$('#genus-info').html(res.data.genus.genusNameCh).attr('data-original-title',res.data.genusNameCh);
                 $('#exampleModal-info').modal('show');
             }

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../img/image/favicon.ico"/>
+    <title>竹种信息详情</title>
+
+
+    <!--STYLESHEET-->
+    <!--=================================================-->
+
+    <!--Open Sans Font [ OPTIONAL ]-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+
+
+    <!--Bootstrap Stylesheet [ REQUIRED ]-->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!--Nifty Stylesheet [ REQUIRED ]-->
+    <link href="../../css/nifty.min.css" rel="stylesheet">
+
+
+    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
+    <link href="../../css/demo/nifty-demo-icons.min.css" rel="stylesheet">
+
+
+    <!--Demo [ DEMONSTRATION ]-->
+    <link href="../../css/demo/nifty-demo.min.css" rel="stylesheet">
+
+    <!--Dropzone [ OPTIONAL ]-->
+    <link href="../../plugins/dropzone/dropzone.min.css" rel="stylesheet">
+
+    <!--Bootstrap Table [ OPTIONAL ]-->
+    <link href="../../plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+
+    <!--&lt;!&ndash;<!- bootstrap-table-fixed-columns [ OPTIONAL ]&ndash;&gt;&ndash;&gt;-->
+    <!--<link href="../../plugins/bootstrap-table/extensions/fixed-columns/bootstrap-table-fixed-columns.css" rel="stylesheet">-->
+
+
+    <!--X-editable [ OPTIONAL ]-->
+    <link href="../../plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">
+    <!--Summernote [ OPTIONAL ]-->
+    <link href="../../plugins/summernote/summernote.min.css" rel="stylesheet">
+
+    <!--Dropzone [ OPTIONAL ]-->
+    <link href="../../plugins/dropzone/dropzone.min.css" rel="stylesheet">
+
+    <!--Animate.css [ OPTIONAL ]-->
+    <link href="../../plugins/animate-css/animate.min.css" rel="stylesheet">
+    <!-- common [ OPTIONAL ] -->
+    <link href="../../css/bambootattan_pc_css/common.css" rel="stylesheet">
+
+
+   <!-- Theme -->
+    <link id="theme" href="../../css/themes/type-c/theme-lime.min.css" rel="stylesheet">
+
+
+
+
+    <!--JAVASCRIPT-->
+    <!--=================================================-->
+
+    <!--Pace - Page Load Progress Par [OPTIONAL]-->
+    <!-- bambootattan_pc_js common -->
+    <script src="../../js/bambootattan_pc_js/common.js"></script>
+    <link href="../../plugins/pace/pace.min.css" rel="stylesheet">
+
+    <script src="../../plugins/pace/pace.min.js"></script>
+
+
+    <!--jQuery [ REQUIRED ]-->
+    <script src="../../js/jquery-2.2.4.min.js"></script>
+
+
+    <!--BootstrapJS [ RECOMMENDED ]-->
+    <script src="../../js/bootstrap.min.js"></script>
+
+
+    <!--NiftyJS [ RECOMMENDED ]-->
+    <script src="../../js/nifty.min.js"></script>
+
+
+
+
+
+
+    <!--=================================================-->
+
+    <!--Demo script [ DEMONSTRATION ]-->
+    <script src="../../js/demo/nifty-demo.min.js"></script>
+    <!--Summernote [ OPTIONAL ]-->
+    <script src="../../plugins/summernote/summernote.min.js"></script>
+    <!--<script src="../../js/demo/form-file-upload.js"></script>-->
+    <!--font-awesome.css [ OPTIONAL ]-->
+    <link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!--Bootstrap Table Sample [ SAMPLE ]-->
+    <script src="../../js/demo/tables-bs-table.js"></script>
+
+
+    <!--X-editable [ OPTIONAL ]-->
+    <script src="../../plugins/x-editable/js/bootstrap-editable.min.js"></script>
+
+
+    <!--Bootstrap Table [ OPTIONAL ]-->
+    <script src="../../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <!-- bootbox -->
+    <script src="../../plugins/bootbox/bootbox.js"></script>
+
+
+    <!--Bootstrap Table Extension [ OPTIONAL ]-->
+    <script src="../../plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
+    <!-- Bootstrap Table Extension bootstrap-table-fixed-columns [ OPTIONAL ]-->
+    <script src="../../plugins/bootstrap-table/extensions/fixed-columns/bootstrap-table-fixed-columns.js"></script>
+    <!--Summernote [ OPTIONAL ]-->
+    <!--<script src="../../plugins/summernote/summernote.min.js"></script>-->
+    <!--=================================================-->
+
+
+    <!--Bootstrap Datepicker [ OPTIONAL ]-->
+    <script src="../../plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!--Dropzone [ OPTIONAL ]-->
+    <script src="../../plugins/dropzone/dropzone.min.js"></script>
+    <!--Form File Upload [ SAMPLE ]-->
+    <!--<script src="../../js/demo/form-file-upload.js"></script>-->
+    <script src="../../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+    <!-- bootstrap-validator [ OPTIONAL ]-->
+    <script src="../../plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
+
+
+
+
+</head>
+
+<!--TIPS-->
+<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+<body>
+    <div class="boxed container">
+
+        <div class="jumbotron" style="margin-bottom: 0px;background-color:#8bc34a;">
+            <h3>竹种信息详情</h3>
+        </div>
+
+        <!--<div class="fl">-->
+            <!--<img alt="竹种信息详情" src="../../img/image/bk_top_2.jpg" width="1140">-->
+        <!--</div>-->
+
+
+                <!--Custom Toolbar-->
+                <!--===================================================-->
+                <div class="panel col-lg-12" style="margin-bottom: 50px;">
+                    <div class="panel-body">
+                            <div class="row ">
+                                <ul class="pager pager-rounded" id="ul">
+                                    <li class="previous">
+                                        <a href="javascript:history.go(-1)"><i class="fa fa-reply"></i> 返回</a>
+                                    </li>
+                                </ul>
+                                <div class="col-lg-11 col-lg-offset-1 ">
+                                    <div class="panel panel-trans ">
+                                        <div class="panel-heading " style="text-align: center" >
+                                            <h1 class="text-main" id="title"></h1>
+                                            <h5>
+                                                 <span>来源:
+                                                 </span>
+                                                <span id="systemName"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <span>编辑人:
+
+                                                 </span>
+                                                <span id="userName"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <span>时间:
+
+                                                 </span>
+                                                <span id="date"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </h5>
+                                        </div>
+                                        </br>
+                                        <div class="widget-main" id="content">
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+                                            12221222222222  </br>
+                                            12221222222222 </br>
+                                            12221222222222  </br>
+                                            </br>
+                                            12221222222222 </br>
+                                            </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+
+                                            </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+                                            12221222222222 </br>
+
+
+                                        </div>
+                                        </br>
+                                        <h5 id="files">文件:</h5>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <!--===================================================-->
+
+            </div>
+            <!--===================================================-->
+            <!--End page content-->
+
+        <!--</div>-->
+        <!--===================================================-->
+        <!--END CONTENT CONTAINER-->
+
+        <!--<div id="demo-lg-modal-modify" class="modal fade" tabindex="-1">-->
+            <!--<div class="modal-dialog modal-lg">-->
+                <!--<div class="modal-content">-->
+                    <!--<div class="modal-header">-->
+                        <!--<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>-->
+                        <!--<h4 class="modal-title" id="myLargeModalLabel-modify">修改</h4>-->
+                    <!--</div>-->
+                    <!--<div class="modal-body">-->
+                        <!--<form class="form-horizontal">-->
+                            <!--<div class="panel-body">-->
+                                <!--<div class="form-group">-->
+                                    <!--<label class="col-sm-3 control-label">-->
+                                        <!--标题-->
+                                    <!--</label>-->
+                                    <!--<div class="col-sm-6">-->
+                                        <!--<input  class="form-control input-sm" placeholder="" name="title" type="text">-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="form-group">-->
+                                    <!--<label class="col-sm-3 control-label">-->
+                                        <!--所属体系-->
+                                    <!--</label>-->
+                                    <!--<div class="col-sm-6">-->
+                                        <!--<input  class="form-control input-sm" placeholder="" name="system" type="text" readonly>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div id="old_files-modify" style="text-align: center">-->
+                                    <!--<div id="old_files_name-modify"></div>-->
+                                    <!--<button id="old_files_change-modify" class="btn-danger">删除文件</button>-->
+                                <!--</div>-->
+                                <!--<div class="panel-body" id="files_add-modify">-->
+
+                                    <!--<div class="bord-top pad-ver">-->
+                                        <!--&lt;!&ndash; The fileinput-button span is used to style the file input field as button &ndash;&gt;-->
+                                        <!--<span class="btn btn-success fileinput-button dz-clickable">-->
+					                <!--<i class="fa fa-plus"></i>-->
+					                <!--<span>选择文件</span>-->
+					                <!--</span>-->
+
+                                    <!--</div>-->
+
+
+                                    <!--<div id="dz-previews-modify">-->
+                                        <!--<div id="dz-template-modify" class="pad-top bord-top">-->
+                                            <!--<div class="media">-->
+                                                <!--<div class="media-body">-->
+                                                    <!--&lt;!&ndash;This is used as the file preview template&ndash;&gt;-->
+                                                    <!--<div class="media-block">-->
+                                                        <!--<div class="media-left">-->
+                                                            <!--<img class="dz-img" data-dz-thumbnail>-->
+                                                        <!--</div>-->
+                                                        <!--<div class="media-body">-->
+                                                            <!--<p class="text-main text-bold mar-no text-overflow" data-dz-name></p>-->
+                                                            <!--<span class="dz-error text-danger text-sm" data-dz-errormessage></span>-->
+                                                            <!--<p class="text-sm" data-dz-size></p>-->
+                                                            <!--<div id="dz-total-progress-modify" style="opacity:0">-->
+                                                                <!--<div class="progress progress-xs active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">-->
+                                                                    <!--<div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>-->
+                                                                <!--</div>-->
+                                                            <!--</div>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                                <!--<div class="media-right">-->
+                                                    <!--<button data-dz-remove class="btn btn-xs btn-danger dz-cancel"><i class="demo-pli-cross"></i></button>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--&lt;!&ndash;===================================================&ndash;&gt;-->
+                                    <!--&lt;!&ndash;End Dropzonejs using Bootstrap theme&ndash;&gt;-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="panel">-->
+                                <!--<div class="panel-heading">-->
+                                    <!--<h3 class="panel-title">内容</h3>-->
+                                <!--</div>-->
+                                <!--<div class="panel-body">-->
+
+                                    <!--&lt;!&ndash;Summernote&ndash;&gt;-->
+                                    <!--&lt;!&ndash;===================================================&ndash;&gt;-->
+                                    <!--<div id="demo-summernote-modify" >-->
+                                        <!--<h4><span style="color: rgb(206, 198, 206); font-family: inherit; line-height: 1.1;"></span><br></h4><h4><font color="#9c9c94"></font></h4>-->
+                                    <!--</div>-->
+                                    <!--&lt;!&ndash;===================================================&ndash;&gt;-->
+                                    <!--&lt;!&ndash; End Summernote &ndash;&gt;-->
+
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</form>-->
+                        <!--<div class="panel-footer text-right">-->
+                            <!--<button class="btn btn-info middle " data-dismiss="modal">退出</button>-->
+                            <!--<button class="btn btn-primary middle" id="fix-modify">修改</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+            <!--&lt;!&ndash;===================================================&ndash;&gt;-->
+            <!--End page content-->
+
+        </div>
+
+        <!--===================================================-->
+        <!--END CONTENT CONTAINER--
+
+
+        <!-- FOOTER -->
+        <!--===================================================-->
+        <footer id="footer" style="text-align: center;position: fixed;">
+                    <span bigger-120>
+                    <!--<span class="blue bolder">安徽农业大学数字农业研究所                             </span> &copy; 2018-2019-->
+                        <span class="blue bolder">安徽农业大学数字农业研究所
+                            </span> &copy; 2018-2019
+                    </span>
+        </footer>
+        <!--===================================================-->
+        <!-- END FOOTER -->
+
+
+
+    <!--===================================================-->
+    <!-- END OF CONTAINER -->
+
+
+<!--</div>-->
+<script src="../../js/bambootattan_pc_js/Bamboodata/zhongzi/spec.js"></script>
+</body>
+</html>
+
