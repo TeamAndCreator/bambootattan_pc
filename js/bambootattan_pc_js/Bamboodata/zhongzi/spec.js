@@ -1,5 +1,7 @@
 var queryPageUrl='';
 var queryGenusPageUrl='';
+var  myDropzone;
+var  myDropzoneImg;
 $(function(){
     queryPageUrl = baseUrl+'/spec/findAllQuery';
     queryGenusPageUrl = baseUrl+'/genus/findAllQuery';
@@ -28,6 +30,8 @@ $(function(){
     init_genus_table();
     //初始化富文本框
     init_sunmmernote();
+    //初始化文件上传
+    init_file_upload();
     //表单验证
     $('#registrationForm').bootstrapValidator();
 });
@@ -370,7 +374,6 @@ function save() {
         },
         callback: function (result) {
             if (result) {
-
                 var validateForm = $('#registrationForm').data('bootstrapValidator');
                 //手动触发验证
                 validateForm.validate();
@@ -378,7 +381,7 @@ function save() {
                 if(!validateForm.isValid()){
                     return;
                 }
-
+                var formData = new FormData();
                 var specDesc=$('#demo-summernote').summernote('code');
                 var specId = $('#specId').val();
                 var genusId=$('#genusId').val();
@@ -395,32 +398,45 @@ function save() {
                 var specImgs = $('#specImgs').val();
                 // var specDesc = $('#specDesc').val();
                 var specSortNum = $('#specSortNum').val();
-                var formData = {
-                    "specId": specId,
-                    "genus":{'genusId':genusId},
-                    "specNameCh": specNameCh,
-                    "specNameEn": specNameEn,
-                    "specNameLd": specNameLd,
-                    "specNameOth": specNameOth,
-                    "specCode": specCode,
-                    "specBarCode": specBarCode,
-                    "specDna": specDna,
-                    "specDomestic": specDomestic,
-                    "specForeign": specForeign,
-                    "specVidio": specVidio,
-                    "specImgs": specImgs,
-                    "specDesc": specDesc,
-                    "specSortNum": specSortNum
-                };
-                if (specId == "") {//新增
-                    formData.specId = 0;
+
+                formData.append("specId", specId);
+                formData.append("genus.genusId",genusId);
+                formData.append("specNameCh", specNameCh);
+                formData.append("specNameEn", specNameEn);
+                formData.append("specNameLd", specNameLd);
+                formData.append("specNameOth", specNameOth);
+                formData.append("specCode", specCode);
+                formData.append( "specBarCode", specBarCode);
+                formData.append("specDna", specDna);
+                formData.append( "specDomestic", specDomestic);
+                formData.append( "specForeign", specForeign);
+                formData.append("specVidio", specVidio);
+                formData.append("specImgs", specImgs);
+                formData.append("specDesc", specDesc);
+                formData.append("specSortNum", specSortNum);
+
+                //将文件数组添加进来
+                var multipartFiles = myDropzoneImg.files;
+                for (var i = 0; i < multipartFiles.length; i++) {
+                    formData.append("multipartFiles", myDropzoneImg.files[i]);
+                }
+                multipartFiles = myDropzone.files;
+                for (var i = 0; i < multipartFiles.length; i++) {
+                    formData.append("multipartFiles", myDropzone.files[i]);
+                }
+
+
+
+                if (specId === "") {//新增
                     $.ajax({
                         url: baseUrl + '/spec/save',		//请求路径
                         type: 'POST',			            //请求方式
-                        data: JSON.stringify(formData),	    //数据
-                        contentType: 'application/json',    //数据类型
+                        dataType: 'JSON',
+                        processData: false,
+                        contentType: false,
+                        data: formData,	    //数据
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code == 200) {
+                            if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -706,6 +722,7 @@ function check(id) {
         }
     });
 }
+
 //初始化表单元素的值
 function init_form(){
     $('#genus').val("");
@@ -758,4 +775,152 @@ function init_sunmmernote(){
     //     focus: true                 // set focus to editable area after initializing summernot
     // })
     // $('#demo-summernote-info').summernote('disable');
+}
+//设置文件上传
+function init_file_upload(){
+    // DROPZONE.JS WITH BOOTSTRAP'S THEME
+    // =================================================================
+    // Require Dropzone
+    // http://www.dropzonejs.com/
+    // =================================================================
+    // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
+    var previewNode = document.querySelector("#dz-template");
+    previewNode.id = "";
+    var previewTemplate = previewNode.parentNode.innerHTML;
+    previewNode.parentNode.removeChild(previewNode);
+
+    var uplodaBtn = $('#dz-upload-btn');
+    var removeBtn = $('#dz-remove-btn');
+    myDropzone = new Dropzone( uplodaBtn.parent().parent().parent()[0],{//document.body, { // Make the whole body a dropzone
+        url: baseUrl+'/spec/upload', // Set the url
+        thumbnailWidth: 50,
+        thumbnailHeight: 50,
+        parallelUploads: 20,
+        paramName:'bambooFile',
+        //acceptedFiles:'video/*,audio/*',
+        //acceptedFiles:'flv-application/octet-stream,video/mp4,video/quicktime,audio/x-pn-realaudio,video/x-msvideo,application/x-shockwave-flash',
+        //audio/x-pn-realaudio:.rm,.rmvb ; flash的后缀是.swf
+        acceptedFiles:'.flv,.mp4,.mov,.rm,.rmvb,.avi,.swf',
+        previewTemplate: previewTemplate,
+        maxFilesize:100,
+        autoQueue: false, // Make sure the files aren't queued until manually added
+        previewsContainer: "#dz-previews", // Define the container to display the previews
+        clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
+    });
+
+
+    myDropzone.on("addedfile", function (file) {
+        // Hookup the button
+        uplodaBtn.prop('disabled', false);
+        removeBtn.prop('disabled', false);
+    });
+
+    // Update the total progress bar
+    myDropzone.on("totaluploadprogress", function (progress) {
+        $("#dz-total-progress .progress-bar").css({'width': progress + "%"});
+    });
+
+    myDropzone.on("sending", function (file) {
+        // Show the total progress bar when upload starts
+        document.querySelector("#dz-total-progress").style.opacity = "1";
+    });
+
+    // Hide the total progress bar when nothing's uploading anymore
+    myDropzone.on("queuecomplete", function (progress) {
+        document.querySelector("#dz-total-progress").style.opacity = "0";
+    });
+
+    myDropzone.on('success',function (file,data) {
+        alert(data);
+    });
+
+
+    // Setup the buttons for all transfers
+    uplodaBtn.on('click', function () {
+        //Upload all files
+        myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));
+    });
+
+    removeBtn.on('click', function () {
+        myDropzone.removeAllFiles(true);
+        uplodaBtn.prop('disabled', true);
+        removeBtn.prop('disabled', true);
+    });
+
+    //往上是上传视频
+    // =================================================================
+
+    // =================================================================
+    //往下是上传图片
+
+    // DROPZONE.JS WITH BOOTSTRAP'S THEME
+    // =================================================================
+    // Require Dropzone
+    // http://www.dropzonejs.com/
+    // =================================================================
+    // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
+    var previewNodeImg = document.querySelector("#dz-template-img");
+    previewNodeImg.id = "";
+    var previewTemplateImg = previewNodeImg.parentNode.innerHTML;
+    previewNodeImg.parentNode.removeChild(previewNodeImg);
+
+    var uplodaImgBtn = $('#dz-upload-img-btn');
+    var removeImgBtn = $('#dz-remove-img-btn');
+    myDropzoneImg = new Dropzone(uplodaImgBtn.parent().parent().parent()[0], { // Make the whole body a dropzone
+        url: baseUrl+'/spec/upload', // Set the url
+        thumbnailWidth: 50,
+        thumbnailHeight: 50,
+        parallelUploads: 20,
+        /*accept: function(file, done) {
+            if(file.type.toLowerCase().indexOf('image')==-1)
+               return false;
+        },*/
+        // acceptedFiles:'image/*',//所有图片类型
+        paramName:'bambooFile',
+        //image/jpeg:jpe,jpeg,jpg ;
+        //acceptedFiles:'image/jpeg,image/gif,image/png,image/bmp',
+        acceptedFiles:'.jpg,.jpeg,.gif,.png,.bmp',
+        previewTemplate: previewTemplateImg,
+        autoQueue: false, // Make sure the files aren't queued until manually added
+        previewsContainer: "#dz-previews-img", // Define the container to display the previews
+        clickable: ".fileinput-button-img" // Define the element that should be used as click trigger to select files.
+    });
+
+
+    myDropzoneImg.on("addedfile", function (file) {
+        // Hookup the button
+        uplodaImgBtn.prop('disabled', false);
+        removeImgBtn.prop('disabled', false);
+    });
+
+    // Update the total progress bar
+    myDropzoneImg.on("totaluploadprogress", function (progress) {
+        $("#dz-total-progress-img .progress-bar").css({'width': progress + "%"});
+    });
+
+    myDropzoneImg.on("sending", function (file) {
+        // Show the total progress bar when upload starts
+        document.querySelector("#dz-total-progress-img").style.opacity = "1";
+    });
+
+    // Hide the total progress bar when nothing's uploading anymore
+    myDropzoneImg.on("queuecomplete", function (progress) {
+        document.querySelector("#dz-total-progress-img").style.opacity = "0";
+    });
+
+    myDropzoneImg.on('success',function (file,data) {
+        alert(data);
+    });
+
+    // Setup the buttons for all transfers
+    uplodaImgBtn.on('click', function () {
+        //Upload all files
+        myDropzoneImg.enqueueFiles(myDropzoneImg.getFilesWithStatus(Dropzone.ADDED));
+    });
+
+    removeImgBtn.on('click', function () {
+        myDropzoneImg.removeAllFiles(true);
+        uplodaImgBtn.prop('disabled', true);
+        removeImgBtn.prop('disabled', true);
+    });
 }

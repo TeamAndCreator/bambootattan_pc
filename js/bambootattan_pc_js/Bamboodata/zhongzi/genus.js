@@ -50,13 +50,10 @@ function init_table(){
             }
         },
         cache:false,//是否使用緩存
-
-
         columns:[//列数据
-
             {
                 checkbox:true,//有复选框
-                field:'checkbox',//数据列
+                field:'checkbox'//数据列
             },
             {
                 field:'',//数据列
@@ -139,7 +136,6 @@ function init_table(){
         ]
     });
 }
-
 //保存
 function save() {
     bootbox.confirm({
