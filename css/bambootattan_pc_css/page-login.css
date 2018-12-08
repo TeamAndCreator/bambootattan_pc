@@ -3,7 +3,7 @@ body{
     height:100%;
     background:#77c562;
 }
-/*a:hover{*/
+/*a:hover{*
     /*text-decoration:underline;*/
 /*}*/
 
@@ -55,17 +55,17 @@ body{
 .form-box a:hover{
     color:#717171;
 }
-/*.form-p{*/
-    /*position:absolute;*/
-    /*left:40px;*/
-    /*bottom:25px;*/
-/*}*/
-/*.form-p > a{*/
-    /*color:#fa8341;*/
-/*}*/
-/*.form-p > a:hover{*/
-    /*color:#666;*/
-/*}*/
+.form-p{
+    position:absolute;
+    left:40px;
+    bottom:25px;
+}
+.form-p > a{
+    color:#fa8341;
+}
+.form-p > a:hover{
+    color:#666;
+}
 
 .form-box{
     border-color: #6ec558;
