@@ -62,7 +62,6 @@ function init_table(){
         },
         cache:false,//是否使用緩存
         columns:[//列数据
-
             {
                 checkbox:true,//有复选框
                 field:'checkbox'//数据列
@@ -163,12 +162,10 @@ function init_spec_table(){
             }
         },
         cache:false,//是否使用緩存
-
         columns:[//列数据
-
             {
                 radio:true,//有复选框
-                field:'radio',//数据列
+                field:'radio'//数据列
             },
             {
                 field:'genus',//数据列

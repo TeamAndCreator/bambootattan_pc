@@ -172,15 +172,15 @@ function save() {
                     "genusNameOth": genusNameOth,
                     "sortNum": sortNum
                 };
-                if (genusId == "") {//新增
+                if (genusId === "") {//新增
                     formData.genusId = 0;
                     $.ajax({
                         url: baseUrl + '/genus/save',		//请求路径
                         type: 'POST',			            //请求方式
-                        data: JSON.stringify(formData),	    //数据
+                        data: JSON.stringify(formData),	    //数据   对象转json字符串
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code == 200) {
+                            if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -210,7 +210,7 @@ function save() {
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code == 200) {
+                            if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -256,7 +256,8 @@ function edit(id) {
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
-            if(res.code==200){
+            if(res.code===200){
+                //赋值
                 $('#demo-summernote').summernote('code',res.data.genusDesc);
                 $('#genusId').val(res.data.genusId);
                 $('#genusNameCh').val(res.data.genusNameCh);
@@ -342,7 +343,7 @@ function dele(gid){
 function deles() {
     //选中的数据
     var selectedItems=$("#data_table").bootstrapTable('getSelections');
-    if(selectedItems.length==0){    //没有选中任何数据
+    if(selectedItems.length===0){    //没有选中任何数据
         $.niftyNoty({
             type: 'danger',
             icon : 'pli-cross icon-2x',
@@ -376,7 +377,7 @@ function deles() {
                         type:'DELETE',
                         contentType: 'application/json',//数据类型
                         success:function(res){	        //请求成功回调函数
-                            if(res.code==200){  //删除成功
+                            if(res.code===200){  //删除成功
                                 //alert('删除成功');
 
                                 //右上角弹出消息
