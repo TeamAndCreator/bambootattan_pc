@@ -24,6 +24,8 @@ $(function(){
     $('#genusModal').on('hidden.bs.modal',function () {
         openModalClass();
     });
+    //确认选择的属
+    $('#btn_genus_ok').on('click',selectedGenus);
     //初始化表格
     init_table();
     //初始化属的表格
@@ -272,10 +274,10 @@ function init_genus_table(){
             $("#genusId").val(row.genusId);
             $('#genusModal').modal('hide');
         },
-        onClickRow:function(row, $element){
-            $("#genus").val(row.genusNameCh);
-            $("#genusId").val(row.genusId);
-        },
+        //onClickRow:function(row, $element){
+        //    $("#genus").val(row.genusNameCh);
+        //    $("#genusId").val(row.genusId);
+        //},
         //method:'POST',
         responseHandler:function(res){//后台返回数据进行修改，修改成bootstrap-table能够使用的数据格式
             return {
@@ -290,7 +292,6 @@ function init_genus_table(){
             }
         },
         cache:false,//是否使用緩存
-
         columns:[//列数据
 
             {
@@ -381,7 +382,9 @@ function save() {
                 if(!validateForm.isValid()){
                     return;
                 }
+                //定义一个FormData对象
                 var formData = new FormData();
+                //从表单取值
                 var specDesc=$('#demo-summernote').summernote('code');
                 var specId = $('#specId').val();
                 var genusId=$('#genusId').val();
@@ -424,8 +427,6 @@ function save() {
                 for (var i = 0; i < multipartFiles.length; i++) {
                     formData.append("multipartFiles", myDropzone.files[i]);
                 }
-
-
 
                 if (specId === "") {//新增
                     $.ajax({
@@ -740,8 +741,11 @@ function init_form(){
     $('#specVidio').val("");
     $('#specImgs').val("");
     $('#specDesc').val("");
+    $('#specSortNum').val("");
+    $('#demo-summernote').summernote('code',"");
     // $('#specSortNum').val("");
     $('#registrationForm').data('bootstrapValidator').resetForm();
+    clear_file();
 }
 //初始化详情元素值
 function init_info(){
@@ -778,12 +782,6 @@ function init_sunmmernote(){
 }
 //设置文件上传
 function init_file_upload(){
-    // DROPZONE.JS WITH BOOTSTRAP'S THEME
-    // =================================================================
-    // Require Dropzone
-    // http://www.dropzonejs.com/
-    // =================================================================
-    // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
     var previewNode = document.querySelector("#dz-template");
     previewNode.id = "";
     var previewTemplate = previewNode.parentNode.innerHTML;
@@ -923,4 +921,21 @@ function init_file_upload(){
         uplodaImgBtn.prop('disabled', true);
         removeImgBtn.prop('disabled', true);
     });
+}
+//清除上传选中的文件
+function clear_file(){
+    //清除视频的选择
+    $('#dz-remove-btn').click();
+    //清除图片的选择
+    $('#dz-remove-img-btn').click();
+}
+//选择属
+function selectedGenus(){
+    //选中的数据
+    var selectedSpecItems=$("#genus_table").bootstrapTable('getSelections');
+    if (selectedSpecItems.length==1){
+        $("#genus").val(selectedSpecItems[0].genusNameCh);
+        $("#genusId").val(selectedSpecItems[0].genusId);
+        $('#genusModal').modal('hide');
+    }
 }
