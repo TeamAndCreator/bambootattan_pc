@@ -477,7 +477,7 @@ function init_info(){
     $('#genusDesc-info').val("").attr('data-original-title',"");
 
 }
-//设置富文本的
+//修改密码富文本的
 function init_sunmmernote(){
     $('#demo-summernote').summernote({
         height: 244,                 // set editor height
