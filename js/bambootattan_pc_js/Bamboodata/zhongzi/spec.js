@@ -36,6 +36,30 @@ $(function(){
     init_file_upload();
     //表单验证
     $('#registrationForm').bootstrapValidator();
+
+
+    $('#img-area').imgs({
+        items:[
+            {
+                url:'../../img/image/logo.png'
+            },
+            {
+                url:'../../img/image/login_bg.jpg'
+            }],
+        modalId:'imgmodel',
+        downloadAll:'#download-img-all'
+    });
+    $('#video-area').videos({
+        items:[
+            {
+                url:'../../img/image/testvideo.mp4'
+            },
+            {
+                url:'../../img/image/testvideo.mp4'
+            }],
+        modalId:'videomodel',
+        downloadAll:'#download-vedio-all'
+    });
 });
 //初始化表格
 function init_table(){
