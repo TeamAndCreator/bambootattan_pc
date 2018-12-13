@@ -476,7 +476,7 @@ function init_info(){
 
 
 }
-//设置富文本的高度
+//修改密码富文本的高度
 function init_sunmmernote(){
     $('#demo-summernote').summernote({
         height: 244,                 // set editor height

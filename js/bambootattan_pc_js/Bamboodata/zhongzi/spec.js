@@ -36,6 +36,30 @@ $(function(){
     init_file_upload();
     //表单验证
     $('#registrationForm').bootstrapValidator();
+
+
+    $('#img-area').imgs({
+        items:[
+            {
+                url:'../../img/image/logo.png'
+            },
+            {
+                url:'../../img/image/login_bg.jpg'
+            }],
+        modalId:'imgmodel',
+        downloadAll:'#download-img-all'
+    });
+    $('#video-area').videos({
+        items:[
+            {
+                url:'../../img/image/testvideo.mp4'
+            },
+            {
+                url:'../../img/image/testvideo.mp4'
+            }],
+        modalId:'videomodel',
+        downloadAll:'#download-vedio-all'
+    });
 });
 //初始化表格
 function init_table(){
@@ -764,7 +788,7 @@ function init_info(){
     // $('#specSortNum').val("").attr('data-original-title',"");
     // $('#registrationForm').data('bootstrapValidator').resetForm();
 }
-//设置富文本
+//修改密码富文本
 function init_sunmmernote(){
     $('#demo-summernote').summernote({
         height: 244,                 // set editor height
@@ -780,7 +804,7 @@ function init_sunmmernote(){
     // })
     // $('#demo-summernote-info').summernote('disable');
 }
-//设置文件上传
+//修改密码文件上传
 function init_file_upload(){
     var previewNode = document.querySelector("#dz-template");
     previewNode.id = "";
