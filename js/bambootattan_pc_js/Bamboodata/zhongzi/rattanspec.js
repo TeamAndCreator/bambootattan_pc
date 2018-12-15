@@ -721,6 +721,7 @@ function init_form(){
     $('#specVidio').val("");
     $('#specImgs').val("");
     $('#specDesc').val("");
+    $('#demo-summernote').summernote('code',"");
     // $('#specSortNum').val("");
     $('#registrationForm').data('bootstrapValidator').resetForm();
 }

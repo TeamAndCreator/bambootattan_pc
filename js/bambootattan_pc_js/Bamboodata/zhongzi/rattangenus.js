@@ -463,6 +463,7 @@ function init_form(){
     $('#sortNum').val("");
     $('#genusDesc').val("");
     $('#genusId').val("");
+    $('#demo-summernote').summernote('code',"");
     //$('#registrationForm').data('bootstrapValidator').resetForm();
 }
 //初始化详情元素值
