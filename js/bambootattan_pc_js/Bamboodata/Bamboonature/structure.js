@@ -211,7 +211,8 @@ function init_spec_table(){
                     return {css: {'min-width': '80px'}};
                 },
                 formatter:function(value,row,index){
-                    return row.genus.genusNameCh;
+                   //return row.genus.genusNameCh;
+                    return row.genus == null ? '' : row.genus.genusNameCh;
                 }
             },
             {

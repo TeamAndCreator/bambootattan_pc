@@ -93,7 +93,9 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 },
                 formatter:function(value,row,index){
-                    return row.spec.specNameCh;
+                    //return row.rattanSpec.specNameCh;
+                    return row.rattanSpec == null ? '' : row.rattanSpec.specNameCh;
+
                 }
             },
             {
@@ -224,6 +226,7 @@ function init_spec_table(){
             $("#specId").val(row.specId);
             $("#genusId").val(row.genus.genusId);
             $('#specModal').modal('hide');
+
         },
         /*
         onClickRow:function(row, $element){
@@ -249,7 +252,7 @@ function init_spec_table(){
 
             {
                 radio:true,//有复选框
-                field:'radio',//数据列
+                field:'radio'//数据列
             },
             {
                 field:'genus',//数据列
@@ -261,7 +264,8 @@ function init_spec_table(){
                     return {css: {'min-width': '80px'}};
                 },
                 formatter:function(value,row,index){
-                    return row.genus.genusNameCh;
+                    //return row.genus.genusNameCh;
+                    return row.genus == null ? '' : row.genus.genusNameCh;
                 }
             },
             {
@@ -427,9 +431,9 @@ function save() {
                 var genusId=$('#genusId').val();
                 var formData = {
                     "chemId":chemId,
-                    "spec":{
+                    "rattanSpec":{
                         'specId':specId,
-                        'genus':{
+                        'rattanGenus':{
                             'genusId':genusId
                         }
                     },
@@ -443,7 +447,7 @@ function save() {
                     "chemColdWaterExtractionUnitPercent":chemColdWaterExtractionUnitPercent,
                     "chemAshContentUnitPercent":chemAshContentUnitPercent
                 };
-                if (chemId == "") {//新增
+                if (chemId === "") {//新增
                     formData.specId = 0;
                     $.ajax({
                         url: baseUrl + '/tChemistry/save',		//请求路径
@@ -451,7 +455,7 @@ function save() {
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code == 200) {
+                            if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -481,7 +485,7 @@ function save() {
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code == 200) {
+                            if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -527,7 +531,7 @@ function edit(id) {
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
-            if(res.code==200){
+            if(res.code===200){
                 $('#chemId').val(res.data.chemId);
                 $('#chemHolocelluloseUnitPercent').val(res.data.chemHolocelluloseUnitPercent);
                 $('#chemCelluloseUnitPercent').val(res.data.chemCelluloseUnitPercent);
@@ -538,9 +542,11 @@ function edit(id) {
                 $('#chemHotWaterExtractionUnitPercent').val(res.data.chemHotWaterExtractionUnitPercent);
                 $('#chemColdWaterExtractionUnitPercent').val(res.data.chemColdWaterExtractionUnitPercent);
                 $('#chemAshContentUnitPercent').val(res.data.chemAshContentUnitPercent);
-                $('#spec').val(res.data.spec.specNameCh);
-                $('#specId').val(res.data.spec.specId);
-                $('#genusId').val(res.data.spec.genus.genusId);
+                if(res.data.rattanSpec!=null){
+                    $('#spec').val(res.data.rattanSpec.specNameCh);
+                    $('#specId').val(res.data.rattanSpec.specId);
+                    $('#genusId').val(res.data.rattanSpec.rattanGenus.genusId);
+                }
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }
@@ -577,7 +583,7 @@ function dele(gid){
                     type:'DELETE',				        //请求方式
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
-                        if(res.code==200){
+                        if(res.code===200){
                             $.niftyNoty({
                                 type: 'success',
                                 icon : 'pli-like-2 icon-2x',
@@ -622,7 +628,7 @@ function check(id) {
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
-            if(res.code==200){
+            if(res.code===200){
                 $('#chemHolocelluloseUnitPercent-info').html(res.data.chemHolocelluloseUnitPercent).attr('data-original-title',res.data.chemHolocelluloseUnitPercent);
                 $('#chemCelluloseUnitPercent-info').html(res.data.chemCelluloseUnitPercent).attr('data-original-title',res.data.chemCelluloseUnitPercent);
                 $('#chemACelluloseUnitPercent-info').html(res.data.chemACelluloseUnitPercent).attr('data-original-title',res.data.chemACelluloseUnitPercent);
@@ -633,7 +639,7 @@ function check(id) {
                 $('#chemColdWaterExtractionUnitPercent-info').html(res.data.chemColdWaterExtractionUnitPercent).attr('data-original-title',res.data.chemColdWaterExtractionUnitPercent);
                 $('#chemAshContentUnitPercent-info').html(res.data.chemAshContentUnitPercent).attr('data-original-title',res.data.chemAshContentUnitPercent);
 
-                $('#spec-info').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
+                $('#spec-info').html(res.data.rattanSpec.specNameCh).attr('data-original-title',res.data.specNameCh);
                 $('#exampleModal-info').modal('show');
             }
             else{
@@ -655,7 +661,7 @@ function check(id) {
 function deles() {
     //选中的数据
     var selectedItems=$("#data_table").bootstrapTable('getSelections');
-    if(selectedItems.length==0){    //没有选中任何数据
+    if(selectedItems.length===0){    //没有选中任何数据
         $.niftyNoty({
             type: 'danger',
             icon : 'pli-cross icon-2x',
@@ -689,7 +695,7 @@ function deles() {
                         type:'DELETE',
                         contentType: 'application/json',//数据类型
                         success:function(res){	        //请求成功回调函数
-                            if(res.code==200){  //删除成功
+                            if(res.code===200){  //删除成功
                                 //alert('删除成功');
 
                                 //右上角弹出消息
@@ -733,7 +739,7 @@ function deles() {
 function selectedSpec() {
     //选中的数据
     var selectedSpecItems=$("#spec_table").bootstrapTable('getSelections');
-    if (selectedSpecItems.length==1){
+    if (selectedSpecItems.length===1){
         $("#spec").val(selectedSpecItems[0].specNameCh);
         $("#specId").val(selectedSpecItems[0].specId);
         $("#genusId").val(selectedSpecItems[0].genus.genusId);

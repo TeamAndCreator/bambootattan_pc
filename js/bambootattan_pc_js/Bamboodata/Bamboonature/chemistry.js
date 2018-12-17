@@ -220,10 +220,10 @@ function init_spec_table(){
         sidePagination:'server',//服務器端分頁
         clickToSelect:true,
         onDblClickRow:function(row, $element){
-            $("#spec").val(row.specNameCh);
-            $("#specId").val(row.specId);
-            $("#genusId").val(row.genus.genusId);
-            $('#specModal').modal('hide');
+                $("#spec").val(row.specNameCh);
+                $("#specId").val(row.specId);
+                $("#genusId").val(row.genus.genusId);
+                $('#specModal').modal('hide');
         },
         /*
         onClickRow:function(row, $element){
@@ -261,7 +261,8 @@ function init_spec_table(){
                     return {css: {'min-width': '80px'}};
                 },
                 formatter:function(value,row,index){
-                    return row.genus.genusNameCh;
+                    //return row.genus.genusNameCh;
+                    return row.genus == null ? '' : row.genus.genusNameCh;
                 }
             },
             {

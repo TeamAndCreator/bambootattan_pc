@@ -66,8 +66,8 @@ function init_table(){
             $('#data_table').bootstrapTable('resetView');
         },
         cache:false,//是否使用緩存
-        fixedColumns: true,//固定列
-        fixedNumber:3,//固定前四列
+        // fixedColumns: true,//固定列
+        // fixedNumber:3,//固定前四列
         columns:[//列数据
 
             {
@@ -101,6 +101,7 @@ function init_table(){
                 },
                 formatter:function(value,row,index){
                     return row.spec.specNameCh;
+
                 }
             },
             {
@@ -317,7 +318,8 @@ function init_spec_table(){
                     return {css: {'min-width': '80px'}};
                 },
                 formatter:function(value,row,index){
-                    return row.genus.genusNameCh;
+                    //return row.genus.genusNameCh;
+                    return row.genus == null ? '' : row.genus.genusNameCh;
                 }
             },
             {
