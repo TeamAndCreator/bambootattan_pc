@@ -2,7 +2,7 @@ var queryPageUrl='';
 var querySpecPageUrl='';
 $(function(){
     queryPageUrl = baseUrl+'/tChemistry/findAllQuery';
-    querySpecPageUrl = baseUrl+'/spec/findAllQuery';
+    querySpecPageUrl = baseUrl+'/rattanSpec/findAllQuery';
     //新增点击事件
     $('#btn_add').on('click',function () {
         init_form();//初始化表单
@@ -95,7 +95,6 @@ function init_table(){
                 formatter:function(value,row,index){
                     //return row.rattanSpec.specNameCh;
                     return row.rattanSpec == null ? '' : row.rattanSpec.specNameCh;
-
                 }
             },
             {
@@ -224,7 +223,7 @@ function init_spec_table(){
         onDblClickRow:function(row, $element){
             $("#spec").val(row.specNameCh);
             $("#specId").val(row.specId);
-            $("#genusId").val(row.genus.genusId);
+            $("#genusId").val(row.rattanGenus.genusId);
             $('#specModal').modal('hide');
 
         },
@@ -265,7 +264,7 @@ function init_spec_table(){
                 },
                 formatter:function(value,row,index){
                     //return row.genus.genusNameCh;
-                    return row.genus == null ? '' : row.genus.genusNameCh;
+                    return row.rattanGenus == null ? '' : row.rattanGenus.genusNameCh;
                 }
             },
             {
@@ -742,7 +741,7 @@ function selectedSpec() {
     if (selectedSpecItems.length===1){
         $("#spec").val(selectedSpecItems[0].specNameCh);
         $("#specId").val(selectedSpecItems[0].specId);
-        $("#genusId").val(selectedSpecItems[0].genus.genusId);
+        $("#genusId").val(selectedSpecItems[0].rattanGenus.genusId);
         $("#specModal").modal('hide');
     }
 }

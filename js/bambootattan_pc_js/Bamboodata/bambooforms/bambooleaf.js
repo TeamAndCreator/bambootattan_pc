@@ -713,7 +713,7 @@ function check(id) {
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
-            if(res.code==200){
+            if(res.code===200){
                 $('#leafShape-info').html(res.data.leafShape).attr('data-original-title',res.data.leafShape);
                 $('#leafStalkLength-info').html(res.data.leafStalkLength).attr('data-original-title',res.data.leafStalkLength);
                 $('#leafLength-info').html(res.data.leafLength).attr('data-original-title',res.data.leafLength);

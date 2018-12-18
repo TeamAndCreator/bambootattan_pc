@@ -416,7 +416,7 @@ function save() {
                     "specDesc": specDesc,
                     "specSortNum": specSortNum
                 };
-                if (specId == "") {//新增
+                if (specId === "") {//新增
                     formData.specId = 0;
                     $.ajax({
                         url: baseUrl + '/rattanSpec/save',		//请求路径
@@ -424,7 +424,7 @@ function save() {
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code == 200) {
+                            if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -556,7 +556,7 @@ function dele(gid){
                     type:'DELETE',				        //请求方式
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
-                        if(res.code==200){
+                        if(res.code===200){
                             $.niftyNoty({
                                 type: 'success',
                                 icon : 'pli-like-2 icon-2x',
@@ -597,7 +597,7 @@ function dele(gid){
 function deles() {
     //选中的数据
     var selectedItems=$("#data_table").bootstrapTable('getSelections');
-    if(selectedItems.length==0){    //没有选中任何数据
+    if(selectedItems.length===0){    //没有选中任何数据
         $.niftyNoty({
             type: 'danger',
             icon : 'pli-cross icon-2x',
@@ -631,7 +631,7 @@ function deles() {
                         type:'DELETE',
                         contentType: 'application/json',//数据类型
                         success:function(res){	        //请求成功回调函数
-                            if(res.code==200){  //删除成功
+                            if(res.code===200){  //删除成功
                                 //alert('删除成功');
 
                                 //右上角弹出消息
@@ -679,7 +679,7 @@ function check(id) {
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
-            if(res.code==200){
+            if(res.code===200){
                 $('#specNameCh-info').html(res.data.specNameCh).attr('data-original-title',res.data.specNameCh);
                 $('#specNameEn-info').html(res.data.specNameEn).attr('data-original-title',res.data.specNameEn);
                 $('#specNameLd-info').html(res.data.specNameLd).attr('data-original-title',res.data.specNameLd);
