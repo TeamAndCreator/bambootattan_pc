@@ -93,7 +93,8 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 },
                 formatter:function(value,row,index){
-                    return row.spec.specNameCh;
+                    //return row.spec.specNameCh;
+                    return row.rattanSpec == null ? '' : row.rattanSpec.specNameCh;
                 }
             },
             {
@@ -198,7 +199,7 @@ function init_spec_table(){
 
             {
                 radio:true,//有复选框
-                field:'radio',//数据列
+                field:'radio'//数据列
             },
             {
                 field:'genus',//数据列
@@ -210,7 +211,8 @@ function init_spec_table(){
                     return {css: {'min-width': '80px'}};
                 },
                 formatter:function(value,row,index){
-                    return row.genus.genusNameCh;
+                    //return row.genus.genusNameCh;
+                    return row.genus == null ? '' : row.genus.genusNameCh;
                 }
             },
             {
@@ -370,9 +372,9 @@ function save() {
                 var genusId=$('#genusId').val();
                 var formData = {
                     "chmId":chmId,
-                    "spec":{
+                    "rattanSpec":{
                         'specId':specId,
-                        'genus':{
+                        'rattanGenus':{
                             'genusId':genusId
                         }
                     },
@@ -465,15 +467,17 @@ function edit(id) {
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
-            if(res.code==200){
+            if(res.code===200){
                 $('#chmId').val(res.data.chmId);
                 $('#chmCatheterLenghtUnitMicrom').val(res.data.chmCatheterLenghtUnitMicrom);
                 $('#chmCatheterDiameterUnitMicrom').val(res.data.chmCatheterDiameterUnitMicrom);
                 $('#chmCatheterDensityUnitVcmidu').val(res.data.chmCatheterDensityUnitVcmidu);
                 $('#chmIndex').val(res.data.chmIndex);
-                $('#spec').val(res.data.spec.specNameCh);
-                $('#specId').val(res.data.spec.specId);
-                $('#genusId').val(res.data.spec.genus.genusId);
+                if(res.data.rattanSpec!=null){
+                    $('#spec').val(res.data.rattanSpec.specNameCh);
+                    $('#specId').val(res.data.rattanSpec.specId);
+                    $('#genusId').val(res.data.rattanSpec.rattanGenus.genusId);
+                }
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }
@@ -561,7 +565,9 @@ function check(id) {
                 $('#chmCatheterDensityUnitVcmidu-info').html(res.data.chmCatheterDensityUnitVcmidu).attr('data-original-title',res.data.chmCatheterDensityUnitVcmidu);
                 $('#chmIndex-info').html(res.data.chmIndex).attr('data-original-title',res.data.chmIndex);
 
-                $('#spec-info').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
+                //$('#spec-info').html(res.data.rattanSpec.specNameCh).attr('data-original-title',res.data.specNameCh);
+                if(res.data.rattanSpec!=null){ $('#spec-info').html(res.data.rattanSpec.specNameCh).attr('data-original-title',res.data.specNameCh);}
+               // $('#spec-info').html(res.data.rattanSpec.specNameCh).attr('data-original-title',res.data.specNameCh);
                 $('#exampleModal-info').modal('show');
             }
             else{

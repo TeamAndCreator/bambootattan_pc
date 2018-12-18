@@ -11,6 +11,10 @@ $(function(){
         $('#exampleModal .modal-title').html("新增");
         $('#exampleModal').modal('show');//表单模态框
     });
+    //打开弹出框，去掉验证信息显示
+    $('#exampleModal').on('shown.bs.modal',function () {
+        $('#registrationForm').data('bootstrapValidator').resetForm();
+    });
     //批量删除点击事件
     $('#btn_delete').on('click',deles);
     //保存点击事件

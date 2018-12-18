@@ -9,6 +9,10 @@ $(function(){
         $('#exampleModal .modal-title').html("新增");
         $('#exampleModal').modal('show');//表单模态框
     });
+    //打开弹出框，去掉验证信息显示
+    $('#exampleModal').on('shown.bs.modal',function () {
+        $('#registrationForm').data('bootstrapValidator').resetForm();
+    });
     //批量删除点击事件
     $('#btn_delete').on('click',deles);
     //保存点击事件
@@ -18,6 +22,8 @@ $(function(){
         $('#genusModal').modal('show');
         $('#genus_table').bootstrapTable('refresh',queryGenusPageUrl);
     });
+    //确认选择的属
+    $('#btn_genus_ok').on('click',selectedGenus);
     //选择属的模态框关闭时，调用openModalClass，给body元素手动加上 modal-open
     $('#genusModal').on('hidden.bs.modal',function () {
         openModalClass();
@@ -65,8 +71,8 @@ function init_table(){
             $('#data_table').bootstrapTable('resetView');
         },
         cache:false,//是否使用緩存
-        fixedColumns: true,//固定列
-        fixedNumber:4,//固定前三列
+        // fixedColumns: true,//固定列
+        // fixedNumber:4,//固定前三列
         columns:[//列数据
 
             {
@@ -90,7 +96,7 @@ function init_table(){
                 }
             },
             {
-                field:'genus',//数据列
+                field:'rattanGenus',//数据列
                 title:'属名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -99,7 +105,7 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 },
                 formatter:function(value,row,index){
-                    return row.genus.genusNameCh;
+                    return row.rattanGenus == null ? '' : row.rattanGenus.genusNameCh;
                 }
             },
             {
@@ -262,14 +268,14 @@ function init_genus_table(){
         sidePagination:'server',//服務器端分頁
         clickToSelect:true,
         onDblClickRow:function(row, $element){
-            $("#genus").val(row.genusNameCh);
+            $("#rattanGenus").val(row.genusNameCh);
             $("#genusId").val(row.genusId);
             $('#genusModal').modal('hide');
         },
-        onClickRow:function(row, $element){
-            $("#genus").val(row.genusNameCh);
-            $("#genusId").val(row.genusId);
-        },
+        // onClickRow:function(row, $element){
+        //     $("#rattanGenus").val(row.genusNameCh);
+        //     $("#genusId").val(row.genusId);
+        // },
         //method:'POST',
         responseHandler:function(res){//后台返回数据进行修改，修改成bootstrap-table能够使用的数据格式
             return {
@@ -289,7 +295,7 @@ function init_genus_table(){
 
             {
                 radio:true,//有复选框
-                field:'radio',//数据列
+                field:'radio'//数据列
             },
             {
                 field:'genusNameCh',//数据列
@@ -395,7 +401,7 @@ function save() {
                 var specSortNum = $('#specSortNum').val();
                 var formData = {
                     "specId": specId,
-                    "genus":{'genusId':genusId},
+                    "rattanGenus":{'genusId':genusId},
                     "specNameCh": specNameCh,
                     "specNameEn": specNameEn,
                     "specNameLd": specNameLd,
@@ -510,8 +516,10 @@ function edit(id) {
                 $('#specImgs').val(res.data.specImgs);
                 //$('#specDesc').val(res.data.specDesc);
                 $('#specSortNum').val(res.data.specSortNum);
-                $('#genus').val(res.data.genus.genusNameCh);
-                $('#genusId').val(res.data.genus.genusId);
+                if(res.data.rattanGenus!=null){
+                    $('#rattanGenus').val(res.data.rattanGenus.genusNameCh);
+                    $('#genusId').val(res.data.rattanGenus.genusId);
+                }
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }
@@ -686,7 +694,9 @@ function check(id) {
                 $('#specImgs-info').html(res.data.specImgs).attr('data-original-title',res.data.specImgs);
                 //$('#demo-summernote-info').summernote('code',res.data.specDesc);
                 $('#specDesc-info').html(res.data.specDesc);
-                $('#genus-info').html(res.data.genus.genusNameCh).attr('data-original-title',res.data.genus.genusNameCh);
+                if(res.data.rattanGenus!=null) {
+                    $('#genus-info').html(res.data.rattanGenus.genusNameCh).attr('data-original-title', res.data.rattanGenus.genusNameCh);
+                }
                 $('#exampleModal-info').modal('show');
             }
             else{
@@ -706,7 +716,7 @@ function check(id) {
 }
 //初始化表单元素的值
 function init_form(){
-    $('#genus').val("");
+    $('#rattanGenus').val("");
     $('#specId').val("");
     $('#genusId').val("");
     $('#specNameCh').val("");
@@ -721,15 +731,14 @@ function init_form(){
     $('#specVidio').val("");
     $('#specImgs').val("");
     $('#specDesc').val("");
+    $('#specSortNum').val("");
     $('#demo-summernote').summernote('code',"");
     // $('#specSortNum').val("");
     $('#registrationForm').data('bootstrapValidator').resetForm();
 }
 //初始化详情元素值
 function init_info(){
-    //$('#genus').val("").attr('data-original-title',"");
-    // $('#specId').val("");
-    //$('#genusId').val("").attr('data-original-title',"");
+
     $('#specNameCh-info').val("").attr('data-original-title',"");
     $('#specNameEn-info').val("").attr('data-original-title',"");
     $('#specNameLd-info').val("").attr('data-original-title',"");
@@ -742,8 +751,7 @@ function init_info(){
     $('#specVidio-info').val("").attr('data-original-title',"");
     $('#specImgs-info').val("").attr('data-original-title',"");
     $('#specDesc-info').val("").attr('data-original-title',"");
-    // $('#specSortNum').val("").attr('data-original-title',"");
-    // $('#registrationForm').data('bootstrapValidator').resetForm();
+
 }
 //修改密码富文本的高度
 function init_sunmmernote(){
@@ -761,4 +769,13 @@ function init_sunmmernote(){
     })
     $('#demo-summernote-info').summernote('disable');
 }
-
+//选择属
+function selectedGenus(){
+    //选中的数据
+    var selectedSpecItems=$("#genus_table").bootstrapTable('getSelections');
+    if (selectedSpecItems.length==1){
+        $("#rattanGenus").val(selectedSpecItems[0].genusNameCh);
+        $("#genusId").val(selectedSpecItems[0].genusId);
+        $('#genusModal').modal('hide');
+    }
+}
