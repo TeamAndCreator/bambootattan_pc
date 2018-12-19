@@ -2,7 +2,7 @@ var queryPageUrl='';
 var querySpecPageUrl='';
 $(function(){
     queryPageUrl = baseUrl+'/tMechanics/findAllQuery';
-    querySpecPageUrl = baseUrl+'/spec/findAllQuery';
+    querySpecPageUrl = baseUrl+'/rattanSpec/findAllQuery';
     //新增点击事件
     $('#btn_add').on('click',function () {
         init_form();//初始化表单
@@ -93,7 +93,8 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 },
                 formatter:function(value,row,index){
-                    return row.spec.specNameCh;
+                    //return row.spec.specNameCh;
+                    return row.rattanSpec == null ? '' : row.rattanSpec.specNameCh;
                 }
             },
             {
@@ -203,7 +204,7 @@ function init_spec_table(){
         onDblClickRow:function(row, $element){
             $("#spec").val(row.specNameCh);
             $("#specId").val(row.specId);
-            $("#genusId").val(row.genus.genusId);
+            $("#genusId").val(row.rattanGenus.genusId);
             $('#specModal').modal('hide');
         },
         /*
@@ -230,7 +231,7 @@ function init_spec_table(){
 
             {
                 radio:true,//有复选框
-                field:'radio',//数据列
+                field:'radio'//数据列
             },
             {
                 field:'genus',//数据列
@@ -242,7 +243,8 @@ function init_spec_table(){
                     return {css: {'min-width': '80px'}};
                 },
                 formatter:function(value,row,index){
-                    return row.genus.genusNameCh;
+                    //return row.genus.genusNameCh;
+                    return row.rattanGenus == null ? '' : row.rattanGenus.genusNameCh;
                 }
             },
             {
@@ -405,9 +407,9 @@ function save() {
                 var genusId=$('#genusId').val();
                 var formData = {
                     "mechId":mechId,
-                    "spec":{
+                    "rattanSpec":{
                         'specId':specId,
-                        'genus':{
+                        'rattanGenus':{
                             'genusId':genusId
                         }
                     },
@@ -428,7 +430,7 @@ function save() {
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code == 200) {
+                            if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -458,7 +460,7 @@ function save() {
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code == 200) {
+                            if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -504,7 +506,7 @@ function edit(id) {
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
-            if(res.code==200){
+            if(res.code===200){
                 $('#mechId').val(res.data.mechId);
                 $('#mechBendingModulusElastictyUnitGpa').val(res.data.mechBendingModulusElastictyUnitGpa);
                 $('#mechBendingStrenghtUnitMpa').val(res.data.mechBendingStrenghtUnitMpa);
@@ -513,9 +515,11 @@ function edit(id) {
                 $('#mechTensileStrenghtUnitMpa').val(res.data.mechTensileStrenghtUnitMpa);
                 $('#mechImpactDuctilityUnitRenxiang').val(res.data.mechImpactDuctilityUnitRenxiang);
                 $('#mechComplianceUnitRouliang').val(res.data.mechComplianceUnitRouliang);
-                $('#spec').val(res.data.spec.specNameCh);
-                $('#specId').val(res.data.spec.specId);
-                $('#genusId').val(res.data.spec.genus.genusId);
+                if(res.data.rattanSpec!=null){
+                    $('#spec').val(res.data.rattanSpec.specNameCh);
+                    $('#specId').val(res.data.rattanSpec.specId);
+                    $('#genusId').val(res.data.rattanSpec.rattanGenus.genusId);
+                }
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }
@@ -552,7 +556,7 @@ function dele(gid){
                     type:'DELETE',				        //请求方式
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
-                        if(res.code==200){
+                        if(res.code===200){
                             $.niftyNoty({
                                 type: 'success',
                                 icon : 'pli-like-2 icon-2x',
@@ -597,7 +601,7 @@ function check(id) {
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
-            if(res.code==200){
+            if(res.code===200){
                 $('#mechBendingModulusElastictyUnitGpa-info').html(res.data.mechBendingModulusElastictyUnitGpa).attr('data-original-title',res.data.mechBendingModulusElastictyUnitGpa);
                 $('#mechBendingStrenghtUnitMpa-info').html(res.data.mechBendingStrenghtUnitMpa).attr('data-original-title',res.data.mechBendingStrenghtUnitMpa);
                 $('#mechCompressionStrenghtUnitMpa-info').html(res.data.mechCompressionStrenghtUnitMpa).attr('data-original-title',res.data.mechCompressionStrenghtUnitMpa);
@@ -605,8 +609,9 @@ function check(id) {
                 $('#mechTensileStrenghtUnitMpa-info').html(res.data.mechTensileStrenghtUnitMpa).attr('data-original-title',res.data.mechTensileStrenghtUnitMpa);
                 $('#mechImpactDuctilityUnitRenxiang-info').html(res.data.mechImpactDuctilityUnitRenxiang).attr('data-original-title',res.data.mechImpactDuctilityUnitRenxiang);
                 $('#mechComplianceUnitRouliang-info').html(res.data.mechComplianceUnitRouliang).attr('data-original-title',res.data.mechComplianceUnitRouliang);
-
-                $('#spec-info').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
+                if(res.data.rattanSpec!=null){
+                    $('#spec-info').html(res.data.rattanSpec.specNameCh).attr('data-original-title',res.data.specNameCh);
+                }
                 $('#exampleModal-info').modal('show');
             }
             else{
@@ -628,7 +633,7 @@ function check(id) {
 function deles() {
     //选中的数据
     var selectedItems=$("#data_table").bootstrapTable('getSelections');
-    if(selectedItems.length==0){    //没有选中任何数据
+    if(selectedItems.length===0){    //没有选中任何数据
         $.niftyNoty({
             type: 'danger',
             icon : 'pli-cross icon-2x',
@@ -662,7 +667,7 @@ function deles() {
                         type:'DELETE',
                         contentType: 'application/json',//数据类型
                         success:function(res){	        //请求成功回调函数
-                            if(res.code==200){  //删除成功
+                            if(res.code===200){  //删除成功
                                 //alert('删除成功');
 
                                 //右上角弹出消息
@@ -706,10 +711,10 @@ function deles() {
 function selectedSpec() {
     //选中的数据
     var selectedSpecItems=$("#spec_table").bootstrapTable('getSelections');
-    if (selectedSpecItems.length==1){
+    if (selectedSpecItems.length===1){
         $("#spec").val(selectedSpecItems[0].specNameCh);
         $("#specId").val(selectedSpecItems[0].specId);
-        $("#genusId").val(selectedSpecItems[0].genus.genusId);
+        $("#genusId").val(selectedSpecItems[0].rattanGenus.genusId);
         $("#specModal").modal('hide');
     }
 }

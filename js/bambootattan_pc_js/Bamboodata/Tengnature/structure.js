@@ -2,7 +2,7 @@ var queryPageUrl='';
 var querySpecPageUrl='';
 $(function(){
     queryPageUrl = baseUrl+'/tStructure/findAllQuery';
-    querySpecPageUrl = baseUrl+'/spec/findAllQuery';
+    querySpecPageUrl = baseUrl+'/rattanSpec/findAllQuery';
     //新增点击事件
     $('#btn_add').on('click',function () {
         init_form();//初始化表单
@@ -94,7 +94,8 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 },
                 formatter:function(value,row,index){
-                    return row.spec.specNameCh;
+                    //return row.spec.specNameCh;
+                    return row.rattanSpec == null ? '' : row.rattanSpec.specNameCh;
                 }
             },
             {
@@ -172,7 +173,7 @@ function init_spec_table(){
         onDblClickRow:function(row, $element){
             $("#spec").val(row.specNameCh);
             $("#specId").val(row.specId);
-            $("#genusId").val(row.genus.genusId);
+            $("#genusId").val(row.rattanGenus.genusId);
             $('#specModal').modal('hide');
         },
         /*
@@ -199,7 +200,7 @@ function init_spec_table(){
 
             {
                 radio:true,//有复选框
-                field:'radio',//数据列
+                field:'radio'//数据列
             },
             {
                 field:'genus',//数据列
@@ -211,7 +212,8 @@ function init_spec_table(){
                     return {css: {'min-width': '80px'}};
                 },
                 formatter:function(value,row,index){
-                    return row.genus.genusNameCh;
+                    //return row.genus.genusNameCh;
+                    return row.rattanGenus == null ? '' : row.rattanGenus.genusNameCh;
                 }
             },
             {
@@ -370,9 +372,9 @@ function save() {
                 var genusId=$('#genusId').val();
                 var formData = {
                     "stId":stId,
-                    "spec":{
+                    "rattanSpec":{
                         'specId':specId,
-                        'genus':{
+                        'rattanGenus':{
                             'genusId':genusId
                         }
                     },
@@ -381,7 +383,7 @@ function save() {
                     "stMaximumInternodeLengthUnitCm":stMaximumInternodeLengthUnitCm,
                     "stRattanDiameterUnitMm":stRattanDiameterUnitMm
                 };
-                if (stId == "") {//新增
+                if (stId === "") {//新增
                     formData.specId = 0;
                     $.ajax({
                         url: baseUrl + '/tStructure/save',		//请求路径
@@ -389,7 +391,7 @@ function save() {
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code == 200) {
+                            if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -419,7 +421,7 @@ function save() {
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code == 200) {
+                            if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -465,17 +467,18 @@ function edit(id) {
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
-            if(res.code==200){
+            if(res.code===200){
                 $('#stId').val(res.data.stId);
                 $('#stStemDiameterUnitMm').val(res.data.stStemDiameterUnitMm);
                 $('#stWallThicknessUnitMm').val(res.data.stWallThicknessUnitMm);
                 $('#stMaximumInternodeLengthUnitCm').val(res.data.stMaximumInternodeLengthUnitCm);
                 $('#stRattanDiameterUnitMm').val(res.data.stRattanDiameterUnitMm);
 
-
-                $('#spec').val(res.data.spec.specNameCh);
-                $('#specId').val(res.data.spec.specId);
-                $('#genusId').val(res.data.spec.genus.genusId);
+                if(res.data.rattanSpec!=null){
+                    $('#spec').val(res.data.rattanSpec.specNameCh);
+                    $('#specId').val(res.data.rattanSpec.specId);
+                    $('#genusId').val(res.data.rattanSpec.rattanGenus.genusId);
+                }
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }
@@ -635,13 +638,14 @@ function check(id) {
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
-            if(res.code==200){
+            if(res.code===200){
                 $('#stStemDiameterUnitMm-info').html(res.data.stStemDiameterUnitMm).attr('data-original-title',res.data.stStemDiameterUnitMm);
                 $('#stWallThicknessUnitMm-info').html(res.data.stWallThicknessUnitMm).attr('data-original-title',res.data.stWallThicknessUnitMm);
                 $('#stMaximumInternodeLengthUnitCm-info').html(res.data.stMaximumInternodeLengthUnitCm).attr('data-original-title',res.data.stMaximumInternodeLengthUnitCm);
                 $('#stRattanDiameterUnitMm-info').html(res.data.stRattanDiameterUnitMm).attr('data-original-title',res.data.stRattanDiameterUnitMm);
-
-                $('#spec-info').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
+                if(res.data.rattanSpec!=null){
+                    $('#spec-info').html(res.data.rattanSpec.specNameCh).attr('data-original-title',res.data.specNameCh);
+                }
                 $('#exampleModal-info').modal('show');
             }
             else{
@@ -663,10 +667,10 @@ function check(id) {
 function selectedSpec() {
     //选中的数据
     var selectedSpecItems=$("#spec_table").bootstrapTable('getSelections');
-    if (selectedSpecItems.length==1){
+    if (selectedSpecItems.length===1){
         $("#spec").val(selectedSpecItems[0].specNameCh);
         $("#specId").val(selectedSpecItems[0].specId);
-        $("#genusId").val(selectedSpecItems[0].genus.genusId);
+        $("#genusId").val(selectedSpecItems[0].rattanGenus.genusId);
         $("#specModal").modal('hide');
     }
 }

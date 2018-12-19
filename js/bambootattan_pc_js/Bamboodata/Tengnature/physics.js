@@ -2,7 +2,7 @@ var queryPageUrl='';
 var querySpecPageUrl='';
 $(function(){
     queryPageUrl = baseUrl+'/tPhysics/findAllQuery';
-    querySpecPageUrl = baseUrl+'/spec/findAllQuery';
+    querySpecPageUrl = baseUrl+'/rattanSpec/findAllQuery';
     //新增点击事件
     $('#btn_add').on('click',function () {
         init_form();//初始化表单
@@ -93,7 +93,8 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 },
                 formatter:function(value,row,index){
-                    return row.spec.specNameCh;
+                    //return row.spec.specNameCh;
+                    return row.rattanSpec == null ? '' : row.rattanSpec.specNameCh;
                 }
             },
             {
@@ -110,6 +111,7 @@ function init_table(){
                 field:'phyAbsoluteUnitPercent',//数据列
                 title:'绝对含水率',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -120,6 +122,7 @@ function init_table(){
                 field:'phyGreenDensityUnitMidu',//数据列
                 title:'生材密度',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -140,6 +143,7 @@ function init_table(){
                 field:'phyAirDryDensityUnitMidu',//数据列
                 title:'气干密度',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -151,6 +155,7 @@ function init_table(){
                 field:'phyAbsoluteDryDensityUnitMidu',//数据列
                 title:'绝干密度',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -171,6 +176,7 @@ function init_table(){
                 field:'phyAirDryVolumeUnitPercent',//数据列
                 title:'湿材到气干（体积缩率）',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -181,6 +187,7 @@ function init_table(){
                 field:'phyWholeDryVolumeUnitPercent',//数据列
                 title:'湿材到全干（体积缩率）',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -202,6 +209,7 @@ function init_table(){
                 field:'phyAirShrinkageChordwiseUnitPercent',//数据列
                 title:'气干缩率（弦向）',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -212,6 +220,7 @@ function init_table(){
                 field:'phyAirShrinkageEdnwiseUnitPercent',//数据列
                 title:'气干缩率（纵向）',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -222,6 +231,7 @@ function init_table(){
                 field:'phyAirShrinkageVolumeUnitPercent',//数据列
                 title:'气干缩率（体积）',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -242,6 +252,7 @@ function init_table(){
                 field:'phyWholeShrinkageRadialUnitPercent',//数据列
                 title:'全干缩率（径向）',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -252,6 +263,7 @@ function init_table(){
                 field:'phyWholeShrinkageEdnwiseUnitPercent',//数据列
                 title:'全干缩率（纵向）',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -262,6 +274,7 @@ function init_table(){
                 field:'phyWholeShrinkageVolumeUnitPercent',//数据列
                 title:'全干缩率（体积）',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -307,7 +320,7 @@ function init_spec_table(){
         onDblClickRow:function(row, $element){
             $("#spec").val(row.specNameCh);
             $("#specId").val(row.specId);
-            $("#genusId").val(row.genus.genusId);
+            $("#genusId").val(row.rattanGenus.genusId);
             $('#specModal').modal('hide');
         },
         /*
@@ -334,7 +347,7 @@ function init_spec_table(){
 
             {
                 radio:true,//有复选框
-                field:'radio',//数据列
+                field:'radio'//数据列
             },
             {
                 field:'genus',//数据列
@@ -346,7 +359,9 @@ function init_spec_table(){
                     return {css: {'min-width': '80px'}};
                 },
                 formatter:function(value,row,index){
-                    return row.genus.genusNameCh;
+                    //return row.genus.genusNameCh;
+                    return row.rattanGenus == null ? '' : row.rattanGenus.genusNameCh;
+
                 }
             },
             {
@@ -526,9 +541,9 @@ function save() {
                 var genusId=$('#genusId').val();
                 var formData = {
                     "phyId":phyId,
-                    "spec":{
+                    "rattanSpec":{
                         'specId':specId,
-                        'genus':{
+                        'rattanGenus':{
                             'genusId':genusId
                         }
                     },
@@ -552,7 +567,7 @@ function save() {
                     "phyWholeShrinkageEdnwiseUnitPercent": phyWholeShrinkageEdnwiseUnitPercent,
                     "phyWholeShrinkageVolumeUnitPercent":phyWholeShrinkageVolumeUnitPercent
                 };
-                if (phyId == "") {//新增
+                if (phyId === "") {//新增
                     formData.specId = 0;
                     $.ajax({
                         url: baseUrl + '/tPhysics/save',		//请求路径
@@ -560,7 +575,7 @@ function save() {
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code == 200) {
+                            if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -590,7 +605,7 @@ function save() {
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code == 200) {
+                            if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -636,7 +651,7 @@ function edit(id) {
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
-            if(res.code==200){
+            if(res.code===200){
                 $('#phyId').val(res.data.phyId);
                 $('#phyRelativeUnitPercent').val(res.data.phyRelativeUnitPercent);
                 $('#phyAbsoluteUnitPercent').val(res.data.phyAbsoluteUnitPercent);
@@ -663,10 +678,11 @@ function edit(id) {
 
 
 
-
-                $('#spec').val(res.data.spec.specNameCh);
-                $('#specId').val(res.data.spec.specId);
-                $('#genusId').val(res.data.spec.genus.genusId);
+                if(res.data.rattanSpec!=null){
+                    $('#spec').val(res.data.rattanSpec.specNameCh);
+                    $('#specId').val(res.data.rattanSpec.specId);
+                    $('#genusId').val(res.data.rattanSpec.rattanGenus.genusId);
+                }
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }
@@ -703,7 +719,7 @@ function dele(gid){
                     type:'DELETE',				        //请求方式
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
-                        if(res.code==200){
+                        if(res.code===200){
                             $.niftyNoty({
                                 type: 'success',
                                 icon : 'pli-like-2 icon-2x',
@@ -748,7 +764,7 @@ function check(id) {
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
-            if(res.code==200){
+            if(res.code===200){
                 $('#phyRelativeUnitPercent-info').html(res.data.phyRelativeUnitPercent).attr('data-original-title',res.data.phyRelativeUnitPercent);
                 $('#phyAbsoluteUnitPercent-info').html(res.data.phyAbsoluteUnitPercent).attr('data-original-title',res.data.phyAbsoluteUnitPercent);
                 $('#phyGreenDensityUnitMidu-info').html(res.data.phyGreenDensityUnitMidu).attr('data-original-title',res.data.phyGreenDensityUnitMidu);
@@ -774,8 +790,10 @@ function check(id) {
                 $('#phyWholeShrinkageVolumeUnitPercent-info').html(res.data.phyWholeShrinkageVolumeUnitPercent).attr('data-original-title',res.data.phyWholeShrinkageVolumeUnitPercent);
 
 
-
-                $('#spec-info').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
+                if(res.data.rattanSpec!=null){
+                    $('#spec-info').html(res.data.rattanSpec.specNameCh).attr('data-original-title',res.data.specNameCh);
+                }
+               // $('#spec-info').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
                 $('#exampleModal-info').modal('show');
             }
             else{
@@ -797,7 +815,7 @@ function check(id) {
 function deles() {
     //选中的数据
     var selectedItems=$("#data_table").bootstrapTable('getSelections');
-    if(selectedItems.length==0){    //没有选中任何数据
+    if(selectedItems.length===0){    //没有选中任何数据
         $.niftyNoty({
             type: 'danger',
             icon : 'pli-cross icon-2x',
@@ -831,7 +849,7 @@ function deles() {
                         type:'DELETE',
                         contentType: 'application/json',//数据类型
                         success:function(res){	        //请求成功回调函数
-                            if(res.code==200){  //删除成功
+                            if(res.code===200){  //删除成功
                                 //alert('删除成功');
 
                                 //右上角弹出消息
@@ -875,10 +893,10 @@ function deles() {
 function selectedSpec() {
     //选中的数据
     var selectedSpecItems=$("#spec_table").bootstrapTable('getSelections');
-    if (selectedSpecItems.length==1){
+    if (selectedSpecItems.length===1){
         $("#spec").val(selectedSpecItems[0].specNameCh);
         $("#specId").val(selectedSpecItems[0].specId);
-        $("#genusId").val(selectedSpecItems[0].genus.genusId);
+        $("#genusId").val(selectedSpecItems[0].rattanGenus.genusId);
         $("#specModal").modal('hide');
     }
 }

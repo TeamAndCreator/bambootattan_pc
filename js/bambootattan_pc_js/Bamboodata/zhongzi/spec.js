@@ -135,7 +135,8 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 },
                 formatter:function(value,row,index){
-                    return row.genus.genusNameCh;
+                    //return row.genus.genusNameCh;
+                    return row.genus == null ? '' : row.genus.genusNameCh;
                 }
             },
             {
@@ -324,7 +325,7 @@ function init_genus_table(){
 
             {
                 radio:true,//有复选框
-                field:'radio',//数据列
+                field:'radio'//数据列
             },
             {
                 field:'genusNameCh',//数据列
@@ -390,7 +391,8 @@ function init_genus_table(){
         ]
     });
 }
-
+/*
+以后可能改回来，不要删除
 //保存
 function save() {
     bootbox.confirm({
@@ -495,7 +497,147 @@ function save() {
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code == 200) {
+                            if (res.code === 200) {
+                                $.niftyNoty({
+                                    type: 'success',
+                                    icon: 'pli-like-2 icon-2x',
+                                    message: '修改成功',
+                                    container: 'floating',
+                                    timer: 2000
+                                });
+                                $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
+                                $('#exampleModal').modal('hide');
+                            } else {
+                                $.niftyNoty({
+                                    type: 'danger',
+                                    icon: 'pli-cross icon-2x',
+                                    message: res.msg,
+                                    container: 'floating',
+                                    timer: 1000
+                                });
+                            }
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {		//请求失败回调函数
+                        }
+                    });
+                }
+            } else {
+                $.niftyNoty({
+                    type: 'danger',
+                    icon: 'pli-cross icon-2x',
+                    message: '您取消了新增',
+                    container: 'floating',
+                    timer: 1000
+                });
+            }
+        }
+    });
+}
+*/
+function save() {
+    bootbox.confirm({
+        title: '保存确认',
+        message: '<div class="text-center"><h2>您确定保存该数据吗<i class="demo-pli-question-circle text-danger"></i></h2></div>',
+        //size:'small',
+        buttons: {
+            cancel: {label: '<i class="demo-pli-cross"></i> 取消'},
+            confirm: {label: '<i class="demo-pli-check2"></i> 确认'}
+        },
+        callback: function (result) {
+            if (result) {
+                var validateForm = $('#registrationForm').data('bootstrapValidator');
+                //手动触发验证
+                validateForm.validate();
+                //表单验证不通过，直接return，不往下执行
+                if(!validateForm.isValid()){
+                    return;
+                }
+                //定义一个FormData对象
+                var formData = new FormData();
+                //从表单取值
+                var specDesc=$('#demo-summernote').summernote('code');
+                var specId = $('#specId').val();
+                var genusId=$('#genusId').val();
+                var specNameCh = $('#specNameCh').val();
+                var specNameEn = $('#specNameEn').val();
+                var specNameLd = $('#specNameLd').val();
+                var specNameOth = $('#specNameOth').val();
+                var specCode = $('#specCode').val();
+                var specBarCode = $('#specBarCode').val();
+                var specDna = $('#specDna').val();
+                var specDomestic = $('#specDomestic').val();
+                var specForeign = $('#specForeign').val();
+                var specVidio = $('#specVidio').val();
+                var specImgs = $('#specImgs').val();
+                // var specDesc = $('#specDesc').val();
+                var specSortNum = $('#specSortNum').val();
+
+                formData.append("specId", specId);
+                formData.append("genus.genusId",genusId);
+                formData.append("specNameCh", specNameCh);
+                formData.append("specNameEn", specNameEn);
+                formData.append("specNameLd", specNameLd);
+                formData.append("specNameOth", specNameOth);
+                formData.append("specCode", specCode);
+                formData.append( "specBarCode", specBarCode);
+                formData.append("specDna", specDna);
+                formData.append( "specDomestic", specDomestic);
+                formData.append( "specForeign", specForeign);
+                formData.append("specVidio", specVidio);
+                formData.append("specImgs", specImgs);
+                formData.append("specDesc", specDesc);
+                formData.append("specSortNum", specSortNum);
+
+                //将文件数组添加进来
+                var multipartFiles = myDropzoneImg.files;
+                for (var i = 0; i < multipartFiles.length; i++) {
+                    formData.append("multipartFiles", myDropzoneImg.files[i]);
+                }
+                multipartFiles = myDropzone.files;
+                for (var i = 0; i < multipartFiles.length; i++) {
+                    formData.append("multipartFiles", myDropzone.files[i]);
+                }
+
+                if (specId === "") {//新增
+                    $.ajax({
+                        url: baseUrl + '/spec/save',		//请求路径
+                        type: 'POST',			            //请求方式
+                        dataType: 'JSON',
+                        processData: false,
+                        contentType: false,
+                        data: formData,	    //数据
+                        success: function (res) {	        //请求成功回调函数
+                            if (res.code === 200) {
+                                $.niftyNoty({
+                                    type: 'success',
+                                    icon: 'pli-like-2 icon-2x',
+                                    message: '新增成功',
+                                    container: 'floating',
+                                    timer: 2000
+                                });
+                                $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
+                                $('#exampleModal').modal('hide');
+                            } else {
+                                $.niftyNoty({
+                                    type: 'danger',
+                                    icon: 'pli-cross icon-2x',
+                                    message: res.msg,
+                                    container: 'floating',
+                                    timer: 1000
+                                });
+                            }
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {		//请求失败回调函数
+                        }
+                    });
+                } else {//修改
+                    $.ajax({
+                        url: baseUrl + '/spec/update',	    //请求路径
+                        type: 'PUT',				        //请求方式
+                        data: JSON.stringify(formData),	    //数据
+                        contentType: 'application/json',    //数据类型
+                        success: function (res) {	        //请求成功回调函数
+                            if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -556,8 +698,10 @@ function edit(id) {
                 $('#specVidio').val(res.data.specVidio);
                 $('#specImgs').val(res.data.specImgs);
                 $('#specSortNum').val(res.data.specSortNum);
-                $('#genus').val(res.data.genus.genusNameCh);
-                $('#genusId').val(res.data.genus.genusId);
+                if(res.data.genus!=null){
+                    $('#genus').val(res.data.genus.genusNameCh);
+                    $('#genusId').val(res.data.genus.genusId);
+                }
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }
@@ -717,7 +861,7 @@ function check(id) {
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
-            if(res.code==200){
+            if(res.code===200){
                 $('#specNameCh-info').html(res.data.specNameCh).attr('data-original-title',res.data.specNameCh);
                 $('#specNameEn-info').html(res.data.specNameEn).attr('data-original-title',res.data.specNameEn);
                 $('#specNameLd-info').html(res.data.specNameLd).attr('data-original-title',res.data.specNameLd);
@@ -733,7 +877,9 @@ function check(id) {
                 //$('#demo-summernote-info').summernote('code',res.data.specDesc);
                 //$('#specDesc-info').html(res.data.specDesc).attr('data-original-title',res.data.specDesc);
                 $('#specDesc-info').html(res.data.specDesc);
-                $('#genus-info').html(res.data.genus.genusNameCh).attr('data-original-title',res.data.genus.genusNameCh);
+                if(res.data.genus!=null){
+                    $('#genus-info').html(res.data.genus.genusNameCh).attr('data-original-title',res.data.genus.genusNameCh);
+                }
                 $('#exampleModal-info').modal('show');
             }
             else{

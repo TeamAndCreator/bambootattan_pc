@@ -2,7 +2,7 @@ var queryPageUrl='';
 var querySpecPageUrl='';
 $(function(){
     queryPageUrl = baseUrl+'/tCathetermorphology/findAllQuery';
-    querySpecPageUrl = baseUrl+'/spec/findAllQuery';
+    querySpecPageUrl = baseUrl+'/rattanSpec/findAllQuery';
     //新增点击事件
     $('#btn_add').on('click',function () {
         init_form();//初始化表单
@@ -172,7 +172,7 @@ function init_spec_table(){
         onDblClickRow:function(row, $element){
             $("#spec").val(row.specNameCh);
             $("#specId").val(row.specId);
-            $("#genusId").val(row.genus.genusId);
+            $("#genusId").val(row.rattanGenus.genusId);
             $('#specModal').modal('hide');
         },
         /*
@@ -212,7 +212,7 @@ function init_spec_table(){
                 },
                 formatter:function(value,row,index){
                     //return row.genus.genusNameCh;
-                    return row.genus == null ? '' : row.genus.genusNameCh;
+                    return row.rattanGenus == null ? '' : row.rattanGenus.genusNameCh;
                 }
             },
             {
@@ -383,7 +383,7 @@ function save() {
                     "chmCatheterDensityUnitVcmidu":chmCatheterDensityUnitVcmidu,
                     "chmIndex":chmIndex
                 };
-                if (chmId == "") {//新增
+                if (chmId === "") {//新增
                     formData.specId = 0;
                     $.ajax({
                         url: baseUrl + '/tCathetermorphology/save',		//请求路径
@@ -421,7 +421,7 @@ function save() {
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code == 200) {
+                            if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -670,7 +670,7 @@ function selectedSpec() {
     if (selectedSpecItems.length==1){
         $("#spec").val(selectedSpecItems[0].specNameCh);
         $("#specId").val(selectedSpecItems[0].specId);
-        $("#genusId").val(selectedSpecItems[0].genus.genusId);
+        $("#genusId").val(selectedSpecItems[0].rattanGenus.genusId);
         $("#specModal").modal('hide');
     }
 }
