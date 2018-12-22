@@ -511,6 +511,7 @@ function save() {
         },
         callback: function (result) {
             if (result) {
+                //取值
                 var specId = $('#specId').val();
                 var phyId=$('#phyId').val();
                 var phyRelativeUnitPercent = $('#phyRelativeUnitPercent').val();
@@ -525,20 +526,16 @@ function save() {
                 var phyAirShrinkageUnitPercent=$('#phyAirShrinkageUnitPercent').val();
                 var phyAirShrinkageChordwiseUnitPercent=$('#phyAirShrinkageChordwiseUnitPercent').val();
                 var phyAirShrinkageRadialUnitPercent=$('#phyAirShrinkageRadialUnitPercent').val();
-
                 var phyAirShrinkageEdnwiseUnitPercent=$('#phyAirShrinkageEdnwiseUnitPercent').val();
-
                 var phyAirShrinkageVolumeUnitPercent=$('#phyAirShrinkageVolumeUnitPercent').val();
-
                 var phyWholeShrinkageChordwiseUnitPercent=$('#phyWholeShrinkageChordwiseUnitPercent').val();
-
                 var phyWholeShrinkageRadialUnitPercent=$('#phyWholeShrinkageRadialUnitPercent').val();
-
                 var phyWholeShrinkageEdnwiseUnitPercent=$('#phyWholeShrinkageEdnwiseUnitPercent').val();
                 var phyWholeShrinkageVolumeUnitPercent=$('#phyWholeShrinkageVolumeUnitPercent').val();
                 var phyWholeDryVolumeUnitPercent=$('#phyWholeDryVolumeUnitPercent').val();
 
                 var genusId=$('#genusId').val();
+                //将取得值放到formData对象里
                 var formData = {
                     "phyId":phyId,
                     "rattanSpec":{
@@ -572,7 +569,7 @@ function save() {
                     $.ajax({
                         url: baseUrl + '/tPhysics/save',		//请求路径
                         type: 'POST',			            //请求方式
-                        data: JSON.stringify(formData),	    //数据
+                        data: JSON.stringify(formData),	    //数据    转化成json字符串
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
                             if (res.code === 200) {
@@ -663,7 +660,6 @@ function edit(id) {
                 $('#phyWholeDryLineUnitPercent').val(res.data.phyWholeDryLineUnitPercent);
                 $('#phyAirDryVolumeUnitPercent').val(res.data.phyAirDryVolumeUnitPercent);
 
-
                 $('#phyWholeDryVolumeUnitPercent').val(res.data.phyWholeDryVolumeUnitPercent);
                 $('#phyAirShrinkageUnitPercent').val(res.data.phyAirShrinkageUnitPercent);
                 $('#phyAirShrinkageChordwiseUnitPercent').val(res.data.phyAirShrinkageChordwiseUnitPercent);
@@ -675,7 +671,6 @@ function edit(id) {
                 $('#phyWholeShrinkageRadialUnitPercent').val(res.data.phyWholeShrinkageRadialUnitPercent);
                 $('#phyWholeShrinkageEdnwiseUnitPercent').val(res.data.phyWholeShrinkageEdnwiseUnitPercent);
                 $('#phyWholeShrinkageVolumeUnitPercent').val(res.data.phyWholeShrinkageVolumeUnitPercent);
-
 
 
                 if(res.data.rattanSpec!=null){
@@ -926,8 +921,6 @@ function init_form(){
     $('#phyWholeShrinkageRadialUnitPercent').val("");
     $('#phyWholeShrinkageEdnwiseUnitPercent').val("");
     $('#phyWholeShrinkageVolumeUnitPercent').val("");
-
-
 }
 //初始化详情元素的值
 function init_info(){
