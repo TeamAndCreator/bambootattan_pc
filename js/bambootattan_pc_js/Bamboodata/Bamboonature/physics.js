@@ -110,6 +110,7 @@ function init_table(){
                 field:'phyAbsoluteUnitPercent',//数据列
                 title:'绝对含水率',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -161,6 +162,7 @@ function init_table(){
                 field:'phyAirDryingLineUnitPercent',//数据列
                 title:'湿材到气干（线干缩率）',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -171,6 +173,7 @@ function init_table(){
                 field:'phyAirDryVolumeUnitPercent',//数据列
                 title:'湿材到气干（体积缩率）',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -181,6 +184,7 @@ function init_table(){
                 field:'phyWholeDryVolumeUnitPercent',//数据列
                 title:'湿材到全干（体积缩率）',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -202,6 +206,7 @@ function init_table(){
                 field:'phyAirShrinkageChordwiseUnitPercent',//数据列
                 title:'气干缩率（弦向）',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -212,6 +217,7 @@ function init_table(){
                 field:'phyAirShrinkageEdnwiseUnitPercent',//数据列
                 title:'气干缩率（纵向）',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -222,6 +228,7 @@ function init_table(){
                 field:'phyAirShrinkageVolumeUnitPercent',//数据列
                 title:'气干缩率（体积）',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -232,6 +239,7 @@ function init_table(){
                 field:'phyWholeShrinkageChordwiseUnitPercent',//数据列
                 title:'全干缩率（弦向）',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -242,6 +250,7 @@ function init_table(){
                 field:'phyWholeShrinkageRadialUnitPercent',//数据列
                 title:'全干缩率（径向）',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -252,6 +261,7 @@ function init_table(){
                 field:'phyWholeShrinkageEdnwiseUnitPercent',//数据列
                 title:'全干缩率（纵向）',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -262,6 +272,7 @@ function init_table(){
                 field:'phyWholeShrinkageVolumeUnitPercent',//数据列
                 title:'全干缩率（体积）',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
