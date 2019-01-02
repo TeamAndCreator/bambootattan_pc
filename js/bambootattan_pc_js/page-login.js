@@ -1,8 +1,8 @@
 $(function () {
-    //此处为校验的核心代码
+    $('#login').on('click',login);
+    //判断用户名密码是否为空
     $("#form-login").bootstrapValidator({
         submitHandler: function (valiadtor, loginForm, submitButton) {
-
             valiadtor.defaultSubmit();
         },
         fields: {
@@ -13,9 +13,9 @@ $(function () {
                     },
                     stringLength: {
                         /*长度提示*/
-                        min: 3,
+                        min: 2,
                         max: 10,
-                        message: '用户名长度必须在3到10之间'
+                        message: '用户名长度必须在2到10之间'
                     }
                 }
             },
@@ -43,3 +43,42 @@ $(function () {
         }
     });
 });
+
+//登录
+function login(){
+    var userName = $("#userName").val();    // 获取id为username的<input>框数据
+    var password = $("#password").val();    // 获取id为password的<input>框数据
+    var formData={
+        "userName": userName,
+        "password": password
+    }
+    $.ajax({
+        url: baseUrl + '/user/login',	    //请求路径
+        type: 'POST',				        //请求方式
+        //data: JSON.stringify(formData),	    //数据
+        data: formData,	                    //数据
+        //contentType: 'application/json',
+        success: function (res) {    // 请求成功后的回调函数，其中的参数data为controller返回的map,也就是说,@ResponseBody将返回的map转化为JSON格式的数据，然后通过data这个参数取JSON数据中的值
+            if (res.code === 200) {
+                $.niftyNoty({
+                    type: 'success',
+                    icon: 'pli-like-2 icon-2x',
+                    message: '登录成功',
+                    container: 'floating',
+                    timer: 2000
+                });
+                window.location.href = "home.html";
+            } else{
+                //alert("账号或密码错误");
+                $.niftyNoty({
+                    type: 'danger',
+                    icon: 'pli-cross icon-2x',
+                    message: res.msg,
+                    container: 'floating',
+                    timer: 2000
+                });
+            }
+        }
+    })
+}
+
