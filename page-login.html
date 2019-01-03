@@ -14,7 +14,7 @@
     <!--Nifty Stylesheet [ REQUIRED ]-->
     <link href="css/nifty.min.css" rel="stylesheet">
     <!--Nifty Premium Icon [ DEMONSTRATION ]-->
-     <link href="css/demo/nifty-demo-icons.min.css" rel="stylesheet">
+    <link href="css/demo/nifty-demo-icons.min.css" rel="stylesheet">
     <link href="css/demo/nifty-demo.min.css" rel="stylesheet">
     <!--Magic Checkbox [ OPTIONAL ]-->
     <link href="plugins/magic-check/css/magic-check.min.css" rel="stylesheet">
@@ -33,47 +33,24 @@
     <!--<script src="js/demo/bg-images.js"></script>-->
     <script src="js/bambootattan_pc_js/unslider.js" type="text/javascript"></script>
     <script src="plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
-    <!--<script src="js/bambootattan_pc_js/page-login.js" type="text/javascript"></script>-->
+    <script src="js/bambootattan_pc_js/page-login.js" type="text/javascript"></script>
     <script src="plugins/pace/pace.min.js"></script>
     <!--NiftyJS [ RECOMMENDED ]-->
     <script src="js/nifty.min.js"></script>
+    <script src="js/bambootattan_pc_js/common.js"></script>
 </head>
-
 
 <body>
 <div id="container" class="cls-container">
     <div class="container">
         <div class="fl form-box">
             <h2>
-                <!--<b>竹藤种质资源数据管理平台</b>-->
-                <!--<div class="brand-title" style="padding-top:20px">-->
                     <div class="panel panel-trans text-center">
-                    <span style="font-size:23px;color:black;"><b>竹藤种质资源数据管理系统</b></span>
+                    <span style="font-size:23px;color:black;"><b>竹藤种质资源数据管理平台</b></span>
                 </div>
             </h2>
-            <!--<form action="home.html" method="post" autocomplete="off" id="form-login">-->
-                <!--&lt;!&ndash;<input type='hidden' name='csrfmiddlewaretoken' value='mymQDzHWl2REXIfPMg2mJaLqDfaS1sD5' />&ndash;&gt;-->
-                <!--<div class="form-group">-->
-                    <!--<label>用&nbsp;户&nbsp;名</label>-->
-                    <!--&lt;!&ndash;<input name="username" id="account_l" type="text" placeholder="手机号/邮箱" />&ndash;&gt;-->
-                    <!--<input id="uesrname" class="form-control input-sm" name="username" placeholder="手机号/邮箱" type="text">-->
-                <!--</div>-->
 
-                <!--<div class="form-group">-->
-                    <!--<label>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</label>-->
-                    <!--&lt;!&ndash;<input name="password" id="password_l" type="password" placeholder="请输入您的密码" />&ndash;&gt;-->
-                    <!--<input id="password" class="form-control input-sm" name="password" placeholder="密码" type="text">-->
-                <!--</div>-->
-                <!--&lt;!&ndash;<div class="error btns login-form-tips" id="jsLoginTips"></div>&ndash;&gt;-->
-                <!--<div class="auto-box marb38">-->
-
-                    <!--<a class="fr" href="pages-password-reminder.html" style="margin-left: 220px">忘记密码？</a>-->
-                <!--</div>-->
-                <!--&lt;!&ndash;<input class="btn btn-green btn-lg btn-block"  type="submit" value="立即登录  " />&ndash;&gt;-->
-                <!--<button class="btn btn-primary btn-lg btn-block" name="submit" onClick="checkInCorrect();validate()" id="login" >登&nbsp;&nbsp;录</button>-->
-                <!--&lt;!&ndash;<input type='hidden' name='csrfmiddlewaretoken' value='5I2SlleZJOMUX9QbwYLUIAOshdrdpRcy' />&ndash;&gt;-->
-            <!--</form>-->
-            <form class="form-horizontal" role="form" id="form-login" action="home.html">
+            <form class="form-horizontal" role="form" id="form-login">
                 <div class="form-group has-feedback">
                     <input type="text" class="form-control" name="userName" id="userName" placeholder="请输入用户名">
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -98,12 +75,13 @@
 
 
                 <div class="checkbox pad-btm text-left">
-                    <input  class="magic-checkbox" id="remember-password"  type="checkbox">
+                    <input  class="magic-checkbox" id="remember-password" type="checkbox">
                     <label for="remember-password">记住密码</label>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <button type="submit" class="btn btn-success btn-block btn-flat"><a href="home.html">登 录</a></button>
+                        <button class="btn btn-success btn-lg btn-block btn-flat" name="submit"  id="login"  style="margin-top: 10px;height:40px;">登 录</button>
+                        <!--<button class="btn btn-success btn-lg btn-block btn-flat" name="submit" onClick="checkInCorrect();validate()" id="login"  style="margin-top: 10px;height:40px;">登 录</button>-->
                     </div>
                 </div>
             </form>
