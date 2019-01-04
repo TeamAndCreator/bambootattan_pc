@@ -13,9 +13,9 @@ $(function () {
                     },
                     stringLength: {
                         /*长度提示*/
-                        min: 4,
-                        max: 30,
-                        message: '用户名长度必须在4到30之间'
+                        min: 2,
+                        max: 10,
+                        message: '用户名长度必须在2到10之间'
                     }
                 }
             },

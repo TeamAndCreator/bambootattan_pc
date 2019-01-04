@@ -1,10 +1,13 @@
+var code;
 $(function () {
     $('#login').on('click',login);
+    getVerify();
+    $("#imgVerify").on('click',getVerify);
     //判断用户名密码是否为空
     $("#form-login").bootstrapValidator({
-        submitHandler: function (valiadtor, loginForm, submitButton) {
-            valiadtor.defaultSubmit();
-        },
+        //submitHandler: function (valiadtor, loginForm, submitButton) {
+        //    valiadtor.defaultSubmit();
+        //},
         fields: {
             userName: {
                 validators: {
@@ -40,12 +43,46 @@ $(function () {
                     }
                 }
             },
+            verify_input: {
+                validators: {
+                    notEmpty: {
+                        message: '验证码不能为空'
+                    },
+                    stringLength: {
+                        /*长度提示*/
+                        min: 4,
+                        max: 4,
+                        message: '验证码长度必须4'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: '密码由数字字母下划线和.组成'
+                    }
+                }
+            }
         }
     });
 });
 
+function validate() {
+    var inputCode = document.getElementById("yzm").value.toUpperCase();
+    if(inputCode !== code ){
+        alert("验证码错误！");
+    }else{
+        login();
+    }
+}
 //登录
 function login(){
+
+    var validateForm = $('#form-login').data('bootstrapValidator');
+    //手动触发验证
+    validateForm.validate();
+    //表单验证不通过，直接return，不往下执行
+    if(!validateForm.isValid()){
+        return;
+    }
+
     var userName = $("#userName").val();    // 获取id为username的<input>框数据
     var password = $("#password").val();    // 获取id为password的<input>框数据
     var formData={
@@ -79,6 +116,12 @@ function login(){
                 });
             }
         }
-    })
+    });
 }
+
+//获取验证码
+function getVerify(){
+    $("#imgVerify").attr("src",baseUrl  + "/user/getVerify?ran="+Math.random());
+}
+
 

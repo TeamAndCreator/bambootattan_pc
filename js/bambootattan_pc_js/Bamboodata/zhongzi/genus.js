@@ -284,7 +284,6 @@ function edit(id) {
             }
         },
         error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
-
          }
     });
 }
@@ -306,7 +305,7 @@ function dele(gid){
                     type:'DELETE',				        //请求方式
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
-                        if(res.code==200){
+                        if(res.code===200){
                             $.niftyNoty({
                                 type: 'success',
                                 icon : 'pli-like-2 icon-2x',
@@ -329,7 +328,6 @@ function dele(gid){
                     error:function(XMLHttpRequest, textStatus, errorThrown){		//请求失败回调函数
                     }
                 });
-
             }else{
                 $.niftyNoty({
                     type: 'danger',
@@ -404,7 +402,6 @@ function deles() {
                             }
                         },
                         error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
-
                         }
                     });
                 }else{  //取消
@@ -429,7 +426,7 @@ function check(id) {
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
-            if(res.code==200){
+            if(res.code===200){
                 $('#genusNameCh-info').html(res.data.genusNameCh).attr('data-original-title',res.data.genusNameCh);
                 $('#genusNameEn-info').html(res.data.genusNameEn).attr('data-original-title',res.data.genusNameEn);
                 $('#genusNameLd-info').html(res.data.genusNameLd).attr('data-original-title',res.data.genusNameLd);
