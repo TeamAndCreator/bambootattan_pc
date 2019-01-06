@@ -15,7 +15,7 @@ body{
 .form-box{
     position:relative;
     width:370px;
-    height: 465px;
+    /*height: 465px;*/
     /*height: 450px;*/
     padding:0 40px;
     background:#fff;

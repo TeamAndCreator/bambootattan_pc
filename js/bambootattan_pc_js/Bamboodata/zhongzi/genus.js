@@ -184,6 +184,7 @@ function save() {
                         data: JSON.stringify(formData),	    //数据   对象转json字符串
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
+                            //res.code=400;
                             if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
@@ -194,6 +195,11 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
+                            }else if(res.code == 400){
+                                window.location.href='../../page-404.html';
+                            }
+                            else if(res.code == 505){
+                                window.location.href='../../page-500.html';
                             } else {
                                 $.niftyNoty({
                                     type: 'danger',
@@ -224,6 +230,11 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
+                            } else if(res.code == 400){
+                                window.location.href='../../page-404.html';
+                            }
+                            else if(res.code == 505){
+                                window.location.href='../../page-500.html';
                             } else {
                                 $.niftyNoty({
                                     type: 'danger',
@@ -272,6 +283,11 @@ function edit(id) {
                 $('#genusDesc').val(res.data.genusDesc);
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
+            }else if(res.code == 400){
+                window.location.href='../../page-404.html';
+            }
+            else if(res.code == 505){
+                window.location.href='../../page-500.html';
             }
             else{
                 $.niftyNoty({
@@ -315,7 +331,13 @@ function dele(gid){
                             });
                             $("#data_table").bootstrapTable('refresh',{url :queryPageUrl} );
                             $('#exampleModal').modal('hide');
-                        }else{
+                        }else if(res.code == 400){
+                            window.location.href='../../page-404.html';
+                        }
+                        else if(res.code == 505){
+                            window.location.href='../../page-500.html';
+                        }
+                        else{
                             $.niftyNoty({
                                 type: 'danger',
                                 icon : 'pli-cross icon-2x',
@@ -391,7 +413,12 @@ function deles() {
                                     timer : 2000                    //时间，单位ms(毫秒),此处是5秒中后自动消失
                                 });
                                 $("#data_table").bootstrapTable('refresh',{url : queryPageUrl});
-                            }else{  //删除失败，res.msg是失败信息
+                            }else if(res.code == 400){
+                                window.location.href='../../page-404.html';
+                            }
+                            else if(res.code == 505){
+                                window.location.href='../../page-500.html';
+                            } else{  //删除失败，res.msg是失败信息
                                 $.niftyNoty({
                                     type: 'danger',
                                     icon : 'pli-cross icon-2x',
@@ -404,7 +431,8 @@ function deles() {
                         error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
                         }
                     });
-                }else{  //取消
+                }
+                else{  //取消
                     $.niftyNoty({
                         type: 'danger',
                         icon : 'pli-cross icon-2x',
@@ -436,6 +464,11 @@ function check(id) {
                 $('#genusDesc-info').html(res.data.genusDesc);
                // $('#genusDesc-info').html(res.data.genusDesc).attr('data-original-title',res.data.genusDesc);
                 $('#exampleModal-info').modal('show');
+            }else if(res.code == 400){
+                window.location.href='../../page-404.html';
+            }
+            else if(res.code == 505){
+                window.location.href='../../page-500.html';
             }
             else{
                 $.niftyNoty({

@@ -41,7 +41,8 @@
     <script src="js/bambootattan_pc_js/common.js"></script>
 </head>
 
-<body>
+<!--<body>-->
+<body onLoad="createCode();document.getElementById('userName').focus();GetCookie();" >
 <div id="container" class="cls-container">
     <div class="container">
         <div class="fl form-box">
@@ -62,30 +63,35 @@
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
 
-                <!--<div class="form-group">-->
-                    <!--<label class="col-sm-3 control-label">验证码：</label>-->
-                    <!--<div class="col-sm-3">-->
-                        <!--<input type="text" id="yzm" size="5" class="form-control">-->
+                <div class="row">
+                 <div class="col-xs-5">
+                    <div class="form-group">
+                        <!--<label class="col-sm-3 control-label">验证码：</label>-->
+                        <input class="form-control" type="tel" id="yzm" name="verify_input" placeholder="请输入验证码" maxlength="4">
+                        <!--<div class="col-sm-3">-->
+                            <!--<input type="text" id="yzm" size="5" class="form-control">-->
+                        </div>
+                     </div>
+                     <div class="col-xs-5" style="padding-left: 15px;">
+                        <input type="button" id="checkCode" class="form-control" onClick="createCode()" title="刷新验证码" style="width:60px;background-image:url('img/image/timg.jpg') !important;font-size:14px;font-weight:bolder
+                                   ;text-align:center;border:0;letter-spacing:1px;font-family:Arial;font-style:italic; " />
+                    </div>
+                 </div>
+
+
+                <!--后台传验证码-->
+                <!--<div class="row">-->
+                    <!--<div class="col-xs-7">-->
+                        <!--<div class="form-group">-->
+                            <!--<input class="form-control" type="tel" id="verify_input" name="verify_input" placeholder="请输入验证码" maxlength="4">-->
+                        <!--</div>-->
                     <!--</div>-->
-                    <!--<div class="col-sm-3">-->
-                        <!--<input type="button" id="checkCode" class="form-control" onClick="createCode()" title="刷新验证码" style="width:60px;background-image:url('img/image/timg.jpg');font-size:14px;font-weight:bolder-->
-                                   <!--;text-align:center;border:0;letter-spacing:1px;font-family:Arial;font-style:italic; " />-->
+                    <!--<div class="col-xs-5" style="padding-left: 15px;">-->
+                        <!--<a href="javascript:void(0);" title="点击更换验证码">-->
+                            <!--<img id="imgVerify" src="" alt="更换验证码" height="32" width="90%" style="border: 1px solid;">-->
+                        <!--</a>-->
                     <!--</div>-->
                 <!--</div>-->
-                <div class="row">
-                    <div class="col-xs-7">
-                        <div class="form-group">
-                            <input class="form-control" type="tel" id="verify_input" name="verify_input" placeholder="请输入验证码" maxlength="4">
-                        </div>
-                    </div>
-                    <div class="col-xs-5" style="padding-left: 15px;">
-                        <a href="javascript:void(0);" title="点击更换验证码">
-                            <img id="imgVerify" src="" alt="更换验证码" height="32" width="90%" style="border: 1px solid;">
-                        </a>
-                    </div>
-                </div>
-
-
 
                 <div class="checkbox pad-btm text-left">
                     <input  class="magic-checkbox" id="remember-password" type="checkbox">
@@ -93,12 +99,16 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <button class="btn btn-success btn-lg btn-block btn-flat" name="submit"  id="login"  style="margin-top: 10px;height:40px;">登 录</button>
-                        <!--<button class="btn btn-success btn-lg btn-block btn-flat" name="submit" onClick="checkInCorrect();validate()" id="login"  style="margin-top: 10px;height:40px;">登 录</button>-->
+                        <!--<button class="btn btn-success btn-lg btn-block btn-flat" name="submit"  id="login"  style="margin-top: 10px;height:40px;">登 录</button>-->
+                        <button class="btn btn-success btn-lg btn-block btn-flat" name="submit" onClick="checkInCorrect();validate()" id="login"  style="margin-top: 10px;height:40px;">登 录</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 pad-top pad-btm" align="left" valign="middle">
+                        <p>没有帐号？<a href="page-register.html">[立即注册]</a></p>
                     </div>
                 </div>
             </form>
-            <p class="form-p">没有帐号？<a href="page-register.html">[立即注册]</a></p>
         </div>
     </div>
 </div>
