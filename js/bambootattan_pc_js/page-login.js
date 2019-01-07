@@ -196,8 +196,6 @@ function validate() {
 
 //登录
 function login(){
-
-
     var userName = $("#userName").val();    // 获取id为username的<input>框数据
     var password = $("#password").val();    // 获取id为password的<input>框数据
     var formData={
@@ -305,12 +303,10 @@ function checkInCorrect()
     });
 }
 
-
 $(function(){
     checkInCorrect();
     GetCookie();
 });
-
 
 saveInfo = function(){
     try{

@@ -412,7 +412,12 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
-                            } else {
+                            } else if(res.code == 400){
+                                window.location.href='../../page-404.html';
+                            }
+                            else if(res.code == 505){
+                                window.location.href='../../page-500.html';
+                            }else {
                                 $.niftyNoty({
                                     type: 'danger',
                                     icon: 'pli-cross icon-2x',
@@ -442,6 +447,11 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
+                            }else if(res.code == 400){
+                                window.location.href='../../page-404.html';
+                            }
+                            else if(res.code == 505){
+                                window.location.href='../../page-500.html';
                             } else {
                                 $.niftyNoty({
                                     type: 'danger',
@@ -491,6 +501,11 @@ function edit(id) {
                 $('#genusId').val(res.data.spec.genus.genusId);
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
+            }else if(res.code == 400){
+                window.location.href='../../page-404.html';
+            }
+            else if(res.code == 505){
+                window.location.href='../../page-500.html';
             }
             else{
                 $.niftyNoty({
@@ -535,6 +550,11 @@ function dele(gid){
                             });
                             $("#data_table").bootstrapTable('refresh',{url :queryPageUrl} );
                             $('#exampleModal').modal('hide');
+                        }else if(res.code == 400){
+                            window.location.href='../../page-404.html';
+                        }
+                        else if(res.code == 505){
+                            window.location.href='../../page-500.html';
                         }else{
                             $.niftyNoty({
                                 type: 'danger',
@@ -612,6 +632,11 @@ function deles() {
                                     timer : 2000                    //时间，单位ms(毫秒),此处是5秒中后自动消失
                                 });
                                 $("#data_table").bootstrapTable('refresh',{url : queryPageUrl});
+                            }else if(res.code == 400){
+                                window.location.href='../../page-404.html';
+                            }
+                            else if(res.code == 505){
+                                window.location.href='../../page-500.html';
                             }else{  //删除失败，res.msg是失败信息
                                 $.niftyNoty({
                                     type: 'danger',
@@ -659,6 +684,11 @@ function check(id) {
 
                 $('#spec-check').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
                 $('#exampleModal-check').modal('show');
+            }else if(res.code == 400){
+                window.location.href='../../page-404.html';
+            }
+            else if(res.code == 505){
+                window.location.href='../../page-500.html';
             }
             else{
                 $.niftyNoty({

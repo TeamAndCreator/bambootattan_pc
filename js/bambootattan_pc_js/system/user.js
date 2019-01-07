@@ -85,7 +85,16 @@ function init_table(){
                     return{ css:{'min-width':'80px'}};
                 }
             },
-
+            {
+                field:'eMail',//数据列
+                title:'电子邮箱',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field){
+                    return{css:{'min-width':'80px'}};
+                }
+            },
             {
                 field:'orgName',//数据列
                 title:'所在部门',//数据列名称
@@ -106,6 +115,7 @@ function init_table(){
                     return{css:{'min-width':'80px'}};
                 }
             },
+
             {
                 field:'activeFlag',//数据列
                 title:'状态',//数据列名称
@@ -464,6 +474,29 @@ function check(id) {
 
         }
     });
+}
+//设置状态
+function state(value, row) {
+    if (value == 1) {
+        return "<div class='label label-table label-success'>已激活</div>"
+    }else {
+        return "<div class='label label-table label-warning'><a onclick='updateState(" + row.id + ")' data-toggle=\"modal\" data-target=\"#updateState\" style='color: white; cursor:default'>未激活</a></div>"
+    }
+}
+//激活账号
+function updateState(userId) {
+    $('#updateState_btn').click(function () {
+        $.ajax({
+            type: 'post',
+            dataType: 'JSON',
+            url: baseUrl + '/user/updateState',
+            data: {_method: "put", "userId": userId},
+            async: false,
+            success: function () {
+                window.location.reload()
+            }
+        });
+    })
 }
 //初始化表单元素的值
 function init_form(){
