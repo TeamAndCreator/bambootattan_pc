@@ -1,9 +1,9 @@
 var queryPageUrl='';
 $(function(){
-    queryPageUrl = baseUrl+'/genus/findAllQuery';
+    queryPageUrl = baseUrl+'/user/findAll';
     //新增点击事件
     $('#btn_add').on('click',function () {
-		init_form();//初始化表单
+        init_form();//初始化表单
         $('#exampleModal .modal-title').html("新增");
         $('#exampleModal').modal('show');//表单模态框
     });
@@ -14,8 +14,8 @@ $(function(){
     //批量删除点击事件
     $('#btn_delete').on('click',deles);
     //保存点击事件
-	$('#btn_save').on('click',save);
-	//初始化表格
+    $('#btn_save').on('click',save);
+    //初始化表格
     init_table();
     init_sunmmernote();
     //表单验证
@@ -76,18 +76,8 @@ function init_table(){
                 }
             },
             {
-                field:'genusNameCh',//数据列
-                title:'中文名',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'} };
-                }
-            },
-            {
-                field:'genusNameEn',//数据列
-                title:'英文名',//数据列名称
+                field:'userName',//数据列
+                title:'用户姓名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -95,9 +85,10 @@ function init_table(){
                     return{ css:{'min-width':'80px'}};
                 }
             },
+
             {
-                field:'genusNameLd',//数据列
-                title:'拉丁名',//数据列名称
+                field:'orgName',//数据列
+                title:'所在部门',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -106,8 +97,8 @@ function init_table(){
                 }
             },
             {
-                field:'genusNameOth',//数据列
-                title:'别名',//数据列名称
+                field:'orgPhone',//数据列
+                title:'办公室电话',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -116,20 +107,9 @@ function init_table(){
                 }
             },
             {
-                field:'sortNum',//数据列
-                title:'序号',//数据列名称
+                field:'activeFlag',//数据列
+                title:'状态',//数据列名称
                 sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'}};
-                }
-            },
-            {
-                field:'genusDesc',//数据列
-                title:'描述',//数据列名称
-                sortable:true,//可排序
-                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
@@ -264,7 +244,7 @@ function save() {
 
 //修改
 function edit(id) {
-	init_form();
+    init_form();
     $.ajax({
         url:baseUrl+'/genus/findId/'+id,		//请求路径
         type:'GET',			                    //请求方式
@@ -300,7 +280,7 @@ function edit(id) {
             }
         },
         error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
-         }
+        }
     });
 }
 
@@ -462,7 +442,7 @@ function check(id) {
                 $('#sortNum-info').html(res.data.sortNum).attr('data-original-title',res.data.sortNum);
                 //$('#demo-summernote-info').summernote('code',res.data.genusDesc);
                 $('#genusDesc-info').html(res.data.genusDesc);
-               // $('#genusDesc-info').html(res.data.genusDesc).attr('data-original-title',res.data.genusDesc);
+                // $('#genusDesc-info').html(res.data.genusDesc).attr('data-original-title',res.data.genusDesc);
                 $('#exampleModal-info').modal('show');
             }else if(res.code == 400){
                 window.location.href='../../page-404.html';
