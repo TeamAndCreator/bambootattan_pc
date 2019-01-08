@@ -121,6 +121,7 @@ function init_table(){
                 field:'leafWidth',//数据列
                 title:'竹叶宽度',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -141,6 +142,7 @@ function init_table(){
                 field:'leafMargin',//数据列
                 title:'叶片边缘锯齿',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -151,6 +153,7 @@ function init_table(){
                 field:'leafTongueShape',//数据列
                 title:'叶舌形状',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -172,6 +175,7 @@ function init_table(){
                 title:'叶柄长度',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
+                visible:false,
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
                     return {css: {'min-width': '80px'}};
@@ -181,6 +185,7 @@ function init_table(){
                 field:'leafBaseShape',//数据列
                 title:'叶片基部形态',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {

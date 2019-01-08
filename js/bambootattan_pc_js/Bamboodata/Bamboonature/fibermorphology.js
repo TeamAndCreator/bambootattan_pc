@@ -120,6 +120,7 @@ function init_table(){
                 field:'fmDwallThicknessUnitMicron',//数据列
                 title:'纤维双壁厚',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -140,6 +141,7 @@ function init_table(){
                 field:'fmLetWidthRatio',//数据列
                 title:'纤维长宽比',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -161,6 +163,7 @@ function init_table(){
                 field:'fmCavityDiameterRatio',//数据列
                 title:'纤维腔径比',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {

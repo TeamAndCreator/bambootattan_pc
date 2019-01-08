@@ -111,6 +111,7 @@ function init_table(){
                 field:'sheathShellColor',//数据列
                 title:'箨片颜色',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -121,6 +122,7 @@ function init_table(){
                 field:'sheathShellFall',//数据列
                 title:'箨片是否易脱落',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -141,6 +143,7 @@ function init_table(){
                 field:'sheathShellBaseShape',//数据列
                 title:'箨片基部形态',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -151,6 +154,7 @@ function init_table(){
                 field:'sheathShellMargin',//数据列
                 title:'箨片边缘形态',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {

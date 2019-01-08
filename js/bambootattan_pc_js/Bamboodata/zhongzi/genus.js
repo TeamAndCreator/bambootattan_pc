@@ -36,7 +36,7 @@ function init_table(){
         sortOrder:'asc',//排序类型，asc正序，desc倒序初始化加載第一頁
         pageList:[5, 10, 20],//每页数量组
         pageSize:5,//默认每页数量
-        pagination:true,//可以分页
+        pagination:true,//可以分页，在表格底部显示分页条
         showPaginationSwitch:true,
         sidePagination:'server',//服務器端分頁
         //method:'POST',
@@ -228,7 +228,7 @@ function save() {
                                     container: 'floating',
                                     timer: 2000
                                 });
-                                $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
+                                $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});//刷新前一次的页面
                                 $('#exampleModal').modal('hide');
                             } else if(res.code == 400){
                                 window.location.href='../../page-404.html';

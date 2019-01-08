@@ -111,6 +111,7 @@ function init_table(){
                 field:'fmWidthUnitMicron',//数据列
                 title:'纤维宽度',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -131,6 +132,7 @@ function init_table(){
                 field:'fmCavityDeameterUnitMicrom',//数据列
                 title:'纤维腔径',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -152,6 +154,7 @@ function init_table(){
                 field:'fmWallCavityRatio',//数据列
                 title:'纤维壁腔比',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {

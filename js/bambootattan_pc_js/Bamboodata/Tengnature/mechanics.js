@@ -111,6 +111,7 @@ function init_table(){
                 field:'mechBendingStrenghtUnitMpa',//数据列
                 title:'抗弯强度',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -131,6 +132,7 @@ function init_table(){
                 field:'mechShearStrenghtUnitMpa',//数据列
                 title:'顺纹抗拉强度',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -141,6 +143,7 @@ function init_table(){
                 field:'mechTensileStrenghtUnitMpa',//数据列
                 title:'顺纹抗剪强度',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {

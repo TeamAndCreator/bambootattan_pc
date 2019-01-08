@@ -101,6 +101,7 @@ function init_table(){
                 field:'mechBendingModulusElastictyUnitGpa',//数据列
                 title:'抗弯弹性模量',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -121,6 +122,7 @@ function init_table(){
                 field:'mechCompressionStrenghtUnitMpa',//数据列
                 title:'顺纹抗压强度',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -141,6 +143,7 @@ function init_table(){
                 field:'mechTensileStrenghtUnitMpa',//数据列
                 title:'顺纹抗剪强度',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
