@@ -1,0 +1,14 @@
+.form-box{
+    position:relative;
+    width:370px;
+    /*height: 465px;*/
+    /*height: 450px;*/
+    padding:0 40px;
+    background:#fff;
+    color:#666;
+    margin-top: 10%;
+    margin-left: 600px;
+    /*margin: 10% 0 0 ;*/
+    /*float:right;*/
+    border-radius: 5px;
+}
