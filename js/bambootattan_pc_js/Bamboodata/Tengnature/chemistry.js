@@ -121,6 +121,7 @@ function init_table(){
                 field:'chemACelluloseUnitPercent',//数据列
                 title:'a纤维素',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -131,6 +132,7 @@ function init_table(){
                 field:'chemHemicelluloseUnitPercent',//数据列
                 title:'半纤维素',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -141,6 +143,7 @@ function init_table(){
                 field:'chemAcidInsolubleLigninUnitPercent',//数据列
                 title:'酸不溶木质素',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -162,6 +165,7 @@ function init_table(){
                 field:'chemHotWaterExtractionUnitPercent',//数据列
                 title:'热水提取物',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {

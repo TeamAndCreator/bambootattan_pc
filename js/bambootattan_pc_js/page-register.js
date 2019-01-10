@@ -126,10 +126,10 @@ function submit(){
                 });
                 window.location.href = "page-login.html";
             }else if(res.code == 400){
-                window.location.href='page-404.html';
+                window.location.href='page-page-404.html';
             }
             else if(res.code == 505){
-                window.location.href='page-500.html';
+                window.location.href='page-page-500.html';
             } else{
                 //alert("账号或密码错误");
                 $.niftyNoty({
