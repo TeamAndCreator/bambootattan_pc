@@ -607,7 +607,8 @@ function save() {
                         contentType: false,
                         data: formData,	    //数据
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code === 200) {
+                            if (res.code == 200) {
+                                console.log(3332)
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -642,7 +643,7 @@ function save() {
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code === 200) {
+                            if (res.code == 200) {
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',

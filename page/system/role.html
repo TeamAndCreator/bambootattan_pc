@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../../img/image/favicon.ico"/>
-    <title>用户管理</title>
+    <title>角色管理</title>
 
     <!--STYLESHEET-->
     <!--=================================================-->
@@ -183,7 +183,7 @@
             <!--===================================================-->
             <div class="panel">
                 <div class="panel-heading">
-                    <h3 class="panel-title">用户管理</h3>
+                    <h3 class="panel-title">角色管理</h3>
                 </div>
 
                 <div class="panel-body">
@@ -205,36 +205,36 @@
                                     <form class="form-horizontal">
                                         <div class="panel-body">
                                             <div  id="registrationForm" class="form-group">
-                                                <label for="userName" class="col-sm-2 control-label"><b>用户姓名</b>:</label>
+                                                <label for="roleName" class="col-sm-2 control-label"><b>角色姓名</b>:</label>
                                                 <div class="col-sm-3">
-                                                    <input id="userName" class="form-control input-sm" name="userName" placeholder="" type="text"
-                                                           data-bv-field="userName"   data-bv-group=".col-sm-4" data-bv-notempty="true" data-bv-notempty-message="姓名不能为空">
+                                                    <input id="roleName" class="form-control input-sm" name="roleName" placeholder="" type="text"
+                                                           data-bv-field="roleName"   data-bv-group=".col-sm-4" data-bv-notempty="true" data-bv-notempty-message="姓名不能为空">
                                                 </div>
-                                                <label for="eMail" class="col-sm-2 control-label"><b>邮箱</b>:</label>
+                                                <label for="remark" class="col-sm-2 control-label"><b>标志</b>:</label>
                                                 <div class="col-sm-3">
-                                                    <input id="eMail" class="form-control input-sm" name="eMail" placeholder="" type="text">
+                                                    <input id="remark" class="form-control input-sm" name="remark" placeholder="" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="orgName" class="col-sm-2 control-label"><b>所在部门</b>:</label>
+                                                <label for="sortNum" class="col-sm-2 control-label"><b>序号</b>:</label>
                                                 <div class="col-sm-3">
-                                                    <input id="orgName" class="form-control input-sm" name="orgName" placeholder="" type="text">
+                                                    <input id="sortNum" class="form-control input-sm" name="sortNum" placeholder="" type="text">
                                                 </div>
-                                                <label for="orgPhone" class="col-sm-2 control-label"><b>办公室电话</b>:</label>
+                                                <label for="canDel" class="col-sm-2 control-label"><b>办公室电话</b>:</label>
                                                 <div class="col-sm-3">
-                                                    <input id="orgPhone" class="form-control input-sm" name="orgPhone" placeholder="" type="text">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="activeFlag" class="col-sm-2 control-label"><b>状态</b>:</label>
-                                                <div class="col-sm-3">
-                                                    <input id="activeFlag" class="form-control input-sm" name="activeFlag" placeholder="" type="text">
+                                                    <input id="canDel" class="form-control input-sm" name="canDel" placeholder="" type="text">
                                                 </div>
                                             </div>
 
+                                            <!--<div class="form-group">-->
+                                                <!--<label for="activeFlag" class="col-sm-2 control-label"><b>状态</b>:</label>-->
+                                                <!--<div class="col-sm-3">-->
+                                                    <!--<input id="activeFlag" class="form-control input-sm" name="activeFlag" placeholder="" type="text">-->
+                                                <!--</div>-->
+                                            <!--</div>-->
 
-                                            <input id="genusId" type="hidden" value="" />
+
+                                            <input id="roleId" type="hidden" value="" />
                                         </div>
 
                                         <div id="page-conten">
@@ -319,22 +319,22 @@
                             </div>
                         </div>
                     </div>
-                    <!--激活的模态框-->
-                    <div id="updateState" class="modal fade" tabindex="-1">
-                        <div class="modal-dialog modal-sm">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i>
-                                    </button>
-                                </div>
-                                <div class="modal-body" style="text-align: center">
-                                    <h3>确认是否激活</h3>
-                                    <br>
-                                    <button class="btn-success" id="updateState_btn">确认</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!--&lt;!&ndash;激活的模态框&ndash;&gt;-->
+                    <!--<div id="updateState" class="modal fade" tabindex="-1">-->
+                        <!--<div class="modal-dialog modal-sm">-->
+                            <!--<div class="modal-content">-->
+                                <!--<div class="modal-header">-->
+                                    <!--<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i>-->
+                                    <!--</button>-->
+                                <!--</div>-->
+                                <!--<div class="modal-body" style="text-align: center">-->
+                                    <!--<h3>确认是否激活</h3>-->
+                                    <!--<br>-->
+                                    <!--<button class="btn-success" id="updateState_btn">确认</button>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
 
                     <table id="data_table" class="table"></table>
                 </div>
@@ -454,7 +454,7 @@
                                             <a href="../system/user.html">用户管理<i class="arrow"></i></a>
                                         </li>
                                         <li>
-                                            <a href="#">Third Level<i class="arrow"></i></a>
+                                            <a href="../system/role.html">角色管理<i class="arrow"></i></a>
                                         </li>
                                     </ul>
                                 </li>
@@ -533,7 +533,7 @@
 
 <!--===================================================-->
 <!-- END OF CONTAINER -->
-<script src="../../js/bambootattan_pc_js/system/user.js"></script>
+<script src="../../js/bambootattan_pc_js/system/role.js"></script>
 </body>
 </html>
 

@@ -1,6 +1,6 @@
 var queryPageUrl='';
 $(function(){
-    queryPageUrl = baseUrl+'/user/findAll';
+    queryPageUrl = baseUrl+'/role/findAllQuery';
     //新增点击事件
     $('#btn_add').on('click',function () {
         init_form();//初始化表单
@@ -76,8 +76,8 @@ function init_table(){
                 }
             },
             {
-                field:'userName',//数据列
-                title:'用户姓名',//数据列名称
+                field:'roleName',//数据列
+                title:'角色姓名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -86,8 +86,8 @@ function init_table(){
                 }
             },
             {
-                field:'eMail',//数据列
-                title:'电子邮箱',//数据列名称
+                field:'remark',//数据列
+                title:'标志',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -96,8 +96,8 @@ function init_table(){
                 }
             },
             {
-                field:'orgName',//数据列
-                title:'所在部门',//数据列名称
+                field:'sortNum',//数据列
+                title:'序号',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -106,7 +106,7 @@ function init_table(){
                 }
             },
             {
-                field:'orgPhone',//数据列
+                field:'canDel',//数据列
                 title:'办公室电话',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -116,17 +116,17 @@ function init_table(){
                 }
             },
 
-            {
-                field:'activeFlag',//数据列
-                title:'状态',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
-                }
-            },
-            { field:'genusId',title:'genusId',visible:false}//隐藏不显示
+            // {
+            //     field:'activeFlag',//数据列
+            //     title:'状态',//数据列名称
+            //     sortable:true,//可排序
+            //     align:'center',//水平居中
+            //     valign:'middle',//垂直居中
+            //     cellStyle:function(value,row,index,field){
+            //         return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
+            //     }
+            // },
+            { field:'roleId',title:'roleId',visible:false}//隐藏不显示
         ]
     });
 }
