@@ -93,7 +93,7 @@
                 <a href="http://www.icbr.ac.cn/" class="navbar-brand">
                     <img src="../../img/image/logo.png" alt="Nifty Logo" class="brand-icon">
                     <div class="brand-title pad-no" >
-                        <span style="font-size:13px;color:black"><b>竹藤种质资源数据管理系统</b></span>
+                        <span style="font-size:13px;color:black"><b>竹藤种质资源数据管理平台</b></span>
                     </div>
                 </a>
             </div>
@@ -205,31 +205,31 @@
                                     <form class="form-horizontal">
                                         <div class="panel-body">
                                             <div  id="registrationForm" class="form-group">
-                                                <label for="userName" class="col-sm-2 control-label"><b>姓名</b>:</label>
+                                                <label for="userName" class="col-sm-2 control-label"><b>用户姓名</b>:</label>
                                                 <div class="col-sm-3">
                                                     <input id="userName" class="form-control input-sm" name="userName" placeholder="" type="text"
                                                            data-bv-field="userName"   data-bv-group=".col-sm-4" data-bv-notempty="true" data-bv-notempty-message="姓名不能为空">
                                                 </div>
-                                                <label for="genusNameEn" class="col-sm-2 control-label"><b>英文名</b>:</label>
+                                                <label for="eMail" class="col-sm-2 control-label"><b>邮箱</b>:</label>
                                                 <div class="col-sm-3">
-                                                    <input id="genusNameEn" class="form-control input-sm" name="genusNameEn" placeholder="" type="text">
+                                                    <input id="eMail" class="form-control input-sm" name="eMail" placeholder="" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="genusNameLd" class="col-sm-2 control-label"><b>拉丁名</b>:</label>
+                                                <label for="orgName" class="col-sm-2 control-label"><b>所在部门</b>:</label>
                                                 <div class="col-sm-3">
-                                                    <input id="genusNameLd" class="form-control input-sm" name="genusNameLd" placeholder="" type="text">
+                                                    <input id="orgName" class="form-control input-sm" name="orgName" placeholder="" type="text">
                                                 </div>
-                                                <label for="genusNameOth" class="col-sm-2 control-label"><b>别名</b>:</label>
+                                                <label for="orgPhone" class="col-sm-2 control-label"><b>办公室电话</b>:</label>
                                                 <div class="col-sm-3">
-                                                    <input id="genusNameOth" class="form-control input-sm" name="genusNameOth" placeholder="" type="text">
+                                                    <input id="orgPhone" class="form-control input-sm" name="orgPhone" placeholder="" type="text">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="sortNum" class="col-sm-2 control-label"><b>序号</b>:</label>
+                                                <label for="activeFlag" class="col-sm-2 control-label"><b>状态</b>:</label>
                                                 <div class="col-sm-3">
-                                                    <input id="sortNum" class="form-control input-sm" name="sortNum" placeholder="" type="text">
+                                                    <input id="activeFlag" class="form-control input-sm" name="activeFlag" placeholder="" type="text">
                                                 </div>
                                             </div>
 
@@ -278,23 +278,23 @@
                                 <div class="modal-body">
                                     <div class="form-horizontal">
                                         <div class="form-group">
-                                            <label for="genusNameCh-info" class="col-sm-2 control-label"><b>中文名</b>:</label>
+                                            <label for="userName-info" class="col-sm-2 control-label"><b>用户姓名</b>:</label>
                                             <div class="col-sm-2">
-                                                <p id="genusNameCh-info" class="form-control-static  pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                <p id="userName-info" class="form-control-static  pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                             </div>
-                                            <label for="genusNameEn-info" class="col-sm-2 control-label"><b>英文名</b>:</label>
+                                            <label for="eMail-info" class="col-sm-2 control-label"><b>电子邮箱</b>:</label>
                                             <div class="col-sm-2">
-                                                <p id="genusNameEn-info" class="form-control-static  pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                <p id="eMail-info" class="form-control-static  pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="genusNameLd-info" class="col-sm-2 control-label"><b>拉丁名</b>:</label>
+                                            <label for="orgName-info" class="col-sm-2 control-label"><b>所在部门</b>:</label>
                                             <div class="col-sm-2">
-                                                <p id="genusNameLd-info" class="form-control-static  pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                <p id="orgName-info" class="form-control-static  pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                             </div>
-                                            <label for="genusNameOth-info" class="col-sm-2 control-label"><b>别名</b>:</label>
+                                            <label for="orgPhone-info" class="col-sm-2 control-label"><b>办公室电话</b>:</label>
                                             <div class="col-sm-2">
-                                                <p id="genusNameOth-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                <p id="orgPhone-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                             </div>
                                         </div>
 

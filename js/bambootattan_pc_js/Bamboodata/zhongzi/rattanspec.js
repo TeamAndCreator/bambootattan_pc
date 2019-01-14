@@ -1,5 +1,7 @@
 var queryPageUrl='';
 var queryGenusPageUrl='';
+var  myDropzone;
+var  myDropzoneImg;
 $(function(){
     queryPageUrl = baseUrl+'/rattanSpec/findAllQuery';
     queryGenusPageUrl = baseUrl+'/rattanGenus/findAllQuery';
@@ -32,6 +34,8 @@ $(function(){
     init_table();
     init_genus_table();
     init_sunmmernote();
+    //初始化文件上传
+    init_file_upload();
     //表单验证
     $('#registrationForm').bootstrapValidator();
 });
@@ -362,7 +366,145 @@ function init_genus_table(){
     });
 }
 
-//保存
+// //保存
+// function save() {
+//     bootbox.confirm({
+//         title: '保存确认',
+//         message: '<div class="text-center"><h2>您确定保存该数据吗<i class="demo-pli-question-circle text-danger"></i></h2></div>',
+//         //size:'small',
+//         buttons: {
+//             cancel: {label: '<i class="demo-pli-cross"></i> 取消'},
+//             confirm: {label: '<i class="demo-pli-check2"></i> 确认'}
+//         },
+//         callback: function (result) {
+//             if (result) {
+//
+//                 var validateForm = $('#registrationForm').data('bootstrapValidator');
+//                 //手动触发验证
+//                 validateForm.validate();
+//                 //表单验证不通过，直接return，不往下执行
+//                 if(!validateForm.isValid()){
+//                     return;
+//                 }
+//
+//                 var specDesc=$('#demo-summernote').summernote('code');
+//                 var specId = $('#specId').val();
+//                 var genusId=$('#genusId').val();
+//                 var specNameCh = $('#specNameCh').val();
+//                 var specNameEn = $('#specNameEn').val();
+//                 var specNameLd = $('#specNameLd').val();
+//                 var specNameOth = $('#specNameOth').val();
+//                 var specCode = $('#specCode').val();
+//                 var specBarCode = $('#specBarCode').val();
+//                 var specDna = $('#specDna').val();
+//                 var specDomestic = $('#specDomestic').val();
+//                 var specForeign = $('#specForeign').val();
+//                 var specVidio = $('#specVidio').val();
+//                 var specImgs = $('#specImgs').val();
+//                 // var specDesc = $('#specDesc').val();
+//                 var specSortNum = $('#specSortNum').val();
+//                 var formData = {
+//                     "specId": specId,
+//                     "rattanGenus":{'genusId':genusId},
+//                     "specNameCh": specNameCh,
+//                     "specNameEn": specNameEn,
+//                     "specNameLd": specNameLd,
+//                     "specNameOth": specNameOth,
+//                     "specCode": specCode,
+//                     "specBarCode": specBarCode,
+//                     "specDna": specDna,
+//                     "specDomestic": specDomestic,
+//                     "specForeign": specForeign,
+//                     "specVidio": specVidio,
+//                     "specImgs": specImgs,
+//                     "specDesc": specDesc,
+//                     "specSortNum": specSortNum
+//                 };
+//                 if (specId === "") {//新增
+//                     formData.specId = 0;
+//                     $.ajax({
+//                         url: baseUrl + '/rattanSpec/save',		//请求路径
+//                         type: 'POST',			            //请求方式
+//                         data: JSON.stringify(formData),	    //数据
+//                         contentType: 'application/json',    //数据类型
+//                         success: function (res) {	        //请求成功回调函数
+//                             if (res.code === 200) {
+//                                 $.niftyNoty({
+//                                     type: 'success',
+//                                     icon: 'pli-like-2 icon-2x',
+//                                     message: '新增成功',
+//                                     container: 'floating',
+//                                     timer: 2000
+//                                 });
+//                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
+//                                 $('#exampleModal').modal('hide');
+//                             } else if(res.code == 400){
+//                                 window.location.href='../../page-404.html';
+//                             }
+//                             else if(res.code == 505){
+//                                 window.location.href='../../page-500.html';
+//                             }else {
+//                                 $.niftyNoty({
+//                                     type: 'danger',
+//                                     icon: 'pli-cross icon-2x',
+//                                     message: res.msg,
+//                                     container: 'floating',
+//                                     timer: 1000
+//                                 });
+//                             }
+//                         },
+//                         error: function (XMLHttpRequest, textStatus, errorThrown) {		//请求失败回调函数
+//                         }
+//                     });
+//                 } else {//修改
+//                     $.ajax({
+//                         url: baseUrl + '/rattanSpec/update',	    //请求路径
+//                         type: 'PUT',				        //请求方式
+//                         data: JSON.stringify(formData),	    //数据
+//                         contentType: 'application/json',    //数据类型
+//                         success: function (res) {	        //请求成功回调函数
+//                             if (res.code == 200) {
+//                                 $.niftyNoty({
+//                                     type: 'success',
+//                                     icon: 'pli-like-2 icon-2x',
+//                                     message: '修改成功',
+//                                     container: 'floating',
+//                                     timer: 2000
+//                                 });
+//                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
+//                                 $('#exampleModal').modal('hide');
+//                             } else if(res.code == 400){
+//                                 window.location.href='../../page-404.html';
+//                             }
+//                             else if(res.code == 505){
+//                                 window.location.href='../../page-500.html';
+//                             }else {
+//                                 $.niftyNoty({
+//                                     type: 'danger',
+//                                     icon: 'pli-cross icon-2x',
+//                                     message: res.msg,
+//                                     container: 'floating',
+//                                     timer: 1000
+//                                 });
+//                             }
+//                         },
+//                         error: function (XMLHttpRequest, textStatus, errorThrown) {		//请求失败回调函数
+//                         }
+//                     });
+//                 }
+//             } else {
+//                 $.niftyNoty({
+//                     type: 'danger',
+//                     icon: 'pli-cross icon-2x',
+//                     message: '您取消了新增',
+//                     container: 'floating',
+//                     timer: 1000
+//                 });
+//             }
+//         }
+//     });
+// }
+
 function save() {
     bootbox.confirm({
         title: '保存确认',
@@ -374,7 +516,6 @@ function save() {
         },
         callback: function (result) {
             if (result) {
-
                 var validateForm = $('#registrationForm').data('bootstrapValidator');
                 //手动触发验证
                 validateForm.validate();
@@ -382,7 +523,9 @@ function save() {
                 if(!validateForm.isValid()){
                     return;
                 }
-
+                //定义一个FormData对象
+                var formData = new FormData();
+                //从表单取值
                 var specDesc=$('#demo-summernote').summernote('code');
                 var specId = $('#specId').val();
                 var genusId=$('#genusId').val();
@@ -399,32 +542,44 @@ function save() {
                 var specImgs = $('#specImgs').val();
                 // var specDesc = $('#specDesc').val();
                 var specSortNum = $('#specSortNum').val();
-                var formData = {
-                    "specId": specId,
-                    "rattanGenus":{'genusId':genusId},
-                    "specNameCh": specNameCh,
-                    "specNameEn": specNameEn,
-                    "specNameLd": specNameLd,
-                    "specNameOth": specNameOth,
-                    "specCode": specCode,
-                    "specBarCode": specBarCode,
-                    "specDna": specDna,
-                    "specDomestic": specDomestic,
-                    "specForeign": specForeign,
-                    "specVidio": specVidio,
-                    "specImgs": specImgs,
-                    "specDesc": specDesc,
-                    "specSortNum": specSortNum
-                };
+
+                formData.append("specId", specId);
+                formData.append("genus.genusId",genusId);
+                formData.append("specNameCh", specNameCh);
+                formData.append("specNameEn", specNameEn);
+                formData.append("specNameLd", specNameLd);
+                formData.append("specNameOth", specNameOth);
+                formData.append("specCode", specCode);
+                formData.append( "specBarCode", specBarCode);
+                formData.append("specDna", specDna);
+                formData.append( "specDomestic", specDomestic);
+                formData.append( "specForeign", specForeign);
+                formData.append("specVidio", specVidio);
+                formData.append("specImgs", specImgs);
+                formData.append("specDesc", specDesc);
+                formData.append("specSortNum", specSortNum);
+
+                //将文件数组添加进来
+                var multipartFiles = myDropzoneImg.files;
+                for (var i = 0; i < multipartFiles.length; i++) {
+                    formData.append("multipartFiles", myDropzoneImg.files[i]);
+                }
+                multipartFiles = myDropzone.files;
+                for (var i = 0; i < multipartFiles.length; i++) {
+                    formData.append("multipartFiles", myDropzone.files[i]);
+                }
+
                 if (specId === "") {//新增
-                    formData.specId = 0;
                     $.ajax({
-                        url: baseUrl + '/rattanSpec/save',		//请求路径
+                        url: baseUrl + '/rattanspec/save',		//请求路径
                         type: 'POST',			            //请求方式
-                        data: JSON.stringify(formData),	    //数据
-                        contentType: 'application/json',    //数据类型
+                        dataType: 'JSON',
+                        processData: false,
+                        contentType: false,
+                        data: formData,	    //数据
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code === 200) {
+                            if (res.code = 200) {
+                                console.log(3332)
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -454,7 +609,7 @@ function save() {
                     });
                 } else {//修改
                     $.ajax({
-                        url: baseUrl + '/rattanSpec/update',	    //请求路径
+                        url: baseUrl + '/spec/update',	    //请求路径
                         type: 'PUT',				        //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
@@ -500,6 +655,7 @@ function save() {
         }
     });
 }
+
 
 //修改,填充表单元素的数据
 function edit(id) {
@@ -766,6 +922,7 @@ function init_form(){
     $('#demo-summernote').summernote('code',"");
     // $('#specSortNum').val("");
     $('#registrationForm').data('bootstrapValidator').resetForm();
+    clear_file();
 }
 //初始化详情元素值
 function init_info(){
@@ -800,6 +957,156 @@ function init_sunmmernote(){
     })
     $('#demo-summernote-info').summernote('disable');
 }
+//修改密码文件上传
+function init_file_upload(){
+    var previewNode = document.querySelector("#dz-template");
+    previewNode.id = "";
+    var previewTemplate = previewNode.parentNode.innerHTML;
+    previewNode.parentNode.removeChild(previewNode);
+
+    var uplodaBtn = $('#dz-upload-btn');
+    var removeBtn = $('#dz-remove-btn');
+    myDropzone = new Dropzone( uplodaBtn.parent().parent().parent()[0],{//document.body, { // Make the whole body a dropzone
+        url: baseUrl+'/rattanspec/upload', // Set the url
+        thumbnailWidth: 50,
+        thumbnailHeight: 50,
+        parallelUploads: 20,
+        paramName:'bambooFile',
+        //acceptedFiles:'video/*,audio/*',
+        //acceptedFiles:'flv-application/octet-stream,video/mp4,video/quicktime,audio/x-pn-realaudio,video/x-msvideo,application/x-shockwave-flash',
+        //audio/x-pn-realaudio:.rm,.rmvb ; flash的后缀是.swf
+        acceptedFiles:'.flv,.mp4,.mov,.rm,.rmvb,.avi,.swf',
+        previewTemplate: previewTemplate,
+        maxFilesize:100,
+        autoQueue: false, // Make sure the files aren't queued until manually added
+        previewsContainer: "#dz-previews", // Define the container to display the previews
+        clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
+    });
+
+
+    myDropzone.on("addedfile", function (file) {
+        // Hookup the button
+        uplodaBtn.prop('disabled', false);
+        removeBtn.prop('disabled', false);
+    });
+
+    // Update the total progress bar
+    myDropzone.on("totaluploadprogress", function (progress) {
+        $("#dz-total-progress .progress-bar").css({'width': progress + "%"});
+    });
+
+    myDropzone.on("sending", function (file) {
+        // Show the total progress bar when upload starts
+        document.querySelector("#dz-total-progress").style.opacity = "1";
+    });
+
+    // Hide the total progress bar when nothing's uploading anymore
+    myDropzone.on("queuecomplete", function (progress) {
+        document.querySelector("#dz-total-progress").style.opacity = "0";
+    });
+
+    myDropzone.on('success',function (file,data) {
+        alert(data);
+    });
+
+
+    // Setup the buttons for all transfers
+    uplodaBtn.on('click', function () {
+        //Upload all files
+        myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));
+    });
+
+    removeBtn.on('click', function () {
+        myDropzone.removeAllFiles(true);
+        uplodaBtn.prop('disabled', true);
+        removeBtn.prop('disabled', true);
+    });
+
+    //往上是上传视频
+    // =================================================================
+
+    // =================================================================
+    //往下是上传图片
+
+    // DROPZONE.JS WITH BOOTSTRAP'S THEME
+    // =================================================================
+    // Require Dropzone
+    // http://www.dropzonejs.com/
+    // =================================================================
+    // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
+    var previewNodeImg = document.querySelector("#dz-template-img");
+    previewNodeImg.id = "";
+    var previewTemplateImg = previewNodeImg.parentNode.innerHTML;
+    previewNodeImg.parentNode.removeChild(previewNodeImg);
+
+    var uplodaImgBtn = $('#dz-upload-img-btn');
+    var removeImgBtn = $('#dz-remove-img-btn');
+    myDropzoneImg = new Dropzone(uplodaImgBtn.parent().parent().parent()[0], { // Make the whole body a dropzone
+        url: baseUrl+'/spec/upload', // Set the url
+        thumbnailWidth: 50,
+        thumbnailHeight: 50,
+        parallelUploads: 20,
+        /*accept: function(file, done) {
+            if(file.type.toLowerCase().indexOf('image')==-1)
+               return false;
+        },*/
+        // acceptedFiles:'image/*',//所有图片类型
+        paramName:'bambooFile',
+        //image/jpeg:jpe,jpeg,jpg ;
+        //acceptedFiles:'image/jpeg,image/gif,image/png,image/bmp',
+        acceptedFiles:'.jpg,.jpeg,.gif,.png,.bmp',
+        previewTemplate: previewTemplateImg,
+        autoQueue: false, // Make sure the files aren't queued until manually added
+        previewsContainer: "#dz-previews-img", // Define the container to display the previews
+        clickable: ".fileinput-button-img" // Define the element that should be used as click trigger to select files.
+    });
+
+
+    myDropzoneImg.on("addedfile", function (file) {
+        // Hookup the button
+        uplodaImgBtn.prop('disabled', false);
+        removeImgBtn.prop('disabled', false);
+    });
+
+    // Update the total progress bar
+    myDropzoneImg.on("totaluploadprogress", function (progress) {
+        $("#dz-total-progress-img .progress-bar").css({'width': progress + "%"});
+    });
+
+    myDropzoneImg.on("sending", function (file) {
+        // Show the total progress bar when upload starts
+        document.querySelector("#dz-total-progress-img").style.opacity = "1";
+    });
+
+    // Hide the total progress bar when nothing's uploading anymore
+    myDropzoneImg.on("queuecomplete", function (progress) {
+        document.querySelector("#dz-total-progress-img").style.opacity = "0";
+    });
+
+    myDropzoneImg.on('success',function (file,data) {
+        alert(data);
+    });
+
+    // Setup the buttons for all transfers
+    uplodaImgBtn.on('click', function () {
+        //Upload all files
+        myDropzoneImg.enqueueFiles(myDropzoneImg.getFilesWithStatus(Dropzone.ADDED));
+    });
+
+    removeImgBtn.on('click', function () {
+        myDropzoneImg.removeAllFiles(true);
+        uplodaImgBtn.prop('disabled', true);
+        removeImgBtn.prop('disabled', true);
+    });
+}
+//清除上传选中的文件
+function clear_file(){
+    //清除视频的选择
+    $('#dz-remove-btn').click();
+    //清除图片的选择
+    $('#dz-remove-img-btn').click();
+}
+
 //选择属
 function selectedGenus(){
     //选中的数据
