@@ -77,7 +77,7 @@ function init_table(){
             },
             {
                 field:'roleName',//数据列
-                title:'角色姓名',//数据列名称
+                title:'角色名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -87,7 +87,7 @@ function init_table(){
             },
             {
                 field:'remark',//数据列
-                title:'标志',//数据列名称
+                title:'备注',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -106,8 +106,18 @@ function init_table(){
                 }
             },
             {
-                field:'canDel',//数据列
-                title:'办公室电话',//数据列名称
+                field:'creatpeopple',//数据列
+                title:'创建人',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field){
+                    return{css:{'min-width':'80px'}};
+                }
+            },
+            {
+                field:'creattime',//数据列
+                title:'创建时间',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
