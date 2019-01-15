@@ -181,6 +181,7 @@
 
             <!--Custom Toolbar-->
             <!--===================================================-->
+            <div id="page-content">
             <div class="panel">
                 <div class="panel-heading">
                     <h3 class="panel-title">用户管理</h3>
@@ -194,7 +195,7 @@
 
                     <!--增加按钮的模态框-->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
-                        <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-dialog " role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
@@ -205,58 +206,63 @@
                                     <form class="form-horizontal">
                                         <div class="panel-body">
                                             <div  id="registrationForm" class="form-group">
-                                                <label for="userName" class="col-sm-2 control-label"><b>用户姓名</b>:</label>
-                                                <div class="col-sm-3">
+                                                <label for="userName" class="col-sm-3 control-label"><b>用户姓名</b>:</label>
+                                                <div class="col-sm-5">
                                                     <input id="userName" class="form-control input-sm" name="userName" placeholder="" type="text"
-                                                           data-bv-field="userName"   data-bv-group=".col-sm-4" data-bv-notempty="true" data-bv-notempty-message="姓名不能为空">
+                                                           data-bv-field="userName"   data-bv-group=".col-sm-4" data-bv-notempty="true" data-bv-notempty-message="用户名不能为空">
                                                 </div>
-                                                <label for="eMail" class="col-sm-2 control-label"><b>邮箱</b>:</label>
-                                                <div class="col-sm-3">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="role" class="col-sm-3 control-label"><b>角色</b>:</label>
+                                                <div class="col-sm-5">
+                                                    <select name="role" class="form-control input-sm" id="role" style="">
+                                                        <option value="0">超级管理员</option>
+                                                        <option value="1">管理员</option>
+                                                    </select>
+                                                    <!--<input id="role" class="form-control input-sm" name="role" placeholder="" type="text">-->
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="eMail" class="col-sm-3 control-label"><b>邮箱</b>:</label>
+                                                <div class="col-sm-5">
                                                     <input id="eMail" class="form-control input-sm" name="eMail" placeholder="" type="text">
                                                 </div>
                                             </div>
+
+
                                             <div class="form-group">
-                                                <label for="orgName" class="col-sm-2 control-label"><b>所在部门</b>:</label>
-                                                <div class="col-sm-3">
+                                                <label for="orgName" class="col-sm-3 control-label"><b>所在部门</b>:</label>
+                                                <div class="col-sm-5">
                                                     <input id="orgName" class="form-control input-sm" name="orgName" placeholder="" type="text">
                                                 </div>
-                                                <label for="orgPhone" class="col-sm-2 control-label"><b>办公室电话</b>:</label>
-                                                <div class="col-sm-3">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="orgPhone" class="col-sm-3 control-label"><b>办公室电话</b>:</label>
+                                                <div class="col-sm-5">
                                                     <input id="orgPhone" class="form-control input-sm" name="orgPhone" placeholder="" type="text">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="activeFlag" class="col-sm-2 control-label"><b>状态</b>:</label>
-                                                <div class="col-sm-3">
-                                                    <input id="activeFlag" class="form-control input-sm" name="activeFlag" placeholder="" type="text">
+                                                <label for="activeFlag" class="col-sm-3 control-label"><b>状态</b>:</label>
+                                                <div class="col-sm-5">
+                                                    <!--<input id="activeFlag" class="form-control input-sm" name="activeFlag" placeholder="" type="text">-->
+                                                    <select name="activeFlag" class="form-control input-sm" id="activeFlag">
+                                                        <option value="0">激活</option>
+                                                        <option value="1">未激活</option>
+                                                    </select>
                                                 </div>
                                             </div>
 
 
-                                            <input id="genusId" type="hidden" value="" />
+                                            <input id="userId" type="hidden" value="" />
                                         </div>
 
-                                        <div id="page-conten">
-                                            <div class="panel">
-                                                <div class="panel-heading">
-                                                    <h3 class="panel-title">描述</h3>
-                                                </div>
-                                                <div class="panel-body">
 
-                                                    <!--Summernote-->
-                                                    <!--===================================================-->
-                                                    <div id="demo-summernote">
-                                                        <h4><span
-                                                                style="color: rgb(206, 198, 206); font-family: inherit; line-height: 1.1;"></span><br>
-                                                        </h4><h4><font color="#9c9c94"></font></h4>
-                                                    </div>
-                                                    <!--===================================================-->
-                                                    <!-- End Summernote -->
-
-                                                </div>
-                                            </div>
-                                        </div>
                                     </form>
                                 </div>
                                 <div class="modal-footer">
@@ -307,9 +313,7 @@
                                         </div>
 
                                         </br>
-                                        <label><b>描述</b></label>
-                                        <div  class="pad-top bord-top" style="word-break:break-all;height:250px;" id="genusDesc-info"></div>
-                                        </br>
+
 
                                     </div>
                                 </div>
@@ -454,7 +458,7 @@
                                             <a href="../system/user.html">用户管理<i class="arrow"></i></a>
                                         </li>
                                         <li>
-                                            <a href="#">Third Level<i class="arrow"></i></a>
+                                            <a href="../system/role.html">角色管理<i class="arrow"></i></a>
                                         </li>
                                     </ul>
                                 </li>
@@ -471,28 +475,11 @@
                                     <ul class="collapse">
 
                                         <li>
-                                            <a href="#">Third Level<i class="arrow">
-                                            </i></a>
-                                            <ul class="collapse">
-                                                <li><a href="#">Third Level Item</a></li>
-                                                <li><a href="#">Third Level Item</a></li>
-                                                <li><a href="#">Third Level Item</a></li>
-                                                <li><a href="#">Third Level Item</a></li>
-                                            </ul>
+                                            <a href="#">Third Level<i class="arrow"></i></a>
                                         </li>
 
                                         <li>
                                             <a href="#">Third Level<i class="arrow"></i></a>
-
-                                            <!--Submenu-->
-                                            <ul class="collapse">
-                                                <li><a href="#">Third Level Item</a></li>
-                                                <li><a href="#">Third Level Item</a></li>
-                                                <li><a href="#">Third Level Item</a></li>
-                                                <li class="list-divider"></li>
-                                                <li><a href="#">Third Level Item</a></li>
-                                                <li><a href="#">Third Level Item</a></li>
-                                            </ul>
                                         </li>
                                     </ul>
                                 </li>

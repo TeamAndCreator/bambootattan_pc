@@ -17,10 +17,8 @@ $(function(){
     $('#btn_save').on('click',save);
     //初始化表格
     init_table();
-    init_sunmmernote();
     //表单验证
     $('#registrationForm').bootstrapValidator();
-    $('#demo-summernote').summernote();
 });
 //初始化表格
 function init_table(){
@@ -78,6 +76,16 @@ function init_table(){
             {
                 field:'userName',//数据列
                 title:'用户姓名',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field){
+                    return{ css:{'min-width':'80px'}};
+                }
+            },
+            {
+                field:'role',//数据列
+                title:'角色',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -159,7 +167,6 @@ function save() {
                 // var genusDesc = $('#genusDesc').val();
                 var formData={
                     "userId": userId,
-                    "genusId": genusId,
                     "userName": userName,
                     "eMail": eMail,
                     "orgName": orgName,
@@ -263,14 +270,12 @@ function edit(id) {
         success:function(res){	                //请求成功回调函数
             if(res.code===200){
                 //赋值
-                $('#demo-summernote').summernote('code',res.data.genusDesc);
-                $('#genusId').val(res.data.genusId);
-                $('#genusNameCh').val(res.data.genusNameCh);
-                $('#genusNameEn').val(res.data.genusNameEn);
-                $('#genusNameLd').val(res.data.genusNameLd);
-                $('#genusNameOth').val(res.data.genusNameOth);
+                $('#userId').val(res.data.userId);
+                $('#userName').val(res.data.userName);
+                $('#eMail').val(res.data.eMail);
+                $('#orgName').val(res.data.orgName);
+                $('#orgPhone').val(res.data.orgPhone);
                 $('#sortNum').val(res.data.sortNum);
-                $('#genusDesc').val(res.data.genusDesc);
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }else if(res.code == 400){
@@ -500,15 +505,12 @@ function updateState(userId) {
 }
 //初始化表单元素的值
 function init_form(){
-    $('#genusNameCh').val("");
-    $('#genusNameEn').val("");
-    $('#genusNameLd').val("");
-    $('#genusNameOth').val("");
+    $('#userName').val("");
+    $('#eMail').val("");
+    $('#orgPhone').val("");
+    $('#orgName').val("");
     $('#sortNum').val("");
-    $('#genusDesc').val("");
-    $('#genusId').val("");
-    $('#demo-summernote').summernote('code',"");
-
+    $('#userId').val("");
 }
 
 //初始化详情元素值
@@ -523,20 +525,4 @@ function init_info(){
     $('#genusDesc-info').val("").attr('data-original-title',"");
 
 
-}
-//修改密码富文本的高度
-function init_sunmmernote(){
-    $('#demo-summernote').summernote({
-        height: 244,                 // set editor height
-        minHeight: null,             // set minimum height of editor
-        maxHeight: null,             // set maximum height of editor
-        focus: true                  // set focus to editable area after initializing summernote
-    });
-    $('#demo-summernote-info').summernote({
-        height: 244,                 // set editor height
-        minHeight: null,             // set minimum height of editor
-        maxHeight: null,             // set maximum height of editor
-        focus: true                 // set focus to editable area after initializing summernot
-    })
-    $('#demo-summernote-info').summernote('disable');
 }

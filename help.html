@@ -8,18 +8,17 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <script src="js/jquery-2.2.4.min.js"></script>
     <!--BootstrapJS [ RECOMMENDED ]-->
-			<script src="js/bootstrap.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
         <style>
-            #myScrollspy{height:100%;top:100px;}
-            code{white-space: normal;}
+            .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+                background-color: #8bc34a !important;
+            }
         </style>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $("#myScrollspy").affix({
-                    offset: {
-                        top: 10
-                 	}
-                });
+        <script>
+            $(function () {
+               if (document.referrer!='') {
+                    $('#help_go_back').attr('href',document.referrer);
+               }
             });
         </script>
     </head>
@@ -29,42 +28,31 @@
 
             <div id="page-title" class="text-center">
                 <h1 class="bigger-120">竹藤种质资源平台使用手册</h1>
-
-            </div>
-
-
-            <div>
-
-                <li class="previous" style="list-style:none">
-                    <!--<a href="javascript:history.go(-1);"><i class="fa fa-reply"></i> 返回</a>-->
-                    <a href="javascript:history.go(-1*(history.length-1));"><i class="fa fa-reply"></i> 返回</a>
-                </li>
-
-                <!--<ul class="pager pager-rounded" id="ul">-->
-                    <!--<li class="previous">-->
-                        <!--<a href="javascript:history.go(-1)"><i class="fa fa-reply"></i> 返回</a>-->
-                    <!--</li>-->
-                <!--</ul>-->
-
             </div>
 
             <div class="row">
                 <div class="col-lg-3 col-sm-4 col-xs-6" id="myScrollspy">
-                    <ul class="nav nav-pills" id="myNav">
-                        <li><a href="#ShowPop">首页--Bambootattan-home</a></li>
-                        <li><a href="#ShowMsg">竹藤数据--Bambootattan-data</a></li>
-                        <li><a href="#DownLoadFile">种质资源数据--Bambootattan</a></li>
-                        <li><a href="#CascadeSelectDemo">竹种形态--Bammboo-Form</a></li>
-                        <li><a href="#InitPlugin">竹种性质--Bamboo-Nature</a></li>
-                        <li><a href="#validation">藤种性质--Rattan-Nature</a></li>
-                        <li><a href="#FormatDate">系统管理--System-management</a></li>
-                        <li><a href="#jqTool">系统监控--System-monitoring</a></li>
+                    <ul class="nav nav-pills nav-stacked affix" id="myNav">
+						 <li class="previous">
+							<a href="#" id="help_go_back"><i class="fa fa-reply"></i> 返回</a>
+                             <!--<a href="javascript:history.go(-1)"><i class="fa fa-reply"></i> 返回</a>-->
+                             <!--<a href="javascript:;" onclick="javascript:history.back();">返回到上一页</a>-->
+						</li>
+                        <li><a href="#Bambootattan-home">首页</a></li>
+                        <li><a href="#Bambootattan-data">竹藤数据</a></li>
+                        <li><a href="#Bambootattan">种质资源数据</a></li>
+                        <li><a href="#Bammboo-Form">竹种形态</a></li>
+                        <li><a href="#Bamboo-Nature">竹种性质</a></li>
+                        <li><a href="#Rattan-Nature">藤种性质</a></li>
+                        <li><a href="#System-management">系统管理</a></li>
+                        <li><a href="#System-monitoring">系统监控</a></li>
+                        <!--<li><a class="back-to-top" href="#top">返回顶部</a></li>-->
                         <!-- <li><a href="#other">other...............</a></li> -->
                     </ul>
                 </div>
                 <div class="col-lg-9 col-sm-8 col-xs-6 pull-right">
-                    <div class="row" id="ShowPop">
-                        <h3>首页</h3>
+                    <div class="row" id="Bambootattan-home">
+                        <h3><i class="ace-icon fa fa-hand-o-right blue"></i>首页</h3>
                         <blockquote>
                             <code>opt:{title:'',overlay:.5,callback:null,drag:true,size:undefind,content:'',buttons:{'保存': ["btn-primary btnSave"],'取消': ["btn-default btnCancel", function (pop) { pop.close(); }]}}</code>
                             <h4>参数说明：</h4>
@@ -90,7 +78,7 @@
                         <h2>Demo</h2>
                         <blockquote>
                             <pre><code>
-                global.Fn.ShowPop({
+                global.Fn.Bambootattan-home({
                     title: '弹窗示例',
                     //size: { width: 1000 },
                     content: {
@@ -123,8 +111,8 @@
                             </code></pre>
                         </blockquote>
                     </div>
-                    <div class="row" id="ShowMsg">
-                        <h3>竹藤数据</h3>
+                    <div class="row" id="Bambootattan-data">
+                        <h3><i class="ace-icon fa fa-hand-o-right blue"></i>竹藤数据</h3>
                         <blockquote>
                             <code>opt:{type:'show:success',title:'',msg:'',timeout:1000,callback:null,afterClose:null}</code>
                             <h4>参数说明</h4>
@@ -148,7 +136,7 @@
                         <h2>Demo</h2>
                         <blockquote>
                             <pre><code>
-global.Fn.ShowMsg({
+global.Fn.Bambootattan-data({
         type:'confirm:warning',
         msg:'你确定要删除吗？',
         title:'删除提示',
@@ -159,21 +147,21 @@ global.Fn.ShowMsg({
                             </code></pre>
                         </blockquote>
                     </div>
-                    <div class="row" id="DownLoadFile">
-                        <h3>种质资源数据</h3>
+                    <div class="row" id="Bambootattan">
+                        <h3><i class="ace-icon fa fa-hand-o-right blue"></i>种质资源数据</h3>
                         <blockquote>
                             
-                                                                    <img class="col-sm-10" style="float: none;display: block;margin-left: auto;margin-right: auto;" src="img/image/竹种资源数据.png"/>
-                                                                    <p class="text-center bigger-120">图3.2&nbsp;&nbsp;功能研究室</p>
-                                                                    <ul class="list-unstyled spaced inline bigger-150 margin-20">
-                                                                        <div  style="display: block;padding-left: 2em;">
-                                                                            <p>点击““功能研究室”菜单项，如图3.2所示。</p>
-                                                                            <p style="text-indent: 2em;">●因为权限的不同，所显示的功能研究室的情况也不同，用户的功能权限也不同。
-                                                                                </p>
-                                                                            <p style="text-indent: 2em;">●首席专家只能修改本体系功能研究室；</p>
-                                                                            <p style="text-indent: 2em;">●研究室主任能够修改本研究室的基本信息。</p>
-                                                                        </div>
-                                                                    </ul>
+                            <img class="col-sm-10" style="float: none;display: block;margin-left: auto;margin-right: auto;" src="img/image/竹种资源数据.png"/>
+                            <p class="text-center bigger-120">图3.2&nbsp;&nbsp;功能研究室</p>
+                            <ul class="list-unstyled spaced inline bigger-150 margin-20">
+                                <div  style="display: block;padding-left: 2em;">
+                                    <p>点击““功能研究室”菜单项，如图3.2所示。</p>
+                                    <p style="text-indent: 2em;">●因为权限的不同，所显示的功能研究室的情况也不同，用户的功能权限也不同。
+                                    </p>
+                                    <p style="text-indent: 2em;">●首席专家只能修改本体系功能研究室；</p>
+                                    <p style="text-indent: 2em;">●研究室主任能够修改本研究室的基本信息。</p>
+                                </div>
+                            </ul>
                                                                
                         </blockquote>
                         <h4>竹种属表</h4>
@@ -238,26 +226,26 @@ global.Fn.ShowMsg({
 
               
                     </div>
-                    <div class="row" id="CascadeSelectDemo">
-                        <h3>竹种形态</h3>
+                    <div class="row" id="Bammboo-Form">
+                        <h3><i class="ace-icon fa fa-hand-o-right blue"></i>竹种形态</h3>
                         <blockquote>
                             <p><badge>必填</badge><code>plugins:[]</code>要初始化的插件名称，有:file、img、datetime、ckeditor,你可以这样写['img','datetime']也可以任性一点这样写'img,datetime' 建议需要几个写几个(比如当前页仅需要日期插件，就只写一个datetime就行)</p>
                              <p><code>container</code>表单id，可以为空(主要用途，缩小查找范围,提高性能)</p>
                              <h3>Demo</h3>
-                             <code>global.Fn.CascadeSelectDemo('datetime、img')</code>
+                             <code>global.Fn.Bammboo-Form('datetime、img')</code>
                         </blockquote>
                         <blockquote>
                             元素为：<code>&lt;input type="text" class="date-picker" data-minviewmodel="1" data-format="yyyy-MM" / &gt;</code>
-                            当调用global.Fn.CascadeSelectDemo('datetime')生成插件的时候，上面这个日期插件只允许选择到月份 而且选择的值是 年-月
+                            当调用global.Fn.Bammboo-Form('datetime')生成插件的时候，上面这个日期插件只允许选择到月份 而且选择的值是 年-月
                         </blockquote>
                     </div>
-                    <div class="row" id="InitPlugin">
-                        <h3>竹种性质</h3>
+                    <div class="row" id="Bamboo-Nature">
+                        <h3><i class="ace-icon fa fa-hand-o-right blue"></i>竹种性质</h3>
                         <blockquote>
                             <p><badge>必填</badge><code>plugins:[]</code>要初始化的插件名称，有:file、img、datetime、ckeditor,你可以这样写['img','datetime']也可以任性一点这样写'img,datetime' 建议需要几个写几个(比如当前页仅需要日期插件，就只写一个datetime就行)</p>
                             <p><code>container</code>表单id，可以为空(主要用途，缩小查找范围,提高性能)</p>
                             <h3>Demo</h3>
-                            <code>global.Fn.InitPlugin('datetime、img')</code>
+                            <code>global.Fn.Bamboo-Nature('datetime、img')</code>
                             <div class="well well-sm">
                                 日期控件还支持年月日的限制选择，比如：改日期控件只允许选择到月份 没有日期，您需要在对应的控件上加一个data-minviewmodel=1
                                 <p><code>data-minviewmodel</code>,值为1，表示显示月份 2：表示到年 0：表示可以选择到日<small>必须为数字不能是字符串</small></p>
@@ -268,11 +256,11 @@ global.Fn.ShowMsg({
 												<h2>Demo</h2>
 												<blockquote>
 														元素为：<code>&lt;input type="text" class="date-picker" data-minviewmodel="1" data-format="yyyy-MM" / &gt;</code>
-														当调用global.Fn.InitPlugin('datetime')生成插件的时候，上面这个日期插件只允许选择到月份 而且选择的值是 年-月
+														当调用global.Fn.Bamboo-Nature('datetime')生成插件的时候，上面这个日期插件只允许选择到月份 而且选择的值是 年-月
 												</blockquote>
 										</div>
-                     <div class="row" id="validation">
-                        <h3>藤种性质</h3>
+                     <div class="row" id="Rattan-Nature">
+                        <h3><i class="ace-icon fa fa-hand-o-right blue"></i>藤种性质</h3>
                         <blockquote>
                            <p><code>formId</code>表单的id</p>
                            <div class="well well-sm">
@@ -280,8 +268,8 @@ global.Fn.ShowMsg({
                            </div>
                         </blockquote>
                     </div>
-                    <div class="row" id="FormatDate">
-                        <h3>系统管理</h3>
+                    <div class="row" id="System-management">
+                        <h3><i class="ace-icon fa fa-hand-o-right blue"></i>系统管理</h3>
                         <blockquote>
                             <p><code>utc</code>是否utc时间,true or false 也可以省略此参数 默认省略此参数</p>
                             <p><span class="badge">必填</span><code>str</code>要格式化的字符串值</p>
@@ -290,16 +278,16 @@ global.Fn.ShowMsg({
                         <h2>Demo</h2>
                         <blockquote>
                             <pre><code>
-                                global.Fn.formatDate(new Date(),"yyyy-MM-dd hh:mm:ss");<br/>
-                                global.Fn.formatDate(new Date(),"yyyy-MM-dd");<br/>
-                                global.Fn.formatDate(new Date(),"yyyy-MM-dd");<br/>
-                                global.Fn.formatDate("\/Date(1439568000000)\/","yyyy-MM-dd hh:mm:ss");<br/>
-                                global.Fn.formatDate("2015/07/20","yyyy-MM-dd hh:mm:ss");<br/>...
+                                global.Fn.System-management(new Date(),"yyyy-MM-dd hh:mm:ss");<br/>
+                                global.Fn.System-management(new Date(),"yyyy-MM-dd");<br/>
+                                global.Fn.System-management(new Date(),"yyyy-MM-dd");<br/>
+                                global.Fn.System-management("\/Date(1439568000000)\/","yyyy-MM-dd hh:mm:ss");<br/>
+                                global.Fn.System-management("2015/07/20","yyyy-MM-dd hh:mm:ss");<br/>...
                             </code></pre>
                         </blockquote>
                     </div>
-                    <div class="row" id="jqTool">
-                        <h3>系统监控</h3>
+                    <div class="row" id="System-monitoring">
+                        <h3><i class="ace-icon fa fa-hand-o-right blue"></i>系统监控</h3>
                         <blockquote>
                             <p><span class="badge">必填</span><code>obj</code>字符串|dom对象|jquery对象</p>
                             <p><code>container</code>查找范围显示，可空</p>
