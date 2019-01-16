@@ -1,4 +1,3 @@
-
 $(function () {
     //此处为校验的核心代码
     $('#submit').on('click',submit);
@@ -95,28 +94,34 @@ $(function () {
     });
 });
 function submit(){
-    var userName = $("#userName").val();    // 获取id为username的<input>框数据
-    var userPwd = $("#userPwd").val();    // 获取id为password的<input>框数据
-    var jpushRegId=$("jpushRegId").val();
-    var eMail=$("eMail").val();
-    var orgPhone=$("orgPhone").val();
+    var userAcct=$("#userAcct").val();
+    var userName = $("#userName").val();
+    var userPwd = $("#userPwd").val();
+    var userReped=$("#userReped").val();
+    var eMail=$("#eMail").val();
+    var activeFlag=$("#activeFlag").val();
+    var code=$("#code").val();
+    var idList=[];
+    idList.push(1);
     var formData={
+        "userAcct":userAcct,
         "userName": userName,
         "userPwd": userPwd,
-        "jpushRegId":jpushRegId,
+        "userReped":userReped,
         "eMail":eMail,
-        "orgPhone":orgPhone
+        "activeFlag":activeFlag,
+        "code":code,
+        "idList":idList.join(',')
     }
     $.ajax({
-        url: baseUrl + '/user/login',	    //请求路径
-        type: 'POST',				        //请求方式
+        url: baseUrl + '/user/save',	    //请求路径
+        type: 'post',				        //请求方式
         //data: JSON.stringify(formData),	    //数据
         data: formData,	                    //数据
         //contentType: 'application/json',
         success: function (res) {    // 请求成功后的回调函数，其中的参数data为controller返回的map,也就是说,@ResponseBody将返回的map转化为JSON格式的数据，然后通过data这个参数取JSON数据中的值
             //res.code=400;
             if (res.code == 200) {
-                saveInfo();
                 $.niftyNoty({
                     type: 'success',
                     icon: 'pli-like-2 icon-2x',
@@ -140,7 +145,6 @@ function submit(){
                     timer: 2000
                 });
             }
-
         }
     });
 }
