@@ -141,15 +141,13 @@
                                 </li>
                                 <li>
                                     <a href="../../page-reset.html">
-                                        <!--<span class="label label-success pull-right">New</span>-->
                                         <i class="demo-pli-gear icon-lg icon-fw"></i> 修改密码
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                        <span class="badge badge-danger pull-right">9</span>
-                                        <i class="demo-pli-mail icon-lg icon-fw"></i> Messages
-                                    </a>
+                                   <a href="../../help.html">
+                                       <i class="demo-pli-information icon-lg icon-fw"></i> 帮助
+                                   </a>
                                 </li>
                             </ul>
                             <!-- Dropdown footer -->
@@ -178,9 +176,6 @@
             <!--Page content-->
             <!--===================================================-->
             <!--<div id="page-content">-->
-
-            <!--Custom Toolbar-->
-            <!--===================================================-->
             <div id="page-content">
             <div class="panel">
                 <div class="panel-heading">
@@ -219,24 +214,18 @@
                                                     <textarea id="remark" class="form-control input-sm" name="remark" style="border-radius:4px;border:1px solid darkgrey"></textarea>
                                                 </div>
                                             </div>
-                                            <!--<div class="form-group">-->
-                                                <!--<label for="sortNum" class="col-sm-2 control-label"><b>序号</b>:</label>-->
-                                                <!--<div class="col-sm-3">-->
-                                                    <!--<input id="sortNum" class="form-control input-sm" name="sortNum" placeholder="" type="text">-->
-                                                <!--</div>-->
-                                                <!--<label for="canDel" class="col-sm-2 control-label"><b>办公室电话</b>:</label>-->
-                                                <!--<div class="col-sm-3">-->
-                                                    <!--<input id="canDel" class="form-control input-sm" name="canDel" placeholder="" type="text">-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-
-                                            <!--<div class="form-group">-->
-                                                <!--<label for="activeFlag" class="col-sm-2 control-label"><b>状态</b>:</label>-->
-                                                <!--<div class="col-sm-3">-->
-                                                    <!--<input id="activeFlag" class="form-control input-sm" name="activeFlag" placeholder="" type="text">-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-
+                                            <div class="form-group">
+                                                <label for="sortNum" class="col-sm-3 control-label"><b>序号</b>:</label>
+                                            <div class="col-sm-5">
+                                                <input id="sortNum" class="form-control input-sm" name="sortNum" placeholder="" type="text">
+                                            </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="canDel" class="col-sm-3 control-label"><b>是否删除</b>:</label>
+                                                <div class="col-sm-5">
+                                                    <input id="canDel" class="form-control input-sm" name="canDel" placeholder="" type="text">
+                                                </div>
+                                            </div>
 
                                             <input id="roleId" type="hidden" value="" />
                                         </div>
@@ -262,23 +251,21 @@
                                 <div class="modal-body">
                                     <div class="form-horizontal">
                                         <div class="form-group">
-                                            <label for="userName-info" class="col-sm-2 control-label"><b>用户姓名</b>:</label>
+                                            <label for="roleName-info" class="col-sm-2 control-label"><b>角色名</b>:</label>
                                             <div class="col-sm-2">
-                                                <p id="userName-info" class="form-control-static  pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
-                                            </div>
-                                            <label for="eMail-info" class="col-sm-2 control-label"><b>电子邮箱</b>:</label>
-                                            <div class="col-sm-2">
-                                                <p id="eMail-info" class="form-control-static  pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                <p id="roleName-info" class="form-control-static  pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="orgName-info" class="col-sm-2 control-label"><b>所在部门</b>:</label>
+                                            <label for="remark-info" class="col-sm-2 control-label"><b>备注</b>:</label>
                                             <div class="col-sm-2">
-                                                <p id="orgName-info" class="form-control-static  pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                <p id="remark-info" class="form-control-static  pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                             </div>
-                                            <label for="orgPhone-info" class="col-sm-2 control-label"><b>办公室电话</b>:</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="canDel-info" class="col-sm-2 control-label"><b>是否删除</b>:</label>
                                             <div class="col-sm-2">
-                                                <p id="orgPhone-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                <p id="canDel-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                             </div>
                                         </div>
 
@@ -290,10 +277,6 @@
                                             </div>
                                         </div>
 
-                                        </br>
-                                        <label><b>描述</b></label>
-                                        <div  class="pad-top bord-top" style="word-break:break-all;height:250px;" id="genusDesc-info"></div>
-                                        </br>
 
                                     </div>
                                 </div>
@@ -303,23 +286,6 @@
                             </div>
                         </div>
                     </div>
-                    <!--&lt;!&ndash;激活的模态框&ndash;&gt;-->
-                    <!--<div id="updateState" class="modal fade" tabindex="-1">-->
-                        <!--<div class="modal-dialog modal-sm">-->
-                            <!--<div class="modal-content">-->
-                                <!--<div class="modal-header">-->
-                                    <!--<button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i>-->
-                                    <!--</button>-->
-                                <!--</div>-->
-                                <!--<div class="modal-body" style="text-align: center">-->
-                                    <!--<h3>确认是否激活</h3>-->
-                                    <!--<br>-->
-                                    <!--<button class="btn-success" id="updateState_btn">确认</button>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-
                     <table id="data_table" class="table"></table>
                 </div>
             </div>

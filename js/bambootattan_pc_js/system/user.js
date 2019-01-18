@@ -1,6 +1,6 @@
 var queryPageUrl='';
 $(function(){
-    queryPageUrl = baseUrl+'/user/findAll';
+    queryPageUrl = baseUrl+'/user/findAllQuery';
     //新增点击事件
     $('#btn_add').on('click',function () {
         init_form();//初始化表单
@@ -263,7 +263,7 @@ function save() {
 function edit(id) {
     init_form();
     $.ajax({
-        url:baseUrl+'/genus/findId/'+id,		//请求路径
+        url:baseUrl+'/user/findId/'+id,		//请求路径
         type:'GET',			                    //请求方式
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
@@ -312,7 +312,7 @@ function dele(gid){
         callback: function(result) {
             if (result) {
                 $.ajax({
-                    url:baseUrl+'/genus/delete/'+gid,   //请求路径,单个删除
+                    url:baseUrl+'/user/delete/'+gid,   //请求路径,单个删除
                     type:'DELETE',				        //请求方式
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
