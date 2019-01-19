@@ -1,5 +1,6 @@
 var queryPageUrl='';
 $(function(){
+    $('.username').html('欢迎您，'+ $.cookie('BAM_USERNAME'));
     queryPageUrl = baseUrl+'/user/findAllQuery';
     //新增点击事件
     $('#btn_add').on('click',function () {
@@ -212,7 +213,7 @@ function save() {
                     });
                 } else {//修改
                     $.ajax({
-                        url: baseUrl + '/genus/update',	    //请求路径
+                        url: baseUrl + '/user/update',	    //请求路径
                         type: 'PUT',				        //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
@@ -388,11 +389,11 @@ function deles() {
                     var ids=[]; //选中数据的genusId数组
                     for(var i=0;i<selectedItems.length;i++){
                         //循环遍历选中的数据并将genusId放入到ids数组中
-                        ids.push(selectedItems[i].genusId);
+                        ids.push(selectedItems[i].userId);
                     }
                     $.ajax({    //批量删除
                         //现将数据每个元素用‘,(逗号)’分隔拼接成字符串，再用encodeURI进行编码，最后拼接到url的后面
-                        url: baseUrl+'/genus/deleteByIds?ids='+encodeURI(ids.join(',')),
+                        url: baseUrl+'/user/deleteByIds?ids='+encodeURI(ids.join(',')),
                         type:'DELETE',
                         contentType: 'application/json',//数据类型
                         success:function(res){	        //请求成功回调函数
@@ -444,7 +445,7 @@ function deles() {
 function check(id) {
     init_info();
     $.ajax({
-        url:baseUrl+'/genus/findId/'+id,		//请求路径
+        url:baseUrl+'/user/findId/'+id,		//请求路径
         type:'GET',			                    //请求方式
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型

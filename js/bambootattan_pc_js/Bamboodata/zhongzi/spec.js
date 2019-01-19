@@ -3,6 +3,7 @@ var queryGenusPageUrl='';
 var  myDropzone;
 var  myDropzoneImg;
 $(function(){
+    $('.username').html('欢迎您，'+ $.cookie('BAM_USERNAME'));
     queryPageUrl = baseUrl+'/spec/findAllQuery';
     queryGenusPageUrl = baseUrl+'/genus/findAllQuery';
     //新增点击事件

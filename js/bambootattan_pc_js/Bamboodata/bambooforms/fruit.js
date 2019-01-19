@@ -1,6 +1,7 @@
 var queryPageUrl='';
 var querySpecPageUrl='';
 $(function(){
+    $('.username').html('欢迎您，'+ $.cookie('BAM_USERNAME'));
     queryPageUrl = baseUrl+'/flowerfruit/findAllQuery';
     querySpecPageUrl = baseUrl+'/spec/findAllQuery';
     //新增点击事件
@@ -163,23 +164,23 @@ function init_table(){
                 field:'palea',//数据列
                 title:'外稃',//数据列名称
                 sortable:true,//可排序
-                visible:false,
+                // visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
                     return {css: {'min-width': '80px'}};
                 }
             },
-            {
-                field:'lemma',//数据列
-                title:'箨舌被毛被粉',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field) {
-                    return {css: {'min-width': '80px'}};
-                }
-            },
+            // {
+            //     field:'lemma',//数据列
+            //     title:'箨舌被毛被粉',//数据列名称
+            //     sortable:true,//可排序
+            //     align:'center',//水平居中
+            //     valign:'middle',//垂直居中
+            //     cellStyle:function(value,row,index,field) {
+            //         return {css: {'min-width': '80px'}};
+            //     }
+            // },
             /*
             {
                 field:'underStemId',//数据列

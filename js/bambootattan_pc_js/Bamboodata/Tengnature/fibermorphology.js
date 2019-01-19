@@ -1,6 +1,7 @@
 var queryPageUrl='';
 var querySpecPageUrl='';
 $(function(){
+    $('.username').html('欢迎您，'+ $.cookie('BAM_USERNAME'));
     queryPageUrl = baseUrl+'/tFibermorphology/findAllQuery';
     querySpecPageUrl = baseUrl+'/rattanSpec/findAllQuery';
     //新增点击事件
