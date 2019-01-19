@@ -211,6 +211,7 @@ function login(){
                     success: function (res) {    // 请求成功后的回调函数，其中的参数data为controller返回的map,也就是说,@ResponseBody将返回的map转化为JSON格式的数据，然后通过data这个参数取JSON数据中的值
                        //res.code=400;
                         if (res.code == 200) {
+                            $.cookie('BAM_USERNAME',formData.userName,{ expires: 365 });
                             saveInfo();
                             $.niftyNoty({
                                 type: 'success',
