@@ -16,6 +16,7 @@ $(function(){
     $('#btn_delete').on('click',deles);
     //保存点击事件
     $('#btn_save').on('click',save);
+    $('#updateState').on('click',updateState);
     //初始化表格
     init_table();
     //表单验证
@@ -65,9 +66,9 @@ function init_table(){
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
-                    var _html = '<button onclick="edit(\''+row.genusId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
-                    _html += '<button  onclick="dele(\''+row.genusId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
-                    _html += '<button  onclick="check(\''+row.genusId+'\')"class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="查看"><i class="fa fa-search"></i></button>'
+                    var _html = '<button onclick="edit(\''+row.userId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
+                    _html += '<button  onclick="dele(\''+row.userId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
+                    _html += '<button  onclick="check(\''+row.userId+'\')"class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="查看"><i class="fa fa-search"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
@@ -97,6 +98,17 @@ function init_table(){
             {
                 field:'eMail',//数据列
                 title:'电子邮箱',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field){
+                    return{css:{'min-width':'80px'}};
+                }
+            },
+            {
+                field:'userPwd',//数据列
+                title:'用户密码',//数据列名称
+                visible:false,
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -158,29 +170,34 @@ function save() {
                 if(!validateForm.isValid()){
                     return;
                 }
-                //var genusDesc=$('#demo-summernote').summernote('code');
-                var userId = $('#userId').val();
-                var userName = $('#userName').val();
-                var eMail = $('#eMail').val();
-                var orgName = $('#orgName').val();
-                var orgPhone = $('#orgPhone').val();
-                var sortNum = $('#sortNum').val();
-                // var genusDesc = $('#genusDesc').val();
+
+                var userAcct=$("#userAcct").val();
+                var userName = $("#userName").val();
+                var userPwd = $("#userPwd").val();
+                var userReped=$("#userReped").val();
+                var eMail=$("#eMail").val();
+                var activeFlag=$("#activeFlag").val();
+                var code=$("#code").val();
+                var idList=[];
+                idList.push(1);
                 var formData={
-                    "userId": userId,
+                    "userAcct":userAcct,
                     "userName": userName,
-                    "eMail": eMail,
-                    "orgName": orgName,
-                    "orgPhone": orgPhone,
-                    "sortNum": sortNum
+                    "userPwd": userPwd,
+                    "userReped":userReped,
+                    "eMail":eMail,
+                    "activeFlag":activeFlag,
+                    "code":code,
+                    "idList":idList.join(',')
                 };
                 if (userId === "") {//新增
                     formData.userId = 0;
                     $.ajax({
-                        url: baseUrl + '/user/save',		//请求路径
+                        url: baseUrl + '/admin/save',		//请求路径
                         type: 'POST',			            //请求方式
-                        data: JSON.stringify(formData),	    //数据   对象转json字符串
-                        contentType: 'application/json',    //数据类型
+                        //data: JSON.stringify(formData),	    //数据   对象转json字符串
+                        data: formData,
+                        // contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
                             //res.code=400;
                             if (res.code === 200) {
@@ -451,14 +468,11 @@ function check(id) {
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
             if(res.code===200){
-                $('#genusNameCh-info').html(res.data.genusNameCh).attr('data-original-title',res.data.genusNameCh);
-                $('#genusNameEn-info').html(res.data.genusNameEn).attr('data-original-title',res.data.genusNameEn);
-                $('#genusNameLd-info').html(res.data.genusNameLd).attr('data-original-title',res.data.genusNameLd);
-                $('#genusNameOth-info').html(res.data.genusNameOth).attr('data-original-title',res.data.genusNameOth);
+                $('#userName-info').html(res.data.userName).attr('data-original-title',res.data.userName);
+                $('#eMail-info').html(res.data.eMail).attr('data-original-title',res.data.eMail);
+                $('#orgName-info').html(res.data.orgName).attr('data-original-title',res.data.orgName);
+                $('#orgPhone-info').html(res.data.orgPhone).attr('data-original-title',res.data.orgPhone);
                 $('#sortNum-info').html(res.data.sortNum).attr('data-original-title',res.data.sortNum);
-                //$('#demo-summernote-info').summernote('code',res.data.genusDesc);
-                $('#genusDesc-info').html(res.data.genusDesc);
-                // $('#genusDesc-info').html(res.data.genusDesc).attr('data-original-title',res.data.genusDesc);
                 $('#exampleModal-info').modal('show');
             }else if(res.code == 400){
                 window.location.href='../../page-404.html';
@@ -493,7 +507,7 @@ function state(value, row) {
 function updateState(userId) {
     $('#updateState_btn').click(function () {
         $.ajax({
-            type: 'post',
+            type: 'get',
             dataType: 'JSON',
             url: baseUrl + '/user/active',
             data: {_method: "get", "userId": userId},
