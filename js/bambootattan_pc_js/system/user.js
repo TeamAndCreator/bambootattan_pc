@@ -135,7 +135,7 @@ function init_table(){
                     return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
                 }
             },
-            { field:'genusId',title:'genusId',visible:false}//隐藏不显示
+            { field:'userId',title:'userId',visible:false}//隐藏不显示
         ]
     });
 }
@@ -495,8 +495,8 @@ function updateState(userId) {
         $.ajax({
             type: 'post',
             dataType: 'JSON',
-            url: baseUrl + '/user/updateState',
-            data: {_method: "put", "userId": userId},
+            url: baseUrl + '/user/active',
+            data: {_method: "get", "userId": userId},
             async: false,
             success: function () {
                 window.location.reload()
