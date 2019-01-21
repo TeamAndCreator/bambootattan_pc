@@ -401,9 +401,9 @@ function deles() {
             },
             callback: function(result) {//点击按钮的回调事件，result:false-取消，true-确认
                 if (result) {   //确认
-                    var ids=[]; //选中数据的genusId数组
+                    var ids=[]; //选中数据的userId数组
                     for(var i=0;i<selectedItems.length;i++){
-                        //循环遍历选中的数据并将genusId放入到ids数组中
+                        //循环遍历选中的数据并将userId放入到ids数组中
                         ids.push(selectedItems[i].userId);
                     }
                     $.ajax({    //批量删除
@@ -414,7 +414,6 @@ function deles() {
                         success:function(res){	        //请求成功回调函数
                             if(res.code===200){  //删除成功
                                 //alert('删除成功');
-
                                 //右上角弹出消息
                                 $.niftyNoty({
                                     type: 'success',                //类型
@@ -571,7 +570,6 @@ function init_form(){
 
 //初始化详情元素值
 function init_info(){
-
     $('#genusId').val("").attr('data-original-title',"");
     $('#genusNameCh-info').val("").attr('data-original-title',"");
     $('#genusNameEn-info').val("").attr('data-original-title',"");

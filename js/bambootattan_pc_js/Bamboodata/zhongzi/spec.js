@@ -605,7 +605,7 @@ function save() {
                         type: 'POST',			            //请求方式
                         dataType: 'JSON',
                         processData: false,
-                        contentType: false,
+                        //contentType: false,
                         data: formData,	    //数据
                         success: function (res) {	        //请求成功回调函数
                             if (res.code == 200) {

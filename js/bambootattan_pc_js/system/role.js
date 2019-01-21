@@ -65,9 +65,9 @@ function init_table(){
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
-                    var _html = '<button onclick="edit(\''+row.genusId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
-                    _html += '<button  onclick="dele(\''+row.genusId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
-                    _html += '<button  onclick="check(\''+row.genusId+'\')"class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="查看"><i class="fa fa-search"></i></button>'
+                    var _html = '<button onclick="edit(\''+row.roleId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
+                    _html += '<button  onclick="dele(\''+row.roleId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
+                    _html += '<button  onclick="check(\''+row.roleId+'\')"class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="查看"><i class="fa fa-search"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
@@ -112,7 +112,8 @@ function init_table(){
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
                     return{css:{'min-width':'80px'}};
-                }
+                },
+                formatter:state
             },
             // {
             //     field:'creattime',//数据列
@@ -159,8 +160,8 @@ function save() {
                     return;
                 }
                 //var genusDesc=$('#demo-summernote').summernote('code');
-                var userId = $('#userId').val();
-                var userName = $('#userName').val();
+                var roleId = $('#roleId').val();
+                var roleName = $('#roleName').val();
                 var remark = $('#remark').val();
                 var canDel = $('#canDel').val();
                 var sortNum = $('#sortNum').val();
@@ -172,7 +173,7 @@ function save() {
                     "canDel": canDel,
                     "sortNum": sortNum
                 };
-                if (userId === "") {//新增
+                if (roleId === "") {//新增
                     formData.userId = 0;
                     $.ajax({
                         url: baseUrl + '/role/save',		//请求路径
@@ -257,7 +258,6 @@ function save() {
         }
     });
 }
-
 //修改
 function edit(id) {
     init_form();
@@ -296,7 +296,6 @@ function edit(id) {
         }
     });
 }
-
 //删除
 function dele(gid){
     bootbox.confirm({
@@ -355,7 +354,6 @@ function dele(gid){
         }
     });
 }
-
 //批量删除
 function deles() {
     //选中的数据
@@ -383,9 +381,9 @@ function deles() {
             },
             callback: function(result) {//点击按钮的回调事件，result:false-取消，true-确认
                 if (result) {   //确认
-                    var ids=[]; //选中数据的genusId数组
+                    var ids=[]; //选中数据的roleId数组
                     for(var i=0;i<selectedItems.length;i++){
-                        //循环遍历选中的数据并将genusId放入到ids数组中
+                        //循环遍历选中的数据并将roleId放入到ids数组中
                         ids.push(selectedItems[i].roleId);
                     }
                     $.ajax({    //批量删除
@@ -475,27 +473,12 @@ function check(id) {
     });
 }
 //设置状态
-function state(value, row) {
+function state(value, row,index) {
     if (value == 1) {
-        return "<div class='label label-table label-success'>已激活</div>"
+        return "<div class='label label-table label-danger'>删除</div>"
     }else {
-        return "<div class='label label-table label-warning'><a onclick='updateState(" + row.id + ")' data-toggle=\"modal\" data-target=\"#updateState\" style='color: white; cursor:default'>未激活</a></div>"
+        return "<div class='label label-table label-success'><a onclick='updateState(" + row.id + ")' data-toggle=\"modal\" data-target=\"#updateState\" style='color: white; cursor:default'>已存在</a></div>"
     }
-}
-//激活账号
-function updateState(userId) {
-    $('#updateState_btn').click(function () {
-        $.ajax({
-            type: 'post',
-            dataType: 'JSON',
-            url: baseUrl + '/user/updateState',
-            data: {_method: "put", "userId": userId},
-            async: false,
-            success: function () {
-                window.location.reload()
-            }
-        });
-    })
 }
 //初始化表单元素的值
 function init_form(){
