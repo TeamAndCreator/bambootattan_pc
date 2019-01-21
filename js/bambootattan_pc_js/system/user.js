@@ -145,7 +145,8 @@ function init_table(){
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
                     return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
-                }
+                },
+                formatter:state
             },
             { field:'userId',title:'userId',visible:false}//隐藏不显示
         ]
@@ -276,7 +277,6 @@ function save() {
         }
     });
 }
-
 //修改
 function edit(id) {
     init_form();
@@ -316,7 +316,6 @@ function edit(id) {
         }
     });
 }
-
 //删除
 function dele(gid){
     bootbox.confirm({
@@ -375,7 +374,6 @@ function dele(gid){
         }
     });
 }
-
 //批量删除
 function deles() {
     //选中的数据
@@ -496,27 +494,70 @@ function check(id) {
     });
 }
 //设置状态
-function state(value, row) {
+function state(value, row,index) {
     if (value == 1) {
         return "<div class='label label-table label-success'>已激活</div>"
     }else {
-        return "<div class='label label-table label-warning'><a onclick='updateState(" + row.id + ")' data-toggle=\"modal\" data-target=\"#updateState\" style='color: white; cursor:default'>未激活</a></div>"
+        return "<div class='label label-table label-warning'><a onclick='updateState(" + row.id + ")' data-toggle=\"modal\" data-target=\"#updateState\" style='color: white; cursor:default'>激活</a></div>"
     }
 }
 //激活账号
-function updateState(userId) {
-    $('#updateState_btn').click(function () {
-        $.ajax({
-            type: 'get',
-            dataType: 'JSON',
-            url: baseUrl + '/user/active',
-            data: {_method: "get", "userId": userId},
-            async: false,
-            success: function () {
-                window.location.reload()
-            }
-        });
-    })
+function updateState(){
+    bootbox.confirm({
+        title: '激活确认',
+        message: '<div class="text-center"><h2>您确定激活该用户吗<i class="demo-pli-question-circle text-danger"></i></h2></div>',
+        //size:'small',
+        buttons: {
+            cancel: {label: '<i class="demo-pli-cross"></i> 取消'},
+            confirm: {label: '<i class="demo-pli-check2"></i> 确认'}
+        },
+        callback: function(result) {
+            if (result) {
+                $.ajax({
+                    url:baseUrl+'/user/active/',
+                    type:'DELETE',				        //请求方式
+                    contentType: 'application/json',    //数据类型
+                    success:function(res){	            //请求成功回调函数
+                        if(res.code===200){
+                            $.niftyNoty({
+                                type: 'success',
+                                icon : 'pli-like-2 icon-2x',
+                                message : '激活成功',
+                                container : 'floating',
+                                timer : 2000
+                            });
+                            $("#data_table").bootstrapTable('refresh',{url :queryPageUrl} );
+                            $('#exampleModal').modal('hide');
+                        }else if(res.code == 400){
+                            window.location.href='../../page-404.html';
+                        }
+                        else if(res.code == 505){
+                            window.location.href='../../page-500.html';
+                        }
+                        else{
+                            $.niftyNoty({
+                                type: 'danger',
+                                icon : 'pli-cross icon-2x',
+                                message : res.msg,
+                                container : 'floating',
+                                timer : 1000
+                            });
+                        }
+                    },
+                    error:function(XMLHttpRequest, textStatus, errorThrown){		//请求失败回调函数
+                    }
+                });
+            }else{
+                $.niftyNoty({
+                    type: 'danger',
+                    icon : 'pli-cross icon-2x',
+                    message : '您取消了激活',
+                    container : 'floating',
+                    timer : 1000
+                });
+            };
+        }
+    });
 }
 //初始化表单元素的值
 function init_form(){
@@ -538,6 +579,4 @@ function init_info(){
     $('#genusNameOth-info').val("").attr('data-original-title',"");
     $('#sortNum-info').val("").attr('data-original-title',"");
     $('#genusDesc-info').val("").attr('data-original-title',"");
-
-
 }
