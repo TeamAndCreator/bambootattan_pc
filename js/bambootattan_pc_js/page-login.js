@@ -236,7 +236,6 @@ function login(){
                                 timer: 2000
                             });
                         }
-
                     }
                 });
 }

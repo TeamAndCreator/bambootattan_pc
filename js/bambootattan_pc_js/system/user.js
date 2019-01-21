@@ -16,6 +16,7 @@ $(function(){
     $('#btn_delete').on('click',deles);
     //保存点击事件
     $('#btn_save').on('click',save);
+    $('#updateState').on('click',updateState);
     //初始化表格
     init_table();
     //表单验证
@@ -65,9 +66,9 @@ function init_table(){
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
-                    var _html = '<button onclick="edit(\''+row.genusId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
-                    _html += '<button  onclick="dele(\''+row.genusId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
-                    _html += '<button  onclick="check(\''+row.genusId+'\')"class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="查看"><i class="fa fa-search"></i></button>'
+                    var _html = '<button onclick="edit(\''+row.userId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
+                    _html += '<button  onclick="dele(\''+row.userId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
+                    _html += '<button  onclick="check(\''+row.userId+'\')"class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="查看"><i class="fa fa-search"></i></button>'
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
@@ -105,6 +106,17 @@ function init_table(){
                 }
             },
             {
+                field:'userPwd',//数据列
+                title:'用户密码',//数据列名称
+                visible:false,
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field){
+                    return{css:{'min-width':'80px'}};
+                }
+            },
+            {
                 field:'orgName',//数据列
                 title:'所在部门',//数据列名称
                 sortable:true,//可排序
@@ -133,7 +145,8 @@ function init_table(){
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
                     return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
-                }
+                },
+                formatter:state
             },
             { field:'userId',title:'userId',visible:false}//隐藏不显示
         ]
@@ -158,29 +171,34 @@ function save() {
                 if(!validateForm.isValid()){
                     return;
                 }
-                //var genusDesc=$('#demo-summernote').summernote('code');
-                var userId = $('#userId').val();
-                var userName = $('#userName').val();
-                var eMail = $('#eMail').val();
-                var orgName = $('#orgName').val();
-                var orgPhone = $('#orgPhone').val();
-                var sortNum = $('#sortNum').val();
-                // var genusDesc = $('#genusDesc').val();
+
+                var userAcct=$("#userAcct").val();
+                var userName = $("#userName").val();
+                var userPwd = $("#userPwd").val();
+                var userReped=$("#userReped").val();
+                var eMail=$("#eMail").val();
+                var activeFlag=$("#activeFlag").val();
+                var code=$("#code").val();
+                var idList=[];
+                idList.push(1);
                 var formData={
-                    "userId": userId,
+                    "userAcct":userAcct,
                     "userName": userName,
-                    "eMail": eMail,
-                    "orgName": orgName,
-                    "orgPhone": orgPhone,
-                    "sortNum": sortNum
+                    "userPwd": userPwd,
+                    "userReped":userReped,
+                    "eMail":eMail,
+                    "activeFlag":activeFlag,
+                    "code":code,
+                    "idList":idList.join(',')
                 };
                 if (userId === "") {//新增
                     formData.userId = 0;
                     $.ajax({
-                        url: baseUrl + '/user/save',		//请求路径
+                        url: baseUrl + '/admin/save',		//请求路径
                         type: 'POST',			            //请求方式
-                        data: JSON.stringify(formData),	    //数据   对象转json字符串
-                        contentType: 'application/json',    //数据类型
+                        //data: JSON.stringify(formData),	    //数据   对象转json字符串
+                        data: formData,
+                        // contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
                             //res.code=400;
                             if (res.code === 200) {
@@ -259,7 +277,6 @@ function save() {
         }
     });
 }
-
 //修改
 function edit(id) {
     init_form();
@@ -299,7 +316,6 @@ function edit(id) {
         }
     });
 }
-
 //删除
 function dele(gid){
     bootbox.confirm({
@@ -358,7 +374,6 @@ function dele(gid){
         }
     });
 }
-
 //批量删除
 function deles() {
     //选中的数据
@@ -386,9 +401,9 @@ function deles() {
             },
             callback: function(result) {//点击按钮的回调事件，result:false-取消，true-确认
                 if (result) {   //确认
-                    var ids=[]; //选中数据的genusId数组
+                    var ids=[]; //选中数据的userId数组
                     for(var i=0;i<selectedItems.length;i++){
-                        //循环遍历选中的数据并将genusId放入到ids数组中
+                        //循环遍历选中的数据并将userId放入到ids数组中
                         ids.push(selectedItems[i].userId);
                     }
                     $.ajax({    //批量删除
@@ -399,7 +414,6 @@ function deles() {
                         success:function(res){	        //请求成功回调函数
                             if(res.code===200){  //删除成功
                                 //alert('删除成功');
-
                                 //右上角弹出消息
                                 $.niftyNoty({
                                     type: 'success',                //类型
@@ -451,14 +465,11 @@ function check(id) {
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
             if(res.code===200){
-                $('#genusNameCh-info').html(res.data.genusNameCh).attr('data-original-title',res.data.genusNameCh);
-                $('#genusNameEn-info').html(res.data.genusNameEn).attr('data-original-title',res.data.genusNameEn);
-                $('#genusNameLd-info').html(res.data.genusNameLd).attr('data-original-title',res.data.genusNameLd);
-                $('#genusNameOth-info').html(res.data.genusNameOth).attr('data-original-title',res.data.genusNameOth);
+                $('#userName-info').html(res.data.userName).attr('data-original-title',res.data.userName);
+                $('#eMail-info').html(res.data.eMail).attr('data-original-title',res.data.eMail);
+                $('#orgName-info').html(res.data.orgName).attr('data-original-title',res.data.orgName);
+                $('#orgPhone-info').html(res.data.orgPhone).attr('data-original-title',res.data.orgPhone);
                 $('#sortNum-info').html(res.data.sortNum).attr('data-original-title',res.data.sortNum);
-                //$('#demo-summernote-info').summernote('code',res.data.genusDesc);
-                $('#genusDesc-info').html(res.data.genusDesc);
-                // $('#genusDesc-info').html(res.data.genusDesc).attr('data-original-title',res.data.genusDesc);
                 $('#exampleModal-info').modal('show');
             }else if(res.code == 400){
                 window.location.href='../../page-404.html';
@@ -482,27 +493,70 @@ function check(id) {
     });
 }
 //设置状态
-function state(value, row) {
+function state(value, row,index) {
     if (value == 1) {
         return "<div class='label label-table label-success'>已激活</div>"
     }else {
-        return "<div class='label label-table label-warning'><a onclick='updateState(" + row.id + ")' data-toggle=\"modal\" data-target=\"#updateState\" style='color: white; cursor:default'>未激活</a></div>"
+        return "<div class='label label-table label-warning'><a onclick='updateState(" + row.id + ")' data-toggle=\"modal\" data-target=\"#updateState\" style='color: white; cursor:default'>激活</a></div>"
     }
 }
 //激活账号
-function updateState(userId) {
-    $('#updateState_btn').click(function () {
-        $.ajax({
-            type: 'post',
-            dataType: 'JSON',
-            url: baseUrl + '/user/active',
-            data: {_method: "get", "userId": userId},
-            async: false,
-            success: function () {
-                window.location.reload()
-            }
-        });
-    })
+function updateState(){
+    bootbox.confirm({
+        title: '激活确认',
+        message: '<div class="text-center"><h2>您确定激活该用户吗<i class="demo-pli-question-circle text-danger"></i></h2></div>',
+        //size:'small',
+        buttons: {
+            cancel: {label: '<i class="demo-pli-cross"></i> 取消'},
+            confirm: {label: '<i class="demo-pli-check2"></i> 确认'}
+        },
+        callback: function(result) {
+            if (result) {
+                $.ajax({
+                    url:baseUrl+'/user/active/',
+                    type:'DELETE',				        //请求方式
+                    contentType: 'application/json',    //数据类型
+                    success:function(res){	            //请求成功回调函数
+                        if(res.code===200){
+                            $.niftyNoty({
+                                type: 'success',
+                                icon : 'pli-like-2 icon-2x',
+                                message : '激活成功',
+                                container : 'floating',
+                                timer : 2000
+                            });
+                            $("#data_table").bootstrapTable('refresh',{url :queryPageUrl} );
+                            $('#exampleModal').modal('hide');
+                        }else if(res.code == 400){
+                            window.location.href='../../page-404.html';
+                        }
+                        else if(res.code == 505){
+                            window.location.href='../../page-500.html';
+                        }
+                        else{
+                            $.niftyNoty({
+                                type: 'danger',
+                                icon : 'pli-cross icon-2x',
+                                message : res.msg,
+                                container : 'floating',
+                                timer : 1000
+                            });
+                        }
+                    },
+                    error:function(XMLHttpRequest, textStatus, errorThrown){		//请求失败回调函数
+                    }
+                });
+            }else{
+                $.niftyNoty({
+                    type: 'danger',
+                    icon : 'pli-cross icon-2x',
+                    message : '您取消了激活',
+                    container : 'floating',
+                    timer : 1000
+                });
+            };
+        }
+    });
 }
 //初始化表单元素的值
 function init_form(){
@@ -516,7 +570,6 @@ function init_form(){
 
 //初始化详情元素值
 function init_info(){
-
     $('#genusId').val("").attr('data-original-title',"");
     $('#genusNameCh-info').val("").attr('data-original-title',"");
     $('#genusNameEn-info').val("").attr('data-original-title',"");
@@ -524,6 +577,4 @@ function init_info(){
     $('#genusNameOth-info').val("").attr('data-original-title',"");
     $('#sortNum-info').val("").attr('data-original-title',"");
     $('#genusDesc-info').val("").attr('data-original-title',"");
-
-
 }
