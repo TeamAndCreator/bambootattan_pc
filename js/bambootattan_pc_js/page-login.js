@@ -273,7 +273,7 @@ function checkInCorrect()
                         message: '密码长度必须在6到30之间'
                     },
                     different: {//不能和用户名相同
-                        field: 'loginName',//需要进行比较的input name值
+                        field: ' userName',//需要进行比较的input name值
                         message: '不能和用户名相同'
                     },
                     regexp: {

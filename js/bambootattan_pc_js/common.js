@@ -6,7 +6,6 @@ var openModalClass=function () {
     $('body').addClass('modal-open');
 }
 
-
 var openLoading=function () {
     var _PageHeight = document.documentElement.clientHeight,
         _PageWidth = document.documentElement.clientWidth;
