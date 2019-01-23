@@ -95,16 +95,16 @@ function init_table(){
                     return{ css:{'min-width':'80px'}};
                 }
             },
-            {
-                field:'eMail',//数据列
-                title:'电子邮箱',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'}};
-                }
-            },
+            // {
+            //     field:'eMail',//数据列
+            //     title:'电子邮箱',//数据列名称
+            //     sortable:true,//可排序
+            //     align:'center',//水平居中
+            //     valign:'middle',//垂直居中
+            //     cellStyle:function(value,row,index,field){
+            //         return{css:{'min-width':'80px'}};
+            //     }
+            // },
             {
                 field:'userPwd',//数据列
                 title:'用户密码',//数据列名称
@@ -172,22 +172,29 @@ function save() {
                     return;
                 }
 
+                var userId=$("#userId").val();
                 var userAcct=$("#userAcct").val();
                 var userName = $("#userName").val();
                 var userPwd = $("#userPwd").val();
                 var userReped=$("#userReped").val();
-                var eMail=$("#eMail").val();
+                //var eMail=$("#eMail").val();
+                var orgName=$("#orgName").val();
+                var orgPhone=$("#orgPhone").val();
                 var activeFlag=$("#activeFlag").val();
                 var code=$("#code").val();
                 var idList=[];
                 idList.push(1);
+
                 var formData={
+                    "userId":userId,
                     "userAcct":userAcct,
                     "userName": userName,
                     "userPwd": userPwd,
                     "userReped":userReped,
-                    "eMail":eMail,
-                    "activeFlag":activeFlag,
+                    //"eMail":eMail,
+                    "orgName":orgName,
+                    "orgPhone":orgPhone,
+                    "activeFlag":1,
                     "code":code,
                     "idList":idList.join(',')
                 };
@@ -231,7 +238,7 @@ function save() {
                     });
                 } else {//修改
                     $.ajax({
-                        url: baseUrl + '/admin/update',	    //请求路径
+                        url: baseUrl + '/user/update',	    //请求路径
                         type: 'PUT',				        //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
@@ -290,10 +297,11 @@ function edit(id) {
                 //赋值
                 $('#userId').val(res.data.userId);
                 $('#userName').val(res.data.userName);
-                $('#eMail').val(res.data.eMail);
+                // $('#eMail').val(res.data.eMail);
                 $('#orgName').val(res.data.orgName);
                 $('#orgPhone').val(res.data.orgPhone);
                 $('#sortNum').val(res.data.sortNum);
+                $("#activeFlag").val(res.data.activeFlag);
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }else if(res.code == 400){
@@ -497,8 +505,8 @@ function state(value, row,index) {
     if (value == 1) {
         return "<div class='label label-table label-success'>已激活</div>"
     }else {
-        return "<div class='label label-table label-warning'><a onclick='updateState(" + row.id + ")' data-toggle=\"modal\" data-target=\"#updateState\" style='color: white; cursor:default'>激活</a></div>"
-    }
+         return "<div class='label label-table label-warning'><a onclick='updateState(" + row.id + ")' data-toggle=\"modal\" data-target=\"#updateState\" style='color: white; cursor:default'>激活</a></div>"
+       }
 }
 //激活账号
 function updateState(){
@@ -561,20 +569,19 @@ function updateState(){
 //初始化表单元素的值
 function init_form(){
     $('#userName').val("");
-    $('#eMail').val("");
+    //$('#eMail').val("");
+    $('#orgPhone').val("");
     $('#orgPhone').val("");
     $('#orgName').val("");
     $('#sortNum').val("");
-    $('#userId').val("");
+    $('#userPwd').val("");
 }
 
 //初始化详情元素值
 function init_info(){
-    $('#genusId').val("").attr('data-original-title',"");
-    $('#genusNameCh-info').val("").attr('data-original-title',"");
-    $('#genusNameEn-info').val("").attr('data-original-title',"");
-    $('#genusNameLd-info').val("").attr('data-original-title',"");
-    $('#genusNameOth-info').val("").attr('data-original-title',"");
-    $('#sortNum-info').val("").attr('data-original-title',"");
-    $('#genusDesc-info').val("").attr('data-original-title',"");
+    $('#userId').val("").attr('data-original-title',"");
+    $('#userName-info').val("").attr('data-original-title',"");
+    $('#orgName-info').val("").attr('data-original-title',"");
+    $('#orgPhone-info').val("").attr('data-original-title',"");
+
 }

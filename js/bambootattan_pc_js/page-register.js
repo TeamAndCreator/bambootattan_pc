@@ -55,7 +55,7 @@ $(function () {
                         message: '密码长度必须在6到30之间'
                     },
                     different: {//不能和用户名相同
-                        field: 'loginName',//需要进行比较的input name值
+                        field: 'userName',//需要进行比较的input name值
                         message: '不能和用户名相同'
                     },
                     regexp: {
@@ -64,7 +64,7 @@ $(function () {
                     }
                 }
             },
-            userRepwd: {
+            userReped: {
                 message: '密码无效',
                 validators: {
                     notEmpty: {
@@ -76,11 +76,11 @@ $(function () {
                         message: '用户名长度必须在6到30之间'
                     },
                     identical: {//相同
-                        field: 'password',
+                        field: ' userPwd',
                         message: '两次密码不一致'
                     },
                     different: {//不能和用户名相同
-                        field: 'loginName',
+                        field: 'userName',
                         message: '不能和用户名相同'
                     },
                     regexp: {//匹配规则
