@@ -72,7 +72,7 @@ function init_table(){
             {
                 field:'',//数据列
                 title:'操作',//数据列名称
-                width:'80px',
+                width:'90px',
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
@@ -682,7 +682,7 @@ function deles() {
                 if (result) {   //确认
                     var ids=[]; //选中数据的genusId数组
                     for(var i=0;i<selectedItems.length;i++){
-                        //循环遍历选中的数据并将genusId放入到ids数组中
+                        //循环遍历选中的数据并将leafId放入到ids数组中
                         ids.push(selectedItems[i].leafId);
                     }
                     $.ajax({    //批量删除

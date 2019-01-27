@@ -571,12 +571,11 @@ function init_form(){
     $('#userName').val("");
     //$('#eMail').val("");
     $('#orgPhone').val("");
-    $('#orgPhone').val("");
+   // $('#orgPhone').val("");
     $('#orgName').val("");
     $('#sortNum').val("");
     $('#userPwd').val("");
 }
-
 //初始化详情元素值
 function init_info(){
     $('#userId').val("").attr('data-original-title',"");
