@@ -113,7 +113,7 @@ function init_table(){
             {
                 field:'',//数据列
                 title:'操作',//数据列名称
-                width:'80px',
+                width:'90px',
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
@@ -609,7 +609,7 @@ function save() {
                         data: formData,	    //数据
                         success: function (res) {	        //请求成功回调函数
                             if (res.code == 200) {
-                                console.log(3332)
+                                console.log(3332);
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',

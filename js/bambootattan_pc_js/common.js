@@ -1,6 +1,7 @@
-var baseUrl="http://47.104.26.79:8081";
+ baseUrl="http://47.104.26.79:8081";
 //var baseUrl="http://10.6.250.111:8080";
 //var baseUrl="http://192.168.0.29:8080";
+//var baseUrl="http://10.6.197.10:8080";
 //给body元素手动加上 modal-open
 var openModalClass=function () {
     $('body').addClass('modal-open');
@@ -61,4 +62,43 @@ $(function () {
             closeLoading();
         }
     });
+    //退出
+    $("#logout").on('click',logout);
 });
+ //退出
+ function logout() {
+     $.ajax({
+         url: baseUrl + '/user/logout/',		//请求路径
+         type: 'POST',			                    //请求方式
+         dataType: "JSON",		                //返回数据类型
+         contentType: 'application/json',
+         success: function (res) {
+             if (res.code === 200) {
+                 $.niftyNoty({
+                     type: 'success',
+                     icon: 'pli-like-2 icon-2x',
+                     message: '退出成功',
+                     container: 'floating',
+                     timer: 2000
+                 });
+                 window.location.href = "page-login.html";
+             } else if (res.code == 400) {
+                 window.location.href = '../../page-404.html';
+             }
+             else if (res.code == 505) {
+                 window.location.href = '../../page-500.html';
+             }
+             else {
+                 $.niftyNoty({
+                     type: 'danger',
+                     icon: 'pli-cross icon-2x',
+                     message: res.msg,
+                     container: 'floating',
+                     timer: 1000
+                 });
+             }
+         },
+         error: function (XMLHttpRequest, textStatus, errorThrown) {		//请求失败回调函数
+         }
+     });
+ }
