@@ -22,6 +22,7 @@ $(function(){
     //表单验证
     $('#registrationForm').bootstrapValidator();
     $('#demo-summernote').summernote();
+
 });
 //初始化表格
 function init_table(){

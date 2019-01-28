@@ -61,7 +61,7 @@ function init_table(){
             {
                 field:'',//数据列
                 title:'操作',//数据列名称
-                width:'80px',
+                width:'90px',
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
