@@ -69,12 +69,13 @@ $(function () {
  //退出
  function logout() {
      $.ajax({
-         url: baseUrl + '/user/logout/',		//请求路径
+         url: baseUrl + '/user/logout',		//请求路径
          type: 'POST',			                    //请求方式
          dataType: "JSON",		                //返回数据类型
          contentType: 'application/json',
          success: function (res) {
              if (res.code === 200) {
+                 console.log(3222);
                  $.niftyNoty({
                      type: 'success',
                      icon: 'pli-like-2 icon-2x',
