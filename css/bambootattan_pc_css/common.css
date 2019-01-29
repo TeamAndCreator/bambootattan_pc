@@ -259,7 +259,7 @@
 /*}*/
 
 table{
-     width:100px;
+     /*width:100px;*/
      table-layout:fixed;/* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 */
  }
 td{

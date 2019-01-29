@@ -1,16 +1,11 @@
 var queryPageUrl='';
-var querySpecPageUrl='';
 $(function(){
     $('.username').html('欢迎您，'+ $.cookie('BAM_USERNAME'));
     queryPageUrl = baseUrl+'/culm/findAllQuery';
-    querySpecPageUrl = baseUrl+'/spec/findAllQuery';
-    // //
-    // $('#btn_delete').on('click',deles);
+    init_page();
     //初始化表格
     init_table();
 
-    // //表单验证
-    // $('#registrationForm').bootstrapValidator();
 });
 //初始化表格
 function init_table(){
@@ -18,7 +13,7 @@ function init_table(){
         url:queryPageUrl,//数据源，请求后台的路径
         //data:dataSoure,//数据源，json数据
         toolbar:'#btn_area',//按钮组
-        search:true,//可以搜索
+        search:false,//可以搜索
         showRefresh:true,//可以刷新
         showToggle:true,//可以视图切换
         showColumns:true,//可以选择列
@@ -177,33 +172,19 @@ function init_table(){
     });
 
 }
-//初始化表单元素的值
-function init_form(){
-    $('#spec').val("");
-    $('#culmId').val("");
-    $('#specId').val("");
-    $('#genusId').val("");
-    $('#culmHeight').val("");
-    $('#culmDiameter').val("");
-    $('#culmColor').val("");
-    $('#culmTop').val("");
-    $('#culmStem').val("");
-    $('#internodeLength').val("");
-    $('#internodeShape').val("");
-    $('#internodeAerialRoot').val("");
-    $('#internodeBack').val("");
-    $('#internodeCulmWall').val("");
-    $('#youngStemBack').val("");
-    $('#youngStemPowder').val("");
-    $('#culmNode').val("");
+
+function init_page(){
+    $('#datepicker input').datepicker({
+        format:"yyyy-mm-dd",        //日期格式
+        language:  'zh-CN',         //语言
+        todayBtn:  true,           //今日日期按钮
+        autoclose: true,           //自动关闭
+        todayHighlight: true,      //高亮今日日期
+        maxViewMode: 2,             //最大日期视图
+        minViewMode: 0,             //最小日期视图
+        startView: 0,               //开始日期视图
+        forceParse: 0,
+        clearBtn:true,              //清除按钮
+    });
 }
-$('.form_date').datetimepicker({
-    language:  'CN',
-    weekStart: 1,
-    todayBtn:  1,   //今日日期按钮
-    autoclose: 1,   //自动关闭
-    todayHighlight: 1,   //高亮今日日期
-    startView: 2,       //从日期视图开始
-    minView: 2,
-    forceParse: 0
-});
+

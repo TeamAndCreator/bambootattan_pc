@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../../img/image/favicon.ico"/>
-    <title>竹竿表</title>
-
+    <title>系统日志</title>
 
     <!--STYLESHEET-->
     <!--=================================================-->
@@ -14,10 +13,8 @@
     <!--Open Sans Font [ OPTIONAL ]-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 
-
     <!--Bootstrap Stylesheet [ REQUIRED ]-->
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
-
 
     <!--Nifty Stylesheet [ REQUIRED ]-->
     <link href="../../css/nifty.min.css" rel="stylesheet">
@@ -26,7 +23,20 @@
     <!--Nifty Premium Icon [ DEMONSTRATION ]-->
     <link href="../../css/demo/nifty-demo-icons.min.css" rel="stylesheet">
 
+    <!--Bootstrap Select [ OPTIONAL ]-->
+    <link href="../../plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
 
+    <!--noUiSlider [ OPTIONAL ]-->
+    <link href="../../plugins/noUiSlider/nouislider.min.css" rel="stylesheet">
+
+    <!--Select2 [ OPTIONAL ]-->
+    <link href="../../plugins/select2/css/select2.min.css" rel="stylesheet">
+
+    <!--Bootstrap Timepicker [ OPTIONAL ]-->
+    <link href="../../plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+
+    <!--Bootstrap Datepicker [ OPTIONAL ]-->
+    <link href="../../plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
     <!--Demo [ DEMONSTRATION ]-->
     <link href="../../css/demo/nifty-demo.min.css" rel="stylesheet">
 
@@ -41,8 +51,7 @@
 
     <!--<!- bootstrap-table-fixed-columns [ OPTIONAL ]&ndash;&gt;-->
     <link href="../../plugins/bootstrap-table/extensions/fixed-columns/bootstrap-table-fixed-columns.css" rel="stylesheet">
-    <!--X-editable [ OPTIONAL ]-->
-    <link href="../../plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">
+
     <!--Summernote [ OPTIONAL ]-->
     <link href="../../plugins/summernote/summernote.min.css" rel="stylesheet">
 
@@ -60,34 +69,39 @@
     <link id="theme" href="../../css/themes/type-c/theme-lime.min.css" rel="stylesheet">
 
 
-
-
-    <!--JAVASCRIPT-->
-    <!--=================================================-->
-
-    <!--Pace - Page Load Progress Par [OPTIONAL]-->
-    <!-- bambootattan_pc_js common -->
-
     <link href="../../plugins/pace/pace.min.css" rel="stylesheet">
 
     <script src="../../plugins/pace/pace.min.js"></script>
 
+    <!--Switchery [ OPTIONAL ]-->
+    <script src="../../plugins/switchery/switchery.min.js"></script>
 
-    <!--jQuery [ REQUIRED ]-->
+
+    <!--noUiSlider [ OPTIONAL ]-->
+    <script src="../../plugins/noUiSlider/nouislider.min.js"></script>
+
+
+   <!--jQuery [ REQUIRED ]-->
     <script src="../../js/jquery-2.2.4.min.js"></script>
     <script src="../../js/jquery.cookie.js"></script>
     <script src="../../js/bambootattan_pc_js/common.js"></script>
     <!--BootstrapJS [ RECOMMENDED ]-->
     <script src="../../js/bootstrap.min.js"></script>
 
+    <!--Select2 [ OPTIONAL ]-->
+    <script src="../../plugins/select2/js/select2.min.js"></script>
+
+    <!--Bootstrap Timepicker [ OPTIONAL ]-->
+    <script src="../../plugins/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
+
+    <!--Bootstrap Datepicker [ OPTIONAL ]-->
+    <script src="../../plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+
+    <!--Bootstrap Datepicker [ OPTIONAL ]-->
+    <script src="../../plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
 
     <!--NiftyJS [ RECOMMENDED ]-->
     <script src="../../js/nifty.min.js"></script>
-
-
-
-
-
 
     <!--=================================================-->
 
@@ -105,7 +119,6 @@
     <!--X-editable [ OPTIONAL ]-->
     <script src="../../plugins/x-editable/js/bootstrap-editable.min.js"></script>
 
-    <script src="../../plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
     <!--Bootstrap Table [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/bootstrap-table.min.js"></script>
     <!-- bootbox -->
@@ -116,16 +129,10 @@
     <script src="../../plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
     <!-- Bootstrap Table Extension bootstrap-table-fixed-columns [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/extensions/fixed-columns/bootstrap-table-fixed-columns.js"></script>
-    <!--Summernote [ OPTIONAL ]-->
-    <!--<script src="../../plugins/summernote/summernote.min.js"></script>-->
-    <!--=================================================-->
 
-    <!--Bootstrap Datepicker [ OPTIONAL ]-->
-    <script src="../../plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
     <!--Dropzone [ OPTIONAL ]-->
     <script src="../../plugins/dropzone/dropzone.min.js"></script>
     <!--Form File Upload [ SAMPLE ]-->
-    <!--<script src="../../js/demo/form-file-upload.js"></script>-->
     <script src="../../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
     <!-- bootstrap-validator [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
@@ -251,31 +258,45 @@
                     </div>
                     <div class="panel-body">
 
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="dtp_input1" class="col-md-1 control-label">开始时间</label>
-                                <div id="startdiv" class="input-group date form_date col-md-3" data-date="2017-11-01" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1" data-link-format="yyyy-mm-dd">
-                                    <input input="start" class="form-control" size="16" type="text" placeholder="请选择开始时间" value="" readonly>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                                </div>
-                                <input type="hidden" id="dtp_input1" value="" /><br/>
+                        <!--<form role="form">-->
+                            <!--<div class="form-group">-->
+                                <!--<label for="dtp_input1" class="col-md-1 control-label">开始时间</label>-->
+                                <!--<div id="startdiv" class="input-group date form_date col-md-3" data-date="2017-11-01" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1" data-link-format="yyyy-mm-dd">-->
+                                    <!--<input input="start" class="form-control" size="16" type="text" placeholder="请选择开始时间" value="" readonly>-->
+                                    <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
+                                    <!--<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>-->
+                                <!--</div>-->
+                                <!--<input type="hidden" id="dtp_input1" value="" /><br/>-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
+                                <!--<label for="dtp_input2" class="col-md-1 control-label">结束时间</label>-->
+                                <!--<div id="endDiv" class="input-group date form_date col-md-3" data-date="2018-11-01" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">-->
+                                    <!--<input id="end" class="form-control" size="16" type="text" placeholder="请选择结束时间" value="" readonly>-->
+                                    <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
+                                    <!--<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>-->
+                                <!--</div>-->
+                                <!--<input type="hidden" id="dtp_input2" value="" /><br/>-->
                             <!--</div>-->
                             <!--<div class="form-group">-->
-                                <label for="dtp_input2" class="col-md-1 control-label">结束时间</label>
-                                <div id="endDiv" class="input-group date form_date col-md-3" data-date="2018-11-01" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                                    <input id="end" class="form-control" size="16" type="text" placeholder="请选择结束时间" value="" readonly>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+
+                                <!--<button class="btn btn-success" type="submit">查询</button>-->
+                            <!--</div>-->
+
+                        <!--</form>-->
+                        <div class="form-group">
+                            <label for="datepicker" class="col-sm-12 col-md-1 form-control-static">时间查询</label>
+                            <div class="col-sm-12 col-md-3">
+                                <div  class="input-daterange input-group" id="datepicker">
+                                    <input type="text" class="form-control" name="start" placeholder="开始时间"/>
+                                    <span class="input-group-addon">至</span>
+                                    <input type="text" class="form-control" name="end" placeholder="结束时间"/>
                                 </div>
-                                <input type="hidden" id="dtp_input2" value="" /><br/>
                             </div>
-                            <div class="form-group">
-
-                                <button class="btn btn-success" type="submit">查询</button>
+                            <div class="col-sm-12 col-md-1">
+                                <button id="btn_query" class="btn btn-success" type="button">查询</button>
                             </div>
+                        </div>
 
-                        </form>
                         <table id="data_table" class="table"></table>
                     </div>
                 </div>
@@ -457,7 +478,6 @@
 
 
 
-</div>
 </div>
 <script src="../../js/bambootattan_pc_js/monitoring/log.js"></script>
 </body>
