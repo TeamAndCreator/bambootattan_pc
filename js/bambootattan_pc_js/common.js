@@ -7,7 +7,6 @@
 var openModalClass=function () {
     $('body').addClass('modal-open');
 }
-
 var openLoading=function () {
     var _PageHeight = document.documentElement.clientHeight,
         _PageWidth = document.documentElement.clientWidth;
@@ -55,6 +54,7 @@ var closeLoading=function () {
     $('#mainFckLoading').remove();
 }
 $(function () {
+
     $.ajaxSetup({
         beforeSend: function(xhr,request){
             openLoading();
@@ -64,18 +64,21 @@ $(function () {
         }
     });
     //退出
-    $("#logout").on('click',logout);
+
 });
+$("#logout").on('click',logout);
  //退出
  function logout() {
+     console.log(123);
      $.ajax({
          url: baseUrl + '/user/logout',		//请求路径
          type: 'POST',			                    //请求方式
          dataType: "JSON",		                //返回数据类型
          contentType: 'application/json',
+
          success: function (res) {
+            // console.log("res:"+res);
              if (res.code === 200) {
-                 console.log(3222);
                  $.niftyNoty({
                      type: 'success',
                      icon: 'pli-like-2 icon-2x',
@@ -91,6 +94,7 @@ $(function () {
                  window.location.href = '../../page-500.html';
              }
              else {
+
                  $.niftyNoty({
                      type: 'danger',
                      icon: 'pli-cross icon-2x',
@@ -105,4 +109,3 @@ $(function () {
      });
  }
 
- //修改密码

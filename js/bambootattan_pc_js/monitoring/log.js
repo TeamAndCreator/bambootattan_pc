@@ -1,11 +1,10 @@
 var queryPageUrl='';
 $(function(){
     $('.username').html('欢迎您，'+ $.cookie('BAM_USERNAME'));
-    queryPageUrl = baseUrl+'/culm/findAllQuery';
+    queryPageUrl = baseUrl+'/log/findAllQuery';
     init_page();
     //初始化表格
     init_table();
-
 });
 //初始化表格
 function init_table(){
@@ -170,7 +169,6 @@ function init_table(){
             // { field:'culmId',title:'culmId',visible:false }//隐藏不显示
         ]
     });
-
 }
 
 function init_page(){

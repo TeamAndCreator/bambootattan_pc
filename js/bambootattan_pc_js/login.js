@@ -76,6 +76,7 @@ function login_form_submit(){
             return false;
         }
     });
+
     $.ajax({
         cache: false,
         type: 'post',

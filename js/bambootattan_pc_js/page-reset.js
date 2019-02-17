@@ -88,7 +88,6 @@ function changePassword(){
         data: formData,	                    //数据
         //contentType: 'application/json',
         success:function(res){
-            console.log(33322);
             if(res.code == 200){
                 $.niftyNoty({
                     type: 'success',
