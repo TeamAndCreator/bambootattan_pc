@@ -60,10 +60,6 @@ function init_table(){
                 cellStyle:function(value,row,index,field) {
                     return {css: {'min-width': '80px'}};
                 },
-                formatter:function(value,row,index){
-                    return row.spec.specNameCh;
-
-                }
             },
             {
                 field:'private String optUser',//数据列

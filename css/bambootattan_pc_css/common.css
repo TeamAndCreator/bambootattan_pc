@@ -271,3 +271,7 @@ td{
     -moz-text-overflow: ellipsis;
     -webkit-text-overflow: ellipsis;
 }
+
+/*html,body{*/
+    /*cursor: url('../../img/image/图片1.png'),auto;*/
+/*}*/

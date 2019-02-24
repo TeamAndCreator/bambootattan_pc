@@ -64,9 +64,9 @@ $(function () {
         }
     });
     //退出
-
+    $("#logout").on('click',logout);
 });
-$("#logout").on('click',logout);
+// $("#logout").on('click',logout);
  //退出
  function logout() {
      console.log(123);
@@ -94,7 +94,6 @@ $("#logout").on('click',logout);
                  window.location.href = '../../page-500.html';
              }
              else {
-
                  $.niftyNoty({
                      type: 'danger',
                      icon: 'pli-cross icon-2x',

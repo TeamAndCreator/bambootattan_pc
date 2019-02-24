@@ -161,7 +161,6 @@ function createCode(){
     checkCode.value = code;
 }
 
-
 function keyEnter(e){
     var e = e||event;
     if(e.keyCode == 13){
