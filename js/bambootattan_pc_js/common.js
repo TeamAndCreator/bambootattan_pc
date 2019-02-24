@@ -108,3 +108,9 @@ $(function () {
      });
  }
 
+ //根据名称获取地址栏的参数值
+ var getUrlParam = function (name) {
+     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if (r != null) return unescape(r[2]); return null;
+ }
