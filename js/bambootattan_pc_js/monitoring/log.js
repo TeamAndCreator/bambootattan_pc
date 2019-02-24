@@ -53,17 +53,17 @@ function init_table(){
             },
 
             {
-                field:' private String optUrl',//数据列
+                field:'optUrl',//数据列
                 title:' 操作人地址',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
                     return {css: {'min-width': '80px'}};
-                },
+                }
             },
             {
-                field:'private String optUser',//数据列
+                field:'optUser',//数据列
                 title:'操作人登录名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -73,7 +73,7 @@ function init_table(){
                 }
             },
             {
-                field:'private String optTime',//数据列
+                field:'optTime',//数据列
                 title:'操作时间',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -83,7 +83,7 @@ function init_table(){
                 }
             },
             {
-                field:' private String beginOptTime',//数据列
+                field:'beginOptTime',//数据列
                 title:'操作时间（查询上限）',//数据列名称
                 visible:false,
                 sortable:true,//可排序
@@ -94,7 +94,7 @@ function init_table(){
                 }
             },
             {
-                field:' private String endOptTime',//数据列
+                field:'endOptTime',//数据列
                 title:'操作时间（查询下限）',//数据列名称
                 sortable:true,//可排序
                 visible:false,
@@ -107,7 +107,7 @@ function init_table(){
 
 
             {
-                field:'private String optIp',//数据列
+                field:'optIp',//数据列
                 title:'操作IP地址',//数据列名称
                 sortable:true,//可排序
                 visible:false,
@@ -129,7 +129,7 @@ function init_table(){
             //     }
             // },
             {
-                field:'private String requestParam',//数据列
+                field:'requestParam',//数据列
                 title:' 请求参数',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -163,7 +163,6 @@ function init_table(){
                     return{css:{'min-width':'80px'}};
                 }
             },*/
-            // { field:'culmId',title:'culmId',visible:false }//隐藏不显示
         ]
     });
 }
