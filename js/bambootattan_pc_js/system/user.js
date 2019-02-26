@@ -86,15 +86,26 @@ function init_table(){
                 }
             },
             {
-                field:'role',//数据列
-                title:'角色',//数据列名称
+                field:'createTime',//数据列
+                title:'创建时间',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
                     return{ css:{'min-width':'80px'}};
                 }
             },
+            // {
+            //     field:'role',//数据列
+            //     title:'角色',//数据列名称
+            //     sortable:true,//可排序
+            //     align:'center',//水平居中
+            //     valign:'middle',//垂直居中
+            //     cellStyle:function(value,row,index,field){
+            //         return{ css:{'min-width':'80px'}};
+            //     }
+            // },
             // {
             //     field:'eMail',//数据列
             //     title:'电子邮箱',//数据列名称
@@ -175,6 +186,7 @@ function save() {
                 var userId=$("#userId").val();
                 var userAcct=$("#userAcct").val();
                 var userName = $("#userName").val();
+                // var createTime=$("createTime").val();
                 var userPwd = $("#userPwd").val();
                 var userReped=$("#userReped").val();
                 //var eMail=$("#eMail").val();
@@ -189,6 +201,7 @@ function save() {
                     "userId":userId,
                     "userAcct":userAcct,
                     "userName": userName,
+                    // "createTime":createTime,
                     "userPwd": userPwd,
                     "userReped":userReped,
                     //"eMail":eMail,
@@ -298,6 +311,8 @@ function edit(id) {
                 $('#userId').val(res.data.userId);
                 $('#userName').val(res.data.userName);
                 // $('#eMail').val(res.data.eMail);
+                // $('#userPwd').val(res.data.userPwd);//修改时候密码应该重新输入
+                $('#createTime').val(res.data.createTime);
                 $('#orgName').val(res.data.orgName);
                 $('#orgPhone').val(res.data.orgPhone);
                 $('#sortNum').val(res.data.sortNum);
@@ -476,6 +491,7 @@ function check(id) {
                 $('#userName-info').html(res.data.userName).attr('data-original-title',res.data.userName);
                 $('#eMail-info').html(res.data.eMail).attr('data-original-title',res.data.eMail);
                 $('#orgName-info').html(res.data.orgName).attr('data-original-title',res.data.orgName);
+                $('#createTime-info').html(res.data.createTime).attr('data-original-title',res.data.createTime);
                 $('#orgPhone-info').html(res.data.orgPhone).attr('data-original-title',res.data.orgPhone);
                 $('#sortNum-info').html(res.data.sortNum).attr('data-original-title',res.data.sortNum);
                 $('#exampleModal-info').modal('show');
@@ -571,6 +587,7 @@ function init_form(){
     $('#userName').val("");
     //$('#eMail').val("");
     $('#orgPhone').val("");
+    $('#createTime').val();
    // $('#orgPhone').val("");
     $('#orgName').val("");
     $('#sortNum').val("");
@@ -582,5 +599,5 @@ function init_info(){
     $('#userName-info').val("").attr('data-original-title',"");
     $('#orgName-info').val("").attr('data-original-title',"");
     $('#orgPhone-info').val("").attr('data-original-title',"");
-
+    $('#createTime-info').val("").attr('data-original-title',"");
 }

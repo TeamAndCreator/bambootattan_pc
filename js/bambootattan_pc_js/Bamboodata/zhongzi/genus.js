@@ -483,7 +483,6 @@ function check(id) {
             }
         },
         error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
-
         }
     });
 }
@@ -497,12 +496,10 @@ function init_form(){
     $('#genusDesc').val("");
     $('#genusId').val("");
     $('#demo-summernote').summernote('code',"");
-
 }
 
 //初始化详情元素值
 function init_info(){
-
     $('#genusId').val("").attr('data-original-title',"");
     $('#genusNameCh-info').val("").attr('data-original-title',"");
     $('#genusNameEn-info').val("").attr('data-original-title',"");
@@ -510,8 +507,6 @@ function init_info(){
     $('#genusNameOth-info').val("").attr('data-original-title',"");
     $('#sortNum-info').val("").attr('data-original-title',"");
     $('#genusDesc-info').val("").attr('data-original-title',"");
-
-
 }
 //修改密码富文本的高度
 function init_sunmmernote(){

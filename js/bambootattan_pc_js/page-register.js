@@ -76,7 +76,7 @@ $(function () {
                         message: '用户名长度必须在6到30之间'
                     },
                     identical: {//相同
-                        field: ' userPwd',
+                        field: 'userPwd',
                         message: '两次密码不一致'
                     },
                     different: {//不能和用户名相同
@@ -121,7 +121,7 @@ function submit(){
         //contentType: 'application/json',
         success: function (res) {    // 请求成功后的回调函数，其中的参数data为controller返回的map,也就是说,@ResponseBody将返回的map转化为JSON格式的数据，然后通过data这个参数取JSON数据中的值
             //res.code=400;
-            if (res.code == 200) {
+            if (res.code ==200) {
                 $.niftyNoty({
                     type: 'success',
                     icon: 'pli-like-2 icon-2x',

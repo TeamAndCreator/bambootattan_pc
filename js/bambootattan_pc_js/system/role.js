@@ -166,6 +166,7 @@ function save() {
                 var canDel = $('#canDel').val();
                 var sortNum = $('#sortNum').val();
                 // var genusDesc = $('#genusDesc').val();
+                //将取得值放在formData里
                 var formData={
                     "roleId": roleId,
                     "roleName": roleName,
@@ -468,7 +469,6 @@ function check(id) {
             }
         },
         error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
-
         }
     });
 }

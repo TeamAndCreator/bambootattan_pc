@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<!--Open Sans Font [ OPTIONAL ]-->
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/bambootattan_pc_css/sousupage.css">
+	<link rel="stylesheet" href="css/bambootattan_pc_css/common.css">
+	<!--Bootstrap Stylesheet [ REQUIRED ]-->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!--Nifty Stylesheet [ REQUIRED ]-->
+	<link href="css/nifty.min.css" rel="stylesheet">
+	<link id="theme" href="css/themes/type-c/theme-lime.css" rel="stylesheet">
+	<!--jQuery [ REQUIRED ]-->
+	<script src="js/jquery-2.2.4.min.js"></script>
+	<!--BootstrapJS [ RECOMMENDED ]-->
+	<script src="js/bootstrap.min.js"></script>
+	<script language="JavaScript" type="text/javascript">
+
+        function startTime() {
+            var today = new Date();//定义日期对象
+            var yyyy = today.getFullYear();//通过日期对象的getFullYear()方法返回年
+            var MM = today.getMonth() + 1;//通过日期对象的getMonth()方法返回年
+            var dd = today.getDate();//通过日期对象的getDate()方法返回年
+            var hh = today.getHours();//通过日期对象的getHours方法返回小时
+            var mm = today.getMinutes();//通过日期对象的getMinutes方法返回分钟
+            var ss = today.getSeconds();//通过日期对象的getSeconds方法返回秒
+            // 如果分钟或小时的值小于10，则在其值前加0，比如如果时间是下午3点20分9秒的话，则显示15：20：09
+            MM = checkTime(MM);
+            dd = checkTime(dd);
+            mm = checkTime(mm);
+            ss = checkTime(ss);
+            var day; //用于保存星期（getDay()方法得到星期编号）
+            if (today.getDay() == 0) day = "星期日 "
+            if (today.getDay() == 1) day = "星期一 "
+            if (today.getDay() == 2) day = "星期二 "
+            if (today.getDay() == 3) day = "星期三 "
+            if (today.getDay() == 4) day = "星期四 "
+            if (today.getDay() == 5) day = "星期五 "
+            if (today.getDay() == 6) day = "星期六 "
+            document.getElementById('nowDateTimeSpan').innerHTML = yyyy + "-" + MM + "-" + dd + " " + hh + ":" + mm + ":" + ss + "   " + day;
+            setTimeout('startTime()', 1000);//每一秒中重新加载startTime()方法
+        }
+
+        function checkTime(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+
+	</script>
+	<script src="js/bambootattan_pc_js/common.js"></script>
+	<script src="js/bambootattan_pc_js/search.js"></script>
+</head>
+<body onload="startTime();" style="background-color: #8BC34A;">
+
+<!-- 时间-->
+<div class="htop" style="position:fixed;width:100%;">
+	<div class="htop-l">
+		<span id="nowDateTimeSpan"></span>
+	</div>
+	<div class="htop-r">
+		<ul class="list-inline">
+			<li>
+				<a href="page-login.html">登录</a>
+			</li>
+			<li>
+				<a href="page-register.html">注册</a>
+			</li>
+		</ul>
+
+	</div>
+</div>
+
+
+
+
+<div class="container pad-no">
+	<div class="pad-top pad-btm container" style="margin-top:40px;position:fixed;z-index: 9999;background-color: #ecf0f5;">
+		<div class="input-group">
+			<input id="kw" type="text" class="form-control" placeholder="搜你想搜的" size="30" baiduSug="1" style="width:600px;">
+			<button id="bnt_search"  class="btn btn-success">检索</button>
+		</div>
+	</div>
+</div>
+
+
+<div class="container pad-btm pad-top" style="margin-top:100px;background-image: url(img/image/bk_zhi_01.jpg)">
+
+	<!--Page content-->
+	<!--===================================================-->
+	<div id="page-content">
+
+		<div class="panel">
+			<div class="panel-body">
+				<div class="pad-hor mar-top">
+					<h2 class="text-thin mar-no">发现<span id="search_count">0</span>个结果: <i id="search_content" class="text-primary text-normal"></i></h2>
+					<small>响应时间:  <span id="search_time" style="padding: 0 10px">0.0</span> 秒</small>
+				</div>
+
+				<hr>
+
+				<ul class="list-group bord-no">
+					<li class="list-group-item list-item-lg">
+						<div class="media-heading mar-no">
+							<a class="h4 text-primary" href="#">Theme Features</a>
+						</div>
+						<a class="btn-link text-success box-inline" href="#">http://www.example.com/nifty/admin</a>
+						<p class="text-sm">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+					</li>
+					<li class="list-group-item list-item-lg">
+						<div class="media-heading mar-no">
+							<a class="h4 text-primary" href="#">Nifty - Responsive Admin Template</a>
+						</div>
+						<a class="btn-link text-success box-inline" href="#">http://www.example.com/nifty/admin</a>
+						<p class="text-sm">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+					</li>
+					<li class="list-group-item list-item-lg media">
+						<div class="pull-left">
+							<img class="img-md" alt="Image" src="img/image/1.jpg">
+						</div>
+						<div class="media-body">
+							<div class="media-heading">
+								<a class="h4 text-primary mar-no" href="#">Beautiful Nature | Landscapes Wallpapers</a>
+							</div>
+							<a class="btn-link text-success box-inline" href="#">http://www.example.com/nifty/admin</a>
+							<p class="text-sm">Lorem ipsum dolor sit amet, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+						</div>
+					</li>
+					<li class="list-group-item list-item-lg media">
+						<div class="pull-left">
+							<img class="img-md" alt="Image" src="img/image/1.jpg">
+						</div>
+						<div class="media-body">
+							<div class="media-heading">
+								<a class="h4 text-primary mar-no" href="#">Beautiful Nature | Landscapes Wallpapers</a>
+							</div>
+							<a class="btn-link text-success box-inline" href="#">http://www.example.com/nifty/admin</a>
+							<p class="text-sm">Lorem ipsum dolor sit amet, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+						</div>
+					</li>
+					<li class="list-group-item list-item-lg media">
+						<div class="pull-left">
+							<img class="img-md" alt="Image" src="img/image/1.jpg">
+						</div>
+						<div class="media-body">
+							<div class="media-heading">
+								<a class="h4 text-primary mar-no" href="#">Beautiful Nature | Landscapes Wallpapers</a>
+							</div>
+							<a class="btn-link text-success box-inline" href="#">http://www.example.com/nifty/admin</a>
+							<p class="text-sm">Lorem ipsum dolor sit amet, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+						</div>
+					</li>
+
+
+					<li class="list-group-item list-item-lg">
+						<div class="media-heading">
+							<a class="h4 text-primary mar-no" href="#">Tags</a>
+						</div>
+						<a class="btn-link text-success box-inline" href="#">http://www.example.com/nifty/admin</a>
+						<p class="text-sm">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.</p>
+
+						<div class="pad-btm">
+							<small class="text-muted">Tags:</small>
+							<a class="label label-mint" href="#">Lorem</a>
+							<a class="label label-purple" href="#">Ipsum</a>
+							<a class="label label-success" href="#">Dolor</a>
+						</div>
+					</li>
+					<li class="list-group-item list-item-lg">
+						<div class="media-heading">
+							<a class="h4 text-primary mar-no" href="#">Trending Topics | Twitter</a>
+						</div>
+						<a class="btn-link text-success box-inline" href="#">http://www.example.com/nifty/admin</a>
+						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. </p>
+					</li>
+					<li class="list-group-item list-item-lg">
+						<div class="media-heading">
+
+							<a class="h4 text-primary mar-no" href="#"><span class="label label-primary">New</span> Label</a>
+						</div>
+						<a class="btn-link text-success box-inline" href="#">http://www.example.com/nifty/admin</a>
+						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>
+					</li>
+				</ul>
+				<hr class="hr-wide">
+
+				<!--Pagination-->
+				<div class="text-center">
+					<ul class="pagination mar-no">
+						<li class="disabled"><a class="demo-pli-arrow-left" href="#"></a></li>
+						<li class="active"><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><span>...</span></li>
+						<li><a href="#">20</a></li>
+						<li><a class="demo-pli-arrow-right" href="#"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+
+	</div>
+	<!--===================================================-->
+	<!--End page content-->
+</div>
+
+
+</body>
+</html>
