@@ -43,7 +43,6 @@ $(function () {
                     }
                 }
             },
-
             renew_Password: {
                 validators: {
                     notEmpty: {
@@ -64,35 +63,12 @@ $(function () {
                         message: '密码由数字字母下划线和.组成'
                     }
                 }
-            },
-
-
-            // renew_Password: {
-            //     message: '密码无效',
-            //     validators: {
-            //         notEmpty: {
-            //             message: '确认密码不能为空'
-            //         },
-            //         stringLength: {
-            //             min: 6,
-            //             max: 30,
-            //             message: '用户名长度必须在6到30之间'
-            //         },
-            //         identical: {//相同
-            //             field: 'password',
-            //             message: '两次密码不一致'
-            //         },
-            //         regexp: {//匹配规则
-            //             regexp: /^[a-zA-Z0-9_\.]+$/,
-            //             message: '密码由数字字母下划线和.组成'
-            //         }
-            //     }
-            // }
+            }
         }
     });
 });
 function init_page(){
-    $('#userName').val( $.cookie('BAM_USERNAME'));
+    $('#userName').val( $.cookie('BAM_USERNAME'));//赋值  取cookie里保存的用户名给userName
 }
 function changePassword(){
     // var userId = $('#userId').val();
