@@ -51,17 +51,6 @@ function init_table(){
                 checkbox:true,//有复选框
                 field:'checkbox'//数据列
             },
-
-            {
-                field:'optUrl',//数据列
-                title:' 操作人地址',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field) {
-                    return {css: {'min-width': '80px'}};
-                }
-            },
             {
                 field:'optUser',//数据列
                 title:'操作人登录名',//数据列名称
@@ -149,7 +138,16 @@ function init_table(){
                 }
             },
 
-
+            {
+                field:'optUrl',//数据列
+                title:' 操作人地址',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
+                }
+            },
 
             /*
             {

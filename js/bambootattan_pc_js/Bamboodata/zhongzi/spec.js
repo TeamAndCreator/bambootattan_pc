@@ -580,10 +580,10 @@ function save() {
                 formData.append("specNameLd", specNameLd);
                 formData.append("specNameOth", specNameOth);
                 formData.append("specCode", specCode);
-                formData.append( "specBarCode", specBarCode);
+                formData.append("specBarCode", specBarCode);
                 formData.append("specDna", specDna);
-                formData.append( "specDomestic", specDomestic);
-                formData.append( "specForeign", specForeign);
+                formData.append("specDomestic", specDomestic);
+                formData.append("specForeign", specForeign);
                 formData.append("specVidio", specVidio);
                 formData.append("specImgs", specImgs);
                 formData.append("specDesc", specDesc);
@@ -606,7 +606,7 @@ function save() {
                         dataType: 'JSON',
                         processData: false,
                         //contentType: false,
-                        data: formData,	    //数据
+                        data: formData,	                    //数据
                         success: function (res) {	        //请求成功回调函数
                             if (res.code == 200) {
                                 console.log(3332);
@@ -696,6 +696,7 @@ function edit(id) {
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
             if(res.code==200){
+                //将后台传的值渲染出来
                $('#demo-summernote').summernote('code',res.data.specDesc);
                 $('#specId').val(res.data.specId);
                 $('#specNameCh').val(res.data.specNameCh);
@@ -733,7 +734,6 @@ function edit(id) {
             }
         },
         error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
-
         }
     });
 }
@@ -864,7 +864,6 @@ function deles() {
                             }
                         },
                         error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
-
                         }
                     });
                 }else{  //取消
@@ -926,7 +925,6 @@ function check(id) {
             }
         },
         error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
-
         }
     });
 }
