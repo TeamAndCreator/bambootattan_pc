@@ -58,61 +58,17 @@
                     <div class="row" id="Bambootattan-home">
                         <h3><i class="ace-icon fa fa-hand-o-right blue"></i>首页</h3>
                         <blockquote>
-                            <code>opt:{title:'',overlay:.5,callback:null,drag:true,size:undefind,content:'',buttons:{'保存': ["btn-primary btnSave"],'取消': ["btn-default btnCancel", function (pop) { pop.close(); }]}}</code>
-                            <h4>参数说明：</h4>
-                            <p><span class="badge">必填</span><code>title:''</code>显示的标题</p>
-                            <p><code>overlay:0.5</code>弹窗透明度，默认为0.5</p>
-                            <p><code>drag:true</code>是否允许拖动，默认为true</p>
-                            <p><code>size:undefind</code>弹窗的尺寸，demo:{width:600,height:400} 表示弹窗设置为高400px，宽600px</p>
-                            <p><code>content:''</code>字符串、html、object</p>
-                            <h5>object配置如下</h5>
-                            <blockquote>
-                               <ul class="list-group">
-                                    <li class="list-group-item active"><code>{type:'view',url:'',method:'POST',data:undefind}</code></li>
-                                    <li class="list-group-item"><span class="bdage">必填</span><code>url:''</code>请求的url</li>
-                                    <li class="list-group-item"><code>method:'POST'</code>请求的方式，默认为Post</li>
-                                    <li class="list-group-item"><code>data:undefind</code>发送的数据</li>
-                                    <li class="list-group-item active"><code>{type:'datagrid',search:true,pagination:'',columns:'',outOperator:[],table:{}}</code></li>
-                                    <li class="list-group-item"><span class="bdage">必填</span><code>type:'datagrid'</code>表示使用datagrid作为弹窗内容</li>
-                                    <li class="list-group-item"><code>search:true</code>是否显示搜索按钮</li>
-                                    <li class="list-group-item">pagination、columns、outOperator、table等配置请参照 <a target="_blank" href="/index.html">分页插件</a> 的配置</li>
-                                </ul>
-                            </blockquote>
-                        </blockquote>
-                        <h2>Demo</h2>
-                        <blockquote>
-                            <pre><code>
-                global.Fn.Bambootattan-home({
-                    title: '弹窗示例',
-                    //size: { width: 1000 },
-                    content: {
-                        type: 'datagrid',
-                        table: { keyName: 'coupon_id' },
-                        columns: [
-                            { title: '利益代码', column: 'benefit_code' },
-                            { title: '利益名称', column: 'title',width:100 },
-                            { title: '前端名称', column: 'frontname' },
-                            { title: '利益类别', column: 'coupon_type' },
-                            { title: '使用平台', column: 'platform' },
-                            { title: '有效期类型', column: 'coupon_value' },
-                            { title: '数量限制', column: 'coupon_value' },
-                            { title: '剩余数量', column: 'coupon_value' },
-                            { title: '审核状态', column: 'coupon_value' }
-                        ],
-                        pagination: {
-                            url: '@Url.Content("~/DataServer/GetCoupone")',
-                            method: 'post',
-                            singleSelect: true
-                        }
-                    },
-                    buttons: {
-                        '保存': ["btn-primary btnSave", function ($pop) {
-                            console.log($pop.GetChecked());
-                            $pop.close(true);
-                        }]
-                    }
-                });
-                            </code></pre>
+
+                            <img class="col-sm-10" style="float: none;display: block;margin-left: auto;margin-right: auto;" src="img/image/helpimage/home.png"/>
+                            <p class="text-center bigger-120">图3.2&nbsp;&nbsp;首页</p>
+                            <ul class="list-unstyled spaced inline bigger-150 margin-20">
+                                <div  style="display: block;padding-left: 2em;">
+                                    <p>通过登录用户名，密码进入该系统，如图3.2所示。</p>
+                                    <p style="text-indent: 2em;">●进入系统首先是首页，显示该系统的介绍。</p>
+                                    <p style="text-indent: 2em;">●点击右上角用户头像，会出现退出该系统，修改登入密码，帮助（辅助系统用户说明书）操作。</p>
+                                </div>
+                            </ul>
+
                         </blockquote>
                     </div>
                     <div class="row" id="Bambootattan-data">
@@ -164,7 +120,7 @@
 													<ul class="list-unstyled spaced inline bigger-150 margin-20">
 															<div  style="display: block;padding-left: 2em;">
                                                                 <p>点击““竹种信息”菜单项，如图3.2所示。</p>
-                                                                <p style="text-indent: 2em;">●显示竹种属于哪个种，种的中文名，英文名，拉丁名，别名，种类编码，上传图片，上传视频等信息。</p>
+                                                                <p style="text-indent: 2em;">●显示竹种属于哪个种，种的中文名，英文名，别名，种类编码，上传图片，上传视频等信息。</p>
                                                                 <p style="text-indent: 2em;">●可以对竹种表进行新增，修改，查看，单个删除，批量删除等操作；</p>
 															</div>
 													</ul>
@@ -190,7 +146,7 @@
                             <ul class="list-unstyled spaced inline bigger-150 margin-20">
                                 <div  style="display: block;padding-left: 2em;">
                                     <p>点击““藤种信息”菜单项，如图3.2所示。</p>
-                                    <p style="text-indent: 2em;">●显示藤种属于哪个种，种的中文名，英文名，拉丁名，别名，种类编码，上传图片，上传视频等信息。</p>
+                                    <p style="text-indent: 2em;">●显示藤种属于哪个种，种的中文名，英文名，别名，种类编码，上传图片，上传视频等信息。</p>
                                     <p style="text-indent: 2em;">●可以对藤种表进行新增，修改，查看，单个删除，批量删除等操作；</p>
                                 </div>
                             </ul>
