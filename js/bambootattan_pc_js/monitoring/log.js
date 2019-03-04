@@ -65,6 +65,7 @@ function init_table(){
                 field:'optTime',//数据列
                 title:'操作时间',//数据列名称
                 sortable:true,//可排序
+                // order:'asc',
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -93,7 +94,6 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 }
             },
-
 
             {
                 field:'optIp',//数据列
@@ -128,7 +128,7 @@ function init_table(){
             },
 
             {
-                field:'private String classMethod',//数据列
+                field:'classMethod',//数据列
                 title:'类方法',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -140,7 +140,7 @@ function init_table(){
 
             {
                 field:'optUrl',//数据列
-                title:' 操作人地址',//数据列名称
+                title:' 操作地址',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
