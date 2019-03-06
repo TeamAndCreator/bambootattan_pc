@@ -180,7 +180,7 @@ function init_page(){
         clearBtn:true              //清除按钮
     });
 }
-//时间查询
+//按照时间查询
 function query(){
    $("#data_table").bootstrapTable('selectPage',1 );
 }
