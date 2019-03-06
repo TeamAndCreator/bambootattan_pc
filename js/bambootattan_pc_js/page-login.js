@@ -219,7 +219,7 @@ function login(){
                                 container: 'floating',
                                 timer: 2000
                             });
-                            window.location.href = "home.html";
+                            window.location.href = "page/home/home.html";
                         }else if(res.code == 400){
                             window.location.href='page-page-404.html';
                         }

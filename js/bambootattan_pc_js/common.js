@@ -70,8 +70,8 @@ $(function () {
  function logout() {
      $.ajax({
          url: baseUrl + '/user/logOut',		//请求路径
-         type: 'POST',			                    //请求方式
-         dataType: "JSON",		                //返回数据类型
+         type: 'POST',			            //请求方式
+         dataType: "JSON",		            //返回数据类型
          contentType: 'application/json',
 
          success: function (res) {
