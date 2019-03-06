@@ -35,30 +35,30 @@
     };
 
 
-    var target = document.getElementById('demo-gauge'); // your canvas element
-    var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
-    gauge.maxValue = 1500; // set max gauge value
-    gauge.animationSpeed = 32; // set animation speed (32 is default value)
-    gauge.set(570); // set actual value
-    gauge.setTextField(document.getElementById("demo-gauge-txt"));
+    // var target = document.getElementById('demo-gauge'); // your canvas element
+    // var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+    // gauge.maxValue = 1500; // set max gauge value
+    // gauge.animationSpeed = 32; // set animation speed (32 is default value)
+    // gauge.set(570); // set actual value
+    // gauge.setTextField(document.getElementById("demo-gauge-txt"));
 
 
 
     // REALTIME SAMPLE
     // =================================================================
-    var updateGauge;
-    var gaugeSwitch = document.getElementById('demo-auto-gauge');
-    gaugeSwitch.checked = false;
-
-    gaugeSwitch.onchange = function(){
-        if (gaugeSwitch.checked) {
-            updateGauge = setInterval(function(){
-                gauge.set(nifty.randomInt(1,1500));
-            },2000)
-        }else{
-            clearInterval(updateGauge);
-        }
-    };
+    // var updateGauge;
+    // var gaugeSwitch = document.getElementById('demo-auto-gauge');
+    // gaugeSwitch.checked = false;
+    //
+    // gaugeSwitch.onchange = function(){
+    //     if (gaugeSwitch.checked) {
+    //         updateGauge = setInterval(function(){
+    //             gauge.set(nifty.randomInt(1,1500));
+    //         },2000)
+    //     }else{
+    //         clearInterval(updateGauge);
+    //     }
+    // };
 
 
 
@@ -388,68 +388,68 @@
     var pageviews = [[1, 1700], [2, 1200], [3, 1090], [4, 1550], [5, 1700], [6, 1850], [7, 2736], [8, 3045], [9, 3779], [10, 4895], [11, 5209], [12, 5100]],
     visitor = [[1, 456], [2, 589], [3, 354], [4, 558], [5, 254], [6, 656], [7, 124], [8, 523], [9, 256], [10, 987], [11, 854], [12, 965]];
 
-    var plot = $.plot("#demo-flot-line", [
-            {
-                label: 'Pageviews',
-                data: pageviews,
-                lines: {
-                    show: true,
-                    lineWidth:2,
-                    fill: true,
-                    fillColor: {
-                        colors: [{opacity: 0.5}, {opacity: 0.5}]
-                    }
-                },
-                points: {
-                    show: true,
-                    radius: 4
-                }
-            },
-            {
-                label: 'Visitors',
-                data: visitor,
-                lines: {
-                    show: true,
-                    lineWidth:2,
-                    fill: true,
-                    fillColor: {
-                        colors: [{opacity: 0.5}, {opacity: 0.5}]
-                    }
-                },
-                points: {
-                    show: true,
-                    radius: 4
-                }
-            }
-        ],{
-        series: {
-            lines: {
-                show: true
-            },
-            points: {
-                show: true
-            },
-            shadowSize: 0	// Drawing is faster without shadows
-        },
-        colors: ['#177bbb', '#177bbb'],
-        legend: {
-            show: true,
-            position: 'nw',
-            margin: [15, 0]
-        },
-        grid: {
-            borderWidth: 0,
-            hoverable: true,
-            clickable: true
-        },
-        yaxis: {
-            ticks: 4, tickColor: '#eeeeee'
-        },
-        xaxis: {
-            ticks: 12,
-            tickColor: '#ffffff'
-        }
-    });
+    // var plot = $.plot("#demo-flot-line", [
+    //         {
+    //             label: 'Pageviews',
+    //             data: pageviews,
+    //             lines: {
+    //                 show: true,
+    //                 lineWidth:2,
+    //                 fill: true,
+    //                 fillColor: {
+    //                     colors: [{opacity: 0.5}, {opacity: 0.5}]
+    //                 }
+    //             },
+    //             points: {
+    //                 show: true,
+    //                 radius: 4
+    //             }
+    //         },
+    //         {
+    //             label: 'Visitors',
+    //             data: visitor,
+    //             lines: {
+    //                 show: true,
+    //                 lineWidth:2,
+    //                 fill: true,
+    //                 fillColor: {
+    //                     colors: [{opacity: 0.5}, {opacity: 0.5}]
+    //                 }
+    //             },
+    //             points: {
+    //                 show: true,
+    //                 radius: 4
+    //             }
+    //         }
+    //     ],{
+    //     series: {
+    //         lines: {
+    //             show: true
+    //         },
+    //         points: {
+    //             show: true
+    //         },
+    //         shadowSize: 0	// Drawing is faster without shadows
+    //     },
+    //     colors: ['#177bbb', '#177bbb'],
+    //     legend: {
+    //         show: true,
+    //         position: 'nw',
+    //         margin: [15, 0]
+    //     },
+    //     grid: {
+    //         borderWidth: 0,
+    //         hoverable: true,
+    //         clickable: true
+    //     },
+    //     yaxis: {
+    //         ticks: 4, tickColor: '#eeeeee'
+    //     },
+    //     xaxis: {
+    //         ticks: 12,
+    //         tickColor: '#ffffff'
+    //     }
+    // });
 
 
     // Flot tooltip
@@ -493,19 +493,19 @@
         { label: "Drama", data: 344120000, color: "#f84f9a" }
     ];
 
-    $.plot('#demo-flot-donut', dataSet, {
-        series: {
-            pie: {
-                show: true,
-                combine: {
-                color: '#999',
-                threshold: 0.1
-                }
-            }
-        },
-        legend: {
-        show: false
-        }
-    });
+    // $.plot('#demo-flot-donut', dataSet, {
+    //     series: {
+    //         pie: {
+    //             show: true,
+    //             combine: {
+    //             color: '#999',
+    //             threshold: 0.1
+    //             }
+    //         }
+    //     },
+    //     legend: {
+    //     show: false
+    //     }
+    // });
 
 });

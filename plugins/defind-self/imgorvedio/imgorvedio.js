@@ -44,17 +44,17 @@
 						_html += '		<div class="media-left bord-lft bord-ver">';
 						_html += '			<img style="width:50px;height:50px;" src="'+item.url+'">';
 						_html += '		</div>';
-						 _html += '		<div class="media-body media-middle bord-ver">';
-						 _html += '		</div>';
-						 _html += '		<div class="media-left media-middle pad-lft-sm pad-rgt-sm bord-rgt bord-ver">'
-						 if(opts.showDownload || opts.showPlus){
-                         						 	_html += '		<div class="btn-group-vertical" role="group" aria-label="...">';
-                         						 	if(opts.showDownload)
-                         						 		_html += '		<button data-url="'+item.url+'" data-index="'+index+'" class="btn btn-xs btn-primary btn-download"><i class="fa fa-cloud-download"></i></button>';
-                        						 	if(opts.showPlus)
-                         						 		_html += '		<button data-url="'+item.url+'" data-index="'+index+'" class="btn btn-xs btn-default btn-Plus"><i class="fa fa-search-plus"></i></button>';
-                         						 	_html += '		</div>';
-                         						 }
+						_html += '		<div class="media-body media-middle bord-ver">';
+						_html += '		</div>';
+						_html += '		<div class="media-left media-middle pad-lft-sm pad-rgt-sm bord-rgt bord-ver">'
+						if(opts.showDownload || opts.showPlus){
+							_html += '		<div class="btn-group-vertical" role="group" aria-label="...">';
+							if(opts.showDownload)
+								_html += '		<button data-url="'+item.url+'" data-index="'+index+'" class="btn btn-xs btn-primary btn-download"><i class="fa fa-cloud-download"></i></button>';
+							if(opts.showPlus)
+								_html += '		<button data-url="'+item.url+'" data-index="'+index+'" class="btn btn-xs btn-default btn-Plus"><i class="fa fa-search-plus"></i></button>';
+							_html += '		</div>';
+						}
 						_html += '		</div>';
 						_html += '	</div>';
 						_html += '</div>';

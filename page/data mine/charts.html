@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charts | Nifty - Admin Template</title>
+    <title>数据挖掘</title>
 
 
     <!--STYLESHEET-->
@@ -50,53 +50,31 @@
 
     <!--jQuery [ REQUIRED ]-->
     <script src="../../js/jquery-2.2.4.min.js"></script>
-
+    <script src="../../js/jquery.cookie.js"></script>
 
     <!--BootstrapJS [ RECOMMENDED ]-->
     <script src="../../js/bootstrap.min.js"></script>
 
-
     <!--NiftyJS [ RECOMMENDED ]-->
     <script src="../../js/nifty.min.js"></script>
-
-
-
-
-
 
     <!--=================================================-->
     
     <!--Demo script [ DEMONSTRATION ]-->
     <script src="../../js/demo/nifty-demo.min.js"></script>
 
-    
     <!--Morris.js [ OPTIONAL ]-->
     <script src="../../plugins/morris-js/morris.min.js"></script>
 	<script src="../../plugins/morris-js/raphael-js/raphael.min.js"></script>
 
-
     <!--Sparkline [ OPTIONAL ]-->
     <script src="../../plugins/sparkline/jquery.sparkline.min.js"></script>
-
-
-
-
-
-
-    <!--Gauge js [ OPTIONAL ]-->
-    <script src="../../plugins/gauge-js/gauge.min.js"></script>
-
     <!--Easy Pie Chart [ OPTIONAL ]-->
     <script src="../../plugins/easy-pie-chart/jquery.easypiechart.min.js"></script>
-
     <!--Charts [ SAMPLE ]-->
     <script src="../../js/demo/charts.js"></script>
-
-
 </head>
 
-<!--TIPS-->
-<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
 <body>
     <div id="container" class="effect aside-float aside-bright mainnav-lg">
         
@@ -191,36 +169,6 @@
 
                 <!--Page content-->
                 <!--===================================================-->
-                <div id="page-content">
-
-					<div class="row">
-					    <div class="eq-height">
-					        <div class="col-md-12 col-lg-4 eq-box-lg">
-
-
-					                    <div class="panel-control panel-control-component">
-
-					                        <input id="demo-auto-gauge" class="toggle-switch" type="checkbox">
-					                    </div>
-
-
-					                <!-- Gauge JS -->
-					                <!--===================================================-->
-					                <div class="panel-body">
-					                    <div class="text-center">
-					                        <!--Gauge placeholder-->
-					                        <canvas id="demo-gauge" height="70" class="canvas-responsive"></canvas>
-					                    </div>
-					                </div>
-					                <!--===================================================-->
-					                <!-- End Gauge JS -->
-
-					            </div>
-					        </div>
-
-					    </div>
-					</div>
-
 
 					<h4 class="text-main pad-btm bord-btm">Morris Charts</h4>
 					
@@ -265,13 +213,10 @@
 					                <h3 class="panel-title">Bar Chart</h3>
 					            </div>
 					            <div class="panel-body">
-					
 					                <!--Morris Bar Chart placeholder -->
 					                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 					                <div id="demo-morris-bar" style="height:212px"></div>
 					                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-					
-					
 					            </div>
 					        </div>
 					    </div>
@@ -447,18 +392,26 @@
             <!--===================================================-->
             <!--END MAIN NAVIGATION-->
 
-        </div>
-
 
         <!-- FOOTER -->
         <!--===================================================-->
-
+        <footer id="footer" style="text-align: center">
+                    <span bigger-120>
+                    <!--<span class="blue bolder">安徽农业大学数字农业研究所                             </span> &copy; 2018-2019-->
+                        <span class="blue bolder">安徽农业大学数字农业研究所
+                            </span> &copy; 2018-2019
+                    </span>
+        </footer>
         <!--===================================================-->
         <!-- END FOOTER -->
-    </div>
+
+        </div>
+
+
+
     <!--===================================================-->
     <!-- END OF CONTAINER -->
-
 </body>
+<script src="../../js/bambootattan_pc_js/datamine/datachart.js"></script>
 </html>
 

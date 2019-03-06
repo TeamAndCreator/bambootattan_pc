@@ -103,28 +103,21 @@
 
     <!--NiftyJS [ RECOMMENDED ]-->
     <script src="../../js/nifty.min.js"></script>
-
     <!--=================================================-->
-
     <!--Demo script [ DEMONSTRATION ]-->
     <script src="../../js/demo/nifty-demo.min.js"></script>
     <!--Summernote [ OPTIONAL ]-->
     <script src="../../plugins/summernote/summernote.min.js"></script>
     <!--font-awesome.css [ OPTIONAL ]-->
     <link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-
     <!--Bootstrap Table Sample [ SAMPLE ]-->
     <script src="../../js/demo/tables-bs-table.js"></script>
-
-
     <!--X-editable [ OPTIONAL ]-->
     <script src="../../plugins/x-editable/js/bootstrap-editable.min.js"></script>
-
     <!--Bootstrap Table [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/bootstrap-table.min.js"></script>
     <!-- bootbox -->
     <script src="../../plugins/bootbox/bootbox.js"></script>
-
 
     <!--Bootstrap Table Extension [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
@@ -201,7 +194,7 @@
                             <!-- User dropdown menu -->
                             <ul class="head-list">
                                 <li>
-                                    <a href="../../page-login.html">
+                                    <a href="#"  id="logout">
                                         <i class="demo-pli-unlock icon-lg icon-fw"></i> 退出
                                     </a>
                                 </li>
@@ -257,9 +250,9 @@
                             <label for="datepicker" class="col-sm-12 col-md-1 form-control-static">时间查询</label>
                             <div class="col-sm-12 col-md-3">
                                 <div  class="input-daterange input-group" id="datepicker">
-                                    <input type="text" id="beginOptTime" class="form-control" name="start" placeholder="开始时间"/>
+                                    <input type="text" id="startTime" class="form-control" name="startTime" placeholder="开始时间"/>
                                     <span class="input-group-addon">至</span>
-                                    <input type="text" id="endOptTime" class="form-control" name="end" placeholder="结束时间"/>
+                                    <input type="text" id="endTime" class="form-control" name="endTime" placeholder="结束时间"/>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-1">

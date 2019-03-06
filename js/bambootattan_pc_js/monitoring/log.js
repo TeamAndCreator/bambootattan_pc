@@ -1,11 +1,11 @@
 var queryPageUrl='';
 $(function(){
     $('.username').html('欢迎您，'+ $.cookie('BAM_USERNAME'));
-    queryPageUrl = baseUrl+'/log/findAllQuery';
+    queryPageUrl = baseUrl+'/log/findDateQuery';
     init_page();
     //初始化表格
     init_table();
-    // $('#btn_query').on('click',query);
+     $('#btn_query').on('click',query);
 });
 //初始化表格
 function init_table(){
@@ -36,7 +36,9 @@ function init_table(){
             return {
                 page:params.offset/params.limit,    //页码，就是第几页
                 size:params.limit,                   //每页数量
-                search:params.search
+                search:params.search,               //模糊搜索
+                startTime: $('#startTime').val(),         //查询时间上限
+                endTime:$('#endTime').val()              //查询时间下限
             }
         },
         onColumnSwitch:function(filed,checked){
@@ -65,35 +67,35 @@ function init_table(){
                 field:'optTime',//数据列
                 title:'操作时间',//数据列名称
                 sortable:true,//可排序
+                // order:'asc',
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
                     return {css: {'min-width': '80px'}};
                 }
             },
-            {
-                field:'beginOptTime',//数据列
-                title:'操作时间（查询上限）',//数据列名称
-                visible:false,
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field) {
-                    return {css: {'min-width': '80px'}};
-                }
-            },
-            {
-                field:'endOptTime',//数据列
-                title:'操作时间（查询下限）',//数据列名称
-                sortable:true,//可排序
-                visible:false,
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field) {
-                    return {css: {'min-width': '80px'}};
-                }
-            },
-
+            // {
+            //     field:'beginOptTime',//数据列
+            //     title:'操作时间（查询上限）',//数据列名称
+            //     visible:false,
+            //     sortable:true,//可排序
+            //     align:'center',//水平居中
+            //     valign:'middle',//垂直居中
+            //     cellStyle:function(value,row,index,field) {
+            //         return {css: {'min-width': '80px'}};
+            //     }
+            // },
+            // {
+            //     field:'endOptTime',//数据列
+            //     title:'操作时间（查询下限）',//数据列名称
+            //     sortable:true,//可排序
+            //     visible:false,
+            //     align:'center',//水平居中
+            //     valign:'middle',//垂直居中
+            //     cellStyle:function(value,row,index,field) {
+            //         return {css: {'min-width': '80px'}};
+            //     }
+            // },
 
             {
                 field:'optIp',//数据列
@@ -128,7 +130,7 @@ function init_table(){
             },
 
             {
-                field:'private String classMethod',//数据列
+                field:'classMethod',//数据列
                 title:'类方法',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -140,7 +142,7 @@ function init_table(){
 
             {
                 field:'optUrl',//数据列
-                title:' 操作人地址',//数据列名称
+                title:' 操作地址',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -175,49 +177,10 @@ function init_page(){
         minViewMode: 0,             //最小日期视图
         startView: 0,               //开始日期视图
         forceParse: 0,
-        clearBtn:true,              //清除按钮
+        clearBtn:true              //清除按钮
     });
 }
-// //时间查询
-// function query(){
-//     var beginOptTime=$('#beginOptTime').val();
-//     var endOptTime=$('#endOptTime').val();
-//     var formData={
-//         "beginOptTime":beginOptTime,
-//         "endOptTime":endOptTime,
-//     }
-//     $.ajax({
-//         url: baseUrl + '/log/save',		//请求路径
-//         type: 'POST',			            //请求方式
-//         data: JSON.stringify(formData),	    //数据   对象转json字符串
-//         contentType: 'application/json',    //数据类型
-//         success: function (res) {	        //请求成功回调函数
-//             //res.code=400;
-//             if (res.code === 200) {
-//                 $.niftyNoty({
-//                     type: 'success',
-//                     icon: 'pli-like-2 icon-2x',
-//                     message: '查询成功',
-//                     container: 'floating',
-//                     timer: 2000
-//                 });
-//                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
-//             }else if(res.code == 400){
-//                 window.location.href='../../page-404.html';
-//             }
-//             else if(res.code == 505){
-//                 window.location.href='../../page-500.html';
-//             } else {
-//                 $.niftyNoty({
-//                     type: 'danger',
-//                     icon: 'pli-cross icon-2x',
-//                     message: res.msg,
-//                     container: 'floating',
-//                     timer: 1000
-//                 });
-//             }
-//         },
-//         error: function (XMLHttpRequest, textStatus, errorThrown) {		//请求失败回调函数
-//         }
-//     });
-// }
+//时间查询
+function query(){
+   $("#data_table").bootstrapTable('selectPage',1 );
+}

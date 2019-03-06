@@ -1,8 +1,7 @@
- //baseUrl="http://47.104.26.79:8081";
- baseUrl="http://47.106.74.107:8081";
-//var baseUrl="http://10.6.250.111:8080";
-//var baseUrl="http://192.168.0.29:8080";
-//var baseUrl="http://10.6.197.10:8080";
+//baseUrl="http://47.106.74.107:8081";
+//var baseUrl="http://192.168.35.1:8080";
+//var baseUrl="http://192.168.0.2:8080";
+var baseUrl="http://10.5.139.187:8080";
 //给body元素手动加上 modal-open
 var openModalClass=function () {
     $('body').addClass('modal-open');
@@ -69,9 +68,8 @@ $(function () {
 // $("#logout").on('click',logout);
  //退出
  function logout() {
-     console.log(123);
      $.ajax({
-         url: baseUrl + '/user/logout',		//请求路径
+         url: baseUrl + '/user/logOut',		//请求路径
          type: 'POST',			                    //请求方式
          dataType: "JSON",		                //返回数据类型
          contentType: 'application/json',
@@ -86,7 +84,7 @@ $(function () {
                      container: 'floating',
                      timer: 2000
                  });
-                 window.location.href = "page-login.html";
+                 window.location.href = "../../page-login.html";
              } else if (res.code == 400) {
                  window.location.href = '../../page-404.html';
              }

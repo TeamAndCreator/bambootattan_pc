@@ -42,29 +42,8 @@ $(function(){
     //表单验证
     $('#registrationForm').bootstrapValidator();
 
-
-    $('#img-area').imgs({
-        items:[
-            {
-                url:'../../img/image/logo.png'
-            },
-            {
-                url:'../../img/image/login_bg.jpg'
-            }],
-        modalId:'imgmodel',
-        downloadAll:'#download-img-all'
-    });
-    $('#video-area').videos({
-        items:[
-            {
-                url:'../../img/image/testvideo.mp4'
-            },
-            {
-                url:'../../img/image/testvideo.mp4'
-            }],
-        modalId:'videomodel',
-        downloadAll:'#download-vedio-all'
-    });
+    $.uImgFull('init');
+    $.uVideoFull('init');
 });
 //初始化表格
 function init_table(){
@@ -105,7 +84,6 @@ function init_table(){
         // fixedColumns: true,//固定列
         // fixedNumber:4,//固定前三列
         columns:[//列数据
-
             {
                 checkbox:true,//有复选框
                 field:'checkbox'//数据列
@@ -282,7 +260,6 @@ function init_table(){
         ]
     });
 }
-
 //初始化属表格
 function init_genus_table(){
     $('#genus_table').bootstrapTable({
@@ -598,8 +575,9 @@ function save() {
                 for (var i = 0; i < multipartFiles.length; i++) {
                     formData.append("multipartFiles", myDropzone.files[i]);
                 }
-
+                console.log(123);
                 if (specId === "") {//新增
+                    console.log(1234);
                     $.ajax({
                         url: baseUrl + '/spec/save',		//请求路径
                         type: 'POST',			            //请求方式
@@ -608,6 +586,7 @@ function save() {
                         //contentType: false,
                         data: formData,	                    //数据
                         success: function (res) {	        //请求成功回调函数
+                            console.log(12345);
                             if (res.code == 200) {
                                 console.log(3332);
                                 $.niftyNoty({
@@ -697,7 +676,7 @@ function edit(id) {
         success:function(res){	                //请求成功回调函数
             if(res.code==200){
                 //将后台传的值渲染出来
-               $('#demo-summernote').summernote('code',res.data.specDesc);
+                $('#demo-summernote').summernote('code',res.data.specDesc);
                 $('#specId').val(res.data.specId);
                 $('#specNameCh').val(res.data.specNameCh);
                 $('#specNameEn').val(res.data.specNameEn);
@@ -717,6 +696,32 @@ function edit(id) {
                 }
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
+
+                var imgFiles = [
+                    { name: "505ye 1.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 2.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 3.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 4.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 5.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' }
+                ];
+                for(var i=0;i<imgFiles.length;i++){
+                    myDropzoneImg.options.addedfile.call(myDropzoneImg, imgFiles[i]);
+                    myDropzoneImg.options.thumbnail.call(myDropzoneImg, imgFiles[i], imgFiles[i].imageUrl);
+                }
+                $(myDropzoneImg.options.previewsContainer).find('[data-dz-remove]').addClass('hide');
+                var vedioFiles = [
+                    { name: "testvideo 1.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 2.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 3.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 4.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 5.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' }
+                ];
+                for(var i=0;i<vedioFiles.length;i++){
+                    myDropzone.options.addedfile.call(myDropzone, vedioFiles[i]);
+                    myDropzone.options.thumbnail.call(myDropzone, vedioFiles[i],vedioFiles[i].videoUrl);
+                }
+                $(myDropzone.options.previewsContainer).find('[data-dz-remove]').addClass('hide');
+
             }else if(res.code == 400){
                 window.location.href='../../page-404.html';
             }
@@ -899,8 +904,71 @@ function check(id) {
 
                 $('#specDomestic-info').html(res.data.specDomestic).attr('data-original-title',res.data.specDomestic);
                 $('#specForeign-info').html(res.data.specForeign).attr('data-original-title',res.data.specForeign);
-                $('#specVidio-info').html(res.data.specVidio).attr('data-original-title',res.data.specVidio);
-                $('#specImgs-info').html(res.data.specImgs).attr('data-original-title',res.data.specImgs);
+                //$('#specVidio-info').html(res.data.specVidio).attr('data-original-title',res.data.specVidio);
+                //$('#specImgs-info').html(res.data.specImgs).attr('data-original-title',res.data.specImgs);
+                var imgFiles = [
+                    { name: "505ye 1.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 2.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 3.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 4.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 5.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 6.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 7.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 8.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 9.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 10.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 11.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 12.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 13.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 14.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 15.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' }
+                ];
+                var _html = '<div class="rows">';
+                for(var i=0;i<imgFiles.length;i++){
+                    item=imgFiles[i]
+                    _html += '\
+                    <div class="mar-btm-sm col-md-1 col-sm-2">\
+                        <img class="bord-all" style="width:50px;height:50px;" src="'+item.url+'">\
+                    </div>';
+                }
+                _html += '</div>';
+                $('#specImgs-info').html(_html);
+                $('#specImgs-info img').unbind('click').on('click',function(){
+                    $.uImgFull($(this));
+                });
+                _html='';
+
+                var vedioFiles = [
+                    { name: "testvideo 1.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 2.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 3.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 4.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 5.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 6.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 7.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 8.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 9.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 10.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 11.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 12.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 13.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 14.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 15.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' }
+                ];
+                _html = '<div class="rows">';
+                for(var i=0;i<vedioFiles.length;i++){
+                    item=vedioFiles[i]
+                    _html += '\
+                    <div class="mar-btm-sm col-md-1 col-sm-2">\
+                        <video class="bord-all" style="width:50px;height:50px;" src="'+item.url+'"></video>\
+                    </div>';
+                }
+                _html += '</div>';
+                $('#specVidio-info').html(_html);
+                $('#specVidio-info video').unbind('click').on('click',function(){
+                    $.uVideoFull($(this).attr('src'));
+                });
+
                 //$('#demo-summernote-info').summernote('code',res.data.specDesc);
                 //$('#specDesc-info').html(res.data.specDesc).attr('data-original-title',res.data.specDesc);
                 $('#specDesc-info').html(res.data.specDesc);
@@ -1016,6 +1084,7 @@ function init_file_upload(){
         // Hookup the button
         uplodaBtn.prop('disabled', false);
         removeBtn.prop('disabled', false);
+        $(myDropzone.options.previewsContainer).find('.dz-image-preview').remove();
     });
 
     // Update the total progress bar
@@ -1094,6 +1163,11 @@ function init_file_upload(){
         // Hookup the button
         uplodaImgBtn.prop('disabled', false);
         removeImgBtn.prop('disabled', false);
+        $.each($(myDropzoneImg.options.previewsContainer).find('.dz-image-preview'),function(index,ele){
+            if($(ele).find('[data-dz-thumbnail]').attr('src').length<200){
+                $(ele).remove();
+            }
+        });
     });
 
     // Update the total progress bar
@@ -1131,8 +1205,10 @@ function init_file_upload(){
 function clear_file(){
     //清除视频的选择
     $('#dz-remove-btn').click();
+    $(myDropzoneImg.options.previewsContainer).html('');
     //清除图片的选择
     $('#dz-remove-img-btn').click();
+    $(myDropzone.options.previewsContainer).html('');
 }
 //选择属
 function selectedGenus(){
