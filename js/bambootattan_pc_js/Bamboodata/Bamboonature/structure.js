@@ -45,7 +45,7 @@ function init_table(){
         pageList:[5, 10, 20],//每页数量组
         pageSize:5,//默认每页数量
         pagination:true,//可以分页
-        showPaginationSwitch:true,//
+        showPaginationSwitch:true,
         sidePagination:'server',//服務器端分頁
         clickToSelect:true,
         //method:'POST',
@@ -401,7 +401,13 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
-                            } else {
+                            } else if(res.code == 400){
+                                window.location.href='../../page-404.html';
+                            }
+                            else if(res.code == 505){
+                                window.location.href='../../page-500.html';
+                            }
+                            else {
                                 $.niftyNoty({
                                     type: 'danger',
                                     icon: 'pli-cross icon-2x',
@@ -414,12 +420,7 @@ function save() {
                         error: function (XMLHttpRequest, textStatus, errorThrown) {		//请求失败回调函数
                         }
                     });
-                } else if(res.code == 400){
-                    window.location.href='../../page-404.html';
-                }
-                else if(res.code == 505){
-                    window.location.href='../../page-500.html';
-                }else {//修改
+                } else {//修改
                     $.ajax({
                         url: baseUrl + '/structure/update',	    //请求路径
                         type: 'PUT',				        //请求方式
@@ -605,7 +606,7 @@ function deles() {
                     }
                     $.ajax({    //批量删除
                         //现将数据每个元素用‘,(逗号)’分隔拼接成字符串，再用encodeURI进行编码，最后拼接到url的后面
-                        url: baseUrl+'/structure/deleteByIds?ids='+encodeURI(ids.join(',')),
+                         url: baseUrl+'/structure/deleteByIds?ids='+encodeURI(ids.join(',')),
                         type:'DELETE',
                         contentType: 'application/json',//数据类型
                         success:function(res){	        //请求成功回调函数

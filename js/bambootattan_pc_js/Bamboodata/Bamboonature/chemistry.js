@@ -424,7 +424,7 @@ function save() {
                 var chemACelluloseUnitPercent = $('#chemACelluloseUnitPercent').val();
                 var chemHemicelluloseUnitPercent=$('#chemHemicelluloseUnitPercent').val();
                 var chemAcidInsolubleLigninUnitPercent = $('#chemAcidInsolubleLigninUnitPercent').val();
-                var chemBenzeneAlcoholExtractionUnitPercent = $('#chemHolocelluloseUnitPercent').val();
+                var chemBenzeneAlcoholExtractionUnitPercent = $('#chemBenzeneAlcoholExtractionUnitPercent').val();
                 var chemHotWaterExtractionUnitPercent = $('#chemHotWaterExtractionUnitPercent').val();
                 var chemColdWaterExtractionUnitPercent = $('#chemColdWaterExtractionUnitPercent').val();
                 var chemAshContentUnitPercent = $('#chemAshContentUnitPercent').val();
@@ -797,7 +797,7 @@ function init_form(){
 function init_info(){
     $('#spec-info').val("").attr('data-original-title',"");//清除鼠标停留显示的内容，就是提示内容
     $('#chemHolocelluloseUnitPercent-info').val("").attr('data-original-title',"");
-    $('#chemHolocelluloseUnitPercent-info').val("").attr('data-original-title',"");
+    $('#chemCelluloseUnitPercent-info').val("").attr('data-original-title',"");
     $('#chemACelluloseUnitPercent-info').val("").attr('data-original-title',"");
     $('#chemHemicelluloseUnitPercent-info').val("").attr('data-original-title',"");
     $('#chemAcidInsolubleLigninUnitPercent-info').val("").attr('data-original-title',"");

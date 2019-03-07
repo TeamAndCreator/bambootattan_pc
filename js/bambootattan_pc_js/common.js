@@ -53,8 +53,8 @@ var closeLoading=function () {
     $('#mainFckLoading').remove();
 }
 $(function () {
-
     $.ajaxSetup({
+        headers:{'Authorization':sessionStorage.getItem('jsessionId')},
         beforeSend: function(xhr,request){
             openLoading();
         },

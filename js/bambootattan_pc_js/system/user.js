@@ -215,7 +215,6 @@ function save() {
                     formData.userId = 0;
                     $.ajax({
                         url: baseUrl + '/admin/save',		//请求路径
-                        headers:{'Authorization':jsessionid},
                         type: 'POST',			            //请求方式
                         //data: JSON.stringify(formData),	    //数据   对象转json字符串
                         data: formData,
@@ -304,7 +303,6 @@ function edit(id) {
     $.ajax({
         url:baseUrl+'/user/findId/'+id,		//请求路径
         type:'GET',			                    //请求方式
-        headers:{'Authorization':jsessionid},
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
@@ -355,7 +353,6 @@ function dele(gid){
             if (result) {
                 $.ajax({
                     url:baseUrl+'/user/delete/'+gid,   //请求路径,单个删除
-                    headers:{'Authorization':jsessionid},
                     type:'DELETE',				        //请求方式
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
@@ -435,7 +432,6 @@ function deles() {
                     $.ajax({    //批量删除
                         //现将数据每个元素用‘,(逗号)’分隔拼接成字符串，再用encodeURI进行编码，最后拼接到url的后面
                         url: baseUrl+'/user/deleteByIds?ids='+encodeURI(ids.join(',')),
-                        headers:{'Authorization':jsessionid},
                         type:'DELETE',
                         contentType: 'application/json',//数据类型
                         success:function(res){	        //请求成功回调函数
@@ -487,7 +483,6 @@ function check(id) {
     init_info();
     $.ajax({
         url:baseUrl+'/user/findId/'+id,		//请求路径
-        headers:{'Authorization':jsessionid},
         type:'GET',			                    //请求方式
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
@@ -543,7 +538,6 @@ function updateState(){
             if (result) {
                 $.ajax({
                     url:baseUrl+'/user/active/',
-                    headers:{'Authorization':jsessionid},
                     type:'DELETE',				        //请求方式
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
