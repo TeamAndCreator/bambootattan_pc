@@ -1,7 +1,7 @@
-//baseUrl="http://47.106.74.107:8081";
+baseUrl="http://47.106.74.107:8081";
 //var baseUrl="http://192.168.35.1:8080";
 //var baseUrl="http://192.168.0.2:8080";
-var baseUrl="http://10.5.139.187:8080";
+//var baseUrl="http://10.5.139.187:8080";
 //给body元素手动加上 modal-open
 var openModalClass=function () {
     $('body').addClass('modal-open');
@@ -53,8 +53,8 @@ var closeLoading=function () {
     $('#mainFckLoading').remove();
 }
 $(function () {
-
     $.ajaxSetup({
+        headers:{'Authorization':sessionStorage.getItem('jsessionId')},
         beforeSend: function(xhr,request){
             openLoading();
         },
@@ -70,8 +70,8 @@ $(function () {
  function logout() {
      $.ajax({
          url: baseUrl + '/user/logOut',		//请求路径
-         type: 'POST',			                    //请求方式
-         dataType: "JSON",		                //返回数据类型
+         type: 'POST',			            //请求方式
+         dataType: "JSON",		            //返回数据类型
          contentType: 'application/json',
 
          success: function (res) {

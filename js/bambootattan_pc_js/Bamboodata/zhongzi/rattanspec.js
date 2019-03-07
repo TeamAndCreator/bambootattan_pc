@@ -25,20 +25,25 @@ $(function(){
         $('#genusModal').modal('show');
         $('#genus_table').bootstrapTable('refresh',queryGenusPageUrl);
     });
-    //确认选择的属
-    $('#btn_genus_ok').on('click',selectedGenus);
     //选择属的模态框关闭时，调用openModalClass，给body元素手动加上 modal-open
     $('#genusModal').on('hidden.bs.modal',function () {
         openModalClass();
     });
+    //确认选择的属
+    $('#btn_genus_ok').on('click',selectedGenus);
     //初始化表格
     init_table();
+    //初始化属的表格
     init_genus_table();
+    //初始化富文本框
     init_sunmmernote();
     //初始化文件上传
     init_file_upload();
     //表单验证
     $('#registrationForm').bootstrapValidator();
+
+    $.uImgFull('init');
+    $.uVideoFull('init');
 });
 //初始化表格
 function init_table(){
@@ -79,7 +84,6 @@ function init_table(){
         // fixedColumns: true,//固定列
         // fixedNumber:4,//固定前三列
         columns:[//列数据
-
             {
                 checkbox:true,//有复选框
                 field:'checkbox'//数据列
@@ -101,7 +105,7 @@ function init_table(){
                 }
             },
             {
-                field:'rattanGenus',//数据列
+                field:'genus',//数据列
                 title:'属名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -110,7 +114,8 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 },
                 formatter:function(value,row,index){
-                    return row.rattanGenus == null ? '' : row.rattanGenus.genusNameCh;
+                    //return row.genus.genusNameCh;
+                    return row.genus == null ? '' : row.genus.genusNameCh;
                 }
             },
             {
@@ -255,7 +260,6 @@ function init_table(){
         ]
     });
 }
-
 //初始化属表格
 function init_genus_table(){
     $('#genus_table').bootstrapTable({
@@ -273,14 +277,14 @@ function init_genus_table(){
         sidePagination:'server',//服務器端分頁
         clickToSelect:true,
         onDblClickRow:function(row, $element){
-            $("#rattanGenus").val(row.genusNameCh);
+            $("#genus").val(row.genusNameCh);
             $("#genusId").val(row.genusId);
             $('#genusModal').modal('hide');
         },
-        // onClickRow:function(row, $element){
-        //     $("#rattanGenus").val(row.genusNameCh);
-        //     $("#genusId").val(row.genusId);
-        // },
+        //onClickRow:function(row, $element){
+        //    $("#genus").val(row.genusNameCh);
+        //    $("#genusId").val(row.genusId);
+        //},
         //method:'POST',
         responseHandler:function(res){//后台返回数据进行修改，修改成bootstrap-table能够使用的数据格式
             return {
@@ -295,7 +299,6 @@ function init_genus_table(){
             }
         },
         cache:false,//是否使用緩存
-
         columns:[//列数据
 
             {
@@ -366,146 +369,9 @@ function init_genus_table(){
         ]
     });
 }
-
-// //保存
-// function save() {
-//     bootbox.confirm({
-//         title: '保存确认',
-//         message: '<div class="text-center"><h2>您确定保存该数据吗<i class="demo-pli-question-circle text-danger"></i></h2></div>',
-//         //size:'small',
-//         buttons: {
-//             cancel: {label: '<i class="demo-pli-cross"></i> 取消'},
-//             confirm: {label: '<i class="demo-pli-check2"></i> 确认'}
-//         },
-//         callback: function (result) {
-//             if (result) {
-//
-//                 var validateForm = $('#registrationForm').data('bootstrapValidator');
-//                 //手动触发验证
-//                 validateForm.validate();
-//                 //表单验证不通过，直接return，不往下执行
-//                 if(!validateForm.isValid()){
-//                     return;
-//                 }
-//
-//                 var specDesc=$('#demo-summernote').summernote('code');
-//                 var specId = $('#specId').val();
-//                 var genusId=$('#genusId').val();
-//                 var specNameCh = $('#specNameCh').val();
-//                 var specNameEn = $('#specNameEn').val();
-//                 var specNameLd = $('#specNameLd').val();
-//                 var specNameOth = $('#specNameOth').val();
-//                 var specCode = $('#specCode').val();
-//                 var specBarCode = $('#specBarCode').val();
-//                 var specDna = $('#specDna').val();
-//                 var specDomestic = $('#specDomestic').val();
-//                 var specForeign = $('#specForeign').val();
-//                 var specVidio = $('#specVidio').val();
-//                 var specImgs = $('#specImgs').val();
-//                 // var specDesc = $('#specDesc').val();
-//                 var specSortNum = $('#specSortNum').val();
-//                 var formData = {
-//                     "specId": specId,
-//                     "rattanGenus":{'genusId':genusId},
-//                     "specNameCh": specNameCh,
-//                     "specNameEn": specNameEn,
-//                     "specNameLd": specNameLd,
-//                     "specNameOth": specNameOth,
-//                     "specCode": specCode,
-//                     "specBarCode": specBarCode,
-//                     "specDna": specDna,
-//                     "specDomestic": specDomestic,
-//                     "specForeign": specForeign,
-//                     "specVidio": specVidio,
-//                     "specImgs": specImgs,
-//                     "specDesc": specDesc,
-//                     "specSortNum": specSortNum
-//                 };
-//                 if (specId === "") {//新增
-//                     formData.specId = 0;
-//                     $.ajax({
-//                         url: baseUrl + '/rattanSpec/save',		//请求路径
-//                         type: 'POST',			            //请求方式
-//                         data: JSON.stringify(formData),	    //数据
-//                         contentType: 'application/json',    //数据类型
-//                         success: function (res) {	        //请求成功回调函数
-//                             if (res.code === 200) {
-//                                 $.niftyNoty({
-//                                     type: 'success',
-//                                     icon: 'pli-like-2 icon-2x',
-//                                     message: '新增成功',
-//                                     container: 'floating',
-//                                     timer: 2000
-//                                 });
-//                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
-//                                 $('#exampleModal').modal('hide');
-//                             } else if(res.code == 400){
-//                                 window.location.href='../../page-404.html';
-//                             }
-//                             else if(res.code == 505){
-//                                 window.location.href='../../page-500.html';
-//                             }else {
-//                                 $.niftyNoty({
-//                                     type: 'danger',
-//                                     icon: 'pli-cross icon-2x',
-//                                     message: res.msg,
-//                                     container: 'floating',
-//                                     timer: 1000
-//                                 });
-//                             }
-//                         },
-//                         error: function (XMLHttpRequest, textStatus, errorThrown) {		//请求失败回调函数
-//                         }
-//                     });
-//                 } else {//修改
-//                     $.ajax({
-//                         url: baseUrl + '/rattanSpec/update',	    //请求路径
-//                         type: 'PUT',				        //请求方式
-//                         data: JSON.stringify(formData),	    //数据
-//                         contentType: 'application/json',    //数据类型
-//                         success: function (res) {	        //请求成功回调函数
-//                             if (res.code == 200) {
-//                                 $.niftyNoty({
-//                                     type: 'success',
-//                                     icon: 'pli-like-2 icon-2x',
-//                                     message: '修改成功',
-//                                     container: 'floating',
-//                                     timer: 2000
-//                                 });
-//                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
-//                                 $('#exampleModal').modal('hide');
-//                             } else if(res.code == 400){
-//                                 window.location.href='../../page-404.html';
-//                             }
-//                             else if(res.code == 505){
-//                                 window.location.href='../../page-500.html';
-//                             }else {
-//                                 $.niftyNoty({
-//                                     type: 'danger',
-//                                     icon: 'pli-cross icon-2x',
-//                                     message: res.msg,
-//                                     container: 'floating',
-//                                     timer: 1000
-//                                 });
-//                             }
-//                         },
-//                         error: function (XMLHttpRequest, textStatus, errorThrown) {		//请求失败回调函数
-//                         }
-//                     });
-//                 }
-//             } else {
-//                 $.niftyNoty({
-//                     type: 'danger',
-//                     icon: 'pli-cross icon-2x',
-//                     message: '您取消了新增',
-//                     container: 'floating',
-//                     timer: 1000
-//                 });
-//             }
-//         }
-//     });
-// }
-
+/*
+以后可能改回来，不要删除
+//保存
 function save() {
     bootbox.confirm({
         title: '保存确认',
@@ -572,15 +438,157 @@ function save() {
 
                 if (specId === "") {//新增
                     $.ajax({
-                        url: baseUrl + '/rattanspec/save',		//请求路径
+                        url: baseUrl + '/spec/save',		//请求路径
                         type: 'POST',			            //请求方式
                         dataType: 'JSON',
                         processData: false,
                         contentType: false,
                         data: formData,	    //数据
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code = 200) {
-                                console.log(3332)
+                            if (res.code === 200) {
+                                $.niftyNoty({
+                                    type: 'success',
+                                    icon: 'pli-like-2 icon-2x',
+                                    message: '新增成功',
+                                    container: 'floating',
+                                    timer: 2000
+                                });
+                                $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
+                                $('#exampleModal').modal('hide');
+                            } else {
+                                $.niftyNoty({
+                                    type: 'danger',
+                                    icon: 'pli-cross icon-2x',
+                                    message: res.msg,
+                                    container: 'floating',
+                                    timer: 1000
+                                });
+                            }
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {		//请求失败回调函数
+                        }
+                    });
+                } else {//修改
+                    $.ajax({
+                        url: baseUrl + '/spec/update',	    //请求路径
+                        type: 'PUT',				        //请求方式
+                        data: JSON.stringify(formData),	    //数据
+                        contentType: 'application/json',    //数据类型
+                        success: function (res) {	        //请求成功回调函数
+                            if (res.code === 200) {
+                                $.niftyNoty({
+                                    type: 'success',
+                                    icon: 'pli-like-2 icon-2x',
+                                    message: '修改成功',
+                                    container: 'floating',
+                                    timer: 2000
+                                });
+                                $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
+                                $('#exampleModal').modal('hide');
+                            } else {
+                                $.niftyNoty({
+                                    type: 'danger',
+                                    icon: 'pli-cross icon-2x',
+                                    message: res.msg,
+                                    container: 'floating',
+                                    timer: 1000
+                                });
+                            }
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {		//请求失败回调函数
+                        }
+                    });
+                }
+            } else {
+                $.niftyNoty({
+                    type: 'danger',
+                    icon: 'pli-cross icon-2x',
+                    message: '您取消了新增',
+                    container: 'floating',
+                    timer: 1000
+                });
+            }
+        }
+    });
+}
+*/
+function save() {
+    bootbox.confirm({
+        title: '保存确认',
+        message: '<div class="text-center"><h2>您确定保存该数据吗<i class="demo-pli-question-circle text-danger"></i></h2></div>',
+        //size:'small',
+        buttons: {
+            cancel: {label: '<i class="demo-pli-cross"></i> 取消'},
+            confirm: {label: '<i class="demo-pli-check2"></i> 确认'}
+        },
+        callback: function (result) {
+            if (result) {
+                var validateForm = $('#registrationForm').data('bootstrapValidator');
+                //手动触发验证
+                validateForm.validate();
+                //表单验证不通过，直接return，不往下执行
+                if(!validateForm.isValid()){
+                    return;
+                }
+                //定义一个FormData对象
+                var formData = new FormData();
+                //从表单取值
+                var specDesc=$('#demo-summernote').summernote('code');
+                var specId = $('#specId').val();
+                var genusId=$('#genusId').val();
+                var specNameCh = $('#specNameCh').val();
+                var specNameEn = $('#specNameEn').val();
+                var specNameLd = $('#specNameLd').val();
+                var specNameOth = $('#specNameOth').val();
+                var specCode = $('#specCode').val();
+                var specBarCode = $('#specBarCode').val();
+                var specDna = $('#specDna').val();
+                var specDomestic = $('#specDomestic').val();
+                var specForeign = $('#specForeign').val();
+                var specVidio = $('#specVidio').val();
+                var specImgs = $('#specImgs').val();
+                // var specDesc = $('#specDesc').val();
+                var specSortNum = $('#specSortNum').val();
+
+                formData.append("specId", specId);
+                formData.append("genus.genusId",genusId);
+                formData.append("specNameCh", specNameCh);
+                formData.append("specNameEn", specNameEn);
+                formData.append("specNameLd", specNameLd);
+                formData.append("specNameOth", specNameOth);
+                formData.append("specCode", specCode);
+                formData.append("specBarCode", specBarCode);
+                formData.append("specDna", specDna);
+                formData.append("specDomestic", specDomestic);
+                formData.append("specForeign", specForeign);
+                formData.append("specVidio", specVidio);
+                formData.append("specImgs", specImgs);
+                formData.append("specDesc", specDesc);
+                formData.append("specSortNum", specSortNum);
+
+                //将文件数组添加进来
+                var multipartFiles = myDropzoneImg.files;
+                for (var i = 0; i < multipartFiles.length; i++) {
+                    formData.append("multipartFiles", myDropzoneImg.files[i]);
+                }
+                multipartFiles = myDropzone.files;
+                for (var i = 0; i < multipartFiles.length; i++) {
+                    formData.append("multipartFiles", myDropzone.files[i]);
+                }
+                console.log(123);
+                if (specId === "") {//新增
+                    console.log(1234);
+                    $.ajax({
+                        url: baseUrl + '/rattanSpec/save',		//请求路径
+                        type: 'POST',			            //请求方式
+                        dataType: 'JSON',
+                        processData: false,
+                        //contentType: false,
+                        data: formData,	                    //数据
+                        success: function (res) {	        //请求成功回调函数
+                            console.log(12345);
+                            if (res.code == 200) {
+                                console.log(3332);
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -657,7 +665,6 @@ function save() {
     });
 }
 
-
 //修改,填充表单元素的数据
 function edit(id) {
     init_form();
@@ -668,6 +675,7 @@ function edit(id) {
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
             if(res.code==200){
+                //将后台传的值渲染出来
                 $('#demo-summernote').summernote('code',res.data.specDesc);
                 $('#specId').val(res.data.specId);
                 $('#specNameCh').val(res.data.specNameCh);
@@ -681,14 +689,39 @@ function edit(id) {
                 $('#specForeign').val(res.data.specForeign);
                 $('#specVidio').val(res.data.specVidio);
                 $('#specImgs').val(res.data.specImgs);
-                //$('#specDesc').val(res.data.specDesc);
                 $('#specSortNum').val(res.data.specSortNum);
-                if(res.data.rattanGenus!=null){
-                    $('#rattanGenus').val(res.data.rattanGenus.genusNameCh);
-                    $('#genusId').val(res.data.rattanGenus.genusId);
+                if(res.data.genus!=null){
+                    $('#genus').val(res.data.genus.genusNameCh);
+                    $('#genusId').val(res.data.genus.genusId);
                 }
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
+
+                var imgFiles = [
+                    { name: "505ye 1.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 2.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 3.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 4.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 5.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' }
+                ];
+                for(var i=0;i<imgFiles.length;i++){
+                    myDropzoneImg.options.addedfile.call(myDropzoneImg, imgFiles[i]);
+                    myDropzoneImg.options.thumbnail.call(myDropzoneImg, imgFiles[i], imgFiles[i].imageUrl);
+                }
+                $(myDropzoneImg.options.previewsContainer).find('[data-dz-remove]').addClass('hide');
+                var vedioFiles = [
+                    { name: "testvideo 1.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 2.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 3.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 4.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 5.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' }
+                ];
+                for(var i=0;i<vedioFiles.length;i++){
+                    myDropzone.options.addedfile.call(myDropzone, vedioFiles[i]);
+                    myDropzone.options.thumbnail.call(myDropzone, vedioFiles[i],vedioFiles[i].videoUrl);
+                }
+                $(myDropzone.options.previewsContainer).find('[data-dz-remove]').addClass('hide');
+
             }else if(res.code == 400){
                 window.location.href='../../page-404.html';
             }
@@ -706,7 +739,6 @@ function edit(id) {
             }
         },
         error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
-
         }
     });
 }
@@ -728,7 +760,8 @@ function dele(gid){
                     type:'DELETE',				        //请求方式
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
-                        if(res.code===200){
+                        //res.code=400;
+                        if(res.code==200){
                             $.niftyNoty({
                                 type: 'success',
                                 icon : 'pli-like-2 icon-2x',
@@ -736,7 +769,7 @@ function dele(gid){
                                 container : 'floating',
                                 timer : 2000
                             });
-                            $("#data_table").bootstrapTable('refresh',{url :queryPageUrl} );
+                            $("#data_table").bootstrapTable('refresh',{url :queryPageUrl} );//刷新表格
                             $('#exampleModal').modal('hide');
                         }else if(res.code == 400){
                             window.location.href='../../page-404.html';
@@ -774,7 +807,7 @@ function dele(gid){
 function deles() {
     //选中的数据
     var selectedItems=$("#data_table").bootstrapTable('getSelections');
-    if(selectedItems.length===0){    //没有选中任何数据
+    if(selectedItems.length==0){    //没有选中任何数据
         $.niftyNoty({
             type: 'danger',
             icon : 'pli-cross icon-2x',
@@ -808,7 +841,7 @@ function deles() {
                         type:'DELETE',
                         contentType: 'application/json',//数据类型
                         success:function(res){	        //请求成功回调函数
-                            if(res.code===200){  //删除成功
+                            if(res.code==200){  //删除成功
                                 //alert('删除成功');
 
                                 //右上角弹出消息
@@ -836,7 +869,6 @@ function deles() {
                             }
                         },
                         error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
-
                         }
                     });
                 }else{  //取消
@@ -861,7 +893,6 @@ function check(id) {
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
-            //res.code=400;
             if(res.code===200){
                 $('#specNameCh-info').html(res.data.specNameCh).attr('data-original-title',res.data.specNameCh);
                 $('#specNameEn-info').html(res.data.specNameEn).attr('data-original-title',res.data.specNameEn);
@@ -873,12 +904,76 @@ function check(id) {
 
                 $('#specDomestic-info').html(res.data.specDomestic).attr('data-original-title',res.data.specDomestic);
                 $('#specForeign-info').html(res.data.specForeign).attr('data-original-title',res.data.specForeign);
-                $('#specVidio-info').html(res.data.specVidio).attr('data-original-title',res.data.specVidio);
-                $('#specImgs-info').html(res.data.specImgs).attr('data-original-title',res.data.specImgs);
+                //$('#specVidio-info').html(res.data.specVidio).attr('data-original-title',res.data.specVidio);
+                //$('#specImgs-info').html(res.data.specImgs).attr('data-original-title',res.data.specImgs);
+                var imgFiles = [
+                    { name: "505ye 1.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 2.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 3.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 4.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 5.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 6.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 7.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 8.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 9.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 10.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 11.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 12.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 13.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 14.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 15.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' }
+                ];
+                var _html = '<div class="rows">';
+                for(var i=0;i<imgFiles.length;i++){
+                    item=imgFiles[i]
+                    _html += '\
+                    <div class="mar-btm-sm col-md-1 col-sm-2">\
+                        <img class="bord-all" style="width:50px;height:50px;" src="'+item.url+'">\
+                    </div>';
+                }
+                _html += '</div>';
+                $('#specImgs-info').html(_html);
+                $('#specImgs-info img').unbind('click').on('click',function(){
+                    $.uImgFull($(this));
+                });
+                _html='';
+
+                var vedioFiles = [
+                    { name: "testvideo 1.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 2.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 3.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 4.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 5.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 6.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 7.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 8.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 9.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 10.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 11.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 12.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 13.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 14.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 15.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' }
+                ];
+                _html = '<div class="rows">';
+                for(var i=0;i<vedioFiles.length;i++){
+                    item=vedioFiles[i]
+                    _html += '\
+                    <div class="mar-btm-sm col-md-1 col-sm-2">\
+                        <video class="bord-all" style="width:50px;height:50px;" src="'+item.url+'"></video>\
+                    </div>';
+                }
+                _html += '</div>';
+                $('#specVidio-info').html(_html);
+                $('#specVidio-info video').unbind('click').on('click',function(){
+                    $.uVideoFull($(this).attr('src'));
+                });
+
                 //$('#demo-summernote-info').summernote('code',res.data.specDesc);
+                //$('#specDesc-info').html(res.data.specDesc).attr('data-original-title',res.data.specDesc);
                 $('#specDesc-info').html(res.data.specDesc);
-                if(res.data.rattanGenus!=null) {
-                    $('#genus-info').html(res.data.rattanGenus.genusNameCh).attr('data-original-title', res.data.rattanGenus.genusNameCh);
+                if(res.data.genus!=null){
+                    $('#genus-info').html(res.data.genus.genusNameCh).attr('data-original-title',res.data.genus.genusNameCh);
                 }
                 $('#exampleModal-info').modal('show');
             }else if(res.code == 400){
@@ -898,13 +993,13 @@ function check(id) {
             }
         },
         error:function(XMLHttpRequest, textStatus, errorThrown) {//请求失败回调函数
-
         }
     });
 }
+
 //初始化表单元素的值
 function init_form(){
-    $('#rattanGenus').val("");
+    $('#genus').val("");
     $('#specId').val("");
     $('#genusId').val("");
     $('#specNameCh').val("");
@@ -927,7 +1022,6 @@ function init_form(){
 }
 //初始化详情元素值
 function init_info(){
-
     $('#specNameCh-info').val("").attr('data-original-title',"");
     $('#specNameEn-info').val("").attr('data-original-title',"");
     $('#specNameLd-info').val("").attr('data-original-title',"");
@@ -940,9 +1034,10 @@ function init_info(){
     $('#specVidio-info').val("").attr('data-original-title',"");
     $('#specImgs-info').val("").attr('data-original-title',"");
     $('#specDesc-info').val("").attr('data-original-title',"");
-
+    // $('#specSortNum').val("").attr('data-original-title',"");
+    // $('#registrationForm').data('bootstrapValidator').resetForm();
 }
-//修改密码富文本的高度
+//修改密码富文本
 function init_sunmmernote(){
     $('#demo-summernote').summernote({
         height: 244,                 // set editor height
@@ -950,13 +1045,13 @@ function init_sunmmernote(){
         maxHeight: null,             // set maximum height of editor
         focus: true                  // set focus to editable area after initializing summernote
     });
-    $('#demo-summernote-info').summernote({
-        height: 244,                 // set editor height
-        minHeight: null,             // set minimum height of editor
-        maxHeight: null,             // set maximum height of editor
-        focus: true                 // set focus to editable area after initializing summernot
-    })
-    $('#demo-summernote-info').summernote('disable');
+    // $('#demo-summernote-info').summernote({
+    //     height: 244,                 // set editor height
+    //     minHeight: null,             // set minimum height of editor
+    //     maxHeight: null,             // set maximum height of editor
+    //     focus: true                 // set focus to editable area after initializing summernot
+    // })
+    // $('#demo-summernote-info').summernote('disable');
 }
 //修改密码文件上传
 function init_file_upload(){
@@ -968,7 +1063,7 @@ function init_file_upload(){
     var uplodaBtn = $('#dz-upload-btn');
     var removeBtn = $('#dz-remove-btn');
     myDropzone = new Dropzone( uplodaBtn.parent().parent().parent()[0],{//document.body, { // Make the whole body a dropzone
-        url: baseUrl+'/rattanspec/upload', // Set the url
+        url: baseUrl+'/spec/upload', // Set the url
         thumbnailWidth: 50,
         thumbnailHeight: 50,
         parallelUploads: 20,
@@ -989,6 +1084,7 @@ function init_file_upload(){
         // Hookup the button
         uplodaBtn.prop('disabled', false);
         removeBtn.prop('disabled', false);
+        $(myDropzone.options.previewsContainer).find('.dz-image-preview').remove();
     });
 
     // Update the total progress bar
@@ -1067,6 +1163,11 @@ function init_file_upload(){
         // Hookup the button
         uplodaImgBtn.prop('disabled', false);
         removeImgBtn.prop('disabled', false);
+        $.each($(myDropzoneImg.options.previewsContainer).find('.dz-image-preview'),function(index,ele){
+            if($(ele).find('[data-dz-thumbnail]').attr('src').length<200){
+                $(ele).remove();
+            }
+        });
     });
 
     // Update the total progress bar
@@ -1104,16 +1205,17 @@ function init_file_upload(){
 function clear_file(){
     //清除视频的选择
     $('#dz-remove-btn').click();
+    $(myDropzoneImg.options.previewsContainer).html('');
     //清除图片的选择
     $('#dz-remove-img-btn').click();
+    $(myDropzone.options.previewsContainer).html('');
 }
-
 //选择属
 function selectedGenus(){
     //选中的数据
     var selectedSpecItems=$("#genus_table").bootstrapTable('getSelections');
     if (selectedSpecItems.length==1){
-        $("#rattanGenus").val(selectedSpecItems[0].genusNameCh);
+        $("#genus").val(selectedSpecItems[0].genusNameCh);
         $("#genusId").val(selectedSpecItems[0].genusId);
         $('#genusModal').modal('hide');
     }
