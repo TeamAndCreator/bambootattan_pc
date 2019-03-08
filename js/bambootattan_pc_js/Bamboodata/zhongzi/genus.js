@@ -138,7 +138,7 @@ function init_table(){
                     return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
                 }
             },
-            { field:'genusId',title:'genusId',visible:false}//隐藏不显示
+            // { field:'genusId',title:'genusId',visible:false}//隐藏不显示
         ]
     });
 }

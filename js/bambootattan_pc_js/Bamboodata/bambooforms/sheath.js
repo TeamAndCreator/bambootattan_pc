@@ -159,7 +159,7 @@ function init_table(){
                     return{css:{'min-width':'80px'}};
                 }
             },*/
-            { field:'sheId',title:'sheId',visible:false }//隐藏不显示
+            // { field:'sheId',title:'sheId',visible:false }//隐藏不显示
         ]
     });
 }
@@ -356,7 +356,7 @@ function init_spec_table(){
                     return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
                 }
             },
-            { field:'specId',title:'specId',visible:false }//隐藏不显示
+            // { field:'specId',title:'specId',visible:false }//隐藏不显示
         ]
     });
 }

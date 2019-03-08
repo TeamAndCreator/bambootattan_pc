@@ -192,7 +192,7 @@ function init_table(){
                     return{css:{'min-width':'80px'}};
                 }
             },*/
-            { field:'floFruitId',title:'floFruitId',visible:false }//隐藏不显示
+            // { field:'floFruitId',title:'floFruitId',visible:false }//隐藏不显示
         ]
     });
 }
@@ -243,7 +243,7 @@ function init_spec_table(){
 
             {
                 radio:true,//有复选框
-                field:'radio',//数据列
+                field:'radio'//数据列
             },
             {
                 field:'genus',//数据列
@@ -389,7 +389,7 @@ function init_spec_table(){
                     return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
                 }
             },
-            { field:'specId',title:'specId',visible:false }//隐藏不显示
+            // { field:'specId',title:'specId',visible:false }//隐藏不显示
         ]
     });
 }

@@ -256,7 +256,7 @@ function init_table(){
                 }
             },
 
-            { field:'genusId',title:'genusId',visible:false }//隐藏不显示
+            // { field:'genusId',title:'genusId',visible:false }//隐藏不显示
         ]
     });
 }
