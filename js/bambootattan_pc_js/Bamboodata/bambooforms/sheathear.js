@@ -140,7 +140,7 @@ function init_table(){
                     return{css:{'min-width':'80px'}};
                 }
             },*/
-            { field:'sheEarId',title:'sheEarId',visible:false }//隐藏不显示
+            // { field:'sheEarId',title:'sheEarId',visible:false }//隐藏不显示
         ]
     });
 }

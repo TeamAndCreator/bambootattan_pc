@@ -168,8 +168,6 @@ function keyEnter(e){
     }
 }
 document.onkeydown = keyEnter;
-
-
 function validate() {
     var validateForm = $('#form-login').data('bootstrapValidator');
     //手动触发验证
@@ -192,7 +190,6 @@ function validate() {
         login();
     }
 }
-
 //登录
 function login(){
     var userName = $("#userName").val();    // 获取id为username的<input>框数据

@@ -22,7 +22,6 @@ function init_table(){
         pageList:[5, 10, 20],//每页数量组
         pageSize:5,//默认每页数量
         pagination:true,//可以分页
-        striped:true,
         showPaginationSwitch:true,//
         sidePagination:'server',//服務器端分頁
         clickToSelect:true,
