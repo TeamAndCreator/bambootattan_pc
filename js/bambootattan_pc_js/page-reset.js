@@ -96,6 +96,7 @@ function changePassword(){
                     container: 'floating',
                     timer: 2000
                 });
+                sessionStorage.setItem('jsessionId','');
                 window.location.href = "page-login.html";
             }
             else if(res.code == 400){

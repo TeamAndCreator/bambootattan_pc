@@ -36,10 +36,10 @@ function init_table(){
         showColumns:true,//可以选择列
         sortName:'id',//排序字段
         sortOrder:'asc',//排序类型，asc正序，desc倒序初始化加載第一頁
-        pageList:[5, 10, 20],//每页数量组
+        pageList:[5, 10, 20,100,'ALL'],//每页数量组
         pageSize:5,//默认每页数量
         pagination:true,//可以分页，在表格底部显示分页条
-        showPaginationSwitch:true,
+        showPaginationSwitch:false,
         sidePagination:'server',//服務器端分頁
         //method:'POST',
         responseHandler:function(res){//后台返回数据进行修改，修改成bootstrap-table能够使用的数据格式

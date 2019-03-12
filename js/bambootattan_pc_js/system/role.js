@@ -36,7 +36,7 @@ function init_table(){
         pageList:[5, 10, 20],//每页数量组
         pageSize:5,//默认每页数量
         pagination:true,//可以分页
-        showPaginationSwitch:true,
+        showPaginationSwitch:false,
         sidePagination:'server',//服務器端分頁
         //method:'POST',
         responseHandler:function(res){//后台返回数据进行修改，修改成bootstrap-table能够使用的数据格式
@@ -136,7 +136,7 @@ function init_table(){
             //         return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
             //     }
             // },
-            { field:'roleId',title:'roleId',visible:false}//隐藏不显示
+            // { field:'roleId',title:'roleId',visible:false}//隐藏不显示
         ]
     });
 }
@@ -490,7 +490,6 @@ function init_form(){
 
 //初始化详情元素值
 function init_info(){
-
     $('#roleId').val("").attr('data-original-title',"");
     $('#roleName-info').val("").attr('data-original-title',"");
     $('#remark-info').val("").attr('data-original-title',"");
