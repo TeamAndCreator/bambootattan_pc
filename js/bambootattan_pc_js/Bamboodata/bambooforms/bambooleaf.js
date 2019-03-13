@@ -37,6 +37,7 @@ function init_table(){
         //data:dataSoure,//数据源，json数据
         toolbar:'#btn_area',//按钮组
         search:true,//可以搜索
+        //strictSearch:true,
         showRefresh:true,//可以刷新
         showToggle:true,//可以视图切换
         showColumns:true,//可以选择列
@@ -392,16 +393,16 @@ function init_spec_table(){
                     return{css:{'min-width':'80px'} };
                 }
             },
-            {
-                field:'specSortNum',//数据列
-                title:'序号',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
-                }
-            },
+            // {
+            //     field:'specSortNum',//数据列
+            //     title:'序号',//数据列名称
+            //     sortable:true,//可排序
+            //     align:'center',//水平居中
+            //     valign:'middle',//垂直居中
+            //     cellStyle:function(value,row,index,field){
+            //         return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
+            //     }
+            // },
             {
                 field:'specDesc',//数据列
                 title:'描述',//数据列名称

@@ -94,16 +94,16 @@ function init_table(){
                     return{css:{'min-width':'80px'}};
                 }
             },
-            {
-                field:'sortNum',//数据列
-                title:'序号',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'}};
-                }
-            },
+            // {
+            //     field:'sortNum',//数据列
+            //     title:'序号',//数据列名称
+            //     sortable:true,//可排序
+            //     align:'center',//水平居中
+            //     valign:'middle',//垂直居中
+            //     cellStyle:function(value,row,index,field){
+            //         return{css:{'min-width':'80px'}};
+            //     }
+            // },
             {
                 field:'canDel',//数据列
                 title:'是否能删除',//数据列名称
