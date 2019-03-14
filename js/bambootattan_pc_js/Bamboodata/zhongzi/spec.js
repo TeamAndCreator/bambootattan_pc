@@ -50,7 +50,7 @@ function init_table(){
     $('#data_table').bootstrapTable({
         url:queryPageUrl,//数据源，请求后台的路径
         //data:dataSoure,//数据源，json数据
-        toolbar:'#btn_area',//按钮组
+        toolbar:'#btn_area',//按钮组 这里必须绑定工具栏，不然布局会错乱
         search:true,//可以搜索
         showRefresh:true,//可以刷新
         showToggle:true,//可以视图切换
@@ -365,7 +365,7 @@ function init_genus_table(){
                     return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
                 }
             },
-            { field:'genusId',title:'genusId',visible:false }//隐藏不显示
+            // { field:'genusId',title:'genusId',visible:false }//隐藏不显示
         ]
     });
 }
