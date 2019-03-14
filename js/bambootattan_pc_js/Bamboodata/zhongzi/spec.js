@@ -50,7 +50,7 @@ function init_table(){
     $('#data_table').bootstrapTable({
         url:queryPageUrl,//数据源，请求后台的路径
         //data:dataSoure,//数据源，json数据
-        toolbar:'#btn_area',//按钮组
+        toolbar:'#btn_area',//按钮组 这里必须绑定工具栏，不然布局会错乱
         search:true,//可以搜索
         showRefresh:true,//可以刷新
         showToggle:true,//可以视图切换
@@ -60,7 +60,7 @@ function init_table(){
         pageList:[5, 10, 20],//每页数量组
         pageSize:5,//默认每页数量
         pagination:true,//可以分页
-        showPaginationSwitch:true,//
+        showPaginationSwitch:false,//
         sidePagination:'server',//服務器端分頁
         clickToSelect:true,
         //method:'POST',
@@ -345,16 +345,16 @@ function init_genus_table(){
                     return{css:{'min-width':'80px'}};
                 }
             },
-            {
-                field:'sortNum',//数据列
-                title:'序号',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'}};
-                }
-            },
+            // {
+            //     field:'sortNum',//数据列
+            //     title:'序号',//数据列名称
+            //     sortable:true,//可排序
+            //     align:'center',//水平居中
+            //     valign:'middle',//垂直居中
+            //     cellStyle:function(value,row,index,field){
+            //         return{css:{'min-width':'80px'}};
+            //     }
+            // },
             {
                 field:'genusDesc',//数据列
                 title:'描述',//数据列名称
@@ -365,7 +365,7 @@ function init_genus_table(){
                     return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
                 }
             },
-            { field:'genusId',title:'genusId',visible:false }//隐藏不显示
+            // { field:'genusId',title:'genusId',visible:false }//隐藏不显示
         ]
     });
 }

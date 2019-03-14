@@ -19,10 +19,10 @@ function init_table(){
         showColumns:true,//可以选择列
         sortName:'id',//排序字段
         sortOrder:'asc',//排序类型，asc正序，desc倒序初始化加載第一頁
-        pageList:[5, 10, 20],//每页数量组
+        pageList:[5, 10, 20,100,1000,'ALL'],//每页数量组
         pageSize:5,//默认每页数量
         pagination:true,//可以分页
-        showPaginationSwitch:true,//
+        showPaginationSwitch:false,//
         sidePagination:'server',//服務器端分頁
         clickToSelect:true,
         //method:'POST',
@@ -151,17 +151,6 @@ function init_table(){
                 }
             },
 
-            /*
-            {
-                field:'underStemId',//数据列
-                title:'序号',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'}};
-                }
-            },*/
         ]
     });
 }

@@ -38,7 +38,7 @@ function init_table(){
         pageList:[5, 10, 20],//每页数量组
         pageSize:5,//默认每页数量
         pagination:true,//可以分页
-        showPaginationSwitch:true,//
+        showPaginationSwitch:false,//
         sidePagination:'server',//服務器端分頁
         //method:'POST',
         responseHandler:function(res){//后台返回数据进行修改，修改成bootstrap-table能够使用的数据格式
@@ -119,16 +119,16 @@ function init_table(){
                     return{css:{'min-width':'80px'}};
                 }
             },
-            {
-                field:'sortNum',//数据列
-                title:'序号',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'}};
-                }
-            },
+            // {
+            //     field:'sortNum',//数据列
+            //     title:'序号',//数据列名称
+            //     sortable:true,//可排序
+            //     align:'center',//水平居中
+            //     valign:'middle',//垂直居中
+            //     cellStyle:function(value,row,index,field){
+            //         return{css:{'min-width':'80px'}};
+            //     }
+            // },
             {
                 field:'genusDesc',//数据列
                 title:'描述',//数据列名称
