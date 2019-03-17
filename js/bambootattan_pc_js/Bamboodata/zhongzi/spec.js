@@ -212,28 +212,28 @@ function init_table(){
                     return{css:{'min-width':'80px'} };
                 }
             },
-            {
-                field:'specVidio',//数据列
-                title:'上传视频',//数据列名称
-                sortable:true,//可排序
-                visible:false,
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'} };
-                }
-            },
-            {
-                field:'specImgs',//数据列
-                title:'上传图片',//数据列名称
-                sortable:true,//可排序
-                visible:false,
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'} };
-                }
-            },
+            // {
+            //     field:'specVidio',//数据列
+            //     title:'上传视频',//数据列名称
+            //     sortable:true,//可排序
+            //     visible:false,
+            //     align:'center',//水平居中
+            //     valign:'middle',//垂直居中
+            //     cellStyle:function(value,row,index,field){
+            //         return{css:{'min-width':'80px'} };
+            //     }
+            // },
+            // {
+            //     field:'specImgs',//数据列
+            //     title:'上传图片',//数据列名称
+            //     sortable:true,//可排序
+            //     visible:false,
+            //     align:'center',//水平居中
+            //     valign:'middle',//垂直居中
+            //     cellStyle:function(value,row,index,field){
+            //         return{css:{'min-width':'80px'} };
+            //     }
+            // },
             // {
             //     field:'specSortNum',//数据列
             //     title:'序号',//数据列名称
@@ -296,6 +296,7 @@ function init_genus_table(){
             return {
                 page:params.offset/params.limit,    //页码，就是第几页
                 size:params.limit                   //每页数量
+
             }
         },
         cache:false,//是否使用緩存
@@ -531,7 +532,7 @@ function save() {
                     return;
                 }
                 //定义一个FormData对象
-                var formData = new FormData();
+                formData = new FormData();
                 //从表单取值
                 var specDesc=$('#demo-summernote').summernote('code');
                 var specId = $('#specId').val();
@@ -567,15 +568,16 @@ function save() {
                 formData.append("specSortNum", specSortNum);
 
                 //将文件数组添加进来
+                multipartFiles = myDropzone.files;
+                for (var j = 0; j < multipartFiles.length; j++) {
+                    formData.append("multipartFiles", myDropzone.files[j]);
+                }
                 var multipartFiles = myDropzoneImg.files;
                 for (var i = 0; i < multipartFiles.length; i++) {
                     formData.append("multipartFiles", myDropzoneImg.files[i]);
                 }
-                multipartFiles = myDropzone.files;
-                for (var i = 0; i < multipartFiles.length; i++) {
-                    formData.append("multipartFiles", myDropzone.files[i]);
-                }
                 console.log(123);
+                console.log(formData.getAll('multipartFiles'))
                 if (specId === "") {//新增
                     console.log(1234);
                     $.ajax({
@@ -583,11 +585,15 @@ function save() {
                         type: 'POST',			            //请求方式
                         dataType: 'JSON',
                         processData: false,
-                        //contentType: false,
+                        contentType: false,
                         data: formData,	                    //数据
+                        headers:{
+                            'Authorization':sessionStorage.getItem('jsessionId')
+                        },
                         success: function (res) {	        //请求成功回调函数
                             console.log(12345);
-                            if (res.code == 200) {
+                            console.log(res);
+                            if (res.code === 200) {
                                 console.log(3332);
                                 $.niftyNoty({
                                     type: 'success',
@@ -598,10 +604,10 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
-                            } else if(res.code == 400){
+                            } else if(res.code === 400){
                                 window.location.href='../../page-404.html';
                             }
-                            else if(res.code == 505){
+                            else if(res.code === 505){
                                 window.location.href='../../page-500.html';
                             }else {
                                 $.niftyNoty({
@@ -697,28 +703,28 @@ function edit(id) {
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
 
-                var imgFiles = [
-                    { name: "505ye 1.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
-                    { name: "505ye 2.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
-                    { name: "505ye 3.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
-                    { name: "505ye 4.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
-                    { name: "505ye 5.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' }
-                ];
+                // var imgFiles = [
+                //     { name: "505ye 1.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                //     { name: "505ye 2.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                //     { name: "505ye 3.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                //     { name: "505ye 4.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                //     { name: "505ye 5.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' }
+                // ];
                 for(var i=0;i<imgFiles.length;i++){
                     myDropzoneImg.options.addedfile.call(myDropzoneImg, imgFiles[i]);
                     myDropzoneImg.options.thumbnail.call(myDropzoneImg, imgFiles[i], imgFiles[i].imageUrl);
                 }
                 $(myDropzoneImg.options.previewsContainer).find('[data-dz-remove]').addClass('hide');
-                var vedioFiles = [
-                    { name: "testvideo 1.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
-                    { name: "testvideo 2.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
-                    { name: "testvideo 3.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
-                    { name: "testvideo 4.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
-                    { name: "testvideo 5.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' }
-                ];
-                for(var i=0;i<vedioFiles.length;i++){
-                    myDropzone.options.addedfile.call(myDropzone, vedioFiles[i]);
-                    myDropzone.options.thumbnail.call(myDropzone, vedioFiles[i],vedioFiles[i].videoUrl);
+                // var vedioFiles = [
+                //     { name: "testvideo 1.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                //     { name: "testvideo 2.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                //     { name: "testvideo 3.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                //     { name: "testvideo 4.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                //     { name: "testvideo 5.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' }
+                // ];
+                for(var j=0;j<vedioFiles.length;i++){
+                    myDropzone.options.addedfile.call(myDropzone, vedioFiles[j]);
+                    myDropzone.options.thumbnail.call(myDropzone, vedioFiles[j],vedioFiles[j].videoUrl);
                 }
                 $(myDropzone.options.previewsContainer).find('[data-dz-remove]').addClass('hide');
 

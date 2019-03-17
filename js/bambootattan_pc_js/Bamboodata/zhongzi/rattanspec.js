@@ -273,7 +273,7 @@ function init_genus_table(){
         pageList:[5, 10, 20],//每页数量组
         pageSize:10,//默认每页数量
         pagination:true,//可以分页
-        showPaginationSwitch:true,//
+        showPaginationSwitch:false,//
         sidePagination:'server',//服務器端分頁
         clickToSelect:true,
         onDblClickRow:function(row, $element){
