@@ -566,7 +566,7 @@ function edit(id) {
                     var item= res.data.files[i];
                     if(item.type=="image"){
                         imgFiles.push({name:item.origin_name,size:0,imageUrl:baseUrl+"/"+item.path});
-                    }else if(item.type=="vedio"){
+                    }else if(item.type=="video"){
                         vedioFiles.push({name:item.origin_name,size:0,videoUrl:baseUrl+"/"+item.path});
                     }
                 }
@@ -790,7 +790,7 @@ function check(id) {
                     var item= res.data.files[i];
                     if(item.type=="image"){
                         imgFiles.push({name:item.origin_name,size:0,imageUrl:baseUrl+"/"+item.path});
-                    }else if(item.type=="vedio"){
+                    }else if(item.type=="video"){
                         vedioFiles.push({name:item.origin_name,size:0,videoUrl:baseUrl+"/"+item.path});
                     }
                 }
