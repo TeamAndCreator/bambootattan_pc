@@ -14,7 +14,7 @@ $(function(){
     });
     //打开弹出框，去掉验证信息显示
     $('#exampleModal').on('shown.bs.modal',function () {
-        $('#registrationForm').data('bootstrapValidator').resetForm();
+        $('#specForm').data('bootstrapValidator').resetForm();
     });
     //批量删除点击事件
     $('#btn_delete').on('click',deles);
@@ -39,8 +39,9 @@ $(function(){
     init_sunmmernote();
     //初始化文件上传
     init_file_upload();
+    checkForm();
     //表单验证
-    $('#registrationForm').bootstrapValidator();
+    $('#specForm').bootstrapValidator();
 
     $.uImgFull('init');
     $.uVideoFull('init');
@@ -277,9 +278,10 @@ function init_genus_table(){
         sidePagination:'server',//服務器端分頁
         clickToSelect:true,
         onDblClickRow:function(row, $element){
-            $("#genus").val(row.genusNameCh);
+           /* $("#genus").val(row.genusNameCh);
             $("#genusId").val(row.genusId);
-            $('#genusModal').modal('hide');
+            $('#genusModal').modal('hide');*/
+            checkGenusAfterSelected(row.genusNameCh,row.genusId);
         },
         //onClickRow:function(row, $element){
         //    $("#genus").val(row.genusNameCh);
@@ -371,8 +373,10 @@ function init_genus_table(){
     });
 }
 
+
+
 function save() {
-    bootbox.confirm({
+    var saveConfirmBox=bootbox.confirm({
         title: '保存确认',
         message: '<div class="text-center"><h2>您确定保存该数据吗<i class="demo-pli-question-circle text-danger"></i></h2></div>',
         //size:'small',
@@ -382,13 +386,48 @@ function save() {
         },
         callback: function (result) {
             if (result) {
-                var validateForm = $('#registrationForm').data('bootstrapValidator');
+                var validateForm = $('#specForm').data('bootstrapValidator');
                 //手动触发验证
                 validateForm.validate();
                 //表单验证不通过，直接return，不往下执行
                 if(!validateForm.isValid()){
-                    return;
+                     return;
                 }
+
+                // $("#spec_form").bootstrapValidator({
+                //     //submitHandler: function (valiadtor, loginForm, submitButton) {
+                //     //    valiadtor.defaultSubmit();
+                //     //},
+                //     fields: {
+                //         specNameCh: {
+                //             validators: {
+                //                 notEmpty: {
+                //                     message: '中文名不能为空'
+                //                 },
+                //             }
+                //         },
+                //         specSortNum: {
+                //             validators: {
+                //                 notEmpty: {
+                //                     message: '序号不能为空'
+                //                 },
+                //             }
+                //         },
+                //         genus: {
+                //             validators: {
+                //                 notEmpty: {
+                //                     message: '种名不能为空'
+                //                 },
+                //             }
+                //         },
+                //
+                //     }
+                //
+                // });
+                //
+
+
+
                 //定义一个FormData对象
                 formData = new FormData();
                 //从表单取值
@@ -437,11 +476,10 @@ function save() {
 
                 console.log(formData.getAll('multipartFiles'))
                 if (specId === "") {//新增
-                    console.log(1234);
                     $.ajax({
                         url: baseUrl + '/spec/save',		//请求路径
                         type: 'POST',			            //请求方式
-                        dataType: 'JSON',
+                        dataType: 'JSON',                   //预期服务器返回的类型
                         processData: false,
                         contentType: false,
                         data: formData,	                    //数据
@@ -449,10 +487,7 @@ function save() {
                             'Authorization':sessionStorage.getItem('jsessionId')
                         },
                         success: function (res) {	        //请求成功回调函数
-                            console.log(12345);
-                            console.log(res);
                             if (res.code === 200) {
-                                console.log(3332);
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -526,6 +561,9 @@ function save() {
                 });
             }
         }
+    });
+    saveConfirmBox.on('hidden.bs.modal', function(e){
+        openModalClass();
     });
 }
 
@@ -909,26 +947,24 @@ function init_form(){
     $('#specDesc').val("");
     $('#specSortNum').val("");
     $('#demo-summernote').summernote('code',"");
-    // $('#specSortNum').val("");
-    $('#registrationForm').data('bootstrapValidator').resetForm();
+    $('#specForm').data('bootstrapValidator').resetForm();
     clear_file();
 }
 //初始化详情元素值
 function init_info(){
-    $('#specNameCh-info').val("").attr('data-original-title',"");
-    $('#specNameEn-info').val("").attr('data-original-title',"");
-    $('#specNameLd-info').val("").attr('data-original-title',"");
-    $('#specNameOth-info').val("").attr('data-original-title',"");
-    $('#specCode-info').val("").attr('data-original-title',"");
-    $('#specBarCode-info').val("").attr('data-original-title',"");
-    $('#specDna-info').val("").attr('data-original-title',"");
-    $('#specDomestic-info').val("").attr('data-original-title',"");
-    $('#specForeign-info').val("").attr('data-original-title',"");
-    $('#specVidio-info').val("").attr('data-original-title',"");
-    $('#specImgs-info').val("").attr('data-original-title',"");
-    $('#specDesc-info').val("").attr('data-original-title',"");
-    // $('#specSortNum').val("").attr('data-original-title',"");
-    // $('#registrationForm').data('bootstrapValidator').resetForm();
+    $('#specNameCh-info').html("").attr('data-original-title',"");
+    $('#specNameEn-info').html("").attr('data-original-title',"");
+    $('#specNameLd-info').html("").attr('data-original-title',"");
+    $('#specNameOth-info').html("").attr('data-original-title',"");
+    $('#specCode-info').html("").attr('data-original-title',"");
+    $('#specBarCode-info').html("").attr('data-original-title',"");
+    $('#specDna-info').html("").attr('data-original-title',"");
+    $('#specDomestic-info').html("").attr('data-original-title',"");
+    $('#specForeign-info').html("").attr('data-original-title',"");
+    $('#specVidio-info').html("").attr('data-original-title',"");
+    $('#specImgs-info').html("").attr('data-original-title',"");
+    $('#specDesc-info').html("").attr('data-original-title',"");
+    /*$('#specSortNum').html("").attr('data-original-title',"");*/
 }
 //修改密码富文本
 function init_sunmmernote(){
@@ -1108,8 +1144,50 @@ function selectedGenus(){
     //选中的数据
     var selectedSpecItems=$("#genus_table").bootstrapTable('getSelections');
     if (selectedSpecItems.length==1){
-        $("#genus").val(selectedSpecItems[0].genusNameCh);
+        /*$("#genus").val(selectedSpecItems[0].genusNameCh);
         $("#genusId").val(selectedSpecItems[0].genusId);
-        $('#genusModal').modal('hide');
+        $('#genusModal').modal('hide');*/
+        checkGenusAfterSelected(selectedSpecItems[0].genusNameCh,selectedSpecItems[0].genusId);
     }
+}
+
+//校验表单
+function checkForm(){
+    $("#specForm").bootstrapValidator({
+        //submitHandler: function (valiadtor, loginForm, submitButton) {
+        //    valiadtor.defaultSubmit();
+        //},
+        group: 'div[class*="col-sm"]',//显示消息的位置元素，追加在最后
+        fields: {
+            specNameCh: {
+                validators: {
+                    notEmpty: {
+                        message: '中文名不能为空'
+                    }
+                }
+            },
+            specSortNum: {
+                validators: {
+                    notEmpty: {
+                        message: '序号不能为空'
+                    }
+                }
+            },
+            genus: {
+                validators: {
+                    notEmpty: {
+                        message: '属不能为空'
+                    }
+                }
+            }
+        }
+    });
+}
+function checkGenusAfterSelected(text,id){
+    $("#genus").val(text);
+    var validateForm = $('#specForm').data('bootstrapValidator');
+    validateForm.resetField('genus');
+    validateForm.validateField("genus");
+    $("#genusId").val(id);
+    $('#genusModal').modal('hide');
 }
