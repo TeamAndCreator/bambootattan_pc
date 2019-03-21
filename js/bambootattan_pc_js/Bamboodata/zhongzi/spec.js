@@ -372,9 +372,6 @@ function init_genus_table(){
         ]
     });
 }
-
-
-
 function save() {
     var saveConfirmBox=bootbox.confirm({
         title: '保存确认',
@@ -394,41 +391,7 @@ function save() {
                      return;
                 }
 
-                // $("#spec_form").bootstrapValidator({
-                //     //submitHandler: function (valiadtor, loginForm, submitButton) {
-                //     //    valiadtor.defaultSubmit();
-                //     //},
-                //     fields: {
-                //         specNameCh: {
-                //             validators: {
-                //                 notEmpty: {
-                //                     message: '中文名不能为空'
-                //                 },
-                //             }
-                //         },
-                //         specSortNum: {
-                //             validators: {
-                //                 notEmpty: {
-                //                     message: '序号不能为空'
-                //                 },
-                //             }
-                //         },
-                //         genus: {
-                //             validators: {
-                //                 notEmpty: {
-                //                     message: '种名不能为空'
-                //                 },
-                //             }
-                //         },
-                //
-                //     }
-                //
-                // });
-                //
 
-
-
-                //定义一个FormData对象
                 formData = new FormData();
                 //从表单取值
                 var specDesc=$('#demo-summernote').summernote('code');
@@ -474,7 +437,7 @@ function save() {
                     formData.append("multipartFiles", myDropzoneImg.files[i]);
                 }
 
-                console.log(formData.getAll('multipartFiles'))
+                //console.log(formData.getAll('multipartFiles'))
                 if (specId === "") {//新增
                     $.ajax({
                         url: baseUrl + '/spec/save',		//请求路径
