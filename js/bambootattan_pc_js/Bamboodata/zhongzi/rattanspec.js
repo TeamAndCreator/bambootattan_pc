@@ -14,7 +14,7 @@ $(function(){
     });
     //打开弹出框，去掉验证信息显示
     $('#exampleModal').on('shown.bs.modal',function () {
-        $('#registrationForm').data('bootstrapValidator').resetForm();
+        $('#specForm').data('bootstrapValidator').resetForm();
     });
     //批量删除点击事件
     $('#btn_delete').on('click',deles);
@@ -40,7 +40,7 @@ $(function(){
     //初始化文件上传
     init_file_upload();
     //表单验证
-    $('#registrationForm').bootstrapValidator();
+    checkForm();
 
     $.uImgFull('init');
     $.uVideoFull('init');
@@ -277,9 +277,10 @@ function init_genus_table(){
         sidePagination:'server',//服務器端分頁
         clickToSelect:true,
         onDblClickRow:function(row, $element){
-            $("#genus").val(row.genusNameCh);
-            $("#genusId").val(row.genusId);
-            $('#genusModal').modal('hide');
+            // $("#genus").val(row.genusNameCh);
+            // $("#genusId").val(row.genusId);
+            // $('#genusModal').modal('hide');
+            checkGenusAfterSelected(row.genusNameCh,row.genusId);
         },
         //onClickRow:function(row, $element){
         //    $("#genus").val(row.genusNameCh);
@@ -369,9 +370,6 @@ function init_genus_table(){
         ]
     });
 }
-/*
-以后可能改回来，不要删除
-//保存
 function save() {
     bootbox.confirm({
         title: '保存确认',
@@ -383,147 +381,7 @@ function save() {
         },
         callback: function (result) {
             if (result) {
-                var validateForm = $('#registrationForm').data('bootstrapValidator');
-                //手动触发验证
-                validateForm.validate();
-                //表单验证不通过，直接return，不往下执行
-                if(!validateForm.isValid()){
-                    return;
-                }
-                //定义一个FormData对象
-                var formData = new FormData();
-                //从表单取值
-                var specDesc=$('#demo-summernote').summernote('code');
-                var specId = $('#specId').val();
-                var genusId=$('#genusId').val();
-                var specNameCh = $('#specNameCh').val();
-                var specNameEn = $('#specNameEn').val();
-                var specNameLd = $('#specNameLd').val();
-                var specNameOth = $('#specNameOth').val();
-                var specCode = $('#specCode').val();
-                var specBarCode = $('#specBarCode').val();
-                var specDna = $('#specDna').val();
-                var specDomestic = $('#specDomestic').val();
-                var specForeign = $('#specForeign').val();
-                var specVidio = $('#specVidio').val();
-                var specImgs = $('#specImgs').val();
-                // var specDesc = $('#specDesc').val();
-                var specSortNum = $('#specSortNum').val();
-
-                formData.append("specId", specId);
-                formData.append("genus.genusId",genusId);
-                formData.append("specNameCh", specNameCh);
-                formData.append("specNameEn", specNameEn);
-                formData.append("specNameLd", specNameLd);
-                formData.append("specNameOth", specNameOth);
-                formData.append("specCode", specCode);
-                formData.append( "specBarCode", specBarCode);
-                formData.append("specDna", specDna);
-                formData.append( "specDomestic", specDomestic);
-                formData.append( "specForeign", specForeign);
-                formData.append("specVidio", specVidio);
-                formData.append("specImgs", specImgs);
-                formData.append("specDesc", specDesc);
-                formData.append("specSortNum", specSortNum);
-
-                //将文件数组添加进来
-                var multipartFiles = myDropzoneImg.files;
-                for (var i = 0; i < multipartFiles.length; i++) {
-                    formData.append("multipartFiles", myDropzoneImg.files[i]);
-                }
-                multipartFiles = myDropzone.files;
-                for (var i = 0; i < multipartFiles.length; i++) {
-                    formData.append("multipartFiles", myDropzone.files[i]);
-                }
-
-                if (specId === "") {//新增
-                    $.ajax({
-                        url: baseUrl + '/spec/save',		//请求路径
-                        type: 'POST',			            //请求方式
-                        dataType: 'JSON',
-                        processData: false,
-                        contentType: false,
-                        data: formData,	    //数据
-                        success: function (res) {	        //请求成功回调函数
-                            if (res.code === 200) {
-                                $.niftyNoty({
-                                    type: 'success',
-                                    icon: 'pli-like-2 icon-2x',
-                                    message: '新增成功',
-                                    container: 'floating',
-                                    timer: 2000
-                                });
-                                $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
-                                $('#exampleModal').modal('hide');
-                            } else {
-                                $.niftyNoty({
-                                    type: 'danger',
-                                    icon: 'pli-cross icon-2x',
-                                    message: res.msg,
-                                    container: 'floating',
-                                    timer: 1000
-                                });
-                            }
-                        },
-                        error: function (XMLHttpRequest, textStatus, errorThrown) {		//请求失败回调函数
-                        }
-                    });
-                } else {//修改
-                    $.ajax({
-                        url: baseUrl + '/spec/update',	    //请求路径
-                        type: 'PUT',				        //请求方式
-                        data: JSON.stringify(formData),	    //数据
-                        contentType: 'application/json',    //数据类型
-                        success: function (res) {	        //请求成功回调函数
-                            if (res.code === 200) {
-                                $.niftyNoty({
-                                    type: 'success',
-                                    icon: 'pli-like-2 icon-2x',
-                                    message: '修改成功',
-                                    container: 'floating',
-                                    timer: 2000
-                                });
-                                $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
-                                $('#exampleModal').modal('hide');
-                            } else {
-                                $.niftyNoty({
-                                    type: 'danger',
-                                    icon: 'pli-cross icon-2x',
-                                    message: res.msg,
-                                    container: 'floating',
-                                    timer: 1000
-                                });
-                            }
-                        },
-                        error: function (XMLHttpRequest, textStatus, errorThrown) {		//请求失败回调函数
-                        }
-                    });
-                }
-            } else {
-                $.niftyNoty({
-                    type: 'danger',
-                    icon: 'pli-cross icon-2x',
-                    message: '您取消了新增',
-                    container: 'floating',
-                    timer: 1000
-                });
-            }
-        }
-    });
-}
-*/
-function save() {
-    bootbox.confirm({
-        title: '保存确认',
-        message: '<div class="text-center"><h2>您确定保存该数据吗<i class="demo-pli-question-circle text-danger"></i></h2></div>',
-        //size:'small',
-        buttons: {
-            cancel: {label: '<i class="demo-pli-cross"></i> 取消'},
-            confirm: {label: '<i class="demo-pli-check2"></i> 确认'}
-        },
-        callback: function (result) {
-            if (result) {
-                var validateForm = $('#registrationForm').data('bootstrapValidator');
+                var validateForm = $('#specForm').data('bootstrapValidator');
                 //手动触发验证
                 validateForm.validate();
                 //表单验证不通过，直接return，不往下执行
@@ -575,7 +433,6 @@ function save() {
                 for (var i = 0; i < multipartFiles.length; i++) {
                     formData.append("multipartFiles", myDropzone.files[i]);
                 }
-                console.log(123);
                 if (specId === "") {//新增
                     console.log(1234);
                     $.ajax({
@@ -586,9 +443,7 @@ function save() {
                         //contentType: false,
                         data: formData,	                    //数据
                         success: function (res) {	        //请求成功回调函数
-                            console.log(12345);
                             if (res.code == 200) {
-                                console.log(3332);
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -697,30 +552,45 @@ function edit(id) {
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
 
-                var imgFiles = [
-                    { name: "505ye 1.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
-                    { name: "505ye 2.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
-                    { name: "505ye 3.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
-                    { name: "505ye 4.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
-                    { name: "505ye 5.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' }
-                ];
-                for(var i=0;i<imgFiles.length;i++){
-                    myDropzoneImg.options.addedfile.call(myDropzoneImg, imgFiles[i]);
-                    myDropzoneImg.options.thumbnail.call(myDropzoneImg, imgFiles[i], imgFiles[i].imageUrl);
+                var imgFiles=[];
+                var vedioFiles=[];
+                for(var i=0;i<res.data.files.length;i++){
+                    var item= res.data.files[i];
+                    if(item.type=="image"){
+                        imgFiles.push({name:item.origin_name,size:0,imageUrl:baseUrl+"/"+item.path});
+                    }else if(item.type=="video"){
+                        vedioFiles.push({name:item.origin_name,size:0,videoUrl:baseUrl+"/"+item.path});
+                    }
                 }
-                $(myDropzoneImg.options.previewsContainer).find('[data-dz-remove]').addClass('hide');
-                var vedioFiles = [
+
+                /* var imgFiles = [
+                     { name: "505ye 1.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                     { name: "505ye 2.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                     { name: "505ye 3.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                     { name: "505ye 4.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                     { name: "505ye 5.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' }
+                 ];*/
+                if(imgFiles.length>0){
+                    for(var i=0;i<imgFiles.length;i++){
+                        myDropzoneImg.options.addedfile.call(myDropzoneImg, imgFiles[i]);
+                        myDropzoneImg.options.thumbnail.call(myDropzoneImg, imgFiles[i], imgFiles[i].imageUrl);
+                    }
+                    $(myDropzoneImg.options.previewsContainer).find('[data-dz-remove]').addClass('hide');
+                }
+                /*var vedioFiles = [
                     { name: "testvideo 1.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
                     { name: "testvideo 2.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
                     { name: "testvideo 3.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
                     { name: "testvideo 4.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
                     { name: "testvideo 5.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' }
-                ];
-                for(var i=0;i<vedioFiles.length;i++){
-                    myDropzone.options.addedfile.call(myDropzone, vedioFiles[i]);
-                    myDropzone.options.thumbnail.call(myDropzone, vedioFiles[i],vedioFiles[i].videoUrl);
+                ];*/
+                if(vedioFiles.length>0){
+                    for(var j=0;j<vedioFiles.length;j++){
+                        myDropzone.options.addedfile.call(myDropzone, vedioFiles[j]);
+                        myDropzone.options.thumbnail.call(myDropzone, vedioFiles[j],vedioFiles[j].videoUrl);
+                    }
+                    $(myDropzone.options.previewsContainer).find('[data-dz-remove]').addClass('hide');
                 }
-                $(myDropzone.options.previewsContainer).find('[data-dz-remove]').addClass('hide');
 
             }else if(res.code == 400){
                 window.location.href='../../page-404.html';
@@ -906,68 +776,83 @@ function check(id) {
                 $('#specForeign-info').html(res.data.specForeign).attr('data-original-title',res.data.specForeign);
                 //$('#specVidio-info').html(res.data.specVidio).attr('data-original-title',res.data.specVidio);
                 //$('#specImgs-info').html(res.data.specImgs).attr('data-original-title',res.data.specImgs);
-                var imgFiles = [
-                    { name: "505ye 1.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
-                    { name: "505ye 2.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
-                    { name: "505ye 3.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
-                    { name: "505ye 4.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
-                    { name: "505ye 5.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
-                    { name: "505ye 6.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
-                    { name: "505ye 7.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
-                    { name: "505ye 8.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
-                    { name: "505ye 9.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
-                    { name: "505ye 10.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
-                    { name: "505ye 11.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
-                    { name: "505ye 12.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
-                    { name: "505ye 13.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
-                    { name: "505ye 14.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' },
-                    { name: "505ye 15.png", size: 12345678,url:'../../../bambootattan_pc/img/image/505ye.png' }
-                ];
-                var _html = '<div class="rows">';
-                for(var i=0;i<imgFiles.length;i++){
-                    item=imgFiles[i]
-                    _html += '\
-                    <div class="mar-btm-sm col-md-1 col-sm-2">\
-                        <img class="bord-all" style="width:50px;height:50px;" src="'+item.url+'">\
-                    </div>';
+                var imgFiles=[];
+                var vedioFiles=[];
+                for(var i=0;i<res.data.files.length;i++){
+                    var item= res.data.files[i];
+                    if(item.type=="image"){
+                        imgFiles.push({name:item.origin_name,size:0,imageUrl:baseUrl+"/"+item.path});
+                    }else if(item.type=="video"){
+                        vedioFiles.push({name:item.origin_name,size:0,videoUrl:baseUrl+"/"+item.path});
+                    }
                 }
-                _html += '</div>';
-                $('#specImgs-info').html(_html);
-                $('#specImgs-info img').unbind('click').on('click',function(){
-                    $.uImgFull($(this));
-                });
+
+                /*var imgFiles = [
+                    { name: "505ye 1.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 2.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 3.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 4.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 5.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 6.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 7.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 8.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 9.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 10.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 11.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 12.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 13.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 14.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' },
+                    { name: "505ye 15.png", size: 12345678,imageUrl:'../../../bambootattan_pc/img/image/505ye.png' }
+                ];*/
+                if(imgFiles.length>0){
+                    var _html = '<div class="rows">';
+                    for(var i=0;i<imgFiles.length;i++){
+                        item=imgFiles[i]
+                        _html += '\
+                        <div class="mar-btm-sm col-md-1 col-sm-2">\
+                            <img class="bord-all" style="width:50px;height:50px;" src="'+item.imageUrl+'">\
+                        </div>';
+                    }
+                    _html += '</div>';
+                    $('#specImgs-info').html(_html);
+                    $('#specImgs-info img').unbind('click').on('click',function(){
+                        $.uImgFull($(this));
+                    });
+                }
                 _html='';
 
-                var vedioFiles = [
-                    { name: "testvideo 1.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
-                    { name: "testvideo 2.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
-                    { name: "testvideo 3.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
-                    { name: "testvideo 4.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
-                    { name: "testvideo 5.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
-                    { name: "testvideo 6.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
-                    { name: "testvideo 7.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
-                    { name: "testvideo 8.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
-                    { name: "testvideo 9.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
-                    { name: "testvideo 10.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
-                    { name: "testvideo 11.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
-                    { name: "testvideo 12.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
-                    { name: "testvideo 13.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
-                    { name: "testvideo 14.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' },
-                    { name: "testvideo 15.mp4", size: 12345678,url:'../../../bambootattan_pc/img/image/testvideo.mp4' }
-                ];
-                _html = '<div class="rows">';
-                for(var i=0;i<vedioFiles.length;i++){
-                    item=vedioFiles[i]
-                    _html += '\
+                /*var vedioFiles = [
+                    { name: "testvideo 1.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 2.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 3.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 4.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 5.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 6.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 7.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 8.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 9.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 10.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 11.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 12.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 13.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 14.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' },
+                    { name: "testvideo 15.mp4", size: 12345678,videoUrl:'../../../bambootattan_pc/img/image/testvideo.mp4' }
+                ];*/
+                if(vedioFiles.length>0) {
+                    _html = '<div class="rows">';
+                    for (var i = 0; i < vedioFiles.length; i++) {
+                        item = vedioFiles[i]
+                        _html += '\
                     <div class="mar-btm-sm col-md-1 col-sm-2">\
-                        <video class="bord-all" style="width:50px;height:50px;" src="'+item.url+'"></video>\
+                        <video class="bord-all" style="width:50px;height:50px;" src="' + item.videoUrl + '"></video>\
                     </div>';
+                    }
+                    _html += '</div>';
+                    $('#specVidio-info').html(_html);
+                    $('#specVidio-info video').unbind('click').on('click', function () {
+                        $.uVideoFull($(this).attr('src'));
+                    });
                 }
-                _html += '</div>';
-                $('#specVidio-info').html(_html);
-                $('#specVidio-info video').unbind('click').on('click',function(){
-                    $.uVideoFull($(this).attr('src'));
-                });
 
                 //$('#demo-summernote-info').summernote('code',res.data.specDesc);
                 //$('#specDesc-info').html(res.data.specDesc).attr('data-original-title',res.data.specDesc);
@@ -1017,7 +902,7 @@ function init_form(){
     $('#specSortNum').val("");
     $('#demo-summernote').summernote('code',"");
     // $('#specSortNum').val("");
-    $('#registrationForm').data('bootstrapValidator').resetForm();
+    $('#specForm').data('bootstrapValidator').resetForm();
     clear_file();
 }
 //初始化详情元素值
@@ -1219,4 +1104,41 @@ function selectedGenus(){
         $("#genusId").val(selectedSpecItems[0].genusId);
         $('#genusModal').modal('hide');
     }
+}
+//校验表单
+function checkForm(){
+    $("#specForm").bootstrapValidator({
+        group: 'div[class*="col-sm"]',//显示消息的位置元素，追加在最后
+        fields: {
+            specNameCh: {
+                validators: {
+                    notEmpty: {
+                        message: '中文名不能为空'
+                    }
+                }
+            },
+            specSortNum: {
+                validators: {
+                    notEmpty: {
+                        message: '序号不能为空'
+                    }
+                }
+            },
+            genus: {
+                validators: {
+                    notEmpty: {
+                        message: '属不能为空'
+                    }
+                }
+            }
+        }
+    });
+}
+function checkGenusAfterSelected(text,id){
+    $("#genus").val(text);
+    var validateForm = $('#specForm').data('bootstrapValidator');
+    validateForm.resetField('genus');
+    validateForm.validateField("genus");
+    $("#genusId").val(id);
+    $('#genusModal').modal('hide');
 }

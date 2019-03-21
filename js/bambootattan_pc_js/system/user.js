@@ -39,6 +39,7 @@ function init_table(){
         pagination:true,//可以分页
         showPaginationSwitch:false,
         sidePagination:'server',//服務器端分頁
+        clickToSelect:true,//单击行选中
         //method:'POST',
         responseHandler:function(res){//后台返回数据进行修改，修改成bootstrap-table能够使用的数据格式
             return {
