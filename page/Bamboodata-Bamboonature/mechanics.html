@@ -72,6 +72,7 @@
     <script src="../../plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
     <script src="../../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
     <script src="../../js/bambootattan_pc_js/common.js"></script>
+    <script src="../../plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
 </head>
 
 <!--TIPS-->
@@ -210,13 +211,12 @@
 
 
                                     <div class="modal-body">
-                                        <form id="registrationForm" class="form-horizontal">
+                                        <form id="mechanicsForm" class="form-horizontal">
                                             <div class="panel-body">
                                                 <div class="form-group">
                                                     <label for="mechBendingModulusElastictyUnitGpa" class="col-sm-3 control-label"><b>抗弯弹性模量</b>:</label>
                                                     <div class="col-sm-5">
-                                                        <input id="mechBendingModulusElastictyUnitGpa" class="form-control input-sm" name="mechBendingModulusElastictyUnitGpa" placeholder="" type="text"
-                                                               data-bv-field="mechBendingModulusElastictyUnitGpa"   data-bv-group=".col-sm-4" data-bv-notempty="true" data-bv-notempty-message="箨鞘是否隆起">
+                                                        <input id="mechBendingModulusElastictyUnitGpa" class="form-control input-sm" name="mechBendingModulusElastictyUnitGpa" placeholder="" type="text">
                                                     </div>
 
                                                 </div>
@@ -265,7 +265,8 @@
 
                                                 <div class="form-group">
                                                     <label for="spec" class="col-sm-3 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>
-                                                    <div class="col-sm-5 input-group">
+                                                    <div class="col-sm-5">
+                                                        <div class="input-group">
                                                         <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text">
                                                         <input id="specId" type="hidden" value="">
                                                         <input id="genusId" type="hidden" value="">
@@ -273,6 +274,7 @@
                                                                 <button id="btn_select_spec" class="btn btn-success btn-sm" type="button"><i class="fa fa-search"></i></button>
                                                             </span>
                                                         <input id="mechId" type="hidden" value="" />
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

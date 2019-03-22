@@ -72,6 +72,7 @@
     <script src="../../plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
     <script src="../../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
     <script src="../../js/bambootattan_pc_js/common.js"></script>
+    <script src="../../plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
 
 </head>
 
@@ -150,7 +151,8 @@
                                     </a>
                                 </li>
                                 <li>
-                                   <a href="../../help.html">                                     <i class="demo-pli-information icon-lg icon-fw"></i> 帮助                                     <!--<i class=" ion-help-circled icon-lg icon-fw"></i> 帮助-->                                 </a>
+                                   <a href="../../help.html">
+                                       <i class="demo-pli-information icon-lg icon-fw"></i> 帮助                                     <!--<i class=" ion-help-circled icon-lg icon-fw"></i> 帮助-->                                 </a>
                                 </li>
                             </ul>
 
@@ -178,10 +180,6 @@
             <div id="page-title">
                 <h1 class="page-header text-overflow"></h1>
             </div>
-
-
-
-
 
 
             <!--Page content-->
@@ -212,13 +210,12 @@
 
 
                                     <div class="modal-body">
-                                        <form id="registrationForm" class="form-horizontal">
+                                        <form id="cathermorphologyForm" class="form-horizontal">
                                             <div class="panel-body">
                                                 <div class="form-group">
                                                     <label for="chmCatheterLenghtUnitMicrom" class="col-sm-3 control-label"><b>导管长度</b>:</label>
                                                     <div class="col-sm-5">
-                                                        <input id="chmCatheterLenghtUnitMicrom" class="form-control input-sm" name="chmCatheterLenghtUnitMicrom" placeholder="" type="text"
-                                                               data-bv-field="chmCatheterLenghtUnitMicrom"   data-bv-group=".col-sm-4" data-bv-notempty="true" data-bv-notempty-message="箨鞘是否隆起">
+                                                        <input id="chmCatheterLenghtUnitMicrom" class="form-control input-sm" name="chmCatheterLenghtUnitMicrom" placeholder="" type="text">
                                                     </div>
 
                                                 </div>
@@ -247,7 +244,8 @@
 
                                                 <div class="form-group">
                                                     <label for="spec" class="col-sm-3 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>
-                                                    <div class="col-sm-5 input-group">
+                                                    <div class="col-sm-5 ">
+                                                        <div class="input-group">
                                                         <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text">
                                                         <input id="specId" type="hidden" value="">
                                                         <input id="genusId" type="hidden" value="">
@@ -255,6 +253,7 @@
                                                                 <button id="btn_select_spec" class="btn btn-success btn-sm" type="button"><i class="fa fa-search"></i></button>
                                                             </span>
                                                         <input id="chmId" type="hidden" value="" />
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

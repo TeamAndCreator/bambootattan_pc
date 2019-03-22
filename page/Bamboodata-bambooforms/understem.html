@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../../img/image/favicon.ico"/>
     <title>地下茎</title>
-
-
     <!--STYLESHEET-->
     <!--=================================================-->
 
@@ -18,11 +16,8 @@
     <!--Bootstrap Stylesheet [ REQUIRED ]-->
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
 
-
     <!--Nifty Stylesheet [ REQUIRED ]-->
     <link href="../../css/nifty.min.css" rel="stylesheet">
-
-
     <!--Nifty Premium Icon [ DEMONSTRATION ]-->
     <link href="../../css/demo/nifty-demo-icons.min.css" rel="stylesheet">
 
@@ -85,6 +80,8 @@
     <script src="../../plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
     <script src="../../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
     <script src="../../js/bambootattan_pc_js/common.js"></script>
+    <!-- bootstrap-validator [ OPTIONAL ]-->
+    <script src="../../plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
 
 </head>
 
@@ -216,26 +213,27 @@
 
 
                                     <div class="modal-body">
-                                        <form id="registrationForm" class="form-horizontal">
+                                        <form  class="form-horizontal" id="understemForm">
                                             <div class="panel-body">
                                                 <div class="form-group">
                                                     <label for="underStem" class="col-sm-3 control-label"><b>地下茎类型</b>:</label>
                                                     <div class="col-sm-5">
-                                                        <input id="underStem" class="form-control input-sm" name="underStem" placeholder="" type="text"
-                                                               data-bv-field="sunderStem"   data-bv-group=".col-sm-4" data-bv-notempty="true" data-bv-notempty-message="箨鞘是否隆起">
+                                                        <input id="underStem" class="form-control input-sm" name="underStem" placeholder="" type="text">
                                                     </div>
 
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="spec" class="col-sm-3 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>
-                                                    <div class="col-sm-5 input-group">
+                                                    <div class="col-sm-5">
+                                                        <div class="input-group">
                                                         <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text">
                                                         <input id="specId" type="hidden" value="">
                                                         <input id="genusId" type="hidden" value="">
                                                         <span class="input-group-btn">
                                                                 <button id="btn_select_spec" class="btn btn-success btn-sm" type="button"><i class="fa fa-search"></i></button>
-                                                            </span>
+                                                        </span>
                                                         <input id="underStemId" type="hidden" value="" />
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

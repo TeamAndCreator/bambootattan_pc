@@ -9,6 +9,10 @@ $(function(){
         init_form();//初始化表单
         $('#exampleModal').modal('show');//表单模态框
     });
+    //打开弹出框，去掉验证信息显示
+    $('#exampleModal').on('shown.bs.modal',function () {
+        $('#fibermorphologyForm').data('bootstrapValidator').resetForm();
+    });
     //批量删除点击事件
     $('#btn_delete').on('click',deles);
     //保存点击事件
@@ -22,7 +26,10 @@ $(function(){
     $('#btn_spec_ok').on('click',selectedSpec);
 
     //关闭选择种的模态框
-    $("#specModal").on('hidden.bs.modal',openModalClass)
+    $("#specModal").on('hidden.bs.modal',openModalClass);
+    checkForm();
+    //表单验证
+    $('#fibermorphologyForm').bootstrapValidator();
     //初始化表格
     init_table();
     init_spec_table();
@@ -204,10 +211,11 @@ function init_spec_table(){
         sidePagination:'server',//服務器端分頁
         clickToSelect:true,
         onDblClickRow:function(row, $element){
-            $("#spec").val(row.specNameCh);
-            $("#specId").val(row.specId);
-            $("#genusId").val(row.genus.genusId);
-            $('#specModal').modal('hide');
+            // $("#spec").val(row.specNameCh);
+            // $("#specId").val(row.specId);
+            // $("#genusId").val(row.genus.genusId);
+            // $('#specModal').modal('hide');
+            checkGenusAfterSelected(row.specNameCh,row.specId);
         },
         /*
         onClickRow:function(row, $element){
@@ -283,6 +291,7 @@ function init_spec_table(){
                 field:'specNameOth',//数据列
                 title:'别名',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
@@ -313,6 +322,7 @@ function init_spec_table(){
                 field:'specDna',//数据列
                 title:'种类DNA码',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
@@ -333,32 +343,33 @@ function init_spec_table(){
                 field:'specForeign',//数据列
                 title:'国外分布',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
                     return{css:{'min-width':'80px'} };
                 }
             },
-            {
-                field:'specVidio',//数据列
-                title:'上传视频',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'} };
-                }
-            },
-            {
-                field:'specImgs',//数据列
-                title:'上传图片',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px'} };
-                }
-            },
+            // {
+            //     field:'specVidio',//数据列
+            //     title:'上传视频',//数据列名称
+            //     sortable:true,//可排序
+            //     align:'center',//水平居中
+            //     valign:'middle',//垂直居中
+            //     cellStyle:function(value,row,index,field){
+            //         return{css:{'min-width':'80px'} };
+            //     }
+            // },
+            // {
+            //     field:'specImgs',//数据列
+            //     title:'上传图片',//数据列名称
+            //     sortable:true,//可排序
+            //     align:'center',//水平居中
+            //     valign:'middle',//垂直居中
+            //     cellStyle:function(value,row,index,field){
+            //         return{css:{'min-width':'80px'} };
+            //     }
+            // },
             // {
             //     field:'specSortNum',//数据列
             //     title:'序号',//数据列名称
@@ -369,16 +380,16 @@ function init_spec_table(){
             //         return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
             //     }
             // },
-            {
-                field:'specDesc',//数据列
-                title:'描述',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field){
-                    return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
-                }
-            },
+            // {
+            //     field:'specDesc',//数据列
+            //     title:'描述',//数据列名称
+            //     sortable:true,//可排序
+            //     align:'center',//水平居中
+            //     valign:'middle',//垂直居中
+            //     cellStyle:function(value,row,index,field){
+            //         return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
+            //     }
+            // },
             // { field:'specId',title:'specId',visible:false }//隐藏不显示
         ]
     });
@@ -396,6 +407,15 @@ function save() {
         },
         callback: function (result) {
             if (result) {
+
+                var validateForm = $('#fibermorphologyForm').data('bootstrapValidator');
+                //手动触发验证
+                validateForm.validate();
+                //表单验证不通过，直接return，不往下执行
+                if(!validateForm.isValid()){
+                    return;
+                }
+                
                 var specId = $('#specId').val();
                 var fmId=$('#fmId').val();
                 var fmLengthUnitMicron = $('#fmLengthUnitMicron').val();
@@ -760,7 +780,7 @@ function init_form(){
     $('#fmLetWidthRatio').val("");
     $('#fmWallCavityRatio').val("");
     $('#fmCavityDiameterRatio').val("");
-
+    $('#fibermorphologyForm').data('bootstrapValidator').resetForm();
 }
 //初始化详情元素的值
 function init_info(){
@@ -772,4 +792,29 @@ function init_info(){
     $('#fmLetWidthRatio-info').val("").attr('data-original-title',"");
     $('#fmWallCavityRatio-info').val("").attr('data-original-title',"");
     $('#fmCavityDiameterRatio-info').val("").attr('data-original-title',"");
+}
+function checkForm(){
+    $("#fibermorphologyForm").bootstrapValidator({
+        //submitHandler: function (valiadtor, loginForm, submitButton) {
+        //    valiadtor.defaultSubmit();
+        //},
+        group: 'div[class*="col-sm"]',//显示消息的位置元素，追加在最后
+        fields: {
+            spec: {
+                validators: {
+                    notEmpty: {
+                        message: '种不能为空'
+                    }
+                }
+            }
+        }
+    });
+}
+function checkGenusAfterSelected(text,id){
+    $("#spec").val(text);
+    var validateForm = $('#fibermorphologyForm').data('bootstrapValidator');
+    validateForm.resetField('spec');
+    validateForm.validateField("spec");
+    $("#specId").val(id);
+    $('#specModal').modal('hide');
 }
