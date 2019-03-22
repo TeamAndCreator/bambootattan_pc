@@ -96,8 +96,8 @@
     <!--<script src="../../js/demo/form-file-upload.js"></script>-->
     <script src="../../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
     <!-- bootstrap-validator [ OPTIONAL ]-->
-    <script src="../../plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
     <script src="../../js/bambootattan_pc_js/common.js"></script>
+    <script src="../../plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
 
 </head>
 
@@ -235,9 +235,9 @@
                                     </div>
 
                                     <div class="modal-body">
-                                        <form class="form-horizontal">
+                                        <form class="form-horizontal" id="physicalForm">
                                             <div class="panel-body">
-                                                <div  id="registrationForm" class="form-group">
+                                                <div class="form-group">
                                                     <label for="phyRelativeUnitPercent" class="col-sm-2 control-label"><b>相对含水率</b>:</label>
                                                     <div class="col-sm-2">
                                                         <input id="phyRelativeUnitPercent" class="form-control input-sm" name="phyRelativeUnitPercent" placeholder="" type="text">
@@ -336,7 +336,8 @@
                                                         <input id="phyWholeShrinkageVolumeUnitPercent" class="form-control input-sm" name="phyWholeShrinkageVolumeUnitPercent" placeholder="" type="text">
                                                     </div>
                                                     <label for="spec" class="col-sm-2 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>
-                                                    <div class="col-sm-2 input-group">
+                                                    <div class="col-sm-2">
+                                                        <div class="input-group">
                                                         <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text">
                                                         <input id="specId" type="hidden" value="">
                                                         <input id="genusId" type="hidden" value="">
@@ -344,6 +345,7 @@
                                                                 <button id="btn_select_spec" class="btn btn-success btn-sm" type="button"><i class="fa fa-search"></i></button>
                                                             </span>
                                                         <input id="phyId" type="hidden" value="" />
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

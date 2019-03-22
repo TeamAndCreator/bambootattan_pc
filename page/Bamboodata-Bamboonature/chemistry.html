@@ -83,6 +83,7 @@
 
     <script src="../../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
     <script src="../../js/bambootattan_pc_js/common.js"></script>
+    <script src="../../plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
 
 
 </head>
@@ -195,12 +196,6 @@
             <div id="page-title">
                 <h1 class="page-header text-overflow"></h1>
             </div>
-
-
-
-
-
-
             <!--Page content-->
             <!--===================================================-->
             <div id="page-content">
@@ -228,7 +223,7 @@
                                     </div>
 
                                     <div class="modal-body">
-                                        <form class="form-horizontal">
+                                        <form class="form-horizontal" id="chemistryForm">
                                             <div class="panel-body">
                                                 <!--<div  id="registrationForm" class="form-group">-->
                                                     <div class="form-group">
@@ -292,7 +287,8 @@
 
                                                     <div class="form-group">
                                                         <label for="spec" class="col-sm-3 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>
-                                                        <div class="col-sm-5 input-group">
+                                                        <div class="col-sm-5">
+                                                            <div class="input-group">
                                                             <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text">
                                                             <input id="specId" type="hidden" value="">
                                                             <input id="genusId" type="hidden" value="">
@@ -300,6 +296,7 @@
                                                                 <button id="btn_select_spec" class="btn btn-success btn-sm" type="button"><i class="fa fa-search"></i></button>
                                                             </span>
                                                             <input id="chemId" type="hidden" value="" />
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>

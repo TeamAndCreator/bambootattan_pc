@@ -390,8 +390,6 @@ function save() {
                 if(!validateForm.isValid()){
                      return;
                 }
-
-
                 formData = new FormData();
                 //从表单取值
                 var specDesc=$('#demo-summernote').summernote('code');

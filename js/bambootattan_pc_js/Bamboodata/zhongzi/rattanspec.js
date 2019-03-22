@@ -371,7 +371,7 @@ function init_genus_table(){
     });
 }
 function save() {
-    bootbox.confirm({
+    var saveConfirmBox=bootbox.confirm({
         title: '保存确认',
         message: '<div class="text-center"><h2>您确定保存该数据吗<i class="demo-pli-question-circle text-danger"></i></h2></div>',
         //size:'small',
@@ -517,6 +517,9 @@ function save() {
                 });
             }
         }
+    });
+    saveConfirmBox.on('hidden.bs.modal', function(e){
+        openModalClass();
     });
 }
 
