@@ -480,8 +480,11 @@ function save() {
                     $.ajax({
                         url: baseUrl + '/spec/update',	    //请求路径
                         type: 'PUT',				        //请求方式
-                        data: JSON.stringify(formData),	    //数据
-                        contentType: 'application/json',    //数据类型
+                        //data: JSON.stringify(formData),	    //数据
+                        //contentType: 'application/json',    //数据类型
+                        processData: false,
+                        contentType: false,
+                        data: formData,	                    //数据
                         success: function (res) {	        //请求成功回调函数
                             if (res.code == 200) {
                                 $.niftyNoty({

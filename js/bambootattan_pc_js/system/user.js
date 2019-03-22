@@ -167,7 +167,7 @@ function init_table(){
                 },
                 formatter:state
             },
-            { field:'userId',title:'userId',visible:false}//隐藏不显示
+           // { field:'userId',title:'userId',visible:false}//隐藏不显示
         ]
     });
 }
@@ -192,11 +192,11 @@ function save() {
                 }
 
                 var userId=$("#userId").val();
-                var userAcct=$("#userAcct").val();
+                //var userAcct=$("#userAcct").val();
                 var userName = $("#userName").val();
                 // var createTime=$("createTime").val();
                 var userPwd = $("#userPwd").val();
-                var userReped=$("#userReped").val();
+                //var userReped=$("#userReped").val();
                 //var eMail=$("#eMail").val();
                 var orgName=$("#orgName").val();
                 var orgPhone=$("#orgPhone").val();
@@ -207,11 +207,11 @@ function save() {
 
                 var formData={
                     "userId":userId,
-                    "userAcct":userAcct,
+                   // "userAcct":userAcct,
                     "userName": userName,
                     // "createTime":createTime,
                     "userPwd": userPwd,
-                    "userReped":userReped,
+                    //"userReped":userReped,
                     //"eMail":eMail,
                     "orgName":orgName,
                     "orgPhone":orgPhone,
