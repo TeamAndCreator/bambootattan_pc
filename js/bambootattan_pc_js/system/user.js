@@ -10,17 +10,24 @@ $(function(){
     });
     //打开弹出框，去掉验证信息显示
     $('#exampleModal').on('shown.bs.modal',function () {
-        $('#registrationForm').data('bootstrapValidator').resetForm();
+        $('#userForm').data('bootstrapValidator').resetForm();
     });
+    //打开弹出框，去掉验证信息显示
+    // $('#exampleModal').on('shown.bs.modal',function () {
+    //     $('#registrationForm').data('bootstrapValidator').resetForm();
+    // });
     //批量删除点击事件
     $('#btn_delete').on('click',deles);
     //保存点击事件
     $('#btn_save').on('click',save);
     $('#updateState').on('click',updateState);
+    checkForm();
+    //表单验证
+    $('#userForm').bootstrapValidator();
     //初始化表格
     init_table();
     //表单验证
-    $('#registrationForm').bootstrapValidator();
+    //$('#registrationForm').bootstrapValidator();
 });
 //初始化表格
 function init_table(){
@@ -176,7 +183,7 @@ function save() {
         },
         callback: function (result) {
             if (result) {
-                var validateForm = $('#registrationForm').data('bootstrapValidator');
+                var validateForm = $('#userForm').data('bootstrapValidator');
                 //手动触发验证
                 validateForm.validate();
                 //表单验证不通过，直接return，不往下执行
@@ -593,6 +600,7 @@ function init_form(){
     $('#orgName').val("");
     $('#sortNum').val("");
     $('#userPwd').val("");
+    $('#userForm').data('bootstrapValidator').resetForm();
 }
 //初始化详情元素值
 function init_info(){
@@ -602,3 +610,28 @@ function init_info(){
     $('#orgPhone-info').val("").attr('data-original-title',"");
     $('#createTime-info').val("").attr('data-original-title',"");
 }
+function checkForm(){
+    $("#userForm").bootstrapValidator({
+        //submitHandler: function (valiadtor, loginForm, submitButton) {
+        //    valiadtor.defaultSubmit();
+        //},
+        group: 'div[class*="col-sm"]',//显示消息的位置元素，追加在最后
+        fields: {
+            userName: {
+                validators: {
+                    notEmpty: {
+                        message: '用户姓名不能为空'
+                    }
+                }
+            },
+            userPwd: {
+                validators: {
+                    notEmpty: {
+                        message: '用户密码不能为空'
+                    }
+                }
+            }
+        }
+    });
+}
+
