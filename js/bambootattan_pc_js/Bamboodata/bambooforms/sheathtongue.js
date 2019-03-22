@@ -735,7 +735,7 @@ function init_info(){
 }
 //校验表单
 function checkForm(){
-    $("#sheathtongueFormForm").bootstrapValidator({
+    $("#sheathtongueForm").bootstrapValidator({
         //submitHandler: function (valiadtor, loginForm, submitButton) {
         //    valiadtor.defaultSubmit();
         //},
