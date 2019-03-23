@@ -10,17 +10,21 @@ $(function(){
     });
     //打开弹出框，去掉验证信息显示
     $('#exampleModal').on('shown.bs.modal',function () {
-        $('#registrationForm').data('bootstrapValidator').resetForm();
+        $('#genusForm').data('bootstrapValidator').resetForm();
     });
     //批量删除点击事件
     $('#btn_delete').on('click',deles);
     //保存点击事件
 	$('#btn_save').on('click',save);
+
+    checkForm();
+    //表单验证
+    $('#genusForm').bootstrapValidator();
 	//初始化表格
     init_table();
     init_sunmmernote();
     //表单验证
-    $('#registrationForm').bootstrapValidator();
+    //$('#registrationForm').bootstrapValidator();
     $('#demo-summernote').summernote();
 
 });
@@ -155,7 +159,7 @@ function save() {
         },
         callback: function (result) {
             if (result) {
-                var validateForm = $('#registrationForm').data('bootstrapValidator');
+                var validateForm = $('#genusForm').data('bootstrapValidator');
                 //手动触发验证
                 validateForm.validate();
                 //表单验证不通过，直接return，不往下执行
@@ -344,7 +348,8 @@ function dele(gid){
                             $.niftyNoty({
                                 type: 'danger',
                                 icon : 'pli-cross icon-2x',
-                                message : res.msg,
+                                //message : res.msg,
+                                message :'不能删除',
                                 container : 'floating',
                                 timer : 1000
                             });
@@ -425,7 +430,8 @@ function deles() {
                                 $.niftyNoty({
                                     type: 'danger',
                                     icon : 'pli-cross icon-2x',
-                                    message : res.msg,
+                                    // message : res.msg,
+                                    message :'不能删除',
                                     container : 'floating',
                                     timer : 1000
                                 });
@@ -497,6 +503,7 @@ function init_form(){
     $('#genusDesc').val("");
     $('#genusId').val("");
     $('#demo-summernote').summernote('code',"");
+    $('#genusForm').data('bootstrapValidator').resetForm();
 }
 
 //初始化详情元素值
@@ -525,3 +532,29 @@ function init_sunmmernote(){
     })
     $('#demo-summernote-info').summernote('disable');
 }
+//校验表单
+function checkForm(){
+    $("#genusForm").bootstrapValidator({
+        //submitHandler: function (valiadtor, loginForm, submitButton) {
+        //    valiadtor.defaultSubmit();
+        //},
+        group: 'div[class*="col-sm"]',//显示消息的位置元素，追加在最后
+        fields: {
+            genusNameCh: {
+                validators: {
+                    notEmpty: {
+                        message: '中文名不能为空'
+                    }
+                }
+            },
+            sortNum: {
+                validators: {
+                    notEmpty: {
+                        message: '序号不能为空'
+                    }
+                }
+            }
+        }
+    });
+}
+

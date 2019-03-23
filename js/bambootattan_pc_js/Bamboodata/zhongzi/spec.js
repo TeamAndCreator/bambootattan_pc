@@ -602,10 +602,10 @@ function edit(id) {
                     $(myDropzone.options.previewsContainer).find('[data-dz-remove]').addClass('hide');
                 }
 
-            }else if(res.code == 400){
+            }else if(res.code ===400){
                 window.location.href='../../page-404.html';
             }
-            else if(res.code == 505){
+            else if(res.code ===505){
                 window.location.href='../../page-500.html';
             }
             else{
@@ -660,7 +660,8 @@ function dele(gid){
                             $.niftyNoty({
                                 type: 'danger',
                                 icon : 'pli-cross icon-2x',
-                                message : res.msg,
+                                //message : res.msg,
+                                message :'不能删除',
                                 container : 'floating',
                                 timer : 1000
                             });
@@ -742,7 +743,8 @@ function deles() {
                                 $.niftyNoty({
                                     type: 'danger',
                                     icon : 'pli-cross icon-2x',
-                                    message : res.msg,
+                                    //message : res.msg,
+                                    message :'不能删除',
                                     container : 'floating',
                                     timer : 1000
                                 });
