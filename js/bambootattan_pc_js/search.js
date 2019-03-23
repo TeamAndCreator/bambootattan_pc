@@ -1,6 +1,6 @@
 var queryPageUrl='';
 $(function(){
-    queryPageUrl = baseUrl+'/Elasticsearch/search'
+    queryPageUrl = baseUrl+'/Elasticsearch/search';
     var key_word=getUrlParam("keyWord");//获取地址栏中keyWord的值
     search(key_word);
     $("#bnt_search").on('click',search_click);
@@ -11,7 +11,7 @@ function search(keyWord){
         url:queryPageUrl,
         //data:
         success:function(res){
-            if(res.code==200){
+            if(res.code===200){
                 var result=res.data;
                 if(result){
                     var _html='';
