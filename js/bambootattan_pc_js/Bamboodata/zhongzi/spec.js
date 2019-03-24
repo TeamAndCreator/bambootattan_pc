@@ -458,10 +458,10 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
-                            } else if(res.code === 400){
+                            } else if(res.code===404){
                                 window.location.href='../../page-404.html';
                             }
-                            else if(res.code === 505){
+                            else if(res.code===505){
                                 window.location.href='../../page-500.html';
                             }else {
                                 $.niftyNoty({
@@ -486,7 +486,7 @@ function save() {
                         contentType: false,
                         data: formData,	                    //数据
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code == 200) {
+                            if (res.code===200) {
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -496,10 +496,10 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
-                            } else if(res.code == 400){
+                            } else if(res.code===404){
                                 window.location.href='../../page-404.html';
                             }
-                            else if(res.code == 505){
+                            else if(res.code===505){
                                 window.location.href='../../page-500.html';
                             }else {
                                 $.niftyNoty({
@@ -540,7 +540,7 @@ function edit(id) {
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
-            if(res.code==200){
+            if(res.code===200){
                 //将后台传的值渲染出来
                 $('#demo-summernote').summernote('code',res.data.specDesc);
                 $('#specId').val(res.data.specId);
@@ -566,9 +566,9 @@ function edit(id) {
                 var vedioFiles=[];
                 for(var i=0;i<res.data.files.length;i++){
                     var item= res.data.files[i];
-                    if(item.type=="image"){
+                    if(item.type==="image"){
                         imgFiles.push({name:item.origin_name,size:0,imageUrl:baseUrl+"/"+item.path});
-                    }else if(item.type=="video"){
+                    }else if(item.type==="video"){
                         vedioFiles.push({name:item.origin_name,size:0,videoUrl:baseUrl+"/"+item.path});
                     }
                 }
@@ -602,7 +602,7 @@ function edit(id) {
                     $(myDropzone.options.previewsContainer).find('[data-dz-remove]').addClass('hide');
                 }
 
-            }else if(res.code ===400){
+            }else if(res.code ===404){
                 window.location.href='../../page-404.html';
             }
             else if(res.code ===505){
@@ -641,7 +641,7 @@ function dele(gid){
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
                         //res.code=400;
-                        if(res.code==200){
+                        if(res.code===200){
                             $.niftyNoty({
                                 type: 'success',
                                 icon : 'pli-like-2 icon-2x',
@@ -651,17 +651,22 @@ function dele(gid){
                             });
                             $("#data_table").bootstrapTable('refresh',{url :queryPageUrl} );//刷新表格
                             $('#exampleModal').modal('hide');
-                        }else if(res.code == 400){
+                        }else if(res.code ===404){
                             window.location.href='../../page-404.html';
                         }
-                        else if(res.code == 505){
-                            window.location.href='../../page-500.html';
+                        else if(res.code ===1451){
+                            $.niftyNoty({
+                                type: 'danger',
+                                icon : 'pli-cross icon-2x',
+                                message : res.msg,
+                                container : 'floating',
+                                timer : 1000
+                            });
                         }else{
                             $.niftyNoty({
                                 type: 'danger',
                                 icon : 'pli-cross icon-2x',
-                                //message : res.msg,
-                                message :'不能删除',
+                                message : res.msg,
                                 container : 'floating',
                                 timer : 1000
                             });
@@ -688,7 +693,7 @@ function dele(gid){
 function deles() {
     //选中的数据
     var selectedItems=$("#data_table").bootstrapTable('getSelections');
-    if(selectedItems.length==0){    //没有选中任何数据
+    if(selectedItems.length===0){    //没有选中任何数据
         $.niftyNoty({
             type: 'danger',
             icon : 'pli-cross icon-2x',
@@ -722,10 +727,8 @@ function deles() {
                         type:'DELETE',
                         contentType: 'application/json',//数据类型
                         success:function(res){	        //请求成功回调函数
-                            if(res.code==200){  //删除成功
-                                //alert('删除成功');
-
-                                //右上角弹出消息
+                            if(res.code===200){  //删除成功
+                                // 右上角弹出消息
                                 $.niftyNoty({
                                     type: 'success',                //类型
                                     icon : 'pli-like-2 icon-2x',    //图标
@@ -734,17 +737,22 @@ function deles() {
                                     timer : 2000                    //时间，单位ms(毫秒),此处是5秒中后自动消失
                                 });
                                 $("#data_table").bootstrapTable('refresh',{url : queryPageUrl});
-                            }else if(res.code == 400){
+                            }else if(res.code===404){
                                 window.location.href='../../page-404.html';
                             }
-                            else if(res.code == 505){
-                                window.location.href='../../page-500.html';
+                            else if(res.code ===1451){
+                                $.niftyNoty({
+                                    type: 'danger',
+                                    icon : 'pli-cross icon-2x',
+                                    message : res.msg,
+                                    container : 'floating',
+                                    timer : 1000
+                                });
                             }else{  //删除失败，res.msg是失败信息
                                 $.niftyNoty({
                                     type: 'danger',
                                     icon : 'pli-cross icon-2x',
-                                    //message : res.msg,
-                                    message :'不能删除',
+                                    message : res.msg,
                                     container : 'floating',
                                     timer : 1000
                                 });
