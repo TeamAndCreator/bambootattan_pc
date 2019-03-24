@@ -202,10 +202,10 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
-                            }else if(res.code == 400){
+                            }else if(res.code===404){
                                 window.location.href='../../page-404.html';
                             }
-                            else if(res.code == 505){
+                            else if(res.code===505){
                                 window.location.href='../../page-500.html';
                             } else {
                                 $.niftyNoty({
@@ -237,10 +237,10 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});//刷新前一次的页面
                                 $('#exampleModal').modal('hide');
-                            } else if(res.code == 400){
+                            } else if(res.code===404){
                                 window.location.href='../../page-404.html';
                             }
-                            else if(res.code == 505){
+                            else if(res.code === 505){
                                 window.location.href='../../page-500.html';
                             } else {
                                 $.niftyNoty({
@@ -338,18 +338,24 @@ function dele(gid){
                             });
                             $("#data_table").bootstrapTable('refresh',{url :queryPageUrl} );
                             $('#exampleModal').modal('hide');
-                        }else if(res.code == 400){
+                        }else if(res.code ===404){
                             window.location.href='../../page-404.html';
                         }
-                        else if(res.code == 505){
-                            window.location.href='../../page-500.html';
+                        else if(res.code ===1451){
+                            $.niftyNoty({
+                                type: 'danger',
+                                icon : 'pli-cross icon-2x',
+                                message : res.msg,
+                                container : 'floating',
+                                timer : 1000
+                            });
                         }
                         else{
                             $.niftyNoty({
                                 type: 'danger',
                                 icon : 'pli-cross icon-2x',
-                                //message : res.msg,
-                                message :'不能删除',
+                                message : res.msg,
+                                //message :'不能删除',
                                 container : 'floating',
                                 timer : 1000
                             });
@@ -421,17 +427,23 @@ function deles() {
                                     timer : 2000                    //时间，单位ms(毫秒),此处是5秒中后自动消失
                                 });
                                 $("#data_table").bootstrapTable('refresh',{url : queryPageUrl});
-                            }else if(res.code == 400){
+                            }else if(res.code ===400){
                                 window.location.href='../../page-404.html';
                             }
-                            else if(res.code == 505){
-                                window.location.href='../../page-500.html';
+                            else if(res.code ===1451){
+                                $.niftyNoty({
+                                    type: 'danger',
+                                    icon : 'pli-cross icon-2x',
+                                    message : res.msg,
+                                    container : 'floating',
+                                    timer : 1000
+                                });
                             } else{  //删除失败，res.msg是失败信息
                                 $.niftyNoty({
                                     type: 'danger',
                                     icon : 'pli-cross icon-2x',
-                                    // message : res.msg,
-                                    message :'不能删除',
+                                    message : res.msg,
+                                    //message :'不能删除',
                                     container : 'floating',
                                     timer : 1000
                                 });
@@ -547,13 +559,6 @@ function checkForm(){
                     }
                 }
             },
-            sortNum: {
-                validators: {
-                    notEmpty: {
-                        message: '序号不能为空'
-                    }
-                }
-            }
         }
     });
 }
