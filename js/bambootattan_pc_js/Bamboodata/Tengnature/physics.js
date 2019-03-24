@@ -174,6 +174,7 @@ function init_table(){
                 field:'phyAirDryingLineUnitPercent',//数据列
                 title:'湿材到气干（线干缩率）',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -250,6 +251,7 @@ function init_table(){
                 field:'phyWholeShrinkageChordwiseUnitPercent',//数据列
                 title:'全干缩率（弦向）',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {

@@ -129,6 +129,7 @@ function init_table(){
                 field:'phyGreenDensityUnitMidu',//数据列
                 title:'生材密度',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -149,6 +150,7 @@ function init_table(){
                 field:'phyAirDryDensityUnitMidu',//数据列
                 title:'气干密度',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {

@@ -56,6 +56,7 @@ function init_table(){
         showToggle:true,//可以视图切换
         showColumns:true,//可以选择列
         sortName:'id',//排序字段
+        sortable:false,//排序设置
         sortOrder:'asc',//排序类型，asc正序，desc倒序初始化加載第一頁
         pageList:[5, 10, 20],//每页数量组
         pageSize:5,//默认每页数量
@@ -269,6 +270,7 @@ function init_genus_table(){
         showToggle:true,//可以视图切换
         showColumns:true,//可以选择列
         sortName:'id',//排序字段
+        sortable:false,//排序设置
         sortOrder:'asc',//排序类型，asc正序，desc倒序初始化加載第一頁
         pageList:[5, 10, 20],//每页数量组
         pageSize:10,//默认每页数量
@@ -434,7 +436,7 @@ function save() {
                     formData.append("multipartFiles", myDropzone.files[i]);
                 }
                 if (specId === "") {//新增
-                    console.log(1234);
+                    //console.log(1234);
                     $.ajax({
                         url: baseUrl + '/rattanSpec/save',		//请求路径
                         type: 'POST',			            //请求方式
@@ -443,7 +445,7 @@ function save() {
                         //contentType: false,
                         data: formData,	                    //数据
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code == 200) {
+                            if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -453,12 +455,13 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
-                            } else if(res.code == 400){
+                            } else if(res.code === 404){
                                 window.location.href='../../page-404.html';
                             }
-                            else if(res.code == 505){
+                            else if(res.code === 505){
                                 window.location.href='../../page-500.html';
-                            }else {
+                            }
+                            else {
                                 $.niftyNoty({
                                     type: 'danger',
                                     icon: 'pli-cross icon-2x',
@@ -634,7 +637,7 @@ function dele(gid){
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
                         //res.code=400;
-                        if(res.code==200){
+                        if(res.code===200){
                             $.niftyNoty({
                                 type: 'success',
                                 icon : 'pli-like-2 icon-2x',
@@ -644,10 +647,10 @@ function dele(gid){
                             });
                             $("#data_table").bootstrapTable('refresh',{url :queryPageUrl} );//刷新表格
                             $('#exampleModal').modal('hide');
-                        }else if(res.code == 400){
+                        }else if(res.code === 404){
                             window.location.href='../../page-404.html';
                         }
-                        else if(res.code == 505){
+                        else if(res.code === 505){
                             window.location.href='../../page-500.html';
                         }else{
                             $.niftyNoty({
@@ -680,7 +683,7 @@ function dele(gid){
 function deles() {
     //选中的数据
     var selectedItems=$("#data_table").bootstrapTable('getSelections');
-    if(selectedItems.length==0){    //没有选中任何数据
+    if(selectedItems.length===0){    //没有选中任何数据
         $.niftyNoty({
             type: 'danger',
             icon : 'pli-cross icon-2x',

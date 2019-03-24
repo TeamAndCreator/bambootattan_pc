@@ -171,7 +171,7 @@ function init_table(){
                 field:'palea',//数据列
                 title:'外稃',//数据列名称
                 sortable:true,//可排序
-                // visible:false,
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
