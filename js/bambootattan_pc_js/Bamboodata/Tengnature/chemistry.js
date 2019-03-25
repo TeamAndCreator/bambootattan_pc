@@ -318,7 +318,6 @@ function init_spec_table(){
                 field:'specNameOth',//数据列
                 title:'别名',//数据列名称
                 sortable:true,//可排序
-                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
@@ -329,6 +328,7 @@ function init_spec_table(){
                 field:'specCode',//数据列
                 title:'种类编码',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
@@ -339,6 +339,7 @@ function init_spec_table(){
                 field:'specBarCode',//数据列
                 title:'种类条形码',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
@@ -360,6 +361,7 @@ function init_spec_table(){
                 field:'specDomestic',//数据列
                 title:'国内分布',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
