@@ -47,6 +47,7 @@ function init_table(){
         showToggle:true,//可以视图切换
         showColumns:true,//可以选择列
         sortName:'id',//排序字段
+        sortable:false,//排序设置
         sortOrder:'asc',//排序类型，asc正序，desc倒序初始化加載第一頁
         pageList:[5, 10, 20],//每页数量组
         pageSize:5,//默认每页数量
@@ -162,6 +163,7 @@ function init_table(){
                 field:'chemBenzeneAlcoholExtractionUnitPercent',//数据列
                 title:'苯醇提取物',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
@@ -224,6 +226,7 @@ function init_spec_table(){
         showToggle:true,//可以视图切换
         showColumns:true,//可以选择列
         sortName:'id',//排序字段
+        sortable:false,//排序设置
         sortOrder:'asc',//排序类型，asc正序，desc倒序初始化加載第一頁
         pageList:[5, 10, 20],//每页数量组
         pageSize:10,//默认每页数量
@@ -312,7 +315,6 @@ function init_spec_table(){
                 field:'specNameOth',//数据列
                 title:'别名',//数据列名称
                 sortable:true,//可排序
-                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
@@ -323,6 +325,7 @@ function init_spec_table(){
                 field:'specCode',//数据列
                 title:'种类编码',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
@@ -333,6 +336,7 @@ function init_spec_table(){
                 field:'specBarCode',//数据列
                 title:'种类条形码',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){
@@ -354,6 +358,7 @@ function init_spec_table(){
                 field:'specDomestic',//数据列
                 title:'国内分布',//数据列名称
                 sortable:true,//可排序
+                visible:false,
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field){

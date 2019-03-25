@@ -34,6 +34,7 @@ function init_table(){
         showToggle:true,//可以视图切换
         showColumns:true,//可以选择列
         sortName:'id',//排序字段
+        sortable:false,//排序设置
         sortOrder:'asc',//排序类型，asc正序，desc倒序初始化加載第一頁
         pageList:[5, 10, 20],//每页数量组
         pageSize:5,//默认每页数量
@@ -181,7 +182,7 @@ function save() {
                     "genusNameOth": genusNameOth,
                     "sortNum": sortNum
                 };
-                if (genusId == "") {//新增
+                if (genusId === "") {//新增
                     formData.genusId = 0;
                     $.ajax({
                         url: baseUrl + '/rattanGenus/save',		//请求路径
@@ -189,7 +190,7 @@ function save() {
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code == 200) {
+                            if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -199,10 +200,10 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
-                            } else if(res.code == 400){
+                            } else if(res.code === 404){
                                 window.location.href='../../page-404.html';
                             }
-                            else if(res.code == 505){
+                            else if(res.code === 505){
                                 window.location.href='../../page-500.html';
                             } else {
                                 $.niftyNoty({
@@ -224,7 +225,7 @@ function save() {
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code == 200) {
+                            if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -234,10 +235,10 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
-                            } else if(res.code == 400){
+                            } else if(res.code === 404){
                                 window.location.href='../../page-404.html';
                             }
-                            else if(res.code == 505){
+                            else if(res.code === 505){
                                 window.location.href='../../page-500.html';
                             }else {
                                 $.niftyNoty({
@@ -275,7 +276,7 @@ function edit(id) {
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
-            if(res.code==200){
+            if(res.code===200){
                 $('#demo-summernote').summernote('code',res.data.genusDesc);
                 $('#genusId').val(res.data.genusId);
                 $('#genusNameCh').val(res.data.genusNameCh);
@@ -285,10 +286,10 @@ function edit(id) {
                 $('#sortNum').val(res.data.sortNum);
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
-            }else if(res.code == 400){
+            }else if(res.code === 404){
                 window.location.href='../../page-404.html';
             }
-            else if(res.code == 505){
+            else if(res.code === 505){
                 window.location.href='../../page-500.html';
             }
             else{
@@ -324,7 +325,7 @@ function dele(gid){
                     type:'DELETE',				        //请求方式
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
-                        if(res.code==200){
+                        if(res.code===200){
                             $.niftyNoty({
                                 type: 'success',
                                 icon : 'pli-like-2 icon-2x',
@@ -334,12 +335,19 @@ function dele(gid){
                             });
                             $("#data_table").bootstrapTable('refresh',{url :queryPageUrl} );
                             $('#exampleModal').modal('hide');
-                        }else if(res.code == 400){
+                        }else if(res.code === 404){
                             window.location.href='../../page-404.html';
                         }
-                        else if(res.code == 505){
-                            window.location.href='../../page-500.html';
-                        }else{
+                        else if(res.code ===1451){
+                            $.niftyNoty({
+                                type: 'danger',
+                                icon : 'pli-cross icon-2x',
+                                message : res.msg,
+                                container : 'floating',
+                                timer : 1000
+                            });
+                        }
+                        else{
                             $.niftyNoty({
                                 type: 'danger',
                                 icon : 'pli-cross icon-2x',
@@ -404,7 +412,7 @@ function deles() {
                         type:'DELETE',
                         contentType: 'application/json',//数据类型
                         success:function(res){	        //请求成功回调函数
-                            if(res.code==200){  //删除成功
+                            if(res.code===200){  //删除成功
                                 //alert('删除成功');
 
                                 //右上角弹出消息
@@ -416,12 +424,19 @@ function deles() {
                                     timer : 2000                    //时间，单位ms(毫秒),此处是5秒中后自动消失
                                 });
                                 $("#data_table").bootstrapTable('refresh',{url : queryPageUrl});
-                            }else if(res.code == 400){
+                            }else if(res.code === 404){
                                 window.location.href='../../page-404.html';
                             }
-                            else if(res.code == 505){
-                                window.location.href='../../page-500.html';
-                            }else{  //删除失败，res.msg是失败信息
+                            else if(res.code ===1451){
+                                $.niftyNoty({
+                                    type: 'danger',
+                                    icon : 'pli-cross icon-2x',
+                                    message : res.msg,
+                                    container : 'floating',
+                                    timer : 1000
+                                });
+                            }
+                            else{  //删除失败，res.msg是失败信息
                                 $.niftyNoty({
                                     type: 'danger',
                                     icon : 'pli-cross icon-2x',
@@ -457,7 +472,7 @@ function check(id) {
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
-            if(res.code==200){
+            if(res.code===200){
                 $('#genusNameCh-info').html(res.data.genusNameCh).attr('data-original-title',res.data.genusNameCh);
                 $('#genusNameEn-info').html(res.data.genusNameEn).attr('data-original-title',res.data.genusNameEn);
                 $('#genusNameLd-info').html(res.data.genusNameLd).attr('data-original-title',res.data.genusNameLd);
@@ -469,10 +484,10 @@ function check(id) {
                 $('#genusDesc-info').html(res.data.genusDesc);
                 //$('#genus-info').html(res.data.genus.genusNameCh).attr('data-original-title',res.data.genusNameCh);
                 $('#exampleModal-info').modal('show');
-            }else if(res.code == 400){
+            }else if(res.code === 404){
                 window.location.href='../../page-404.html';
             }
-            else if(res.code == 505){
+            else if(res.code === 505){
                 window.location.href='../../page-500.html';
             }
             else{
