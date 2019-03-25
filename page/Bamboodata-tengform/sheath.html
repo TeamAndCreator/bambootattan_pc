@@ -228,21 +228,21 @@
                                         <form id="sheathForm" class="form-horizontal" style="font-size: 15px">
                                             <div class="panel-body">
                                                 <div class="form-group">
-                                                    <label for="sheathShedTime" class="col-sm-3 control-label"><b>箨鞘早落</b>:</label>
+                                                    <label for="sheathShedTime" class="col-sm-5 control-label"><b>箨鞘早落</b>:</label>
                                                     <div class="col-sm-5">
                                                         <input id="sheathShedTime" class="form-control input-sm" name="sheathShedTime" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                     </div>
 
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="sheathChar" class="col-sm-3 control-label"><b>箨鞘质地</b>:</label>
+                                                    <label for="sheathChar" class="col-sm-5 control-label"><b>箨鞘质地</b>:</label>
                                                     <div class="col-sm-5">
                                                         <input id="sheathChar" class="form-control input-sm" name="sheathChar" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="sheathTopForm" class="col-sm-3 control-label"><b>箨鞘先端形态</b>:</label>
+                                                    <label for="sheathTopForm" class="col-sm-5 control-label"><b>箨鞘先端形态</b>:</label>
                                                     <div class="col-sm-5">
                                                         <input id="sheathTopForm" class="form-control input-sm" name="sheathChar" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                     </div>
@@ -250,30 +250,30 @@
 
 
                                                 <div class="form-group">
-                                                    <label for="sheathBackPowder" class="col-sm-3 control-label"><b>箨鞘背面被毛被粉</b>:</label>
+                                                    <label for="sheathBackPowder" class="col-sm-5 control-label"><b>箨鞘背面被毛被粉</b>:</label>
                                                     <div class="col-sm-5">
                                                         <input id="sheathBackPowder" class="form-control input-sm" name="sheathBackPowder" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="sheathMarginForm" class="col-sm-3 control-label"><b>箨鞘边缘形态</b>:</label>
+                                                    <label for="sheathMarginForm" class="col-sm-5 control-label"><b>箨鞘边缘形态</b>:</label>
                                                     <div class="col-sm-5">
                                                         <input id="sheathMarginForm" class="form-control input-sm" name="sheathMarginForm" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="spec" class="col-sm-3 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>
+                                                    <label for="spec" class="col-sm-5 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>
                                                     <div class="col-sm-5 ">
                                                         <div class="input-group">
-                                                        <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text" style="border:1px solid #ccccccbd">
-                                                        <input id="specId" type="hidden" value="">
-                                                        <input id="genusId" type="hidden" value="">
-                                                        <span class="input-group-btn">
+                                                            <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text" style="border:1px solid #ccccccbd">
+                                                            <input id="specId" type="hidden" value="">
+                                                            <input id="genusId" type="hidden" value="">
+                                                            <span class="input-group-btn">
                                                                 <button id="btn_select_spec" class="btn btn-success btn-sm" type="button"><i class="fa fa-search"></i></button>
                                                         </span>
-                                                        <input id="sheId" type="hidden" value="" />
+                                                            <input id="sheId" type="hidden" value="" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -293,7 +293,7 @@
 
                         <!--增加查看的模态框-->
                         <div class="modal fade" id="exampleModal-check" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
-                            <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
@@ -303,35 +303,44 @@
                                     <div class="modal-body">
                                         <div class="form-horizontal" style="font-size: 15px">
                                             <div class="form-group">
-                                                <label for="sheathShedTime-info" class="col-sm-2 control-label"><b>箨鞘早落</b>:</label>
-                                                <div class="col-sm-3">
+                                                <label for="sheathShedTime-info" class="col-sm-5 control-label"><b>箨鞘早落</b>:</label>
+                                                <div class="col-sm-5">
                                                     <p id="sheathShedTime-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
-                                                <label for="sheathChar-info" class="col-sm-2 control-label"><b>箨鞘质地</b>:</label>
-                                                <div class="col-sm-3">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="sheathChar-info" class="col-sm-5 control-label"><b>箨鞘质地</b>:</label>
+                                                <div class="col-sm-5">
                                                     <p id="sheathChar-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
                                             </div>
 
 
                                             <div class="form-group">
-                                                <label for="sheathTopForm-info" class="col-sm-2 control-label"><b>箨鞘先端形态</b>:</label>
-                                                <div class="col-sm-3">
+                                                <label for="sheathTopForm-info" class="col-sm-5 control-label"><b>箨鞘先端形态</b>:</label>
+                                                <div class="col-sm-5">
                                                     <p id="sheathTopForm-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
-                                                <label for="sheathBackPowder-info" class="col-sm-2 control-label"><b>箨鞘背面被毛被粉</b>:</label>
-                                                <div class="col-sm-3">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="sheathBackPowder-info" class="col-sm-5 control-label"><b>箨鞘背面被毛被粉</b>:</label>
+                                                <div class="col-sm-5">
                                                     <p id="sheathBackPowder-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="sheathMarginForm-info" class="col-sm-2 control-label"><b>箨鞘边缘形态</b>:</label>
-                                                <div class="col-sm-3">
+                                                <label for="sheathMarginForm-info" class="col-sm-5 control-label"><b>箨鞘边缘形态</b>:</label>
+                                                <div class="col-sm-5">
                                                     <p id="sheathMarginForm-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
-                                                <label for="spec-check" class="col-sm-2 control-label"><b>种</b>:</label>
-                                                <div class="col-sm-2 input-group">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="spec-check" class="col-sm-5 control-label"><b>种</b>:</label>
+                                                <div class="col-sm-5 input-group">
                                                     <p id="spec-check" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
                                             </div>
@@ -344,6 +353,7 @@
                                 </div>
                             </div>
                         </div>
+
 
 
 
@@ -593,15 +603,15 @@
                                                         <a href="#">藤种形态<i class="arrow"></i></a>
                                                         <!--Submenu-->
                                                         <ul class="collapse in">
-                                                            <li><a href="../Bamboodata-bambooforms/understem.html">地下茎</a></li>
-                                                            <li><a href="../Bamboodata-bambooforms/culm.html">竹竿表</a></li>
-                                                            <li><a href="../Bamboodata-bambooforms/sheathnode.html">箨环表</a></li>
-                                                            <li class="active-link"><a href="../Bamboodata-bambooforms/sheath.html">箨鞘表</a></li>
-                                                            <li><a href="../Bamboodata-bambooforms/sheathear.html">箨耳表</a></li>
-                                                            <li><a href="../Bamboodata-bambooforms/sheathtongue.html">箨舌表</a></li>
-                                                            <li><a href="../Bamboodata-bambooforms/sheathshell.html">箨片表</a></li>
-                                                            <li><a href="../Bamboodata-bambooforms/bambooleaf.html">竹叶表</a></li>
-                                                            <li><a href="../Bamboodata-bambooforms/fruit.html">花果形态表</a></li>
+                                                            <li><a href="../Bamboodata-tengform/understem.html">地下茎</a></li>
+                                                            <li><a href="../Bamboodata-tengform/culm.html">竹竿表</a></li>
+                                                            <li><a href="../Bamboodata-tengform/sheathnode.html">箨环表</a></li>
+                                                            <li class="active-link"><a href="../Bamboodata-tengform/sheath.html">箨鞘表</a></li>
+                                                            <li><a href="../Bamboodata-tengform/sheathear.html">箨耳表</a></li>
+                                                            <li><a href="../Bamboodata-tengform/sheathtongue.html">箨舌表</a></li>
+                                                            <li><a href="../Bamboodata-tengform/sheathshell.html">箨片表</a></li>
+                                                            <li><a href="../Bamboodata-tengform/bambooleaf.html">竹叶表</a></li>
+                                                            <li><a href="../Bamboodata-tengform/fruit.html">花果形态表</a></li>
                                                         </ul>
                                                     </li>
                                                     <li>

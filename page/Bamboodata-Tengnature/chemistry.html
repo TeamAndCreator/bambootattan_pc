@@ -228,7 +228,7 @@
 
                         <!--增加按钮的模态框-->
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
-                            <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
@@ -240,52 +240,66 @@
                                             <div class="panel-body">
                                                 <!--<div  id="registrationForm" class="form-group">-->
                                                 <div class="form-group">
-                                                    <label for="chemHolocelluloseUnitPercent" class="col-sm-2 control-label"><b>综纤维素</b>:</label>
-                                                    <div class="col-sm-2">
+                                                    <label for="chemHolocelluloseUnitPercent" class="col-sm-4 control-label"><b>综纤维素</b>:</label>
+                                                    <div class="col-sm-5">
                                                         <input id="chemHolocelluloseUnitPercent" class="form-control input-sm" name="chemHolocelluloseUnitPercent" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                     </div>
-                                                    <label for="chemCelluloseUnitPercent" class="col-sm-2 control-label"><b>纤维素</b>:</label>
-                                                    <div class="col-sm-2">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="chemCelluloseUnitPercent" class="col-sm-4 control-label"><b>纤维素</b>:</label>
+                                                    <div class="col-sm-5">
                                                         <input id="chemCelluloseUnitPercent" class="form-control input-sm" name="chemCelluloseUnitPercent" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                     </div>
-                                                    <label for="chemACelluloseUnitPercent" class="col-sm-2 control-label"><b>a纤维素</b>:</label>
-                                                    <div class="col-sm-2">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="chemACelluloseUnitPercent" class="col-sm-4 control-label"><b>a纤维素</b>:</label>
+                                                    <div class="col-sm-5">
                                                         <input id="chemACelluloseUnitPercent" class="form-control input-sm" name="chemACelluloseUnitPercent" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="chemHemicelluloseUnitPercent" class="col-sm-2 control-label"><b>半纤维素</b>:</label>
-                                                    <div class="col-sm-2">
+                                                    <label for="chemHemicelluloseUnitPercent" class="col-sm-4 control-label"><b>半纤维素</b>:</label>
+                                                    <div class="col-sm-5">
                                                         <input id="chemHemicelluloseUnitPercent" class="form-control input-sm" name="chemHemicelluloseUnitPercent" placeholder="" type="text" style="border:1px solid #ccccccbd">
-                                                    </div>
-                                                    <label for="chemAcidInsolubleLigninUnitPercent" class="col-sm-2 control-label"><b>酸不溶木质素</b>:</label>
-                                                    <div class="col-sm-2">
-                                                        <input id="chemAcidInsolubleLigninUnitPercent" class="form-control input-sm" name="chemAcidInsolubleLigninUnitPercent" placeholder="" type="text" style="border:1px solid #ccccccbd">
-                                                    </div>
-                                                    <label for="chemBenzeneAlcoholExtractionUnitPercent" class="col-sm-2 control-label"><b>苯醇提取物</b>:</label>
-                                                    <div class="col-sm-2">
-                                                        <input id="chemBenzeneAlcoholExtractionUnitPercent" class="form-control input-sm" name="chemBenzeneAlcoholExtractionUnitPercent" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="chemHotWaterExtractionUnitPercent" class="col-sm-2 control-label"><b>热水提取物</b>:</label>
-                                                    <div class="col-sm-2">
+                                                    <label for="chemAcidInsolubleLigninUnitPercent" class="col-sm-4 control-label"><b>酸不溶木质素</b>:</label>
+                                                    <div class="col-sm-5">
+                                                        <input id="chemAcidInsolubleLigninUnitPercent" class="form-control input-sm" name="chemAcidInsolubleLigninUnitPercent" placeholder="" type="text" style="border:1px solid #ccccccbd">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="chemBenzeneAlcoholExtractionUnitPercent" class="col-sm-4 control-label"><b>苯醇提取物</b>:</label>
+                                                    <div class="col-sm-5">
+                                                        <input id="chemBenzeneAlcoholExtractionUnitPercent" class="form-control input-sm" name="chemBenzeneAlcoholExtractionUnitPercent" placeholder="" type="text" style="border:1px solid #ccccccbd">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                <div class="form-group">
+                                                    <label for="chemHotWaterExtractionUnitPercent" class="col-sm-4 control-label"><b>热水提取物</b>:</label>
+                                                    <div class="col-sm-5">
                                                         <input id="chemHotWaterExtractionUnitPercent" class="form-control input-sm" name="chemHotWaterExtractionUnitPercent" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                     </div>
-                                                    <label for="chemColdWaterExtractionUnitPercent" class="col-sm-2 control-label"><b>冷水提取物</b>:</label>
-                                                    <div class="col-sm-2">
+                                                </div>
+                                            <div class="form-group">
+                                                    <label for="chemColdWaterExtractionUnitPercent" class="col-sm-4 control-label"><b>冷水提取物</b>:</label>
+                                                    <div class="col-sm-5">
                                                         <input id="chemColdWaterExtractionUnitPercent" class="form-control input-sm" name="chemColdWaterExtractionUnitPercent" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                     </div>
-                                                    <label for="chemAshContentUnitPercent" class="col-sm-2 control-label"><b>灰分</b>:</label>
-                                                    <div class="col-sm-2">
+                                            </div>
+                                            <div class="form-group">
+                                                    <label for="chemAshContentUnitPercent" class="col-sm-4 control-label"><b>灰分</b>:</label>
+                                                    <div class="col-sm-5">
                                                         <input id="chemAshContentUnitPercent" class="form-control input-sm" name="chemAshContentUnitPercent" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                     </div>
                                                 </div>
 
+
                                                 <div class="form-group">
-                                                    <label for="spec" class="col-sm-2 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>
-                                                    <div class="col-sm-2">
+                                                    <label for="spec" class="col-sm-4 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>
+                                                    <div class="col-sm-5">
                                                         <div class="input-group">
                                                         <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                         <input id="specId" type="hidden" value="">
@@ -297,7 +311,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
