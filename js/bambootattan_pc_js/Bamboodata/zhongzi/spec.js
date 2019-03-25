@@ -1125,7 +1125,7 @@ function selectedGenus(){
         $("#genusId").val(selectedSpecItems[0].genusId);
         $('#genusModal').modal('hide');*/
         checkGenusAfterSelected(selectedSpecItems[0].genusNameCh,selectedSpecItems[0].genusId);
-        console.log(selectedSpecItems[0]);
+        //console.log(selectedSpecItems[0]);
     }
 }
 

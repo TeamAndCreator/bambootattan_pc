@@ -85,7 +85,7 @@ $(function () {
                      timer: 2000
                  });
                  window.location.href = "../../page-login.html";
-             } else if (res.code == 400) {
+             } else if (res.code == 404) {
                  window.location.href = '../../page-404.html';
              }
              else if (res.code == 505) {
