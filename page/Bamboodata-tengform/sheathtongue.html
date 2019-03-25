@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../../img/image/favicon.ico"/>
-    <title>箨耳表</title>
+    <title>箨舌表</title>
 
 
     <!--STYLESHEET-->
@@ -26,13 +26,15 @@
     <!--Nifty Premium Icon [ DEMONSTRATION ]-->
     <link href="../../css/demo/nifty-demo-icons.min.css" rel="stylesheet">
 
-    <!--font-awesome.css [ OPTIONAL ]-->
-    <link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
     <!--Demo [ DEMONSTRATION ]-->
     <link href="../../css/demo/nifty-demo.min.css" rel="stylesheet">
 
+    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
+    <link href="../../css/demo/nifty-demo-icons.min.css" rel="stylesheet">
 
+    <!--font-awesome.css [ OPTIONAL ]-->
+    <link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
     <!--Bootstrap Table [ OPTIONAL ]-->
     <link href="../../plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
@@ -40,12 +42,12 @@
 
     <!--X-editable [ OPTIONAL ]-->
     <link href="../../plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">
+
     <!-- common [ OPTIONAL ] -->
     <link href="../../css/bambootattan_pc_css/common.css" rel="stylesheet">
 
     <!-- Theme -->
     <link id="theme" href="../../css/themes/type-c/theme-lime.min.css" rel="stylesheet">
-    <!-- bootstrap-validator [ OPTIONAL ]-->
 
 
 
@@ -60,14 +62,19 @@
 
     <!--jQuery [ REQUIRED ]-->
     <script src="../../js/jquery-2.2.4.min.js"></script>
-    <script src="../../js/jquery.cookie.js"></script>
 
+    <script src="../../js/jquery.cookie.js"></script>
     <!--BootstrapJS [ RECOMMENDED ]-->
     <script src="../../js/bootstrap.min.js"></script>
 
 
     <!--NiftyJS [ RECOMMENDED ]-->
     <script src="../../js/nifty.min.js"></script>
+
+
+
+
+
 
     <!--=================================================-->
 
@@ -85,15 +92,16 @@
 
     <!--Bootstrap Table [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/bootstrap-table.min.js"></script>
-
-
     <!-- bootbox -->
     <script src="../../plugins/bootbox/bootbox.js"></script>
+
     <!--Bootstrap Table Extension [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
     <script src="../../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+
     <script src="../../js/bambootattan_pc_js/common.js"></script>
     <script src="../../plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
+
 
 
 </head>
@@ -176,8 +184,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                   <a href="../../help.html">
-                                       <i class="demo-pli-information icon-lg icon-fw"></i> 帮助                                     <!--<i class=" ion-help-circled icon-lg icon-fw"></i> 帮助-->                                 </a>
+                                   <a href="../../help.html">                                     <i class="demo-pli-information icon-lg icon-fw"></i> 帮助                                     <!--<i class=" ion-help-circled icon-lg icon-fw"></i> 帮助-->                                 </a>
                                 </li>
                             </ul>
 
@@ -193,6 +200,7 @@
         </div>
     </header>
     <!--END NAVBAR-->
+
     <div class="boxed">
 
         <!--CONTENT CONTAINER-->
@@ -206,22 +214,19 @@
             </div>
 
 
-
             <!--Page content-->
             <div id="page-content">
-
             <!--Custom Toolbar-->
                 <!--===================================================-->
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title">箨耳表</h3>
+                        <h3 class="panel-title">箨舌表</h3>
                     </div>
                     <div class="panel-body">
                         <div id="btn_area">
                             <button id="btn_add" class="btn btn-success" ><i class="demo-pli-plus"></i> 增加</button>
                             <button id="btn_delete" class="btn btn-danger"><i class="demo-pli-cross"></i> 删除</button>
                         </div>
-
 
 
                         <!--增加按钮的模态框-->
@@ -234,25 +239,33 @@
                                     </div>
 
                                     <div class="modal-body">
-                                        <form class="form-horizontal" style="font-size: 15px">
+                                        <form class="form-horizontal" id="sheathtongueForm" style="font-size: 15px">
                                             <div class="panel-body">
-                                                <div  id="sheathearForm" class="form-group">
+                                                <div class="form-group">
                                                     <div class="form-group">
-                                                        <label for="sheathEarDev" class="col-sm-3 control-label"><b>箨耳发达情况</b>:</label>
+                                                        <label for="sheathTongueColor" class="col-sm-3 control-label"><b>箨舌颜色</b>:</label>
                                                         <div class="col-sm-5">
-                                                            <input id="sheathEarDev" class="form-control input-sm" name="sheathEarDev" placeholder="" type="text" style="border:1px solid #ccccccbd">
+                                                            <input id="sheathTongueColor" class="form-control input-sm" name="sheathTongueColor" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="sheathEarShape" class="col-sm-3 control-label"><b>箨耳形状</b>:</label>
+                                                        <label for="sheathTongueHeight" class="col-sm-3 control-label"><b>箨舌高度</b>:</label>
                                                         <div class="col-sm-5">
-                                                            <input id="sheathEarShape" class="form-control input-sm" name="sheathEarShape" placeholder="" type="text" style="border:1px solid #ccccccbd">
+                                                            <input id="sheathTongueHeight" class="form-control input-sm" name="sheathTongueHeight" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                         </div>
                                                     </div>
+
                                                     <div class="form-group">
-                                                        <label for="sheathEarMargin" class="col-sm-3 control-label"><b>箨耳边缘繸毛</b>:</label>
+                                                        <label for="sheathTongueMarginShape" class="col-sm-3 control-label"><b>箨舌边缘形状</b>:</label>
                                                         <div class="col-sm-5">
-                                                            <input id="sheathEarMargin" class="form-control input-sm" name="sheathEarMargin" placeholder="" type="text" style="border:1px solid #ccccccbd">
+                                                            <input id="sheathTongueMarginShape" class="form-control input-sm" name="sheathTongueMarginShape" placeholder="" type="text" style="border:1px solid #ccccccbd">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="sheathTongueBackPowderv" class="col-sm-3 control-label"><b>箨舌被毛被粉</b>:</label>
+                                                        <div class="col-sm-5">
+                                                            <input id="sheathTongueBackPowderv" class="form-control input-sm" name="sheathTongueBackPowderv" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                         </div>
                                                     </div>
 
@@ -266,13 +279,13 @@
                                                             <span class="input-group-btn">
                                                                 <button id="btn_select_spec" class="btn btn-success btn-sm" type="button"><i class="fa fa-search"></i></button>
                                                             </span>
-                                                            <input id="sheEarId" type="hidden" value="" />
+                                                            <input id="sheTogId" type="hidden" value="" />
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                                <!--<input id="underStemId" type="hidden" value="" />-->
+                                            <!--<input id="underStemId" type="hidden" value="" />-->
                                         </form>
                                     </div>
                                     <div class="modal-footer">
@@ -282,9 +295,8 @@
                                 </div>
                             </div>
                         </div>
-
                         <!--增加查看的模态框-->
-                        <div class="modal fade" id="exampleModal-check" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
+                        <div class="modal fade" id="exampleModal-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -295,29 +307,39 @@
                                     <div class="modal-body">
                                         <div class="form-horizontal" style="font-size: 15px">
                                             <div class="form-group">
-                                                <label for="sheathEarDev-info" class="col-sm-3 col-sm-offset-3 control-label"><b>箨耳发达情况</b>:</label>
-                                                <div class="col-sm-4">
-                                                    <p id="sheathEarDev-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                <label for="sheathTongueColor-info" class="col-sm-3 col-sm-offset-3 control-label"><b>箨舌颜色</b>:</label>
+                                                <div class="col-sm-5">
+                                                    <p id="sheathTongueColor-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="sheathEarShape-info" class="col-sm-3 col-sm-offset-3 control-label"><b>箨耳形状</b>:</label>
-                                                <div class="col-sm-4">
-                                                    <p id="sheathEarShape-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                <label for="sheathTongueHeight-info" class="col-sm-3 col-sm-offset-3 control-label"><b>箨舌高度</b>:</label>
+                                                <div class="col-sm-5">
+                                                    <p id="sheathTongueHeight-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="sheathTongueMarginShape-info" class="col-sm-3 col-sm-offset-3 control-label"><b>箨舌边缘形状</b>:</label>
+                                                <div class="col-sm-5">
+                                                    <p id="sheathTongueMarginShape-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="sheathTongueBackPowderv-info" class="col-sm-3 col-sm-offset-3 control-label"><b>箨舌被毛被粉</b>:</label>
+                                                <div class="col-sm-5">
+                                                    <p id="sheathTongueBackPowderv-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
                                             </div>
 
 
+
+
                                             <div class="form-group">
-                                                <label for="sheathEarMargin-info" class="col-sm-3 col-sm-offset-3 control-label"><b>箨耳边缘繸毛</b>:</label>
-                                                <div class="col-sm-4">
-                                                    <p id="sheathEarMargin-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="spec-check" class="col-sm-3 col-sm-offset-3 control-label"><b>种</b>:</label>
-                                                <div class="col-sm-4 input-group">
-                                                    <p id="spec-check" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+
+                                                <label for="spec-info" class="col-sm-3 col-sm-offset-3 control-label"><b>种</b>:</label>
+                                                <div class="col-sm-5 input-group">
+                                                    <p id="spec-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
                                             </div>
 
@@ -331,7 +353,10 @@
                             </div>
                         </div>
 
-                        <!--种的模态框-->
+
+
+
+
                         <div class="modal fade" id="specModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" data-backdrop="static">
                             <div class="modal-dialog modal-lg"  role="document">
                                 <div class="modal-content">
@@ -349,15 +374,22 @@
                                 </div>
                             </div>
                         </div>
-
+                        <!-- 数据表格 -->
                         <table id="data_table" class="table"></table>
                     </div>
                 </div>
+                <!--===================================================-->
             </div>
-            <!--===================================================-->
         </div>
-    <!--===================================================-->
 
+
+    <!--===================================================-->
+            <!--END CONTENT CONTAINER-->
+
+
+
+            <!--MAIN NAVIGATION-->
+            <!--===================================================-->
             <nav id="mainnav-container">
                 <div id="mainnav">
 
@@ -366,6 +398,8 @@
                     <div id="mainnav-menu-wrap">
                         <div class="nano">
                             <div class="nano-content">
+
+
                                 <ul id="mainnav-menu" class="list-group">
                                     <!--<li class="active-sub">-->
                                         <!--<a href="#">-->
@@ -396,8 +430,8 @@
                                                     <!--<li><a href="culm.html">竹竿表</a></li>-->
                                                     <!--<li><a href="sheathnode.html">箨环表</a></li>-->
                                                     <!--<li><a href="sheath.html">箨鞘表</a></li>-->
-                                                    <!--<li class="active-link"><a href="sheathear.html">箨耳表</a></li>-->
-                                                    <!--<li><a href="sheathtongue.html">箨舌表</a></li>-->
+                                                    <!--<li><a href="sheathear.html">箨耳表</a></li>-->
+                                                    <!--<li class="active-link"><a href="sheathtongue.html">箨舌表</a></li>-->
                                                     <!--<li><a href="sheathshell.html">箨片表</a></li>-->
                                                     <!--<li><a href="bambooleaf.html">竹叶表</a></li>-->
                                                     <!--<li><a href="fruit.html">花果形态表</a></li>-->
@@ -471,7 +505,8 @@
                                         <!--<ul class="collapse">-->
 
                                             <!--<li>-->
-                                                <!--<a href="../../page/monitoring/log.html">系统日志<i class="arrow"></i></a>-->
+                                                <!--<a href="#">系统日志<i class="arrow">-->
+                                                <!--</i></a>-->
                                             <!--</li>-->
 
 
@@ -489,7 +524,7 @@
                                             <li>
                                                 <a href="#">竹种资源数据<i class="arrow"></i></a>
                                                 <!--Submenu-->
-                                                <ul class="collapse in">
+                                                <ul class="collapse">
                                                     <li>
                                                         <a href="#">竹种属表<i class="arrow"></i></a>
                                                         <!--Submenu-->
@@ -507,12 +542,12 @@
                                                     <li>
                                                         <a href="#">竹种形态<i class="arrow"></i></a>
                                                         <!--Submenu-->
-                                                        <ul class="collapse in">
+                                                        <ul class="collapse">
                                                             <li><a href="../Bamboodata-bambooforms/understem.html">地下茎</a></li>
                                                             <li><a href="../Bamboodata-bambooforms/culm.html">竹竿表</a></li>
                                                             <li><a href="../Bamboodata-bambooforms/sheathnode.html">箨环表</a></li>
                                                             <li><a href="../Bamboodata-bambooforms/sheath.html">箨鞘表</a></li>
-                                                            <li class="active-link"><a href="../Bamboodata-bambooforms/sheathear.html">箨耳表</a></li>
+                                                            <li><a href="../Bamboodata-bambooforms/sheathear.html">箨耳表</a></li>
                                                             <li><a href="../Bamboodata-bambooforms/sheathtongue.html">箨舌表</a></li>
                                                             <li><a href="../Bamboodata-bambooforms/sheathshell.html">箨片表</a></li>
                                                             <li><a href="../Bamboodata-bambooforms/bambooleaf.html">竹叶表</a></li>
@@ -549,7 +584,7 @@
                                             <li>
                                                 <a href="#">藤种资源数据<i class="arrow"></i></a>
                                                 <!--Submenu-->
-                                                <ul class="collapse ">
+                                                <ul class="collapse in">
                                                     <li>
                                                         <a href="#">藤种属表<i class="arrow"></i></a>
                                                         <!--Submenu-->
@@ -567,13 +602,13 @@
                                                     <li>
                                                         <a href="#">藤种形态<i class="arrow"></i></a>
                                                         <!--Submenu-->
-                                                        <ul class="collapse">
+                                                        <ul class="collapse in">
                                                             <li><a href="../Bamboodata-bambooforms/understem.html">地下茎</a></li>
                                                             <li><a href="../Bamboodata-bambooforms/culm.html">竹竿表</a></li>
                                                             <li><a href="../Bamboodata-bambooforms/sheathnode.html">箨环表</a></li>
                                                             <li><a href="../Bamboodata-bambooforms/sheath.html">箨鞘表</a></li>
                                                             <li><a href="../Bamboodata-bambooforms/sheathear.html">箨耳表</a></li>
-                                                            <li><a href="../Bamboodata-bambooforms/sheathtongue.html">箨舌表</a></li>
+                                                            <li class="active-link"><a href="../Bamboodata-bambooforms/sheathtongue.html">箨舌表</a></li>
                                                             <li><a href="../Bamboodata-bambooforms/sheathshell.html">箨片表</a></li>
                                                             <li><a href="../Bamboodata-bambooforms/bambooleaf.html">竹叶表</a></li>
                                                             <li><a href="../Bamboodata-bambooforms/fruit.html">花果形态表</a></li>
@@ -659,29 +694,41 @@
 
                 </div>
             </nav>
-    <!--===================================================-->
-    <!--END MAIN NAVIGATION-->
+            <!--===================================================-->
+            <!--END MAIN NAVIGATION-->
 
-</div>
-    <!-- FOOTER -->
-    <footer id="footer" style="text-align: center">
+        </div>
+
+
+
+        <!-- FOOTER -->
+        <!--===================================================-->
+        <footer id="footer" style="text-align: center">
                     <span bigger-120>
                     <span class="blue bolder">安徽农业大学数字农业研究所                             </span> &copy; 2018-2019
                     </span>
         </footer>
-    <!-- END FOOTER -->
+        <!--===================================================-->
+        <!-- END FOOTER -->
 
-    <!-- SCROLL PAGE BUTTON -->
-    <!--===================================================-->
-    <button class="scroll-top btn">
-        <i class="pci-chevron chevron-up"></i>
-    </button>
-    <!--===================================================-->
+
+        <!-- SCROLL PAGE BUTTON -->
+        <!--===================================================-->
+        <button class="scroll-top btn">
+            <i class="pci-chevron chevron-up"></i>
+        </button>
+        <!--===================================================-->
+
+
 
     </div>
     <!--===================================================-->
     <!-- END OF CONTAINER -->
-<script src="../../js/bambootattan_pc_js/Bamboodata/bambooforms/sheathear.js"></script>
+
+
+
+</div>
+<script src="../../js/bambootattan_pc_js/Bamboodata/bambooforms/sheathtongue.js"></script>
 </body>
 </html>
 

@@ -5,43 +5,41 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../../img/image/favicon.ico"/>
-    <title>角色管理</title>
-
+    <title>地下茎</title>
     <!--STYLESHEET-->
     <!--=================================================-->
 
     <!--Open Sans Font [ OPTIONAL ]-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 
+
     <!--Bootstrap Stylesheet [ REQUIRED ]-->
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
 
     <!--Nifty Stylesheet [ REQUIRED ]-->
     <link href="../../css/nifty.min.css" rel="stylesheet">
-
     <!--Nifty Premium Icon [ DEMONSTRATION ]-->
     <link href="../../css/demo/nifty-demo-icons.min.css" rel="stylesheet">
+
     <!--font-awesome.css [ OPTIONAL ]-->
     <link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!--Demo [ DEMONSTRATION ]-->
     <link href="../../css/demo/nifty-demo.min.css" rel="stylesheet">
+
+
     <!--Bootstrap Table [ OPTIONAL ]-->
     <link href="../../plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+
+
     <!--X-editable [ OPTIONAL ]-->
     <link href="../../plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">
-    <!--Summernote [ OPTIONAL ]-->
-    <link href="../../plugins/summernote/summernote.min.css" rel="stylesheet">
-    <!--Dropzone [ OPTIONAL ]-->
-    <link href="../../plugins/dropzone/dropzone.min.css" rel="stylesheet">
-    <!--Animate.css [ OPTIONAL ]-->
-    <link href="../../plugins/animate-css/animate.min.css" rel="stylesheet">
-    <!-- Theme -->
-    <!-- <link id="theme" href="../css/themes/type-c/theme-lime.min.css" rel="stylesheet">-->
-    <link id="theme" href="../../css/themes/type-c/theme-lime.css" rel="stylesheet">
-    <!-- bootstrap-validator [ OPTIONAL ] -->
-    <link href="../../plugins/bootstrap-validator/bootstrapValidator.min.css" rel="stylesheet">
     <!-- common [ OPTIONAL ] -->
     <link href="../../css/bambootattan_pc_css/common.css" rel="stylesheet">
+
+    <!-- Theme -->
+    <link id="theme" href="../../css/themes/type-c/theme-lime.min.css" rel="stylesheet">
+
+
 
     <!--JAVASCRIPT-->
     <!--=================================================-->
@@ -49,38 +47,46 @@
     <!--Pace - Page Load Progress Par [OPTIONAL]-->
     <link href="../../plugins/pace/pace.min.css" rel="stylesheet">
     <script src="../../plugins/pace/pace.min.js"></script>
+
+
     <!--jQuery [ REQUIRED ]-->
     <script src="../../js/jquery-2.2.4.min.js"></script>
+
     <script src="../../js/jquery.cookie.js"></script>
     <!--BootstrapJS [ RECOMMENDED ]-->
     <script src="../../js/bootstrap.min.js"></script>
+
     <!--NiftyJS [ RECOMMENDED ]-->
     <script src="../../js/nifty.min.js"></script>
+
     <!--=================================================-->
+
     <!--Demo script [ DEMONSTRATION ]-->
     <script src="../../js/demo/nifty-demo.min.js"></script>
-    <!--Summernote [ OPTIONAL ]-->
-    <script src="../../plugins/summernote/summernote.min.js"></script>
+
     <!--Bootstrap Table Sample [ SAMPLE ]-->
     <script src="../../js/demo/tables-bs-table.js"></script>
+
     <!--X-editable [ OPTIONAL ]-->
     <script src="../../plugins/x-editable/js/bootstrap-editable.min.js"></script>
-    <!--Summernote [ OPTIONAL ]-->
-    <!--<script src="../../plugins/summernote/summernote.min.js"></script>-->
+
+
     <!--Bootstrap Table [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+
     <!-- bootbox -->
     <script src="../../plugins/bootbox/bootbox.js"></script>
     <!--Bootstrap Table Extension [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
-    <!-- Bootstrap Table language [Chinese] -->
     <script src="../../plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
-    <!-- bambootattan_pc_js common -->
     <script src="../../js/bambootattan_pc_js/common.js"></script>
     <!-- bootstrap-validator [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
+
 </head>
 
+<!--TIPS-->
+<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
 <body>
 <div id="container" class="effect aside-float aside-bright mainnav-lg">
 
@@ -88,10 +94,12 @@
     <!--===================================================-->
     <header id="navbar">
         <div id="navbar-container" class="boxed">
+
             <!--Brand logo & name-->
             <!--================================-->
             <div class="navbar-header">
                 <a href="http://www.icbr.ac.cn/" class="navbar-brand">
+                    <!--<img src="img/logo.png" alt="Nifty Logo" class="brand-icon">-->
                     <img src="../../img/image/logo.png" alt="Nifty Logo" class="brand-icon">
                     <div class="brand-title pad-no" >
                         <span style="font-size:13px;color:black"><b>竹藤种质资源数据管理平台</b></span>
@@ -100,13 +108,16 @@
             </div>
             <!--================================-->
             <!--End brand logo & name-->
+
+
             <!--Navbar Dropdown-->
             <!--================================-->
             <div class="navbar-content clearfix">
                 <ul class="nav navbar-top-links pull-left">
                     <li class="tgl-menu-btn">
                         <a class="mainnav-toggle" href="#">
-                            <i class="glyphicon glyphicon-triangle-left"></i>
+                            <!--<i class="demo-pli-view-list"></i>-->
+                            <i class="glyphicon glyphicon-menu-left"></i>
                         </a>
                     </li>
                 </ul>
@@ -130,10 +141,10 @@
                                 </span>
                             <div class="username hidden-xs">欢迎您</div>
                         </a>
+
+
                         <div class="dropdown-menu dropdown-menu-md dropdown-menu-right panel-default">
 
-                            <!-- Dropdown heading  -->
-                            <!-- User dropdown menu -->
                             <ul class="head-list">
                                 <li>
                                     <a href="#"  id="logout">
@@ -142,13 +153,13 @@
                                 </li>
                                 <li>
                                     <a href="../../page-reset.html">
+                                        <!--<span class="label label-success pull-right">New</span>-->
                                         <i class="demo-pli-gear icon-lg icon-fw"></i> 修改密码
                                     </a>
                                 </li>
                                 <li>
-                                   <a href="../../help.html">
-                                       <i class="demo-pli-information icon-lg icon-fw"></i> 帮助
-                                   </a>
+                                    <a href="../../help.html">
+                                        <i class="demo-pli-information icon-lg icon-fw"></i> 帮助                                     <!--<i class=" ion-help-circled icon-lg icon-fw"></i> 帮助-->                                 </a>
                                 </li>
                             </ul>
                             <!-- Dropdown footer -->
@@ -175,155 +186,154 @@
             </div>
 
             <!--Page content-->
-            <!--===================================================-->
-            <!--<div id="page-content">-->
             <div id="page-content">
-            <div class="panel">
-                <div class="panel-heading">
-                    <h3 class="panel-title">角色管理</h3>
-                </div>
 
-                <div class="panel-body">
-                    <div id="btn_area">
-                        <button id="btn_add" class="btn btn-success" ><i class="demo-pli-plus"></i> 增加</button>
-                        <button id="btn_delete" class="btn btn-danger"><i class="demo-pli-cross"></i> 删除</button>
+                <!--Custom Toolbar-->
+                <!--===================================================-->
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">地下茎</h3>
                     </div>
-
-                    <!--增加按钮的模态框-->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
-                                    <h4 class="modal-title" id="exampleModalLabel">新增</h4>
-                                </div>
-
-                                <div class="modal-body">
-                                    <form class="form-horizontal" style="font-size: 15px">
-                                        <div class="panel-body">
-                                            <div  id="registrationForm" class="form-group">
-                                                <label for="roleName" class="col-sm-3 control-label"><b>角色姓名</b>:</label>
-                                                <div class="col-sm-5">
-                                                    <input id="roleName" class="form-control input-sm" name="roleName" placeholder="" type="text" style="border:1px solid #ccccccbd"
-                                                           data-bv-field="roleName"   data-bv-group=".col-sm-4" data-bv-notempty="true" data-bv-notempty-message="姓名不能为空">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="remark" class="col-sm-3 control-label"><b>备注</b>:</label>
-                                                <div class="col-sm-5">
-                                                    <!--<input id="remark" class="form-control input-sm" name="remark" placeholder="" type="text">-->
-                                                    <textarea id="remark" class="form-control input-sm" name="remark" style="border-radius:4px"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="sortNum" class="col-sm-3 control-label"><b>序号</b>:</label>
-                                            <div class="col-sm-5">
-                                                <input id="sortNum" class="form-control input-sm" name="sortNum" placeholder="" type="text" style="border:1px solid #ccccccbd">
-                                            </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="canDel" class="col-sm-3 control-label"><b>是否删除</b>:</label>
-                                                <div class="col-sm-5">
-                                                    <!--<input id="canDel" class="form-control input-sm" name="canDel" placeholder="" type="text" style="border:1px solid #ccc">-->
-                                                    <select name="canDel" class="form-control input-sm" id="canDel" style="border:1px solid #ccccccbd">
-                                                        <option value="0">1(是)</option>
-                                                        <option value="1">2(否)</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <input id="roleId" type="hidden" value="" />
-                                        </div>
-
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
-                                    <button id="btn_save" type="button" class="btn btn-primary">保存</button>
-                                </div>
-                            </div>
+                    <div class="panel-body">
+                        <div id="btn_area">
+                            <button id="btn_add" class="btn btn-success" ><i class="demo-pli-plus"></i> 增加</button>
+                            <button id="btn_delete" class="btn btn-danger"><i class="demo-pli-cross"></i> 删除</button>
                         </div>
-                    </div>
-                    <!--查看的模态框-->
-                    <div class="modal fade" id="exampleModal-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-info" data-backdrop="static">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
-                                    <h4 class="modal-title" id="exampleModalLabel-info">详情</h4>
-                                </div>
 
-                                <div class="modal-body">
-                                    <div class="form-horizontal" style="font-size: 15px">
-                                        <div class="form-group" >
-                                            <label for="roleName-info" class="col-sm-2 col-sm-offset-2 control-label"><b>角色名</b>:</label>
-                                            <div class="col-sm-5">
-                                                <p id="roleName-info" class="form-control-static  pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+
+
+                        <!--增加按钮的模态框-->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
+                                        <h4 class="modal-title" id="exampleModalLabel">新增</h4>
+                                    </div>
+
+
+                                    <div class="modal-body">
+                                        <form  class="form-horizontal" id="understemForm" style="font-size: 15px">
+                                            <div class="panel-body">
+                                                <div class="form-group">
+                                                    <label for="underStem" class="col-sm-3 control-label"><b>地下茎类型</b>:</label>
+                                                    <div class="col-sm-5">
+                                                        <input id="underStem" class="form-control input-sm" name="underStem" placeholder="" type="text" style="border:1px solid #ccccccbd">
+                                                    </div>
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="spec" class="col-sm-3 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>
+                                                    <div class="col-sm-5">
+                                                        <div class="input-group">
+                                                        <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text" style="border:1px solid #ccccccbd">
+                                                        <input id="specId" type="hidden" value="">
+                                                        <input id="genusId" type="hidden" value="">
+                                                        <span class="input-group-btn">
+                                                                <button id="btn_select_spec" class="btn btn-success btn-sm" type="button"><i class="fa fa-search"></i></button>
+                                                        </span>
+                                                        <input id="underStemId" type="hidden" value="" />
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="remark-info" class="col-sm-2 col-sm-offset-2 control-label"><b>备注</b>:</label>
-                                            <div class="col-sm-5">
-                                                <p id="remark-info" class="form-control-static  pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="canDel-info" class="col-sm-2 col-sm-offset-2 control-label"><b>是否删除</b>:</label>
-                                            <div class="col-sm-5">
-                                                <p id="canDel-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
-                                            </div>
-                                        </div>
 
+                                        </form>
+                                    </div>
 
-                                        <div class="form-group">
-                                            <label for="sortNum-info" class="col-sm-2 col-sm-offset-2 control-label"><b>序号</b>:</label>
-                                            <div class="col-sm-5">
-                                                <p id="sortNum-info" class="form-control-static  pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
-                                            </div>
-                                        </div>
-
-
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
+                                        <button id="btn_save" type="button" class="btn btn-primary">保存</button>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
+
+
+                        <!--增加查看的模态框-->
+                        <div class="modal fade" id="exampleModal-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
+                                        <h4 class="modal-title" id="exampleModalLabel-info">详情</h4>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <div class="form-horizontal" style="font-size: 15px">
+                                            <div class="form-group">
+                                                <label for="underStem-info" class="col-sm-3 col-sm-offset-3 control-label"><b>地下茎类型</b>:</label>
+                                                <div class="col-sm-3">
+                                                    <p id="underStem-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="spec-info" class="col-sm-3 col-sm-offset-3 control-label"><b>种</b>:</label>
+                                                <div class="col-sm-3 input-group">
+                                                    <p id="spec-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+
+
+                        <div class="modal fade" id="specModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" data-backdrop="static">
+                            <div class="modal-dialog modal-lg"  role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
+                                        <h4 class="modal-title">种</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table id="spec_table"></table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
+                                        <button id="btn_spec_ok" type="button" class="btn btn-primary">确认</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 数据表格 -->
+                        <table id="data_table" class="table"></table>
                     </div>
-                    <table id="data_table" class="table"></table>
                 </div>
+                <!--===================================================-->
             </div>
-            <!--</div>-->
-            <!--===================================================-->
-
         </div>
-
-
         <!--===================================================-->
         <!--END CONTENT CONTAINER-->
-
-
 
         <!--MAIN NAVIGATION-->
         <!--===================================================-->
         <nav id="mainnav-container">
             <div id="mainnav">
-
                 <!--Menu-->
                 <!--================================-->
                 <div id="mainnav-menu-wrap">
                     <div class="nano">
                         <div class="nano-content">
+
                             <ul id="mainnav-menu" class="list-group">
-                                <!--<li>-->
+                                <!--<li class="active-sub">-->
                                     <!--<a href="#">-->
                                         <!--<i class="demo-psi-pen-5"></i>-->
                                         <!--<span class="menu-title">竹藤数据</span>-->
                                         <!--<i class="arrow"></i>-->
                                     <!--</a>-->
+
                                     <!--&lt;!&ndash;Submenu&ndash;&gt;-->
-                                    <!--<ul class="collapse">-->
+                                    <!--<ul class="collapse in">-->
                                         <!--<li>-->
                                             <!--<a href="#">种质资源数据<i class="arrow"></i></a>-->
                                             <!--&lt;!&ndash;Submenu&ndash;&gt;-->
@@ -337,17 +347,18 @@
                                         <!--</li>-->
                                         <!--<li>-->
                                             <!--<a href="#">竹种形态<i class="arrow"></i></a>-->
+
                                             <!--&lt;!&ndash;Submenu&ndash;&gt;-->
-                                            <!--<ul class="collapse">-->
-                                                <!--<li><a href="../Bamboodata-bambooforms/understem.html">地下茎</a></li>-->
-                                                <!--<li><a href="../Bamboodata-bambooforms/culm.html">竹竿表</a></li>-->
-                                                <!--<li><a href="../Bamboodata-bambooforms/sheathnode.html">箨环表</a></li>-->
-                                                <!--<li><a href="../Bamboodata-bambooforms/sheath.html">箨鞘表</a></li>-->
-                                                <!--<li><a href="../Bamboodata-bambooforms/sheathear.html">箨耳表</a></li>-->
-                                                <!--<li><a href="../Bamboodata-bambooforms/sheathtongue.html">箨舌表</a></li>-->
-                                                <!--<li><a href="../Bamboodata-bambooforms/sheathshell.html">箨片表</a></li>-->
-                                                <!--<li><a href="../Bamboodata-bambooforms/bambooleaf.html">竹叶表</a></li>-->
-                                                <!--<li><a href="../Bamboodata-bambooforms/fruit.html">花果形态表</a></li>-->
+                                            <!--<ul class="collapse in">-->
+                                                <!--<li class="active-link"><a href="understem.html">地下茎</a></li>-->
+                                                <!--<li><a href="culm.html">竹竿表</a></li>-->
+                                                <!--<li><a href="sheathnode.html">箨环表</a></li>-->
+                                                <!--<li><a href="sheath.html">箨鞘表</a></li>-->
+                                                <!--<li><a href="sheathear.html">箨耳表</a></li>-->
+                                                <!--<li><a href="sheathtongue.html">箨舌表</a></li>-->
+                                                <!--<li><a href="sheathshell.html">箨片表</a></li>-->
+                                                <!--<li><a href="bambooleaf.html">竹叶表</a></li>-->
+                                                <!--<li><a href="fruit.html">花果形态表</a></li>-->
                                             <!--</ul>-->
                                         <!--</li>-->
 
@@ -392,7 +403,7 @@
 
                                     <!--</ul>-->
                                 <!--</li>-->
-                                <!--<li class="active-sub">-->
+                                <!--<li>-->
                                     <!--<a href="#">-->
                                         <!--<i class="demo-psi-inbox-full"></i>-->
                                         <!--<span class="menu-title">系统管理</span>-->
@@ -400,11 +411,11 @@
                                     <!--</a>-->
 
                                     <!--&lt;!&ndash;Submenu&ndash;&gt;-->
-                                    <!--<ul class="collapse in">-->
+                                    <!--<ul class="collapse">-->
                                         <!--<li>-->
                                             <!--<a href="../system/user.html">用户管理<i class="arrow"></i></a>-->
                                         <!--</li>-->
-                                        <!--<li class="active-link">-->
+                                        <!--<li>-->
                                             <!--<a href="../system/role.html">角色管理<i class="arrow"></i></a>-->
                                         <!--</li>-->
                                     <!--</ul>-->
@@ -421,17 +432,19 @@
                                             <!--<a href="../../page/monitoring/log.html">系统日志<i class="arrow"></i></a>-->
                                         <!--</li>-->
 
+
                                     <!--</ul>-->
                                 <!--</li>-->
+
                                 //
-                                <li>
+                                <li class="active-sub">
                                     <a href="#">
                                         <i class="demo-psi-pen-5"></i>
                                         <span class="menu-title">竹藤数据</span>
                                         <i class="arrow"></i>
                                     </a>
                                     <!--Submenu-->
-                                    <ul class="collapse">
+                                    <ul class="collapse in">
                                         <li>
                                             <a href="#">竹种资源数据<i class="arrow"></i></a>
                                             <!--Submenu-->
@@ -495,7 +508,7 @@
                                         <li>
                                             <a href="#">藤种资源数据<i class="arrow"></i></a>
                                             <!--Submenu-->
-                                            <ul class="collapse">
+                                            <ul class="collapse in">
                                                 <li>
                                                     <a href="#">藤种属表<i class="arrow"></i></a>
                                                     <!--Submenu-->
@@ -513,8 +526,8 @@
                                                 <li>
                                                     <a href="#">藤种形态<i class="arrow"></i></a>
                                                     <!--Submenu-->
-                                                    <ul class="collapse">
-                                                        <li><a href="../Bamboodata-bambooforms/understem.html">地下茎</a></li>
+                                                    <ul class="collapse in">
+                                                        <li class="active-link"><a href="../Bamboodata-bambooforms/understem.html">地下茎</a></li>
                                                         <li><a href="../Bamboodata-bambooforms/culm.html">竹竿表</a></li>
                                                         <li><a href="../Bamboodata-bambooforms/sheathnode.html">箨环表</a></li>
                                                         <li><a href="../Bamboodata-bambooforms/sheath.html">箨鞘表</a></li>
@@ -560,7 +573,7 @@
                                     </ul>
                                 </li>
 
-                                <li class="active-sub">
+                                <li>
                                     <a href="#">
                                         <i class="demo-psi-inbox-full"></i>
                                         <span class="menu-title">系统管理</span>
@@ -568,11 +581,11 @@
                                     </a>
 
                                     <!--Submenu-->
-                                    <ul class="collapse in">
+                                    <ul class="collapse">
                                         <li>
                                             <a href="../system/user.html">用户管理<i class="arrow"></i></a>
                                         </li>
-                                        <li class="active-link">
+                                        <li>
                                             <a href="../system/role.html">角色管理<i class="arrow"></i></a>
                                         </li>
                                     </ul>
@@ -592,7 +605,6 @@
 
                                     </ul>
                                 </li>
-
                             </ul>
 
                         </div>
@@ -605,12 +617,12 @@
         </nav>
         <!--===================================================-->
         <!--END MAIN NAVIGATION-->
-
     </div>
 
 
+
+
     <!-- FOOTER -->
-    <!--===================================================-->
     <footer id="footer" style="text-align: center">
                     <span bigger-120>
                     <!--<span class="blue bolder">安徽农业大学数字农业研究所                             </span> &copy; 2018-2019-->
@@ -620,21 +632,16 @@
     </footer>
     <!--===================================================-->
     <!-- END FOOTER -->
+    <!-- SCROLL PAGE BUTTON -->
+    <!--===================================================-->
+    <button class="scroll-top btn">
+        <i class="pci-chevron chevron-up"></i>
+    </button>
+    <!--===================================================-->
 
-        <!-- SCROLL PAGE BUTTON -->
-        <!--===================================================-->
-        <button class="scroll-top btn">
-            <i class="pci-chevron chevron-up"></i>
-        </button>
-        <!--===================================================-->
-
-
-    </div>
-
-<!--===================================================-->
-<!-- END OF CONTAINER -->
-<script src="../../js/bambootattan_pc_js/system/role.js"></script>
 </div>
+
+<script src="../../js/bambootattan_pc_js/Bamboodata/bambooforms/understem.js"></script>
 </body>
 </html>
 
