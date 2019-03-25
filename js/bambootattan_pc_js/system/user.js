@@ -229,7 +229,7 @@ function save() {
                         data: formData,
                         // contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
-                            //res.code=400;
+                            //res.code=404;
                             if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
@@ -240,7 +240,7 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
-                            }else if(res.code == 400){
+                            }else if(res.code == 404){
                                 window.location.href='../../page-404.html';
                             }
                             else if(res.code == 505){
@@ -275,7 +275,7 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
-                            } else if(res.code == 400){
+                            } else if(res.code == 404){
                                 window.location.href='../../page-404.html';
                             }
                             else if(res.code == 505){
@@ -328,7 +328,7 @@ function edit(id) {
                 $("#activeFlag").val(res.data.activeFlag);
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
-            }else if(res.code == 400){
+            }else if(res.code == 404){
                 window.location.href='../../page-404.html';
             }
             else if(res.code == 505){
@@ -375,7 +375,7 @@ function dele(gid){
                             });
                             $("#data_table").bootstrapTable('refresh',{url :queryPageUrl} );
                             $('#exampleModal').modal('hide');
-                        }else if(res.code == 400){
+                        }else if(res.code == 404){
                             window.location.href='../../page-404.html';
                         }
                         else if(res.code == 505){
@@ -455,7 +455,7 @@ function deles() {
                                     timer : 2000                    //时间，单位ms(毫秒),此处是5秒中后自动消失
                                 });
                                 $("#data_table").bootstrapTable('refresh',{url : queryPageUrl});
-                            }else if(res.code == 400){
+                            }else if(res.code == 404){
                                 window.location.href='../../page-404.html';
                             }
                             else if(res.code == 505){
@@ -504,7 +504,7 @@ function check(id) {
                 $('#orgPhone-info').html(res.data.orgPhone).attr('data-original-title',res.data.orgPhone);
                 $('#sortNum-info').html(res.data.sortNum).attr('data-original-title',res.data.sortNum);
                 $('#exampleModal-info').modal('show');
-            }else if(res.code == 400){
+            }else if(res.code == 404){
                 window.location.href='../../page-404.html';
             }
             else if(res.code == 505){
@@ -560,7 +560,7 @@ function updateState(){
                             });
                             $("#data_table").bootstrapTable('refresh',{url :queryPageUrl} );
                             $('#exampleModal').modal('hide');
-                        }else if(res.code == 400){
+                        }else if(res.code == 404){r
                             window.location.href='../../page-404.html';
                         }
                         else if(res.code == 505){
