@@ -868,7 +868,7 @@ function check(id) {
                     $('#genus-info').html(res.data.genus.genusNameCh).attr('data-original-title',res.data.genus.genusNameCh);
                 }
                 $('#exampleModal-info').modal('show');
-            }else if(res.code == 400){
+            }else if(res.code == 404){
                 window.location.href='../../page-404.html';
             }
             else if(res.code == 505){

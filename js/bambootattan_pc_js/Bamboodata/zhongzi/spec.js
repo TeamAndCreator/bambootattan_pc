@@ -664,7 +664,7 @@ function dele(gid){
                                 icon : 'pli-cross icon-2x',
                                 message : res.msg,
                                 container : 'floating',
-                                timer : 1000
+                                timer : 3000
                             });
                         }else{
                             $.niftyNoty({
@@ -750,7 +750,7 @@ function deles() {
                                     icon : 'pli-cross icon-2x',
                                     message : res.msg,
                                     container : 'floating',
-                                    timer : 1000
+                                    timer : 3000
                                 });
                             }else{  //删除失败，res.msg是失败信息
                                 $.niftyNoty({
