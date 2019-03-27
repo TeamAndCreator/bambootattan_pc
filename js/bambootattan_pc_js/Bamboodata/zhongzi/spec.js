@@ -644,7 +644,7 @@ function dele(gid){
                     type:'DELETE',				        //请求方式
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
-                        //res.code=400;
+                        //res.code=404;
                         if(res.code===200){
                             $.niftyNoty({
                                 type: 'success',
@@ -885,7 +885,7 @@ function check(id) {
                     $('#genus-info').html(res.data.genus.genusNameCh).attr('data-original-title',res.data.genus.genusNameCh);
                 }
                 $('#exampleModal-info').modal('show');
-            }else if(res.code == 400){
+            }else if(res.code == 404){
                 window.location.href='../../page-404.html';
             }
             else if(res.code == 505){

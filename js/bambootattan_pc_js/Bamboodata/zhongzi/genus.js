@@ -192,7 +192,7 @@ function save() {
                         data: JSON.stringify(formData),	    //数据   对象转json字符串
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
-                            //res.code=400;
+                            //res.code=404;
                             if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
@@ -291,7 +291,7 @@ function edit(id) {
                 $('#genusDesc').val(res.data.genusDesc);
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
-            }else if(res.code == 400){
+            }else if(res.code == 404){
                 window.location.href='../../page-404.html';
             }
             else if(res.code == 505){
@@ -428,7 +428,7 @@ function deles() {
                                     timer : 2000                    //时间，单位ms(毫秒),此处是5秒中后自动消失
                                 });
                                 $("#data_table").bootstrapTable('refresh',{url : queryPageUrl});
-                            }else if(res.code ===400){
+                            }else if(res.code ===404){
                                 window.location.href='../../page-404.html';
                             }
                             else if(res.code ===1451){
@@ -486,7 +486,7 @@ function check(id) {
                 $('#genusDesc-info').html(res.data.genusDesc);
                // $('#genusDesc-info').html(res.data.genusDesc).attr('data-original-title',res.data.genusDesc);
                 $('#exampleModal-info').modal('show');
-            }else if(res.code == 400){
+            }else if(res.code == 404){
                 window.location.href='../../page-404.html';
             }
             else if(res.code == 505){

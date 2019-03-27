@@ -492,7 +492,7 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
-                            } else if(res.code == 400){
+                            } else if(res.code == 404){
                                 window.location.href='../../page-404.html';
                             }
                             else if(res.code == 505){
@@ -599,7 +599,7 @@ function edit(id) {
                     $(myDropzone.options.previewsContainer).find('[data-dz-remove]').addClass('hide');
                 }
 
-            }else if(res.code == 400){
+            }else if(res.code == 404){
                 window.location.href='../../page-404.html';
             }
             else if(res.code == 505){
@@ -637,7 +637,7 @@ function dele(gid){
                     type:'DELETE',				        //请求方式
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
-                        //res.code=400;
+                        //res.code=404;
                         if(res.code===200){
                             $.niftyNoty({
                                 type: 'success',
@@ -730,7 +730,7 @@ function deles() {
                                     timer : 2000                    //时间，单位ms(毫秒),此处是5秒中后自动消失
                                 });
                                 $("#data_table").bootstrapTable('refresh',{url : queryPageUrl});
-                            }else if(res.code == 400){
+                            }else if(res.code == 404){
                                 window.location.href='../../page-404.html';
                             }
                             else if(res.code == 505){
