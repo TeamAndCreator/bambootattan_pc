@@ -3,7 +3,8 @@ var querySpecPageUrl='';
 $(function(){
     $('.username').html('欢迎您，'+ $.cookie('BAM_USERNAME'));
     queryPageUrl = baseUrl+'/sheathear/findAllQuery';
-    querySpecPageUrl = baseUrl+'/spec/findAllQuery';
+    //querySpecPageUrl = baseUrl+'/spec/findAllQuery';
+    querySpecPageUrl = baseUrl+'/spec/findAllQueryWithOutSheathear';
     //新增点击事件
     $('#btn_add').on('click',function () {
         init_form();//初始化表单
