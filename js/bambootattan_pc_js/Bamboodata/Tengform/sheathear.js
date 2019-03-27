@@ -413,7 +413,7 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
-                            }else if(res.code == 400){
+                            }else if(res.code == 404){
                                 window.location.href='../../../../page-404.html';
                             }
                             else if(res.code == 505){
@@ -448,7 +448,7 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
-                            } else if(res.code == 400){
+                            } else if(res.code == 404){
                                 window.location.href='../../../../page-404.html';
                             }
                             else if(res.code == 505){
@@ -498,7 +498,7 @@ function edit(id) {
                 $('#specId').val(res.data.spec.specId);
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
-            }else if(res.code == 400){
+            }else if(res.code == 404){
                 window.location.href='../../../../page-404.html';
             }
             else if(res.code == 505){
@@ -547,7 +547,7 @@ function dele(gid){
                             });
                             $("#data_table").bootstrapTable('refresh',{url :queryPageUrl} );
                             $('#exampleModal').modal('hide');
-                        }else if(res.code == 400){
+                        }else if(res.code == 404){
                             window.location.href='../../../../page-404.html';
                         }
                         else if(res.code == 505){
@@ -629,7 +629,7 @@ function deles() {
                                     timer : 2000                    //时间，单位ms(毫秒),此处是5秒中后自动消失
                                 });
                                 $("#data_table").bootstrapTable('refresh',{url : queryPageUrl});
-                            }else if(res.code == 400){
+                            }else if(res.code == 404){
                                 window.location.href='../../../../page-404.html';
                             }
                             else if(res.code == 505){
@@ -677,7 +677,7 @@ function check(id) {
 
                 $('#spec-check').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
                 $('#exampleModal-check').modal('show');
-            }else if(res.code == 400){
+            }else if(res.code == 404){
                 window.location.href='../../../../page-404.html';
             }
             else if(res.code == 505){

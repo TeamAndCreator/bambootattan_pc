@@ -136,7 +136,7 @@ function submit(){
             else if(res.code == 505){
                 window.location.href='page-page-500.html';
             } else{
-                //alert("账号或密码错误");
+                //alert("账号已存在");
                 $.niftyNoty({
                     type: 'danger',
                     icon: 'pli-cross icon-2x',
