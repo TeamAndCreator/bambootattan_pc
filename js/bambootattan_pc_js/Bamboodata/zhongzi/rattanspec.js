@@ -41,7 +41,6 @@ $(function(){
     init_file_upload();
     //表单验证
     checkForm();
-
     $.uImgFull('init');
     $.uVideoFull('init');
 });
