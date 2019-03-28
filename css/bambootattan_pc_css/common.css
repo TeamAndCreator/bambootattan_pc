@@ -279,3 +279,7 @@ td{
 /*html,body{*/
     /*cursor: url('../../img/image/图片1.png'),auto;*/
 /*}*/
+
+.floating-container{
+    z-index:99999 !important;
+}
