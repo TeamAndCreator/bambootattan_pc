@@ -473,7 +473,7 @@ function save() {
                                     icon: 'pli-cross icon-2x',
                                     message: res.msg,
                                     container: 'floating',
-                                    timer: 3000
+                                    timer: 2000
                                 });
                             }
                         },
@@ -511,7 +511,7 @@ function save() {
                                     icon: 'pli-cross icon-2x',
                                     message: res.msg,
                                     container: 'floating',
-                                    timer: 3000
+                                    timer: 2000
                                 });
                             }
                         },
@@ -525,7 +525,7 @@ function save() {
                     icon: 'pli-cross icon-2x',
                     message: '您取消了新增',
                     container: 'floating',
-                    timer: 3000
+                    timer: 2000
                 });
             }
         }
@@ -618,7 +618,7 @@ function edit(id) {
                     icon: 'pli-cross icon-2x',
                     message: res.msg,
                     container: 'floating',
-                    timer: 3000
+                    timer: 2000
                 });
             }
         },
@@ -651,7 +651,7 @@ function dele(gid){
                                 icon : 'pli-like-2 icon-2x',
                                 message : '删除成功',
                                 container : 'floating',
-                                timer : 3000
+                                timer : 2000
                             });
                             $("#data_table").bootstrapTable('refresh',{url :queryPageUrl} );//刷新表格
                             $('#exampleModal').modal('hide');
@@ -664,7 +664,7 @@ function dele(gid){
                                 icon : 'pli-cross icon-2x',
                                 message : res.msg,
                                 container : 'floating',
-                                timer : 3000
+                                timer : 2000
                             });
                         }else{
                             $.niftyNoty({
@@ -672,7 +672,7 @@ function dele(gid){
                                 icon : 'pli-cross icon-2x',
                                 message : res.msg,
                                 container : 'floating',
-                                timer : 3000
+                                timer : 2000
                             });
                         }
                     },
@@ -686,7 +686,7 @@ function dele(gid){
                     icon : 'pli-cross icon-2x',
                     message : '您取消了删除',
                     container : 'floating',
-                    timer : 3000
+                    timer : 2000
                 });
             };
         }
@@ -738,7 +738,7 @@ function deles() {
                                     icon : 'pli-like-2 icon-2x',    //图标
                                     message : '删除成功',           //显示的内容
                                     container : 'floating',         //不管他，就这样写
-                                    timer : 3000                    //时间，单位ms(毫秒),此处是5秒中后自动消失
+                                    timer : 2000                    //时间，单位ms(毫秒),此处是5秒中后自动消失
                                 });
                                 $("#data_table").bootstrapTable('refresh',{url : queryPageUrl});
                             }else if(res.code===404){
@@ -750,7 +750,7 @@ function deles() {
                                     icon : 'pli-cross icon-2x',
                                     message : res.msg,
                                     container : 'floating',
-                                    timer : 3000
+                                    timer : 2000
                                 });
                             }else{  //删除失败，res.msg是失败信息
                                 $.niftyNoty({
@@ -758,7 +758,7 @@ function deles() {
                                     icon : 'pli-cross icon-2x',
                                     message : res.msg,
                                     container : 'floating',
-                                    timer : 3000
+                                    timer : 2000
                                 });
                             }
                         },
@@ -771,7 +771,7 @@ function deles() {
                         icon : 'pli-cross icon-2x',
                         message : '您取消了删除',
                         container : 'floating',
-                        timer : 3000
+                        timer : 2000
                     });
                 };
             }
@@ -897,7 +897,7 @@ function check(id) {
                     icon: 'pli-cross icon-2x',
                     message: res.msg,
                     container: 'floating',
-                    timer: 3000
+                    timer: 2000
                 });
             }
         },
