@@ -530,8 +530,9 @@ function state(value, row,index) {
     if (value == 1) {
         return "<div class='label label-table label-success'>已激活</div>"
     }else {
-         return "<div class='label label-table label-warning'><a onclick='updateState(" + row.id + ")' data-toggle=\"modal\" data-target=\"#updateState\" style='color: white; cursor:default'>激活</a></div>"
-       }
+         //return "<div class='label label-table label-warning'><a onclick='updateState(" + row.id + ")' data-toggle=\"modal\" data-target=\"#updateState\" style='color: white; cursor:default'>未激活</a></div>"
+        return "<div class='label label-table label-warning'>未激活</div>"
+    }
 }
 //激活账号
 // function updateState(){

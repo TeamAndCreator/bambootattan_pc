@@ -473,7 +473,7 @@ function save() {
                                     icon: 'pli-cross icon-2x',
                                     message: res.msg,
                                     container: 'floating',
-                                    timer: 2000
+                                    timer: 4000
                                 });
                             }
                         },
@@ -511,7 +511,7 @@ function save() {
                                     icon: 'pli-cross icon-2x',
                                     message: res.msg,
                                     container: 'floating',
-                                    timer: 2000
+                                    timer: 4000
                                 });
                             }
                         },
@@ -618,7 +618,7 @@ function edit(id) {
                     icon: 'pli-cross icon-2x',
                     message: res.msg,
                     container: 'floating',
-                    timer: 2000
+                    timer: 4000
                 });
             }
         },
