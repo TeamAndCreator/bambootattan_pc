@@ -3,7 +3,7 @@ var baseUrl="http://47.106.74.107:8081";
 //var baseUrl="http://192.168.0.2:8080";//zl
 //var baseUrl="http://10.5.139.187:8080";
 //var baseUrl="http://127.0.0.1:8080";//wzl本地
-//给body元素手动加上 modal-open
+//给body元素手动加上 modal-opens
 var openModalClass=function () {
     $('body').addClass('modal-open');
 }
