@@ -279,3 +279,17 @@ td{
 /*html,body{*/
     /*cursor: url('../../img/image/图片1.png'),auto;*/
 /*}*/
+
+.floating-container{
+    z-index:99999 !important;
+}
+
+
+.navbar-top-links .tgl-menu-btn>a, .navbar-top-links .tgl-menu-btn>a:hover, .navbar-top-links .tgl-menu-btn>a:focus {
+    color: #8bc34a;
+}
+
+
+.navbar-top-links > li > a:not(.mainnav-toggle) > i {
+    color: #8bc34a;
+}

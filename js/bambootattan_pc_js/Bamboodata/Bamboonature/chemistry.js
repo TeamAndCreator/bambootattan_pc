@@ -505,7 +505,7 @@ function save() {
                                     icon: 'pli-cross icon-2x',
                                     message: res.msg,
                                     container: 'floating',
-                                    timer: 1000
+                                    timer: 2000
                                 });
                             }
                         },
@@ -540,7 +540,7 @@ function save() {
                                     icon: 'pli-cross icon-2x',
                                     message: res.msg,
                                     container: 'floating',
-                                    timer: 1000
+                                    timer: 2000
                                 });
                             }
                         },
@@ -554,7 +554,7 @@ function save() {
                     icon: 'pli-cross icon-2x',
                     message: '您取消了新增',
                     container: 'floating',
-                    timer: 1000
+                    timer: 2000
                 });
             }
         }
@@ -598,7 +598,7 @@ function edit(id) {
                     icon: 'pli-cross icon-2x',
                     message: res.msg,
                     container: 'floating',
-                    timer: 1000
+                    timer: 2000
                 });
             }
         },
@@ -646,7 +646,7 @@ function dele(gid){
                                 icon : 'pli-cross icon-2x',
                                 message : res.msg,
                                 container : 'floating',
-                                timer : 1000
+                                timer : 2000
                             });
                         }
                     },
@@ -660,7 +660,7 @@ function dele(gid){
                     icon : 'pli-cross icon-2x',
                     message : '您取消了删除',
                     container : 'floating',
-                    timer : 1000
+                    timer : 2000
                 });
             };
         }
@@ -700,7 +700,7 @@ function check(id) {
                     icon: 'pli-cross icon-2x',
                     message: res.msg,
                     container: 'floating',
-                    timer: 1000
+                    timer: 2000
                 });
             }
         },
@@ -770,7 +770,7 @@ function deles() {
                                     icon : 'pli-cross icon-2x',
                                     message : res.msg,
                                     container : 'floating',
-                                    timer : 1000
+                                    timer : 2000
                                 });
                             }
                         },
@@ -784,7 +784,7 @@ function deles() {
                         icon : 'pli-cross icon-2x',
                         message : '您取消了删除',
                         container : 'floating',
-                        timer : 1000
+                        timer : 2000
                     });
                 };
             }

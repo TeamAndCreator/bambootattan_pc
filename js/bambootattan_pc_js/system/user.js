@@ -20,7 +20,7 @@ $(function(){
     $('#btn_delete').on('click',deles);
     //保存点击事件
     $('#btn_save').on('click',save);
-    $('#updateState').on('click',updateState);
+    // $('#updateState').on('click',updateState);
     checkForm();
     //表单验证
     $('#userForm').bootstrapValidator();
@@ -240,10 +240,10 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
-                            }else if(res.code == 404){
+                            }else if(res.code === 404){
                                 window.location.href='../../page-404.html';
                             }
-                            else if(res.code == 505){
+                            else if(res.code === 505){
                                 window.location.href='../../page-500.html';
                             } else {
                                 $.niftyNoty({
@@ -251,7 +251,7 @@ function save() {
                                     icon: 'pli-cross icon-2x',
                                     message: res.msg,
                                     container: 'floating',
-                                    timer: 1000
+                                    timer: 2000
                                 });
                             }
                         },
@@ -275,10 +275,10 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
-                            } else if(res.code == 404){
+                            } else if(res.code === 404){
                                 window.location.href='../../page-404.html';
                             }
-                            else if(res.code == 505){
+                            else if(res.code === 505){
                                 window.location.href='../../page-500.html';
                             } else {
                                 $.niftyNoty({
@@ -286,7 +286,7 @@ function save() {
                                     icon: 'pli-cross icon-2x',
                                     message: res.msg,
                                     container: 'floating',
-                                    timer: 1000
+                                    timer: 2000
                                 });
                             }
                         },
@@ -300,7 +300,7 @@ function save() {
                     icon: 'pli-cross icon-2x',
                     message: '您取消了新增',
                     container: 'floating',
-                    timer: 1000
+                    timer: 2000
                 });
             }
         }
@@ -328,10 +328,10 @@ function edit(id) {
                 $("#activeFlag").val(res.data.activeFlag);
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
-            }else if(res.code == 404){
+            }else if(res.code === 404){
                 window.location.href='../../page-404.html';
             }
-            else if(res.code == 505){
+            else if(res.code === 505){
                 window.location.href='../../page-500.html';
             }
             else{
@@ -340,7 +340,7 @@ function edit(id) {
                     icon: 'pli-cross icon-2x',
                     message: res.msg,
                     container: 'floating',
-                    timer: 1000
+                    timer: 2000
                 });
             }
         },
@@ -375,10 +375,10 @@ function dele(gid){
                             });
                             $("#data_table").bootstrapTable('refresh',{url :queryPageUrl} );
                             $('#exampleModal').modal('hide');
-                        }else if(res.code == 404){
+                        }else if(res.code === 404){
                             window.location.href='../../page-404.html';
                         }
-                        else if(res.code == 505){
+                        else if(res.code === 505){
                             window.location.href='../../page-500.html';
                         }
                         else{
@@ -387,7 +387,7 @@ function dele(gid){
                                 icon : 'pli-cross icon-2x',
                                 message : res.msg,
                                 container : 'floating',
-                                timer : 1000
+                                timer : 2000
                             });
                         }
                     },
@@ -400,7 +400,7 @@ function dele(gid){
                     icon : 'pli-cross icon-2x',
                     message : '您取消了删除',
                     container : 'floating',
-                    timer : 1000
+                    timer : 2000
                 });
             };
         }
@@ -455,10 +455,10 @@ function deles() {
                                     timer : 2000                    //时间，单位ms(毫秒),此处是5秒中后自动消失
                                 });
                                 $("#data_table").bootstrapTable('refresh',{url : queryPageUrl});
-                            }else if(res.code == 404){
+                            }else if(res.code === 404){
                                 window.location.href='../../page-404.html';
                             }
-                            else if(res.code == 505){
+                            else if(res.code === 505){
                                 window.location.href='../../page-500.html';
                             } else{  //删除失败，res.msg是失败信息
                                 $.niftyNoty({
@@ -466,7 +466,7 @@ function deles() {
                                     icon : 'pli-cross icon-2x',
                                     message : res.msg,
                                     container : 'floating',
-                                    timer : 1000
+                                    timer : 2000
                                 });
                             }
                         },
@@ -480,7 +480,7 @@ function deles() {
                         icon : 'pli-cross icon-2x',
                         message : '您取消了删除',
                         container : 'floating',
-                        timer : 1000
+                        timer : 2000
                     });
                 };
             }
@@ -504,10 +504,10 @@ function check(id) {
                 $('#orgPhone-info').html(res.data.orgPhone).attr('data-original-title',res.data.orgPhone);
                 $('#sortNum-info').html(res.data.sortNum).attr('data-original-title',res.data.sortNum);
                 $('#exampleModal-info').modal('show');
-            }else if(res.code == 404){
+            }else if(res.code === 404){
                 window.location.href='../../page-404.html';
             }
-            else if(res.code == 505){
+            else if(res.code === 505){
                 window.location.href='../../page-500.html';
             }
             else{
@@ -516,7 +516,7 @@ function check(id) {
                     icon: 'pli-cross icon-2x',
                     message: res.msg,
                     container: 'floating',
-                    timer: 1000
+                    timer: 2000
                 });
             }
         },
@@ -530,67 +530,68 @@ function state(value, row,index) {
     if (value == 1) {
         return "<div class='label label-table label-success'>已激活</div>"
     }else {
-         return "<div class='label label-table label-warning'><a onclick='updateState(" + row.id + ")' data-toggle=\"modal\" data-target=\"#updateState\" style='color: white; cursor:default'>激活</a></div>"
-       }
+         //return "<div class='label label-table label-warning'><a onclick='updateState(" + row.id + ")' data-toggle=\"modal\" data-target=\"#updateState\" style='color: white; cursor:default'>未激活</a></div>"
+        return "<div class='label label-table label-warning'>未激活</div>"
+    }
 }
 //激活账号
-function updateState(){
-    bootbox.confirm({
-        title: '激活确认',
-        message: '<div class="text-center"><h2>您确定激活该用户吗<i class="demo-pli-question-circle text-danger"></i></h2></div>',
-        //size:'small',
-        buttons: {
-            cancel: {label: '<i class="demo-pli-cross"></i> 取消'},
-            confirm: {label: '<i class="demo-pli-check2"></i> 确认'}
-        },
-        callback: function(result) {
-            if (result) {
-                $.ajax({
-                    url:baseUrl+'/user/active/',
-                    type:'DELETE',				        //请求方式
-                    contentType: 'application/json',    //数据类型
-                    success:function(res){	            //请求成功回调函数
-                        if(res.code===200){
-                            $.niftyNoty({
-                                type: 'success',
-                                icon : 'pli-like-2 icon-2x',
-                                message : '激活成功',
-                                container : 'floating',
-                                timer : 2000
-                            });
-                            $("#data_table").bootstrapTable('refresh',{url :queryPageUrl} );
-                            $('#exampleModal').modal('hide');
-                        }else if(res.code == 404){r
-                            window.location.href='../../page-404.html';
-                        }
-                        else if(res.code == 505){
-                            window.location.href='../../page-500.html';
-                        }
-                        else{
-                            $.niftyNoty({
-                                type: 'danger',
-                                icon : 'pli-cross icon-2x',
-                                message : res.msg,
-                                container : 'floating',
-                                timer : 1000
-                            });
-                        }
-                    },
-                    error:function(XMLHttpRequest, textStatus, errorThrown){		//请求失败回调函数
-                    }
-                });
-            }else{
-                $.niftyNoty({
-                    type: 'danger',
-                    icon : 'pli-cross icon-2x',
-                    message : '您取消了激活',
-                    container : 'floating',
-                    timer : 1000
-                });
-            };
-        }
-    });
-}
+// function updateState(){
+//     bootbox.confirm({
+//         title: '激活确认',
+//         message: '<div class="text-center"><h2>您确定激活该用户吗<i class="demo-pli-question-circle text-danger"></i></h2></div>',
+//         //size:'small',
+//         buttons: {
+//             cancel: {label: '<i class="demo-pli-cross"></i> 取消'},
+//             confirm: {label: '<i class="demo-pli-check2"></i> 确认'}
+//         },
+//         callback: function(result) {
+//             if (result) {
+//                 $.ajax({
+//                     url:baseUrl+'/user/updateActiveFlag/',
+//                     type:'GET',				        //请求方式
+//                     contentType: 'application/json',    //数据类型
+//                     success:function(res){	            //请求成功回调函数
+//                         if(res.code===200){
+//                             $.niftyNoty({
+//                                 type: 'success',
+//                                 icon : 'pli-like-2 icon-2x',
+//                                 message : '激活成功',
+//                                 container : 'floating',
+//                                 timer : 2000
+//                             });
+//                             $("#data_table").bootstrapTable('refresh',{url :queryPageUrl} );
+//                             $('#exampleModal').modal('hide');
+//                         }else if(res.code === 404){
+//                             window.location.href='../../page-404.html';
+//                         }
+//                         else if(res.code === 505){
+//                             window.location.href='../../page-500.html';
+//                         }
+//                         else{
+//                             $.niftyNoty({
+//                                 type: 'danger',
+//                                 icon : 'pli-cross icon-2x',
+//                                 message : res.msg,
+//                                 container : 'floating',
+//                                 timer : 2000
+//                             });
+//                         }
+//                     },
+//                     error:function(XMLHttpRequest, textStatus, errorThrown){		//请求失败回调函数
+//                     }
+//                 });
+//             }else{
+//                 $.niftyNoty({
+//                     type: 'danger',
+//                     icon : 'pli-cross icon-2x',
+//                     message : '您取消了激活',
+//                     container : 'floating',
+//                     timer : 2000
+//                 });
+//             };
+//         }
+//     });
+// }
 //初始化表单元素的值
 function init_form(){
     $('#userName').val("");
