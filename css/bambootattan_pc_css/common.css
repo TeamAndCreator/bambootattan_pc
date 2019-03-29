@@ -288,3 +288,8 @@ td{
 .navbar-top-links .tgl-menu-btn>a, .navbar-top-links .tgl-menu-btn>a:hover, .navbar-top-links .tgl-menu-btn>a:focus {
     color: #8bc34a;
 }
+
+
+.navbar-top-links > li > a:not(.mainnav-toggle) > i {
+    color: #8bc34a;
+}
