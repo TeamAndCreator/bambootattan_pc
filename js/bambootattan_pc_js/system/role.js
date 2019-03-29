@@ -18,6 +18,8 @@ $(function(){
     $('#btn_save').on('click',save);
     //初始化表格
     init_table();
+
+    init_auth_table();
     //表单验证
     $('#registrationForm').bootstrapValidator();
 });
@@ -167,6 +169,23 @@ function save() {
                 var remark = $('#remark').val();
                 var canDel = $('#canDel').val();
                 var sortNum = $('#sortNum').val();
+                var authorities=[];
+                for(var i=0;i<dataSoure.length;i++){
+                    var name=dataSoure[i].auth_name;
+                    var _authView= $('#auth_table input[data-name="'+name+'"][data-auth="auth_view"]').prop('checked');
+                    var _authEdit= $('#auth_table input[data-name="'+name+'"][data-auth="auth_edit"]').prop('checked');
+                    var _authCreate= $('#auth_table input[data-name="'+name+'"][data-auth="auth_create"]').prop('checked');
+                    var _authDelete= $('#auth_table input[data-name="'+name+'"][data-auth="auth_delete"]').prop('checked');
+
+                    authorities.push({
+                        "authCreate":  (_authCreate?1:0),
+                        "authDelete":  (_authDelete?1:0),
+                        "authEdit": (_authEdit?1:0),
+                        "authId":  0,
+                        "authName": name,
+                        "authView":(_authView?1:0)
+                    });
+                }
                 // var genusDesc = $('#genusDesc').val();
                 //将取得值放在formData里
                 var formData={
@@ -174,7 +193,8 @@ function save() {
                     "roleName": roleName,
                     "remark": remark,
                     "canDel": canDel,
-                    "sortNum": sortNum
+                    "sortNum": sortNum,
+                    "authorities":authorities
                 };
                 if (roleId === "") {//新增
                     formData.userId = 0;
@@ -184,7 +204,7 @@ function save() {
                         data: JSON.stringify(formData),	    //数据   对象转json字符串
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
-                            //res.code=400;
+                            //res.code=404;
                             if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
@@ -195,10 +215,10 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
-                            }else if(res.code == 400){
+                            }else if(res.code === 404){
                                 window.location.href='../../page-404.html';
                             }
-                            else if(res.code == 505){
+                            else if(res.code === 505){
                                 window.location.href='../../page-500.html';
                             } else {
                                 $.niftyNoty({
@@ -230,10 +250,10 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
-                            } else if(res.code == 400){
+                            } else if(res.code === 404){
                                 window.location.href='../../page-404.html';
                             }
-                            else if(res.code == 505){
+                            else if(res.code === 505){
                                 window.location.href='../../page-500.html';
                             } else {
                                 $.niftyNoty({
@@ -278,11 +298,12 @@ function edit(id) {
                 $('#canDel').val(res.data.canDel);
                 $('#sortNum').val(res.data.sortNum);
                 $('#exampleModal .modal-title').html("修改");
+                load_auth_table();
                 $('#exampleModal').modal('show');
-            }else if(res.code == 400){
+            }else if(res.code === 404){
                 window.location.href='../../page-404.html';
             }
-            else if(res.code == 505){
+            else if(res.code === 505){
                 window.location.href='../../page-500.html';
             }
             else{
@@ -326,10 +347,10 @@ function dele(gid){
                             });
                             $("#data_table").bootstrapTable('refresh',{url :queryPageUrl} );
                             $('#exampleModal').modal('hide');
-                        }else if(res.code == 400){
+                        }else if(res.code === 404){
                             window.location.href='../../page-404.html';
                         }
-                        else if(res.code == 505){
+                        else if(res.code === 505){
                             window.location.href='../../page-500.html';
                         }
                         else{
@@ -407,10 +428,10 @@ function deles() {
                                     timer : 2000                    //时间，单位ms(毫秒),此处是5秒中后自动消失
                                 });
                                 $("#data_table").bootstrapTable('refresh',{url : queryPageUrl});
-                            }else if(res.code == 400){
+                            }else if(res.code === 404){
                                 window.location.href='../../page-404.html';
                             }
-                            else if(res.code == 505){
+                            else if(res.code === 505){
                                 window.location.href='../../page-500.html';
                             } else{  //删除失败，res.msg是失败信息
                                 $.niftyNoty({
@@ -454,10 +475,10 @@ function check(id) {
                 $('#canDel-info').html(res.data.canDel).attr('data-original-title',res.data.canDel);
                 $('#sortNum-info').html(res.data.sortNum).attr('data-original-title',res.data.sortNum);
                 $('#exampleModal-info').modal('show');
-            }else if(res.code == 400){
+            }else if(res.code === 404){
                 window.location.href='../../page-404.html';
             }
-            else if(res.code == 505){
+            else if(res.code === 505){
                 window.location.href='../../page-500.html';
             }
             else{
@@ -496,4 +517,77 @@ function init_info(){
     $('#remark-info').val("").attr('data-original-title',"");
     $('#canDel-info').val("").attr('data-original-title',"");
     $('#sortNum-info').val("").attr('data-original-title',"");
+}
+
+var dataSoure=[
+    {auth_page:'竹属',auth_name:'genu',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'竹种',auth_name:'spec',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0}
+];
+function init_auth_table() {
+    $('#auth_table').bootstrapTable({
+        data:dataSoure,//数据源，json数据
+        pagination:false,//可以分页
+        cache:false,//是否使用緩存
+        columns:[//列数据
+            {
+                field:'auth_page',//数据列
+                title:'页面',//数据列名称
+                align:'center',//水平居中
+                valign:'middle'//垂直居中
+            },
+            {
+                field:'auth_view',//数据列
+                title:'查看',//数据列名称
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                formatter:function (value,row,index) {
+                    return '<input type="checkbox" data-auth="auth_view" data-name="'+row.auth_name+'" '+(value=='1'?'checked':'')+'/>'
+                }
+            },
+            {
+                field:'auth_create',//数据列
+                title:'新增',//数据列名称
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                formatter:function (value,row,index) {
+                    return '<input type="checkbox" data-auth="auth_create" data-name="'+row.auth_name+'" '+(value=='1'?'checked':'')+'/>'
+                }
+            },
+            {
+                field:'auth_edit',//数据列
+                title:'修改',//数据列名称
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                formatter:function (value,row,index) {
+                    return '<input type="checkbox" data-auth="auth_edit" data-name="'+row.auth_name+'" '+(value=='1'?'checked':'')+'/>'
+                }
+            },
+            {
+                field:'auth_delete',//数据列
+                title:'删除',//数据列名称
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                formatter:function (value,row,index) {
+                    return '<input type="checkbox" data-auth="auth_delete" data-name="'+row.auth_name+'" '+(value=='1'?'checked':'')+'/>'
+                }
+            }
+        ]
+    });
+}
+function load_auth_table(data) {
+    data=[
+        {auth_name:'genu',auth_view:1,auth_create:1,auth_edit:1,auth_delete:1},
+        {auth_name:'spec',auth_view:1,auth_create:1,auth_edit:1,auth_delete:1}
+    ];
+    if(typeof data!="undefined"&&data!=null){
+        for(var i=0;i<data.length;i++){
+            for(var j=0;j<dataSoure.length;j++){
+                if(data[i].auth_name==dataSoure[j].auth_name){
+                    data[i].auth_page=dataSoure[j].auth_page;
+                    break;
+                }
+            }
+        }
+    }
+    $('#auth_table').bootstrapTable('load',data);
 }
