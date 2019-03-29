@@ -1145,13 +1145,13 @@ function checkForm(){
                     }
                 }
             },
-            specSortNum: {
-                validators: {
-                    notEmpty: {
-                        message: '序号不能为空'
-                    }
-                }
-            },
+            // specSortNum: {
+            //     validators: {
+            //         notEmpty: {
+            //             message: '序号不能为空'
+            //         }
+            //     }
+            // },
             genus: {
                 validators: {
                     notEmpty: {
