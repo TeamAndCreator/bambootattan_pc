@@ -283,3 +283,8 @@ td{
 .floating-container{
     z-index:99999 !important;
 }
+
+
+.navbar-top-links .tgl-menu-btn>a, .navbar-top-links .tgl-menu-btn>a:hover, .navbar-top-links .tgl-menu-btn>a:focus {
+    color: #8bc34a;
+}
