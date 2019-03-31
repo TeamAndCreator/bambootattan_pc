@@ -1,5 +1,8 @@
-
-
+var baseUrl="http://47.106.74.107:8081";
+//var baseUrl="http://192.168.43.120:8080";
+//var baseUrl="http://192.168.0.2:8080";//zl
+//var baseUrl="http://10.5.139.187:8080";
+//var baseUrl="http://127.0.0.1:8080";//wzl本地
 //输入随意的验证码都可以进入
 // var code;
 // $(function () {
@@ -192,52 +195,101 @@ function validate() {
 }
 //登录
 function login(){
+    var _domain=document.domain;
+    //清除用户信息cookie
+    var total=$.cookie('BAM_USERINFO_TOTAL');
+    if(typeof total!="undefined"&&total!=null){
+        for(var i=0;i<total;i++){
+            $.removeCookie('BAM_USERINFO_'+i,{ expires: 365,path:'/',domain: _domain});
+        }
+        $.removeCookie('BAM_USERINFO_TOTAL',{ expires: 365,path:'/',domain: _domain});
+    }
+    //清除会话jsessionId
+    sessionStorage.setItem('jsessionId',null);
+
     var userName = $("#userName").val();    // 获取id为username的<input>框数据
     var password = $("#password").val();    // 获取id为password的<input>框数据
     var formData={
         "userName": userName,
         "password": password
     }
-                $.ajax({
-                    url: baseUrl + '/user/login',	    //请求路径
-                    type: 'POST',				        //请求方式
-                    //data: JSON.stringify(formData),	    //数据
-                    data: formData,	                    //数据
-                    //contentType: 'application/json',
-                    success: function (res) {    // 请求成功后的回调函数，其中的参数data为controller返回的map,也就是说,@ResponseBody将返回的map转化为JSON格式的数据，然后通过data这个参数取JSON数据中的值
-                       //res.code=400;
-                        jsessionId=res.data;
-                        sessionStorage.setItem("jsessionId",jsessionId);//该方法接受一个键名(key)和值(value)作为参数，将键值对添加到存储中；如果键名存在，则更新其对应的值
-                        if (res.code == 200) {
-                            $.cookie('BAM_USERNAME',formData.userName,{ expires: 365 });
-                            saveInfo();
-                            $.niftyNoty({
-                                type: 'success',
-                                icon: 'pli-like-2 icon-2x',
-                                message: '登录成功',
-                                container: 'floating',
-                                timer: 2000
-                            });
-                            window.location.href = "page/home/home.html";
-                        }else if(res.code == 400){
-                            window.location.href='page-page-404.html';
+    $.ajax({
+        url: baseUrl + '/user/login',	    //请求路径
+        type: 'POST',				        //请求方式
+        //data: JSON.stringify(formData),	    //数据
+        data: formData,	                    //数据
+        //contentType: 'application/json',
+        success: function (res) {    // 请求成功后的回调函数，其中的参数data为controller返回的map,也就是说,@ResponseBody将返回的map转化为JSON格式的数据，然后通过data这个参数取JSON数据中的值
+           //res.code=400;
+            if (res.code == 200) {
+                jsessionId=res.data.jsessionid;
+                sessionStorage.setItem("jsessionId",jsessionId);//该方法接受一个键名(key)和值(value)作为参数，将键值对添加到存储中；如果键名存在，则更新其对应的值
+                $.cookie('BAM_USERNAME',formData.userName,{ expires: 365});
+                var authorities=[];
+                var roles=res.data.user.roles;
+                for(var i=0;i<roles.length;i++){
+                    for(var j=0;j<roles[i].authorities.length;j++){
+                        var isExisted=false;
+                        for(var k=0;k<authorities.length;k++){
+                            if(roles[i].authorities[j].authName==authorities[k].authName){
+                                isExisted=true;
+                                authorities[k].authView=authorities[k].authView|roles[i].authorities[j].authView;
+                                authorities[k].authCreate=authorities[k].authCreate|roles[i].authorities[j].authCreate;
+                                authorities[k].authEdit=authorities[k].authEdit|roles[i].authorities[j].authEdit;
+                                authorities[k].authDelete=authorities[k].authDelete|roles[i].authorities[j].authDelete;
+                                break;
+                            }
                         }
-                        else if(res.code == 505){
-                            window.location.href='page-page-500.html';
-                        } else{
-                            //alert("账号或密码错误");
-                            $.niftyNoty({
-                                type: 'danger',
-                                icon: 'pli-cross icon-2x',
-                                message: res.msg,
-                                container: 'floating',
-                                timer: 2000
-                            });
+                        if(!isExisted){
+                            authorities.push(roles[i].authorities[j]);
                         }
                     }
-                });
-}
+                }
+                res.data.user.authorities=authorities;
+                var strUser=JSON.stringify(res.data.user);
 
+                if(strUser.length>2000){
+                    var total=parseInt(strUser.length/2000);
+                    $.cookie('BAM_USERINFO_TOTAL',(total+1),{ expires: 365,path:'/',domain: _domain});
+                    for (var i=0;i<total;i++){
+                        var strUserItem=strUser.substr(i*2000,2000);
+                        $.cookie('BAM_USERINFO_'+i,strUserItem,{ expires: 365,path:'/',domain: _domain});
+                        if((i+1)==total){
+                            strUserItem=strUser.substr((i+1)*2000);
+                            $.cookie('BAM_USERINFO_'+(i+1),strUserItem,{ expires: 365,path:'/',domain: _domain});
+                        }
+                    }
+                }else{
+                    $.cookie('BAM_USERINFO_TOTAL',1,{ expires: 365,path:'/',domain: _domain});
+                    $.cookie('BAM_USERINFO_0',strUser,{ expires: 365,path:'/',domain: _domain});
+                }
+                saveInfo();
+                $.niftyNoty({
+                    type: 'success',
+                    icon: 'pli-like-2 icon-2x',
+                    message: '登录成功',
+                    container: 'floating',
+                    timer: 2000
+                });
+                window.location.href = "page/home/home.html";
+            }else if(res.code == 400){
+                window.location.href='page-page-404.html';
+            }
+            else if(res.code == 505){
+                window.location.href='page-page-500.html';
+            } else{
+                //alert("账号或密码错误");
+                $.niftyNoty({
+                    type: 'danger',
+                    icon: 'pli-cross icon-2x',
+                    message: res.msg,
+                    container: 'floating',
+                    timer: 2000
+                });
+            }
+        }
+    });
+}
 //判断用户名和密码是否为空
 function checkInCorrect()
 {

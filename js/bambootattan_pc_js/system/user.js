@@ -2,6 +2,7 @@ var queryPageUrl='';
 $(function(){
     $('.username').html('欢迎您，'+ $.cookie('BAM_USERNAME'));
     queryPageUrl = baseUrl+'/user/findAllQuery';
+    init_page();
     //新增点击事件
     $('#btn_add').on('click',function () {
         init_form();//初始化表单
@@ -29,6 +30,24 @@ $(function(){
     //表单验证
     //$('#registrationForm').bootstrapValidator();
 });
+
+function  init_page(){
+    $.ajax({
+        url:baseUrl+'/role/findAll',
+        type:'GET',
+        success:function (result) {
+            if (result.code==200) {
+                var roles=result.data;
+                var _thmlOptions='';
+                for(var i=0;i<roles.length;i++){
+                    _thmlOptions+='<option value="'+roles[i].roleId+'">'+roles[i].roleName+'</option>>';
+                }
+               $('#idList').html(_thmlOptions);
+            }
+        }
+    });
+}
+
 //初始化表格
 function init_table(){
     $('#data_table').bootstrapTable({
@@ -42,7 +61,7 @@ function init_table(){
         sortName:'id',//排序字段
         sortable:false,//排序设置
         sortOrder:'asc',//排序类型，asc正序，desc倒序初始化加載第一頁
-        pageList:[5, 10, 20],//每页数量组
+        pageList:[5, 10, 20,100,1000,'ALL'],//每页数量组
         pageSize:5,//默认每页数量
         pagination:true,//可以分页
         showPaginationSwitch:false,
@@ -167,7 +186,7 @@ function init_table(){
                     return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
                 },
                 formatter:state
-            },
+            }
            // { field:'userId',title:'userId',visible:false}//隐藏不显示
         ]
     });
@@ -203,8 +222,9 @@ function save() {
                 var orgPhone=$("#orgPhone").val();
                 var activeFlag=$("#activeFlag").val();
                 var code=$("#code").val();
+                var idListVal=$('#idList').val();
                 var idList=[];
-                idList.push(1);
+                idList.push(idListVal);
 
                 var formData={
                     "userId":userId,
@@ -259,6 +279,10 @@ function save() {
                         }
                     });
                 } else {//修改
+                    formData.roles=[];
+                    for(var i=0;i<idList.length;i++){
+                        formData.roles[i]={roleId:idList[i]}
+                    }
                     $.ajax({
                         url: baseUrl + '/user/update',	    //请求路径
                         type: 'PUT',				        //请求方式
@@ -323,6 +347,9 @@ function edit(id) {
                 // $('#userPwd').val(res.data.userPwd);//修改时候密码应该重新输入
                 $('#createTime').val(res.data.createTime);
                 $('#orgName').val(res.data.orgName);
+                if(res.data.roles.length>0){
+                    $('#idList').val(res.data.roles[0].roleId);
+                }
                 $('#orgPhone').val(res.data.orgPhone);
                 $('#sortNum').val(res.data.sortNum);
                 $("#activeFlag").val(res.data.activeFlag);
