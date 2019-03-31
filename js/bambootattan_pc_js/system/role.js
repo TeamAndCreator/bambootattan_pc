@@ -5,6 +5,13 @@ $(function(){
     //新增点击事件
     $('#btn_add').on('click',function () {
         init_form();//初始化表单
+        for(var i=0;i<dataSoure.length;i++) {
+            dataSoure[i].auth_view = 0
+            dataSoure[i].auth_create = 0;
+            dataSoure[i].auth_edit = 0;
+            dataSoure[i].auth_delete = 0;
+        }
+        load_auth_table(dataSoure);
         $('#exampleModal .modal-title').html("新增");
         $('#exampleModal').modal('show');//表单模态框
     });
@@ -36,7 +43,7 @@ function init_table(){
         sortName:'id',//排序字段
         sortable:false,//排序设置
         sortOrder:'asc',//排序类型，asc正序，desc倒序初始化加載第一頁
-        pageList:[5, 10, 20],//每页数量组
+        pageList:[5, 10, 20,100,1000,'ALL'],//每页数量组
         pageSize:5,//默认每页数量
         pagination:true,//可以分页
         showPaginationSwitch:false,
@@ -182,6 +189,7 @@ function save() {
                         "authDelete":  (_authDelete?1:0),
                         "authEdit": (_authEdit?1:0),
                         "authId":  0,
+                        "role":{roleId:(roleId === ""?0:roleId)},
                         "authName": name,
                         "authView":(_authView?1:0)
                     });
@@ -284,6 +292,7 @@ function save() {
 //修改
 function edit(id) {
     init_form();
+    load_auth_table(dataSoure);
     $.ajax({
         url:baseUrl+'/role/findId/'+id,		//请求路径
         type:'GET',			                    //请求方式
@@ -298,7 +307,26 @@ function edit(id) {
                 $('#canDel').val(res.data.canDel);
                 $('#sortNum').val(res.data.sortNum);
                 $('#exampleModal .modal-title').html("修改");
-                load_auth_table();
+                var authorities=res.data.authorities;
+                var data=[];
+                for(var i=0;i<dataSoure.length;i++){
+                    var auth=dataSoure[i];
+                    auth.auth_view=0
+                    auth.auth_create=0;
+                    auth.auth_edit=0;
+                    auth.auth_delete=0;
+                    for(var j=0;j<authorities.length;j++){
+                        if(dataSoure[i].auth_name==authorities[j].authName){
+                            auth.auth_view=authorities[j].authView;
+                            auth.auth_create=authorities[j].authCreate;
+                            auth.auth_edit=authorities[j].authEdit;
+                            auth.auth_delete=authorities[j].authDelete;
+                            break;
+                        }
+                    }
+                    data.push(auth);
+                }
+                load_auth_table(data);
                 $('#exampleModal').modal('show');
             }else if(res.code === 404){
                 window.location.href='../../page-404.html';
@@ -519,9 +547,49 @@ function init_info(){
     $('#sortNum-info').val("").attr('data-original-title',"");
 }
 
+//auth_name不能重复
 var dataSoure=[
-    {auth_page:'竹属',auth_name:'genu',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
-    {auth_page:'竹种',auth_name:'spec',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0}
+    {auth_page:'竹 - 属',auth_name:'genus',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'竹 - 种',auth_name:'spec',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'竹 - 地下茎',auth_name:'understem',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'竹 - 竹竿',auth_name:'culm',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'竹 - 箨环',auth_name:'sheathnode',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'竹 - 箨鞘',auth_name:'sheath',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'竹 - 箨耳',auth_name:'sheathear',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'竹 - 箨舌',auth_name:'sheathtongue',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'竹 - 箨片',auth_name:'sheathshell',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'竹 - 竹叶',auth_name:'leaf',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'竹 - 花果形态',auth_name:'fruit',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'竹 - 化学性质',auth_name:'chemistry',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'竹 - 结构性质',auth_name:'structure',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'竹 - 力学性质',auth_name:'mechanics',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'竹 - 组织比量',auth_name:'tissueproportion',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'竹 - 纤维形态特征',auth_name:'fibermorphology',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'竹 - 导管形态特征',auth_name:'cathermorphology',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'竹 - 维管束形态特征',auth_name:'vascularbundelmorphology',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'藤 - 属',auth_name:'rattangenus',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'藤 - 种',auth_name:'rattanspec',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'藤 - 地下茎',auth_name:'rattanunderstem',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'藤 - 竹竿',auth_name:'rattanculm',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'藤 - 箨环',auth_name:'rattansheathnode',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'藤 - 箨鞘',auth_name:'rattansheath',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'藤 - 箨耳',auth_name:'rattansheathear',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'藤 - 箨舌',auth_name:'rattansheathtongue',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'藤 - 箨片',auth_name:'rattansheathshell',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'藤 - 藤叶',auth_name:'rattanleaf',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'藤 - 花果形态',auth_name:'rattanfruit',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'藤 - 化学性质',auth_name:'rattanchemistry',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'藤 - 物理性质',auth_name:'rattanphysical',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'藤 - 结构性质',auth_name:'rattanstructure',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'藤 - 力学性质',auth_name:'rattanmechanics',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'藤 - 组织比量',auth_name:'rattantissueproportion',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'藤 - 纤维形态特征',auth_name:'rattanfibermorphology',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'藤 - 导管形态特征',auth_name:'rattancathermorphology',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'藤 - 维管束形态特征',auth_name:'rattanvascularbundelmorphology',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'单位',auth_name:'unittable',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'用户',auth_name:'user',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'角色',auth_name:'role',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'系统日志',auth_name:'log',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
 ];
 function init_auth_table() {
     $('#auth_table').bootstrapTable({
@@ -532,8 +600,9 @@ function init_auth_table() {
             {
                 field:'auth_page',//数据列
                 title:'页面',//数据列名称
-                align:'center',//水平居中
-                valign:'middle'//垂直居中
+                align:'left',//水平居中
+                valign:'middle',//垂直居中
+                width:200
             },
             {
                 field:'auth_view',//数据列
@@ -573,21 +642,12 @@ function init_auth_table() {
             }
         ]
     });
+    $('#auth_table').parents('.fixed-table-container').css('padding-bottom','42px');
 }
 function load_auth_table(data) {
-    data=[
-        {auth_name:'genu',auth_view:1,auth_create:1,auth_edit:1,auth_delete:1},
-        {auth_name:'spec',auth_view:1,auth_create:1,auth_edit:1,auth_delete:1}
-    ];
     if(typeof data!="undefined"&&data!=null){
-        for(var i=0;i<data.length;i++){
-            for(var j=0;j<dataSoure.length;j++){
-                if(data[i].auth_name==dataSoure[j].auth_name){
-                    data[i].auth_page=dataSoure[j].auth_page;
-                    break;
-                }
-            }
-        }
+        $('#auth_table').bootstrapTable('load',data);
+        $('#auth_table').parents('.fixed-table-container').css('padding-bottom','42px');
     }
-    $('#auth_table').bootstrapTable('load',data);
+
 }

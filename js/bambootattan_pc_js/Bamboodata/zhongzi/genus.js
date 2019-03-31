@@ -2,6 +2,7 @@ var queryPageUrl='';
 $(function(){
     $('.username').html('欢迎您，'+ $.cookie('BAM_USERNAME'));
     queryPageUrl = baseUrl+'/genus/findAllQuery';
+    inti_page();
     //新增点击事件
     $('#btn_add').on('click',function () {
 		init_form();//初始化表单
@@ -28,6 +29,20 @@ $(function(){
     $('#demo-summernote').summernote();
 
 });
+//根据权限初始化页面
+function  inti_page() {
+    if(hasAuthority('genus','auth_create')){
+        $('#btn_add').removeClass('hide');
+    }else{
+        $('#btn_add').addClass('hide');
+    }
+    if(hasAuthority('genus','auth_delete')){
+        $('#btn_delete').removeClass('hide');
+    }else{
+        $('#btn_delete').addClass('hide');
+    }
+}
+
 //初始化表格
 function init_table(){
     $('#data_table').bootstrapTable({
@@ -74,9 +89,16 @@ function init_table(){
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
                 formatter:function(value,row,index){//格式化，自定义内容
-                    var _html = '<button onclick="edit(\''+row.genusId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
-                    _html += '<button  onclick="dele(\''+row.genusId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
-                    _html += '<button  onclick="check(\''+row.genusId+'\')"class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="查看"><i class="fa fa-search"></i></button>'
+                    var _html='';
+                    if(hasAuthority('genus','auth_edit')){
+                        _html = '<button onclick="edit(\''+row.genusId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
+                    }
+                    if(hasAuthority('genus','auth_delete')){
+                        _html += '<button  onclick="dele(\''+row.genusId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
+                    }
+                    if(hasAuthority('genus','auth_view')){
+                        _html += '<button  onclick="check(\''+row.genusId+'\')"class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="查看"><i class="fa fa-search"></i></button>'
+                    }
                     return _html;
                 },
                 cellStyle:function(value,row,index,field){
