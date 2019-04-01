@@ -561,6 +561,7 @@ var dataSoure=[
     {auth_page:'竹 - 箨片',auth_name:'sheathshell',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
     {auth_page:'竹 - 竹叶',auth_name:'leaf',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
     {auth_page:'竹 - 花果形态',auth_name:'fruit',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'竹 - 物理性质',auth_name:'physical',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
     {auth_page:'竹 - 化学性质',auth_name:'chemistry',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
     {auth_page:'竹 - 结构性质',auth_name:'structure',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
     {auth_page:'竹 - 力学性质',auth_name:'mechanics',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
