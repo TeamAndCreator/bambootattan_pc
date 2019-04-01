@@ -63,6 +63,7 @@ $(function () {
             closeLoading();
         }
     });
+    $('.username').html('欢迎您，'+ sessionStorage.getItem('BAM_USERNAME'));
     initNav();
     //退出
     $("#logout").on('click',logout);
@@ -79,6 +80,7 @@ $(function () {
          success: function (res) {
             // console.log("res:"+res);
              if (res.code === 200) {
+                 /*
                 //清除用户信息cookie
                  var total=$.cookie('BAM_USERINFO_TOTAL');
                 if(typeof total!="undefined"&&total!=null){
@@ -86,10 +88,12 @@ $(function () {
                         $.removeCookie('BAM_USERINFO_'+i,{ expires: 365});
                     }
                     $.removeCookie('BAM_USERINFO_TOTAL',{ expires: 365});
-                }
-                 //清除会话jsessionId
-                 sessionStorage.setItem('jsessionId',null);
+                }*/
 
+                 //清除会话jsessionId
+                 sessionStorage.removeItem('jsessionId');
+                 sessionStorage.removeItem('BAM_USERINFO');
+                 sessionStorage.removeItem('BAM_USERNAME');
                  $.niftyNoty({
                      type: 'success',
                      icon: 'pli-like-2 icon-2x',
@@ -127,15 +131,24 @@ $(function () {
  }
 
  var getUserInfo=function () {
+     /*
      var total=$.cookie('BAM_USERINFO_TOTAL');
      var strUser='';
      for(var i=0;i<total;i++){
          strUser+=$.cookie('BAM_USERINFO_'+i);
+     }*/
+     var strUser=sessionStorage.getItem('BAM_USERINFO');
+     if(typeof strUser=='undefined'||strUser==null||strUser==''){
+         return null;
      }
-    return JSON.parse(strUser);
+     return JSON.parse(strUser);
  }
  var hasAuthority=function (auth_name,key) {
-     var authorities=getUserInfo().authorities;
+     var userInfo=getUserInfo();
+     if(userInfo==null){
+         return false;
+     }
+     var authorities=userInfo.authorities;
      for(var i=0;i<authorities.length;i++){
          if(authorities[i].authName==auth_name){
              if(key=="auth_view"){
