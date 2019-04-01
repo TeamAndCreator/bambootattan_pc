@@ -1,7 +1,6 @@
 var queryPageUrl='';
 var querySpecPageUrl='';
 $(function(){
-    $('.username').html('欢迎您，'+ $.cookie('BAM_USERNAME'));
     queryPageUrl = baseUrl+'/fibermorphology/findAllQuery';
     //querySpecPageUrl = baseUrl+'/spec/findAllQuery';
     querySpecPageUrl = baseUrl+'/spec/findAllQueryWithOutFibermorphology';

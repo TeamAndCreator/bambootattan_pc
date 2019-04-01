@@ -1,6 +1,5 @@
 var queryPageUrl='';
 $(function(){
-    $('.username').html('欢迎您，'+ $.cookie('BAM_USERNAME'));
     queryPageUrl = baseUrl+'/log/findDateQuery';
     init_page();
     //初始化表格

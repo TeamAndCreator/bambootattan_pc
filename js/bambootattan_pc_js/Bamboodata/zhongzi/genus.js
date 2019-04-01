@@ -1,6 +1,5 @@
 var queryPageUrl='';
 $(function(){
-    $('.username').html('欢迎您，'+ $.cookie('BAM_USERNAME'));
     queryPageUrl = baseUrl+'/genus/findAllQuery';
     inti_page();
     //新增点击事件
