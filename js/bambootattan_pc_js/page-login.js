@@ -195,6 +195,7 @@ function validate() {
 }
 //登录
 function login(){
+    /*
     //清除用户信息cookie
     var total=$.cookie('BAM_USERINFO_TOTAL');
     if(typeof total!="undefined"&&total!=null){
@@ -205,6 +206,7 @@ function login(){
     }
     //清除会话jsessionId
     sessionStorage.setItem('jsessionId',null);
+    */
 
     var userName = $("#userName").val();    // 获取id为username的<input>框数据
     var password = $("#password").val();    // 获取id为password的<input>框数据
@@ -223,7 +225,8 @@ function login(){
             if (res.code == 200) {
                 jsessionId=res.data.jsessionid;
                 sessionStorage.setItem("jsessionId",jsessionId);//该方法接受一个键名(key)和值(value)作为参数，将键值对添加到存储中；如果键名存在，则更新其对应的值
-                $.cookie('BAM_USERNAME',formData.userName,{ expires: 365});
+                //$.cookie('BAM_USERNAME',formData.userName,{ expires: 365});
+                sessionStorage.setItem("BAM_USERNAME",formData.userName);
                 var authorities=[];
                 var roles=res.data.user.roles;
                 for(var i=0;i<roles.length;i++){
@@ -246,6 +249,7 @@ function login(){
                 }
                 res.data.user.authorities=authorities;
                 var strUser=JSON.stringify(res.data.user);
+                sessionStorage.setItem("BAM_USERINFO",strUser);
                 /*
                 if(strUser.length>2000){
                     var total=parseInt(strUser.length/2000);
