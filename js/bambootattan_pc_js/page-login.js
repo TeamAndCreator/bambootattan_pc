@@ -246,7 +246,7 @@ function login(){
                 }
                 res.data.user.authorities=authorities;
                 var strUser=JSON.stringify(res.data.user);
-
+                /*
                 if(strUser.length>2000){
                     var total=parseInt(strUser.length/2000);
                     $.cookie('BAM_USERINFO_TOTAL',(total+1),{ expires: 365});
@@ -261,7 +261,8 @@ function login(){
                 }else{
                     $.cookie('BAM_USERINFO_TOTAL',1,{ expires: 365});
                     $.cookie('BAM_USERINFO_0',strUser,{ expires: 365});
-                }
+                }*/
+
                 saveInfo();
                 $.niftyNoty({
                     type: 'success',
