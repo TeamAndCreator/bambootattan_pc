@@ -1,6 +1,5 @@
 var queryPageUrl='';
 $(function(){
-    $('.username').html('欢迎您，'+ $.cookie('BAM_USERNAME'));
     queryPageUrl = baseUrl+'/role/findAllQuery';
     //新增点击事件
     $('#btn_add').on('click',function () {
