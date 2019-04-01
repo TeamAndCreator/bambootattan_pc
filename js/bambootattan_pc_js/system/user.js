@@ -629,6 +629,7 @@ function init_form(){
     $('#orgName').val("");
     $('#sortNum').val("");
     $('#userPwd').val("");
+    $('#userId').val("");
     $('#userForm').data('bootstrapValidator').resetForm();
 }
 //初始化详情元素值

@@ -1,6 +1,6 @@
 var baseUrl="http://47.106.74.107:8081";
 //var baseUrl="http://192.168.43.120:8080";
-//var baseUrl="http://192.168.0.2:8080";//zl
+//var baseUrl="http://192.168.43.243:8080";//zl
 //var baseUrl="http://10.5.139.187:8080";
 //var baseUrl="http://127.0.0.1:8080";//wzl本地
 //给body元素手动加上 modal-opens
@@ -98,10 +98,10 @@ $(function () {
                      timer: 2000
                  });
                  window.location.href = "../../page-login.html";
-             } else if (res.code == 404) {
+             } else if (res.code === 404) {
                  window.location.href = '../../page-404.html';
              }
-             else if (res.code == 505) {
+             else if (res.code === 505) {
                  window.location.href = '../../page-500.html';
              }
              else {

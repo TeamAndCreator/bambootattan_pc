@@ -537,6 +537,7 @@ function init_form(){
     $('#remark').val("");
     $('#canDEl').val("");
     $('#sortNum').val("");
+    $('#roleId').val("");
 }
 //初始化详情元素值
 function init_info(){

@@ -1,6 +1,6 @@
 var baseUrl="http://47.106.74.107:8081";
 //var baseUrl="http://192.168.43.120:8080";
-//var baseUrl="http://192.168.0.2:8080";//zl
+//var baseUrl="http://192.168.43.243:8080";//zl
 //var baseUrl="http://10.5.139.187:8080";
 //var baseUrl="http://127.0.0.1:8080";//wzl本地
 //输入随意的验证码都可以进入
@@ -272,10 +272,10 @@ function login(){
                     timer: 2000
                 });
                 window.location.href = "page/home/home.html";
-            }else if(res.code == 400){
+            }else if(res.code === 404){
                 window.location.href='page-page-404.html';
             }
-            else if(res.code == 505){
+            else if(res.code === 505){
                 window.location.href='page-page-500.html';
             } else{
                 //alert("账号或密码错误");
