@@ -83,9 +83,9 @@ $(function () {
                  var total=$.cookie('BAM_USERINFO_TOTAL');
                 if(typeof total!="undefined"&&total!=null){
                     for(var i=0;i<total;i++){
-                        $.removeCookie('BAM_USERINFO_'+i,{ expires: 365,path:'/',domain: document.domain});
+                        $.removeCookie('BAM_USERINFO_'+i,{ expires: 365});
                     }
-                    $.removeCookie('BAM_USERINFO_TOTAL',{ expires: 365,path:'/',domain:  document.domain});
+                    $.removeCookie('BAM_USERINFO_TOTAL',{ expires: 365});
                 }
                  //清除会话jsessionId
                  sessionStorage.setItem('jsessionId',null);

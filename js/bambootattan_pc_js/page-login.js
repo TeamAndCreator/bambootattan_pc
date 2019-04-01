@@ -195,14 +195,13 @@ function validate() {
 }
 //登录
 function login(){
-    var _domain=document.domain;
     //清除用户信息cookie
     var total=$.cookie('BAM_USERINFO_TOTAL');
     if(typeof total!="undefined"&&total!=null){
         for(var i=0;i<total;i++){
-            $.removeCookie('BAM_USERINFO_'+i,{ expires: 365,path:'/',domain: _domain});
+            $.removeCookie('BAM_USERINFO_'+i,{ expires: 365});
         }
-        $.removeCookie('BAM_USERINFO_TOTAL',{ expires: 365,path:'/',domain: _domain});
+        $.removeCookie('BAM_USERINFO_TOTAL',{ expires: 365});
     }
     //清除会话jsessionId
     sessionStorage.setItem('jsessionId',null);
@@ -250,18 +249,18 @@ function login(){
 
                 if(strUser.length>2000){
                     var total=parseInt(strUser.length/2000);
-                    $.cookie('BAM_USERINFO_TOTAL',(total+1),{ expires: 365,path:'/',domain: _domain});
+                    $.cookie('BAM_USERINFO_TOTAL',(total+1),{ expires: 365});
                     for (var i=0;i<total;i++){
                         var strUserItem=strUser.substr(i*2000,2000);
-                        $.cookie('BAM_USERINFO_'+i,strUserItem,{ expires: 365,path:'/',domain: _domain});
+                        $.cookie('BAM_USERINFO_'+i,strUserItem,{ expires: 365});
                         if((i+1)==total){
                             strUserItem=strUser.substr((i+1)*2000);
-                            $.cookie('BAM_USERINFO_'+(i+1),strUserItem,{ expires: 365,path:'/',domain: _domain});
+                            $.cookie('BAM_USERINFO_'+(i+1),strUserItem,{ expires: 365});
                         }
                     }
                 }else{
-                    $.cookie('BAM_USERINFO_TOTAL',1,{ expires: 365,path:'/',domain: _domain});
-                    $.cookie('BAM_USERINFO_0',strUser,{ expires: 365,path:'/',domain: _domain});
+                    $.cookie('BAM_USERINFO_TOTAL',1,{ expires: 365});
+                    $.cookie('BAM_USERINFO_0',strUser,{ expires: 365});
                 }
                 saveInfo();
                 $.niftyNoty({
