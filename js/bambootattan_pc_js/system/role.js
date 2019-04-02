@@ -233,7 +233,7 @@ function save() {
                                     icon: 'pli-cross icon-2x',
                                     message: res.msg,
                                     container: 'floating',
-                                    timer: 2000
+                                    timer: 2000*6
                                 });
                             }
                         },
@@ -253,7 +253,7 @@ function save() {
                                     icon: 'pli-like-2 icon-2x',
                                     message: '修改成功',
                                     container: 'floating',
-                                    timer: 2000
+                                    timer: 2000*6
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
@@ -268,7 +268,7 @@ function save() {
                                     icon: 'pli-cross icon-2x',
                                     message: res.msg,
                                     container: 'floating',
-                                    timer: 2000
+                                    timer: 2000*6
                                 });
                             }
                         },
@@ -339,7 +339,7 @@ function edit(id) {
                     icon: 'pli-cross icon-2x',
                     message: res.msg,
                     container: 'floating',
-                    timer: 2000
+                    timer: 2000*6
                 });
             }
         },
@@ -525,9 +525,9 @@ function check(id) {
 //设置状态
 function state(value, row,index) {
     if (value == 1) {
-        return "<div class='label label-table label-danger'>删除</div>"
+        return "<div class='label label-table label-danger'>不能删除</div>"
     }else {
-        return "<div class='label label-table label-success'><a onclick='updateState(" + row.id + ")' data-toggle=\"modal\" data-target=\"#updateState\" style='color: white; cursor:default'>已存在</a></div>"
+        return "<div class='label label-table label-success'><a onclick='updateState(" + row.id + ")' data-toggle=\"modal\" data-target=\"#updateState\" style='color: white; cursor:default'>可删除</a></div>"
     }
 }
 //初始化表单元素的值
