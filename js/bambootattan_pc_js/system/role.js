@@ -5,7 +5,7 @@ $(function(){
     $('#btn_add').on('click',function () {
         init_form();//初始化表单
         for(var i=0;i<dataSoure.length;i++) {
-            dataSoure[i].auth_view = 0
+            dataSoure[i].auth_view = 0;
             dataSoure[i].auth_create = 0;
             dataSoure[i].auth_edit = 0;
             dataSoure[i].auth_delete = 0;
