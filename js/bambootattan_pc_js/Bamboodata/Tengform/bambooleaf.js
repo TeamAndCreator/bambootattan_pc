@@ -1,8 +1,8 @@
 var queryPageUrl='';
 var querySpecPageUrl='';
 $(function(){
-    queryPageUrl = baseUrl+'/leaf/findAllQuery';
-    querySpecPageUrl = baseUrl+'/spec/findAllQuery';
+    queryPageUrl = baseUrl+'/tLeaf/findAllQuery';
+    querySpecPageUrl = baseUrl+'/rattanSpec/findAllQuery';
     inti_page();
     //新增点击事件
     $('#btn_add').on('click',function () {
@@ -525,12 +525,12 @@ function save() {
                 if (leafId == "") {//新增
                     formData.specId = 0;
                     $.ajax({
-                        url: baseUrl + '/leaf/save',		//请求路径
+                        url: baseUrl + '/tLeaf/save',		//请求路径
                         type: 'POST',			            //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code == 200) {
+                            if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -540,10 +540,10 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
-                            }else if(res.code == 404){
+                            }else if(res.code === 404){
                                 window.location.href='../../../../page-404.html';
                             }
-                            else if(res.code == 505){
+                            else if(res.code === 505){
                                 window.location.href='../../../../page-500.html';
                             } else {
                                 $.niftyNoty({
@@ -560,12 +560,12 @@ function save() {
                     });
                 } else {//修改
                     $.ajax({
-                        url: baseUrl + '/leaf/update',	    //请求路径
+                        url: baseUrl + '/tLeaf/update',	    //请求路径
                         type: 'PUT',				        //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code == 200) {
+                            if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -575,7 +575,7 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
-                            } else if(res.code == 404){
+                            } else if(res.code === 404){
                                 window.location.href='../../../../page-404.html';
                             }
                             else if(res.code == 505){
@@ -611,12 +611,12 @@ function save() {
 function edit(id) {
     init_form();
     $.ajax({
-        url:baseUrl+'/leaf/findId/'+id,		//请求路径
+        url:baseUrl+'/tLeaf/findId/'+id,		//请求路径
         type:'GET',			                    //请求方式
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
-            if(res.code==200){
+            if(res.code===200){
                 $('#leafId').val(res.data.leafId);
                 $('#leafShape').val(res.data.leafShape);
                 $('#leafStalkLength').val(res.data.leafStalkLength);
@@ -633,10 +633,10 @@ function edit(id) {
                 $('#specId').val(res.data.spec.specId);
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
-            }else if(res.code == 404){
+            }else if(res.code === 404){
                 window.location.href='../../../../page-404.html';
             }
-            else if(res.code == 505){
+            else if(res.code === 505){
                 window.location.href='../../../../page-500.html';
             }
             else{
@@ -668,11 +668,11 @@ function dele(gid){
         callback: function(result) {
             if (result) {
                 $.ajax({
-                    url:baseUrl+'/leaf/delete/'+gid,   //请求路径,单个删除
+                    url:baseUrl+'/tLeaf/delete/'+gid,   //请求路径,单个删除
                     type:'DELETE',				        //请求方式
                     contentType: 'application/json',    //数据类型
                     success:function(res){	            //请求成功回调函数
-                        if(res.code==200){
+                        if(res.code===200){
                             $.niftyNoty({
                                 type: 'success',
                                 icon : 'pli-like-2 icon-2x',
@@ -682,10 +682,10 @@ function dele(gid){
                             });
                             $("#data_table").bootstrapTable('refresh',{url :queryPageUrl} );
                             $('#exampleModal').modal('hide');
-                        }else if(res.code == 404){
+                        }else if(res.code === 404){
                             window.location.href='../../../../page-404.html';
                         }
-                        else if(res.code == 505){
+                        else if(res.code === 505){
                             window.location.href='../../../../page-500.html';
                         }else{
                             $.niftyNoty({
@@ -718,7 +718,7 @@ function dele(gid){
 function deles() {
     //选中的数据
     var selectedItems=$("#data_table").bootstrapTable('getSelections');
-    if(selectedItems.length==0){    //没有选中任何数据
+    if(selectedItems.length===0){    //没有选中任何数据
         $.niftyNoty({
             type: 'danger',
             icon : 'pli-cross icon-2x',
@@ -748,11 +748,11 @@ function deles() {
                     }
                     $.ajax({    //批量删除
                         //现将数据每个元素用‘,(逗号)’分隔拼接成字符串，再用encodeURI进行编码，最后拼接到url的后面
-                        url: baseUrl+'/leaf/deleteByIds?ids='+encodeURI(ids.join(',')),
+                        url: baseUrl+'/tLeaf/deleteByIds?ids='+encodeURI(ids.join(',')),
                         type:'DELETE',
                         contentType: 'application/json',//数据类型
                         success:function(res){	        //请求成功回调函数
-                            if(res.code==200){  //删除成功
+                            if(res.code===200){  //删除成功
                                 //alert('删除成功');
 
                                 //右上角弹出消息
@@ -764,10 +764,10 @@ function deles() {
                                     timer : 2000                    //时间，单位ms(毫秒),此处是5秒中后自动消失
                                 });
                                 $("#data_table").bootstrapTable('refresh',{url : queryPageUrl});
-                            }else if(res.code == 404){
+                            }else if(res.code === 404){
                                 window.location.href='../../../../page-404.html';
                             }
-                            else if(res.code == 505){
+                            else if(res.code === 505){
                                 window.location.href='../../../../page-500.html';
                             }else{  //删除失败，res.msg是失败信息
                                 $.niftyNoty({
@@ -800,7 +800,7 @@ function deles() {
 function check(id) {
     init_info();
     $.ajax({
-        url:baseUrl+'/leaf/findId/'+id,		//请求路径
+        url:baseUrl+'/tLeaf/findId/'+id,		//请求路径
         type:'GET',			                    //请求方式
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
@@ -820,10 +820,10 @@ function check(id) {
 
                 $('#spec-info').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
                 $('#exampleModal-info').modal('show');
-            }else if(res.code == 404){
+            }else if(res.code === 404){
                 window.location.href='../../../../page-404.html';
             }
-            else if(res.code == 505){
+            else if(res.code === 505){
                 window.location.href='../../../../page-500.html';
             }
             else{
@@ -845,7 +845,7 @@ function check(id) {
 function selectedSpec() {
     //选中的数据
     var selectedSpecItems=$("#spec_table").bootstrapTable('getSelections');
-    if (selectedSpecItems.length==1){
+    if (selectedSpecItems.length===1){
         $("#spec").val(selectedSpecItems[0].specNameCh);
         $("#specId").val(selectedSpecItems[0].specId);
         $("#genusId").val(selectedSpecItems[0].genus.genusId);
