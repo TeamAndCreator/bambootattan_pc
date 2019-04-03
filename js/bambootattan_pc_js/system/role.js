@@ -26,6 +26,7 @@ $(function(){
     init_table();
 
     init_auth_table();
+    init_auth_info_table();
     //表单验证
     $('#registrationForm').bootstrapValidator();
 });
@@ -499,8 +500,28 @@ function check(id) {
             if(res.code===200){
                 $('#roleName-info').html(res.data.roleName).attr('data-original-title',res.data.roleName);
                 $('#remark-info').html(res.data.remark).attr('data-original-title',res.data.remark);
-                $('#canDel-info').html(res.data.canDel).attr('data-original-title',res.data.canDel);
+                $('#canDel-info').html((res.data.canDel==1?'否':'是')).attr('data-original-title',res.data.canDel);
                 $('#sortNum-info').html(res.data.sortNum).attr('data-original-title',res.data.sortNum);
+                var authorities=res.data.authorities;
+                var data=[];
+                for(var i=0;i<dataSoure.length;i++){
+                    var auth=dataSoure[i];
+                    auth.auth_view=0
+                    auth.auth_create=0;
+                    auth.auth_edit=0;
+                    auth.auth_delete=0;
+                    for(var j=0;j<authorities.length;j++){
+                        if(dataSoure[i].auth_name==authorities[j].authName){
+                            auth.auth_view=authorities[j].authView;
+                            auth.auth_create=authorities[j].authCreate;
+                            auth.auth_edit=authorities[j].authEdit;
+                            auth.auth_delete=authorities[j].authDelete;
+                            break;
+                        }
+                    }
+                    data.push(auth);
+                }
+                load_auth_info_table(data);
                 $('#exampleModal-info').modal('show');
             }else if(res.code === 404){
                 window.location.href='../../page-404.html';
@@ -527,7 +548,7 @@ function state(value, row,index) {
     if (value == 1) {
         return "<div class='label label-table label-danger'>不能删除</div>"
     }else {
-        return "<div class='label label-table label-success'><a onclick='updateState(" + row.id + ")' data-toggle=\"modal\" data-target=\"#updateState\" style='color: white; cursor:default'>可删除</a></div>"
+        return "<div class='label label-table label-success'><a onclick='updateState(" + row.id + ")' data-toggle=\"modal\" data-target=\"#updateState\" style='color: white; cursor:default'>能删除</a></div>"
     }
 }
 //初始化表单元素的值
@@ -649,6 +670,66 @@ function load_auth_table(data) {
     if(typeof data!="undefined"&&data!=null){
         $('#auth_table').bootstrapTable('load',data);
         $('#auth_table').parents('.fixed-table-container').css('padding-bottom','42px');
+    }
+
+}
+function init_auth_info_table() {
+    $('#auth_table_info').bootstrapTable({
+        data:dataSoure,//数据源，json数据
+        pagination:false,//可以分页
+        cache:false,//是否使用緩存
+        columns:[//列数据
+            {
+                field:'auth_page',//数据列
+                title:'页面',//数据列名称
+                align:'left',//水平居中
+                valign:'middle',//垂直居中
+                width:200
+            },
+            {
+                field:'auth_view',//数据列
+                title:'查看',//数据列名称
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                formatter:function (value,row,index) {
+                    return '<input disabled="disabled" type="checkbox" data-auth="auth_view" data-name="'+row.auth_name+'" '+(value=='1'?'checked':'')+'/>'
+                }
+            },
+            {
+                field:'auth_create',//数据列
+                title:'新增',//数据列名称
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                formatter:function (value,row,index) {
+                    return '<input disabled="disabled" type="checkbox" data-auth="auth_create" data-name="'+row.auth_name+'" '+(value=='1'?'checked':'')+'/>'
+                }
+            },
+            {
+                field:'auth_edit',//数据列
+                title:'修改',//数据列名称
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                formatter:function (value,row,index) {
+                    return '<input disabled="disabled" type="checkbox" data-auth="auth_edit" data-name="'+row.auth_name+'" '+(value=='1'?'checked':'')+'/>'
+                }
+            },
+            {
+                field:'auth_delete',//数据列
+                title:'删除',//数据列名称
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                formatter:function (value,row,index) {
+                    return '<input disabled="disabled" type="checkbox" data-auth="auth_delete" data-name="'+row.auth_name+'" '+(value=='1'?'checked':'')+'/>'
+                }
+            }
+        ]
+    });
+    $('#auth_table_info').parents('.fixed-table-container').css('padding-bottom','42px');
+}
+function load_auth_info_table(data) {
+    if(typeof data!="undefined"&&data!=null){
+        $('#auth_table_info').bootstrapTable('load',data);
+        $('#auth_table_info').parents('.fixed-table-container').css('padding-bottom','42px');
     }
 
 }
