@@ -501,7 +501,7 @@ function save() {
                 var leafTongueShape = $('#leafTongueShape').val();
                 var leafTongueHeight = $('#leafTongueHeight').val();
                 var leafTopShape=$('#leafTopShape').val();
-                var leafBaseShape=$('leafBaseShape').val;
+                var leafBaseShape=$('#leafBaseShape').val;
                 var genusId=$('#genusId').val();
                 var formData = {
                     "leafId":leafId,
@@ -578,7 +578,7 @@ function save() {
                             } else if(res.code === 404){
                                 window.location.href='../../../../page-404.html';
                             }
-                            else if(res.code == 505){
+                            else if(res.code === 505){
                                 window.location.href='../../../../page-500.html';
                             }else {
                                 $.niftyNoty({
