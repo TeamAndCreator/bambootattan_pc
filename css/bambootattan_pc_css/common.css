@@ -76,12 +76,38 @@
 .modal-full-screen{
     width:100%;
 }
-#mainnav-menu li a{
-    /*font-size: 17px;*/
-    font-size: 16.80px;
+/*#mainnav-menu li a{*/
+    /*!*font-size: 17px;*!*/
+    /*font-size: 16.80px;*/
+/*}*/
+
+/*
+#mainnav-menu li span{
+    font-size: 25px;
 }
 
-
+#mainnav-menu li a{
+    font-size: 18px;
+}*/
+#mainnav-menu>li>a{
+    font-size: 21px;
+}
+#mainnav-menu>li>ul>li>a{
+    font-size: 19px;
+}
+#mainnav-menu>li>ul>li>ul>li>a{
+    font-size: 17px;
+}
+#mainnav-menu>li>ul>li>ul>li>ul>li>a{
+    font-size: 15px;
+}
+#mainnav-menu>li>ul>li>ul>li>ul>li>ul>li>a{
+    font-size: 13px;
+}
+#mainnav-menu ul li a .arrow {
+    height: 100%;
+    line-height: 100% !important;
+}
 
 
 
