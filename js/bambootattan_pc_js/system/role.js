@@ -311,7 +311,7 @@ function edit(id) {
                 var data=[];
                 for(var i=0;i<dataSoure.length;i++){
                     var auth=dataSoure[i];
-                    auth.auth_view=0
+                    auth.auth_view=0;
                     auth.auth_create=0;
                     auth.auth_edit=0;
                     auth.auth_delete=0;
@@ -340,7 +340,7 @@ function edit(id) {
                     icon: 'pli-cross icon-2x',
                     message: res.msg,
                     container: 'floating',
-                    timer: 2000*6
+                    timer: 2000
                 });
             }
         },
@@ -506,7 +506,7 @@ function check(id) {
                 var data=[];
                 for(var i=0;i<dataSoure.length;i++){
                     var auth=dataSoure[i];
-                    auth.auth_view=0
+                    auth.auth_view=0;
                     auth.auth_create=0;
                     auth.auth_edit=0;
                     auth.auth_delete=0;

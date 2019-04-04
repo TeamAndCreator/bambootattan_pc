@@ -1,8 +1,8 @@
-var baseUrl="http://47.106.74.107:8081";
+//var baseUrl="http://47.106.74.107:8081";
 //var baseUrl="http://192.168.43.120:8080";
 //var baseUrl="http://192.168.0.10:8080";//zl
 //var baseUrl="http://10.5.139.187:8080";
-//var baseUrl="http://127.0.0.1:8080";//wzl本地
+var baseUrl="http://127.0.0.1:8080";//wzl本地
 //输入随意的验证码都可以进入
 // var code;
 // $(function () {
@@ -222,7 +222,7 @@ function login(){
         //contentType: 'application/json',
         success: function (res) {    // 请求成功后的回调函数，其中的参数data为controller返回的map,也就是说,@ResponseBody将返回的map转化为JSON格式的数据，然后通过data这个参数取JSON数据中的值
            //res.code=400;
-            if (res.code == 200) {
+            if (res.code === 200) {
                 jsessionId=res.data.jsessionid;
                 sessionStorage.setItem("jsessionId",jsessionId);//该方法接受一个键名(key)和值(value)作为参数，将键值对添加到存储中；如果键名存在，则更新其对应的值
                 //$.cookie('BAM_USERNAME',formData.userName,{ expires: 365});
