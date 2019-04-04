@@ -246,8 +246,13 @@ function save() {
                     $.ajax({
                         url: baseUrl + '/genus/update',	    //请求路径
                         type: 'PUT',				        //请求方式
-                        data: JSON.stringify(formData),	    //数据
-                        contentType: 'application/json',    //数据类型
+                        //data: JSON.stringify(formData),	    //数据
+                        //contentType: 'application/json',    //数据类型
+
+                        // processData: false,
+                        // contentType: false,
+                        data: formData,
+
                         success: function (res) {	        //请求成功回调函数
                             if (res.code === 200) {
                                 $.niftyNoty({
@@ -312,10 +317,10 @@ function edit(id) {
                 $('#genusDesc').val(res.data.genusDesc);
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
-            }else if(res.code == 404){
+            }else if(res.code === 404){
                 window.location.href='../../page-404.html';
             }
-            else if(res.code == 505){
+            else if(res.code === 505){
                 window.location.href='../../page-500.html';
             }
             else{
