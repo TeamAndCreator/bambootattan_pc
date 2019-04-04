@@ -431,7 +431,7 @@ function save() {
                 var specSortNum = $('#specSortNum').val();
 
                 formData.append("specId", specId);
-                formData.append("genus.genusId",genusId);
+                formData.append("rattanGenus.genusId",genusId);
                 formData.append("specNameCh", specNameCh);
                 formData.append("specNameEn", specNameEn);
                 formData.append("specNameLd", specNameLd);
@@ -501,7 +501,7 @@ function save() {
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
-                            if (res.code == 200) {
+                            if (res.code === 200) {
                                 $.niftyNoty({
                                     type: 'success',
                                     icon: 'pli-like-2 icon-2x',
@@ -511,10 +511,10 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
-                            } else if(res.code == 404){
+                            } else if(res.code === 404){
                                 window.location.href='../../page-404.html';
                             }
-                            else if(res.code == 505){
+                            else if(res.code === 505){
                                 window.location.href='../../page-500.html';
                             }else {
                                 $.niftyNoty({
@@ -572,8 +572,8 @@ function edit(id) {
                 $('#specImgs').val(res.data.specImgs);
                 $('#specSortNum').val(res.data.specSortNum);
                 if(res.data.genus!=null){
-                    $('#genus').val(res.data.genus.genusNameCh);
-                    $('#genusId').val(res.data.genus.genusId);
+                    $('#genus').val(res.data.rattanGenus.genusNameCh);
+                    $('#genusId').val(res.data.rattanGenus.genusId);
                 }
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
@@ -884,7 +884,7 @@ function check(id) {
                 //$('#specDesc-info').html(res.data.specDesc).attr('data-original-title',res.data.specDesc);
                 $('#specDesc-info').html(res.data.specDesc);
                 if(res.data.genus!=null){
-                    $('#genus-info').html(res.data.genus.genusNameCh).attr('data-original-title',res.data.genus.genusNameCh);
+                    $('#genus-info').html(res.data.rattanGenus.genusNameCh).attr('data-original-title',res.data.rattanGenus.genusNameCh);
                 }
                 $('#exampleModal-info').modal('show');
             }else if(res.code == 404){

@@ -104,13 +104,13 @@ function init_table(){
                 formatter:function(value,row,index){//格式化，自定义内容
                     var _html='';
                     if(hasAuthority('rattanculm','auth_edit')){
-                        _html = '<button onclick="edit(\''+row.floFruitId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
+                        _html = '<button onclick="edit(\''+row.culmId+'\')" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="修改"><i class="demo-psi-pen-5"></i></button>';
                     }
                     if(hasAuthority('rattanculm','auth_delete')){
-                        _html += '<button  onclick="dele(\''+row.floFruitId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
+                        _html += '<button  onclick="dele(\''+row.culmId+'\')"class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="demo-pli-cross"></i></button>';
                     }
                     if(hasAuthority('rattanculm','auth_view')){
-                        _html += '<button  onclick="check(\''+row.floFruitId+'\')"class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="查看"><i class="fa fa-search"></i></button>'
+                        _html += '<button  onclick="check(\''+row.culmId+'\')"class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="查看"><i class="fa fa-search"></i></button>'
                     }
                     return _html;
                 },
@@ -119,7 +119,7 @@ function init_table(){
                 }
             },
             {
-                field:'spec',//数据列
+                field:'rattanSpec"',//数据列
                 title:'种名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -128,7 +128,8 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 },
                 formatter:function(value,row,index){
-                    return row.spec.specNameCh;
+                    return row.rattanSpec == null ? '' : row.rattanSpec.specNameCh;
+                    //return row.rattanSpec.specNameCh;
                 }
             },
             {
@@ -340,7 +341,7 @@ function init_spec_table(){
                 field:'radio',//数据列
             },
             {
-                field:'genus',//数据列
+                field:'rattanGenus',//数据列
                 title:'属名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -350,7 +351,7 @@ function init_spec_table(){
                 },
                 formatter:function(value,row,index){
                     //return row.genus.genusNameCh;
-                    return row.genus == null ? '' : row.genus.genusNameCh;
+                    return row.rattanGenus == null ? '' : row.rattanGenus.genusNameCh;
                 }
             },
             {
@@ -533,9 +534,9 @@ function save() {
                 var genusId=$('#genusId').val();
                 var formData = {
                     "culmId":culmId,
-                    "spec":{
+                    "rattanSpec":{
                         'specId':specId,
-                        'genus':{
+                        'rattanGenus':{
                             'genusId':genusId
                         }
                     },
@@ -558,7 +559,7 @@ function save() {
                 if (culmId == "") {//新增
                     formData.specId = 0;
                     $.ajax({
-                        url: baseUrl + '/culm/save',		//请求路径
+                        url: baseUrl + '/tCulm/save',		//请求路径
                         type: 'POST',			            //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
@@ -593,7 +594,7 @@ function save() {
                     });
                 } else {//修改
                     $.ajax({
-                        url: baseUrl + '/culm/update',	    //请求路径
+                        url: baseUrl + '/tCulm/update',	    //请求路径
                         type: 'PUT',				        //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
@@ -608,10 +609,10 @@ function save() {
                                 });
                                 $("#data_table").bootstrapTable('refresh', {url: queryPageUrl});
                                 $('#exampleModal').modal('hide');
-                            } else if(res.code == 404){
+                            } else if(res.code === 404){
                                 window.location.href='../../../../page-404.html';
                             }
-                            else if(res.code == 505){
+                            else if(res.code === 505){
                                 window.location.href='../../../../page-500.html';
                             }else {
                                 $.niftyNoty({
@@ -649,7 +650,7 @@ function edit(id) {
         dataType:"JSON",		                //返回数据类型
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
-            if(res.code==200){
+            if(res.code===200){
                 $('#culmId').val(res.data.culmId);
                 $('#culmHeight').val(res.data.culmHeight);
                 $('#culmDiameter').val(res.data.culmDiameter);
@@ -665,8 +666,8 @@ function edit(id) {
                 $('#youngStemPowder').val(res.data.youngStemPowder);
                 $('#culmNode').val(res.data.culmNode);
 
-                $('#spec').val(res.data.spec.specNameCh);
-                $('#specId').val(res.data.spec.specId);
+                $('#rattanSpec').val(res.data.rattanSpec.specNameCh);
+                $('#specId').val(res.data.rattanSpec.specId);
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }else if(res.code === 404){
@@ -857,7 +858,7 @@ function check(id) {
                 $('#youngStemPowder-check').html(res.data.youngStemPowder).attr('data-original-title',res.data.youngStemPowder);
                 $('#culmNode-check').html(res.data.culmNode).attr('data-original-title',res.data.culmNode);
 
-                $('#spec-check').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
+                $('#spec-check').html(res.data.rattanSpec.specNameCh).attr('data-original-title',res.data.specNameCh);
                 $('#exampleModal-check').modal('show');
             }else if(res.code === 404){
                 window.location.href='../../../../page-404.html';
@@ -885,15 +886,15 @@ function selectedSpec() {
     //选中的数据
     var selectedSpecItems=$("#spec_table").bootstrapTable('getSelections');
     if (selectedSpecItems.length===1){
-        $("#spec").val(selectedSpecItems[0].specNameCh);
+        $("#rattanSpec").val(selectedSpecItems[0].specNameCh);
         $("#specId").val(selectedSpecItems[0].specId);
-        $("#genusId").val(selectedSpecItems[0].genus.genusId);
+        $("#genusId").val(selectedSpecItems[0].rattanGenus.genusId);
         $("#specModal").modal('hide');
     }
 }
 //初始化表单元素的值
 function init_form(){
-    $('#spec').val("");
+    $('#rattanSpec').val("");
     $('#culmId').val("");
     $('#specId').val("");
     $('#genusId').val("");
@@ -937,7 +938,7 @@ function checkForm(){
         //},
         group: 'div[class*="col-sm"]',//显示消息的位置元素，追加在最后
         fields: {
-            spec: {
+            rattanSpec: {
                 validators: {
                     notEmpty: {
                         message: '种不能为空'
@@ -948,10 +949,10 @@ function checkForm(){
     });
 }
 function checkGenusAfterSelected(text,id){
-    $("#spec").val(text);
+    $("#rattanSpec").val(text);
     var validateForm = $('#culmForm').data('bootstrapValidator');
-    validateForm.resetField('spec');
-    validateForm.validateField("spec");
+    validateForm.resetField('rattanSpec');
+    validateForm.validateField("rattanSpec");
     $("#specId").val(id);
     $('#specModal').modal('hide');
 }

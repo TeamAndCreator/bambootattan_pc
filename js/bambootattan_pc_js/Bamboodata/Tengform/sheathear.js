@@ -113,7 +113,7 @@ function init_table(){
                 }
             },
             {
-                field:'spec"',//数据列
+                field:'rattanSpec"',//数据列
                 title:'种名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -122,7 +122,8 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 },
                 formatter:function(value,row,index){
-                    return row.spec.specNameCh;
+                    return row.rattanSpec == null ? '' : row.rattanSpec.specNameCh;
+                    //return row.rattanSpec.specNameCh;
                 }
             },
             {
@@ -224,7 +225,7 @@ function init_spec_table(){
                 field:'radio',//数据列
             },
             {
-                field:'genus',//数据列
+                field:'rattanGenus',//数据列
                 title:'属名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -234,7 +235,7 @@ function init_spec_table(){
                 },
                 formatter:function(value,row,index){
                     //return row.genus.genusNameCh;
-                    return row.genus == null ? '' : row.genus.genusNameCh;
+                    return row.rattanGenus == null ? '' : row.rattanGenus.genusNameCh;
                 }
             },
             {
@@ -514,8 +515,8 @@ function edit(id) {
                 $('#sheathEarDev').val(res.data.sheathEarDev);
                 $('#sheathEarShape').val(res.data.sheathEarShape);
                 $('#sheathEarMargin').val(res.data.sheathEarMargin);
-                $('#spec').val(res.data.spec.specNameCh);
-                $('#specId').val(res.data.spec.specId);
+                $('#rattanSpec').val(res.data.rattanSpec.specNameCh);
+                $('#specId').val(res.data.rattanSpec.specId);
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }else if(res.code === 404){
@@ -695,7 +696,7 @@ function check(id) {
                 $('#sheathEarShape-info').html(res.data.sheathEarShape).attr('data-original-title',res.data.sheathEarShape);
                 $('#sheathEarMargin-info').html(res.data.sheathEarMargin).attr('data-original-title',res.data.sheathEarMargin);
 
-                $('#spec-check').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
+                $('#spec-check').html(res.data.rattanSpec.specNameCh).attr('data-original-title',res.data.specNameCh);
                 $('#exampleModal-check').modal('show');
             }else if(res.code === 404){
                 window.location.href='../../../../page-404.html';
@@ -724,15 +725,15 @@ function selectedSpec() {
     //选中的数据
     var selectedSpecItems=$("#spec_table").bootstrapTable('getSelections');
     if (selectedSpecItems.length===1){
-        $("#spec").val(selectedSpecItems[0].specNameCh);
+        $("#rattanSpec").val(selectedSpecItems[0].specNameCh);
         $("#specId").val(selectedSpecItems[0].specId);
-        $("#genusId").val(selectedSpecItems[0].genus.genusId);
+        $("#genusId").val(selectedSpecItems[0].rattanGenus.genusId);
         $("#specModal").modal('hide');
     }
 }
 //初始化表单元素的值
 function init_form(){
-    $('#spec').val("");
+    $('#rattanSpec').val("");
     $('#sheEarId').val("");
     $('#specId').val("");
     $('#genusId').val("");
@@ -756,7 +757,7 @@ function checkForm(){
         //},
         group: 'div[class*="col-sm"]',//显示消息的位置元素，追加在最后
         fields: {
-            spec: {
+            rattanSpec: {
                 validators: {
                     notEmpty: {
                         message: '种不能为空'
@@ -767,10 +768,10 @@ function checkForm(){
     });
 }
 function checkGenusAfterSelected(text,id){
-    $("#spec").val(text);
+    $("#rattanSpec").val(text);
     var validateForm = $('#sheathearForm').data('bootstrapValidator');
-    validateForm.resetField('spec');
-    validateForm.validateField("spec");
+    validateForm.resetField('rattanSpec');
+    validateForm.validateField("rattanSpec");
     $("#specId").val(id);
     $('#specModal').modal('hide');
 }
