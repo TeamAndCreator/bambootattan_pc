@@ -406,9 +406,9 @@ function save() {
                 var genusId=$('#genusId').val();
                 var formData = {
                     "sheEarId":sheEarId,
-                    "spec":{
+                    "rattanSpec":{
                         'specId':specId,
-                        'genus':{
+                        'rattanGenus':{
                             'genusId':genusId
                         }
                     },
@@ -515,8 +515,11 @@ function edit(id) {
                 $('#sheathEarDev').val(res.data.sheathEarDev);
                 $('#sheathEarShape').val(res.data.sheathEarShape);
                 $('#sheathEarMargin').val(res.data.sheathEarMargin);
-                $('#rattanSpec').val(res.data.rattanSpec.specNameCh);
-                $('#specId').val(res.data.rattanSpec.specId);
+                // $('#rattanSpec').val(res.data.rattanSpec.specNameCh);
+                // $('#specId').val(res.data.rattanSpec.specId);
+
+                $('#rattanSpec').val(res.data.rattanSpec== null ? '' : res.data.rattanSpec.specNameCh);
+                $('#specId').val(res.data.rattanSpec== null ? '' : res.data.rattanSpec.specId);
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }else if(res.code === 404){
