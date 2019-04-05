@@ -26,7 +26,7 @@ $(function(){
     $('#btn_spec_ok').on('click',selectedSpec);
 
     //关闭选择种的模态框
-    $("#specModal").on('hidden.bs.modal',openModalClass)
+    $("#specModal").on('hidden.bs.modal',openModalClass);
     //初始化表格
     checkForm();
     //表单验证
@@ -730,7 +730,9 @@ function check(id) {
                 $('#sheathBackPowder-info').html(res.data.sheathBackPowder).attr('data-original-title',res.data.sheathBackPowder);
                 $('#sheathMarginForm-info').html(res.data.sheathMarginForm).attr('data-original-title',res.data.sheathMarginForm);
 
-                $('#spec-check').html(res.data.rattanSpec.specNameCh).attr('data-original-title',res.data.specNameCh);
+                $('#spec-check').html(res.data.rattanSpec ==null ? '':res.data.rattanSpec.specNameCh).attr('data-original-title',res.data.specNameCh);
+               // $('#spec-check').html(res.data.rattanSpec.specNameCh).attr('data-original-title',res.data.specNameCh);
+                //$('#spec-check').html(res.data.rattanSpec.specNameCh).attr('data-original-title',res.data.specNameCh);
                 $('#exampleModal-check').modal('show');
             }else if(res.code === 404){
                 window.location.href='../../../../page-404.html';

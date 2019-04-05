@@ -394,9 +394,9 @@ function save() {
                 var genusId=$('#genusId').val();
                 var formData = {
                     "sheNodeId":sheNodeId,
-                    "spec":{
+                    "rattanSpec":{
                         'specId':specId,
-                        'genus':{
+                        'rattanGenus':{
                             'genusId':genusId
                         }
                     },
@@ -501,9 +501,9 @@ function edit(id) {
                 $('#sheNodeId').val(res.data.sheNodeId);
                 $('#sheathNode').val(res.data.sheathNode);
                 $('#sheathNodeBack').val(res.data.sheathNodeBack);
-                $('#spec').val(res.data.spec.specNameCh);
-                $('#specId').val(res.data.spec.specId);
-                $('#genusId').val(res.data.spec.genus.genusId);
+                $('#rattanSpec').val(res.data.rattanSpec== null ? '' : res.data.rattanSpec.specNameCh);
+                //$('#specId').val(res.data.rattanSpec.specId);
+                $('#specId').val(res.data.rattanSpec==null ? '':res.data.rattanSpec.specId);
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }else if(res.code === 404){
@@ -683,7 +683,7 @@ function check(id) {
                 $('#sheathNodeBack-info').html(res.data.sheathNodeBack).attr('data-original-title',res.data.sheathNodeBack);
 
 
-                $('#spec-info').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
+                $('#spec-info').html(res.data.rattanSpec.specNameCh).attr('data-original-title',res.data.specNameCh);
                 $('#exampleModal-info').modal('show');
             }else if(res.code === 404){
                 window.location.href='../../../../page-404.html';
@@ -713,13 +713,13 @@ function selectedSpec() {
     if (selectedSpecItems.length===1){
         $("#spec").val(selectedSpecItems[0].specNameCh);
         $("#specId").val(selectedSpecItems[0].specId);
-        $("#genusId").val(selectedSpecItems[0].genus.genusId);
+        $("#genusId").val(selectedSpecItems[0].rattanGenus.genusId);
         $("#specModal").modal('hide');
     }
 }
 //初始化表单元素的值
 function init_form(){
-    $('#spec').val("");
+    $('#rattanSpec').val("");
     $('#sheNodeId').val("");
     $('#specId').val("");
     $('#genusId').val("");
@@ -740,7 +740,7 @@ function checkForm(){
         //},
         group: 'div[class*="col-sm"]',//显示消息的位置元素，追加在最后
         fields: {
-            spec: {
+            rattanSpec: {
                 validators: {
                     notEmpty: {
                         message: '种不能为空'
@@ -751,10 +751,10 @@ function checkForm(){
     });
 }
 function checkGenusAfterSelected(text,id){
-    $("#spec").val(text);
+    $("#rattanSpec").val(text);
     var validateForm = $('#sheathnodeForm').data('bootstrapValidator');
-    validateForm.resetField('spec');
-    validateForm.validateField("spec");
+    validateForm.resetField('rattanSpec');
+    validateForm.validateField("rattanSpec");
     $("#specId").val(id);
     $('#specModal').modal('hide');
 }

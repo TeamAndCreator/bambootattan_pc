@@ -582,8 +582,10 @@ function edit(id) {
                 $('#lodicule').val(res.data.lodicule);
                 $('#palea').val(res.data.palea);
                 $('#lemma').val(res.data.lemma);
-                $('#rattanSpec').val(res.data.rattanSpec.specNameCh);
-                $('#specId').val(res.data.rattanSpec.specId);
+                // $('#rattanSpec').val(res.data.rattanSpec.specNameCh);
+                // $('#specId').val(res.data.rattanSpec.specId);
+                $('#rattanSpec').val(res.data.rattanSpec ==null ? '':res.data.rattanSpec.specNameCh);
+                $('#specId').val(res.data.rattanSpec==null ? '':res.data.rattanSpec.specId);
                 $('#exampleModal .modal-title').html("修改");
                 $('#exampleModal').modal('show');
             }else if(res.code === 404){
