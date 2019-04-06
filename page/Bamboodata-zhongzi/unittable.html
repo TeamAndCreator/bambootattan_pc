@@ -189,7 +189,7 @@
 
                         <!--增加按钮的模态框-->
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
-                            <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
@@ -200,18 +200,20 @@
                                         <form class="form-horizontal" id="unitForm" style="font-size: 15px">
                                             <div class="panel-body">
                                                 <div class="form-group">
-                                                    <label for="unitSymbol" class="col-sm-2 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>英文名</b>:</label>
-                                                    <div class="col-sm-3">
-                                                        <input id="unitSymbol" class="form-control input-sm" name="unitSymbol" placeholder="" type="text" style="border:1px solid #ccccccbd">
-                                                    </div>
-                                                    <label for="genusNameEn" class="col-sm-2 control-label"><b>中文名</b>:</label>
-                                                    <div class="col-sm-3">
-                                                        <input id="genusNameEn" class="form-control input-sm" name="genusNameEn" placeholder="" type="text" style="border:1px solid #ccccccbd">
+                                                    <label for="unitEnglish" class="col-sm-3 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>英文名</b>:</label>
+                                                    <div class="col-sm-5">
+                                                        <input id="unitEnglish" class="form-control input-sm" name="unitEnglish" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="unitSymbolOther" class="col-sm-2 control-label"><b>描述</b>:</label>
-                                                    <div class="col-sm-3">
+                                                    <label for="unitSymbol" class="col-sm-3 control-label"><b>中文名</b>:</label>
+                                                    <div class="col-sm-5">
+                                                        <input id="unitSymbol" class="form-control input-sm" name="unitSymbol" placeholder="" type="text" style="border:1px solid #ccccccbd">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="unitSymbolOther" class="col-sm-3 control-label"><b>描述</b>:</label>
+                                                    <div class="col-sm-5">
                                                         <input id="unitSymbolOther" class="form-control input-sm" name="unitSymbolOther" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                     </div>
                                                 </div>
@@ -231,7 +233,7 @@
                         </div>
                         <!--查看的模态框-->
                         <div class="modal fade" id="exampleModal-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-info" data-backdrop="static">
-                            <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
@@ -241,19 +243,21 @@
                                     <div class="modal-body">
                                         <div class="form-horizontal" style="font-size: 15px">
                                             <div class="form-group">
-                                                <label for="unitEnglish-info" class="col-sm-2 control-label"><b>英文名</b>:</label>
-                                                <div class="col-sm-2">
-                                                    <p id="unitEnglish-info" class="form-control-static  pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title="" style="border:1px solid #ccccccbd"></p>
-                                                </div>
-                                                <label for="unitSymbol-info" class="col-sm-2 control-label"><b>中文名</b>:</label>
-                                                <div class="col-sm-2">
-                                                    <p id="unitSymbol-info" class="form-control-static  pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title="" style="border:1px solid #ccccccbd"></p>
+                                                <label for="unitEnglish-info" class="col-sm-5 control-label"><b>英文名</b>:</label>
+                                                <div class="col-sm-5">
+                                                    <p id="unitEnglish-info" class="form-control-static  pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title="" ></p>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="unitSymbolOther-info" class="col-sm-2 control-label"><b>描述</b>:</label>
-                                                <div class="col-sm-2">
-                                                    <p id="unitSymbolOther-info" class="form-control-static  pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title="" style="border:1px solid #ccccccbd"></p>
+                                                <label for="unitSymbol-info" class="col-sm-5 control-label"><b>中文名</b>:</label>
+                                                <div class="col-sm-5">
+                                                    <p id="unitSymbol-info" class="form-control-static  pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title="" ></p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="unitSymbolOther-info" class="col-sm-5 control-label"><b>描述</b>:</label>
+                                                <div class="col-sm-5">
+                                                    <p id="unitSymbolOther-info" class="form-control-static  pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title="" ></p>
                                                 </div>
                                             </div>
 

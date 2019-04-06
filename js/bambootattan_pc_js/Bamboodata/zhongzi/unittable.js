@@ -22,7 +22,6 @@ $(function(){
     $('#unitForm').bootstrapValidator();
     //初始化表格
     init_table();
-    init_sunmmernote();
     //表单验证
     //$('#registrationForm').bootstrapValidator();
     $('#demo-summernote').summernote();
@@ -208,13 +207,8 @@ function save() {
                     $.ajax({
                         url: baseUrl + '/unit/update',	    //请求路径
                         type: 'PUT',				        //请求方式
-                        //data: JSON.stringify(formData),	    //数据
-                        //contentType: 'application/json',    //数据类型
-
-                        // processData: false,
-                        // contentType: false,
-                        data: formData,
-
+                        data: JSON.stringify(formData),	    //数据
+                        contentType: 'application/json',    //数据类型
                         success: function (res) {	        //请求成功回调函数
                             if (res.code === 200) {
                                 $.niftyNoty({
@@ -466,10 +460,10 @@ function check(id) {
                 $('#unitSymbolOther-info').html(res.data.unitSymbolOther).attr('data-original-title',res.data.unitSymbolOther);
                 $('#unitNameOth-info').html(res.data.unitNameOth).attr('data-original-title',res.data.unitNameOth);
                 $('#exampleModal-info').modal('show');
-            }else if(res.code == 404){
+            }else if(res.code === 404){
                 window.location.href='../../page-404.html';
             }
-            else if(res.code == 505){
+            else if(res.code === 505){
                 window.location.href='../../page-500.html';
             }
             else{
