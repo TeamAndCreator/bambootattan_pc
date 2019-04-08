@@ -188,6 +188,7 @@ function save() {
                     return;
                 }
                 var genusDesc=$('#demo-summernote').summernote('code');
+                var genusNotagDesc=$('<div>'+$('#demo-summernote').summernote('code')+'</div>').text();
                 var genusId = $('#genusId').val();
                 var genusNameCh = $('#genusNameCh').val();
                 var genusNameEn = $('#genusNameEn').val();
@@ -196,6 +197,7 @@ function save() {
                 var sortNum = $('#sortNum').val();
                 var formData={
                     "genusDesc": genusDesc,
+                    "genusNotagDesc":genusNotagDesc,
                     "genusId": genusId,
                     "genusNameCh": genusNameCh,
                     "genusNameEn": genusNameEn,
