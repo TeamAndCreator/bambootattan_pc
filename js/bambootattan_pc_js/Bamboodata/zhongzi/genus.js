@@ -189,6 +189,7 @@ function save() {
                     return;
                 }
                 var genusDesc=$('#demo-summernote').summernote('code');
+                var genusNotagDesc=$('<div>'+$('#demo-summernote').summernote('code')+'</div>').text();
                 var genusId = $('#genusId').val();
                 var genusNameCh = $('#genusNameCh').val();
                 var genusNameEn = $('#genusNameEn').val();
@@ -198,6 +199,7 @@ function save() {
                 // var genusDesc = $('#genusDesc').val();
                 var formData={
                     "genusDesc": genusDesc,
+                    "genusNotagDesc":genusNotagDesc,
                     "genusId": genusId,
                     "genusNameCh": genusNameCh,
                     "genusNameEn": genusNameEn,
@@ -508,14 +510,13 @@ function check(id) {
                 $('#genusNameLd-info').html(res.data.genusNameLd).attr('data-original-title',res.data.genusNameLd);
                 $('#genusNameOth-info').html(res.data.genusNameOth).attr('data-original-title',res.data.genusNameOth);
                 $('#sortNum-info').html(res.data.sortNum).attr('data-original-title',res.data.sortNum);
-                //$('#demo-summernote-info').summernote('code',res.data.genusDesc);
                 $('#genusDesc-info').html(res.data.genusDesc);
-               // $('#genusDesc-info').html(res.data.genusDesc).attr('data-original-title',res.data.genusDesc);
+
                 $('#exampleModal-info').modal('show');
-            }else if(res.code == 404){
+            }else if(res.code === 404){
                 window.location.href='../../page-404.html';
             }
-            else if(res.code == 505){
+            else if(res.code === 505){
                 window.location.href='../../page-500.html';
             }
             else{
