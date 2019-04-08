@@ -571,6 +571,7 @@ function init_sunmmernote(){
     })
     $('#demo-summernote-info').summernote('disable');
 }
+
 //校验表单
 function checkForm(){
     $("#genusForm").bootstrapValidator({
