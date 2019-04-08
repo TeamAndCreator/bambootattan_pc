@@ -7,3 +7,19 @@ $(function () {
         }
     })
 })
+
+
+
+function check(){
+    $.ajax({
+        url:baseUrl+"spec/findAll",
+        type:'GET',
+        dataType:'JSON',
+        contentType:'application/json',
+        success:function(res){
+            if(res.code==200){
+            }
+        }
+
+    });
+}

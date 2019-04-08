@@ -125,7 +125,7 @@ function init_table(){
                 }
             },
             {
-                field:'genus',//数据列
+                field:'rattanGenus',//数据列
                 title:'属名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -135,7 +135,7 @@ function init_table(){
                 },
                 formatter:function(value,row,index){
                     //return row.genus.genusNameCh;
-                    return row.genus == null ? '' : row.genus.genusNameCh;
+                    return row.rattanGenus == null ? '' : row.rattanGenus.genusNameCh;
                 }
             },
             {
@@ -388,7 +388,7 @@ function init_genus_table(){
                     return{css:{'min-width':'80px','max-width':'150px','word-break': 'break-all'}};
                 }
             },
-            { field:'genusId',title:'genusId',visible:false }//隐藏不显示
+            //{ field:'genusId',title:'genusId',visible:false }//隐藏不显示
         ]
     });
 }
@@ -410,10 +410,10 @@ function save() {
                 if(!validateForm.isValid()){
                     return;
                 }
-                //定义一个FormData对象
-                var formData = new FormData();
+
                 //从表单取值
                 var specDesc=$('#demo-summernote').summernote('code');
+                var specDescText=$('<div>'+$('#demo-summernote').summernote('code')+'</div>').text();
                 var specId = $('#specId').val();
                 var genusId=$('#genusId').val();
                 var specNameCh = $('#specNameCh').val();
@@ -430,6 +430,8 @@ function save() {
                 // var specDesc = $('#specDesc').val();
                 var specSortNum = $('#specSortNum').val();
 
+                //定义一个FormData对象
+                var formData = new FormData();
                 formData.append("specId", specId);
                 formData.append("rattanGenus.genusId",genusId);
                 formData.append("specNameCh", specNameCh);
@@ -456,14 +458,16 @@ function save() {
                     formData.append("multipartFiles", myDropzone.files[i]);
                 }
                 if (specId === "") {//新增
-                    //console.log(1234);
                     $.ajax({
                         url: baseUrl + '/rattanSpec/save',		//请求路径
                         type: 'POST',			            //请求方式
-                        dataType: 'JSON',
+                        dataType: 'JSON',                   //预期服务器返回的类型
                         processData: false,
-                        //contentType: false,
+                        contentType: false,
                         data: formData,	                    //数据
+                        headers:{
+                            'Authorization':sessionStorage.getItem('jsessionId')
+                        },
                         success: function (res) {	        //请求成功回调函数
                             if (res.code === 200) {
                                 $.niftyNoty({
@@ -495,8 +499,36 @@ function save() {
                         }
                     });
                 } else {//修改
+                    var formData=new Object();
+                    formData.rattanGenus=new Object();
+                    formData.specId=specId;
+                    formData.rattanGenus.genusId=genusId;
+                    formData.specNameCh=specNameCh;
+                    formData.specNameEn=specNameEn
+                    formData.specNameLd=specNameLd;
+                    formData.specNameOth=specNameOth;
+                    formData.specCode=specCode;
+                    formData.specBarCode=specBarCode;
+                    formData.specDna=specDna;
+                    formData.specDomestic=specDomestic;
+                    formData.specForeign=specForeign;
+                    formData.specVidio=specVidio;
+                    formData.specImgs=specImgs;
+                    formData.specDesc=specDesc;
+                    formData.specSortNum=0;
+                    var files=[];
+                    //将文件数组添加进来
+                    var multipartFiles = myDropzoneImg.files;
+                    for (var i = 0; i < multipartFiles.length; i++) {
+                        files.push(myDropzoneImg.files[i]);
+                    }
+                    multipartFiles = myDropzone.files;
+                    for (var i = 0; i < multipartFiles.length; i++) {
+                        files.push(myDropzone.files[i]);
+                    }
+
                     $.ajax({
-                        url: baseUrl + '/spec/update',	    //请求路径
+                        url: baseUrl + '/rattanSpec/update?multipartFiles='+encodeURI(JSON.stringify(files)),
                         type: 'PUT',				        //请求方式
                         data: JSON.stringify(formData),	    //数据
                         contentType: 'application/json',    //数据类型
@@ -522,7 +554,7 @@ function save() {
                                     icon: 'pli-cross icon-2x',
                                     message: res.msg,
                                     container: 'floating',
-                                    timer: 2000
+                                    timer: 5000
                                 });
                             }
                         },
@@ -571,8 +603,8 @@ function edit(id) {
                 $('#specVidio').val(res.data.specVidio);
                 $('#specImgs').val(res.data.specImgs);
                 $('#specSortNum').val(res.data.specSortNum);
-                if(res.data.genus!=null){
-                    $('#genus').val(res.data.rattanGenus.genusNameCh);
+                if(res.data.rattanGenus!=null){
+                    $('#rattanGenus').val(res.data.rattanGenus.genusNameCh);
                     $('#genusId').val(res.data.rattanGenus.genusId);
                 }
                 $('#exampleModal .modal-title').html("修改");
@@ -883,7 +915,7 @@ function check(id) {
                 //$('#demo-summernote-info').summernote('code',res.data.specDesc);
                 //$('#specDesc-info').html(res.data.specDesc).attr('data-original-title',res.data.specDesc);
                 $('#specDesc-info').html(res.data.specDesc);
-                if(res.data.genus!=null){
+                if(res.data.rattanGenus!=null){
                     $('#genus-info').html(res.data.rattanGenus.genusNameCh).attr('data-original-title',res.data.rattanGenus.genusNameCh);
                 }
                 $('#exampleModal-info').modal('show');
@@ -910,7 +942,7 @@ function check(id) {
 
 //初始化表单元素的值
 function init_form(){
-    $('#genus').val("");
+    $('#rattanGenus').val("");
     $('#specId').val("");
     $('#genusId').val("");
     $('#specNameCh').val("");
@@ -1126,7 +1158,7 @@ function selectedGenus(){
     //选中的数据
     var selectedSpecItems=$("#genus_table").bootstrapTable('getSelections');
     if (selectedSpecItems.length==1){
-        $("#genus").val(selectedSpecItems[0].genusNameCh);
+        $("#rattanGenus").val(selectedSpecItems[0].genusNameCh);
         $("#genusId").val(selectedSpecItems[0].genusId);
         $('#genusModal').modal('hide');
     }
@@ -1143,14 +1175,14 @@ function checkForm(){
                     }
                 }
             },
-            specSortNum: {
-                validators: {
-                    notEmpty: {
-                        message: '序号不能为空'
-                    }
-                }
-            },
-            genus: {
+            // specSortNum: {
+            //     validators: {
+            //         notEmpty: {
+            //             message: '序号不能为空'
+            //         }
+            //     }
+            // },
+            rattanGenus: {
                 validators: {
                     notEmpty: {
                         message: '属不能为空'
@@ -1161,10 +1193,10 @@ function checkForm(){
     });
 }
 function checkGenusAfterSelected(text,id){
-    $("#genus").val(text);
+    $("#rattanGenus").val(text);
     var validateForm = $('#specForm').data('bootstrapValidator');
-    validateForm.resetField('genus');
-    validateForm.validateField("genus");
+    validateForm.resetField('rattanGenus');
+    validateForm.validateField("rattanGenus");
     $("#genusId").val(id);
     $('#genusModal').modal('hide');
 }
