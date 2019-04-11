@@ -418,6 +418,7 @@ function save() {
                 formData = new FormData();
                 //从表单取值
                 var specDesc=$('#demo-summernote').summernote('code');
+                var specNotagDesc=$('<div>'+$('#demo-summernote').summernote('code')+'</div>').text();
                 var specId = $('#specId').val();
                 var genusId=$('#genusId').val();
                 var specNameCh = $('#specNameCh').val();
@@ -448,6 +449,7 @@ function save() {
                 formData.append("specVidio", specVidio);
                 formData.append("specImgs", specImgs);
                 formData.append("specDesc", specDesc);
+                formData.append("specNotagDesc",specNotagDesc);
                 formData.append("specSortNum",0);
 
                 //将文件数组添加进来

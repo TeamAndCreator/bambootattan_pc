@@ -413,7 +413,7 @@ function save() {
 
                 //从表单取值
                 var specDesc=$('#demo-summernote').summernote('code');
-                var specDescText=$('<div>'+$('#demo-summernote').summernote('code')+'</div>').text();
+                var specNotagDesc=$('<div>'+$('#demo-summernote').summernote('code')+'</div>').text();
                 var specId = $('#specId').val();
                 var genusId=$('#genusId').val();
                 var specNameCh = $('#specNameCh').val();
@@ -433,6 +433,7 @@ function save() {
                 //定义一个FormData对象
                 var formData = new FormData();
                 formData.append("specId", specId);
+                formData.append("specNotagDesc",specNotagDesc);
                 formData.append("rattanGenus.genusId",genusId);
                 formData.append("specNameCh", specNameCh);
                 formData.append("specNameEn", specNameEn);
