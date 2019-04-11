@@ -125,7 +125,8 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 },
                 formatter:function(value,row,index){
-                    return row.spec.specNameCh;
+                    //return row.spec.specNameCh;
+                    return row.spec == null ? '' : row.spec.specNameCh;
                 }
             },
             {

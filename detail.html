@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0,
+       maximum-scale=1.0,minimum-scale=1.0,user-scalable=yes,width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="img/image/favicon.ico"/>
+    <title>竹藤种质资源数据管理平台搜索引擎</title>
+    <link rel="stylesheet" href="css/bambootattan_pc_css/index.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!--STYLESHEET-->
+    <!--=================================================-->
+    <!--Open Sans Font [ OPTIONAL ]-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!--Bootstrap Stylesheet [ REQUIRED ]-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--Nifty Stylesheet [ REQUIRED ]-->
+    <link href="css/nifty.min.css" rel="stylesheet">
+    <!--Demo [ DEMONSTRATION ]-->
+    <link href="css/demo/nifty-demo.min.css" rel="stylesheet">
+    <!-- <link id="theme" href="../css/themes/type-c/theme-lime.min.css" rel="stylesheet">-->
+    <link id="theme" href="css/themes/type-c/theme-lime.css" rel="stylesheet">
+    <!-- common [ OPTIONAL ] -->
+    <link href="css/bambootattan_pc_css/common.css" rel="stylesheet">
+    <style>
+        /*这里修改提示框的字体样式*/
+        .bdSug_wpr {
+            color: black;
+        }
+    </style>
+    <!--JAVASCRIPT-->
+    <!--=================================================-->
+    <!--Pace - Page Load Progress Par [OPTIONAL]-->
+    <link href="plugins/pace/pace.min.css" rel="stylesheet">
+    <script src="plugins/pace/pace.min.js"></script>
+
+    <!--jQuery [ REQUIRED ]-->
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <!--BootstrapJS [ RECOMMENDED ]-->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!--NiftyJS [ RECOMMENDED ]-->
+    <script src="js/nifty.min.js"></script>
+    <!--=================================================-->
+    <!--Demo script [ DEMONSTRATION ]-->
+    <script src="js/demo/nifty-demo.min.js"></script>
+
+    <!-- bambootattan_pc_js common -->
+    <script src="js/bambootattan_pc_js/common.js"></script>
+
+    <!--jQuery [ REQUIRED ]-->
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <!--<script language="JavaScript">-->
+        <!--function startTime() {-->
+            <!--var today = new Date();//定义日期对象-->
+            <!--var yyyy = today.getFullYear();//通过日期对象的getFullYear()方法返回年-->
+            <!--var MM = today.getMonth() + 1;//通过日期对象的getMonth()方法返回年-->
+            <!--var dd = today.getDate();//通过日期对象的getDate()方法返回年-->
+            <!--var hh = today.getHours();//通过日期对象的getHours方法返回小时-->
+            <!--var mm = today.getMinutes();//通过日期对象的getMinutes方法返回分钟-->
+            <!--var ss = today.getSeconds();//通过日期对象的getSeconds方法返回秒-->
+            <!--// 如果分钟或小时的值小于10，则在其值前加0，比如如果时间是下午3点20分9秒的话，则显示15：20：09-->
+            <!--MM = checkTime(MM);-->
+            <!--dd = checkTime(dd);-->
+            <!--mm = checkTime(mm);-->
+            <!--ss = checkTime(ss);-->
+            <!--var day; //用于保存星期（getDay()方法得到星期编号）-->
+            <!--if (today.getDay() == 0) day = "星期日 "-->
+            <!--if (today.getDay() == 1) day = "星期一 "-->
+            <!--if (today.getDay() == 2) day = "星期二 "-->
+            <!--if (today.getDay() == 3) day = "星期三 "-->
+            <!--if (today.getDay() == 4) day = "星期四 "-->
+            <!--if (today.getDay() == 5) day = "星期五 "-->
+            <!--if (today.getDay() == 6) day = "星期六 "-->
+            <!--document.getElementById('nowDateTimeSpan').innerHTML = yyyy + "-" + MM + "-" + dd + " " + hh + ":" + mm + ":" + ss + "   " + day;-->
+            <!--setTimeout('startTime()', 1000);//每一秒中重新加载startTime()方法-->
+        <!--}-->
+
+        <!--function checkTime(i) {-->
+            <!--if (i < 10) {-->
+                <!--i = "0" + i;-->
+            <!--}-->
+            <!--return i;-->
+        <!--}-->
+    <!--</script>-->
+    <script language="JavaScript">
+
+    </script>
+    <script src="js/bambootattan_pc_js/index.js"></script>
+</head>
+
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="htop">
+            <div class="htop-l">
+                <ul class="list-inline">
+                    <li style="vertical-align: middle;">
+                        <div class="input-group" >
+                            <input type="text" class="form-control" placeholder="搜你想搜的" />
+                            <span class="input-group-addon btn-success">检索</span>
+                        </div>
+                    </li>
+                </ul>
+                <!--<span id="nowDateTimeSpan"></span>-->
+            </div>
+            <div class="htop-r">
+                <ul class="list-inline">
+                    <li>
+                        <!--<a href="page-login.html">登录</a>-->
+                        <a class="btn btn-default" href="page-login.html" role="button">登录</a>
+                    </li>
+                    <li>
+                        <!--<a href="page-register.html">注册</a>-->
+                        <a class="btn btn-default" href="page-register.html" role="button">注册</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- 内容区域-->
+<div class="container home-body" >
+        <style>
+                .htop-l{
+                    padding-left: 15px !important;
+                }
+                .htop-r{
+                    padding-right: 15px !important;
+                }
+                @media (max-width: 766px){
+                    .htop-l .input-group{
+                        width: calc(100% - 115px);
+                    }
+                    .info img{
+                        width: 100%;
+                    }
+                }
+                @media (min-width: 767px){
+                    .htop-l .input-group{
+                        width: 280px;
+                    }
+                    .info img{
+                        width: 50%;
+                    }
+                }
+                .row{
+                    background-color: white !important;
+                }
+                .info img{
+                    display: block;
+                    margin-right: auto;
+                    margin-left: auto;
+                    margin-top: 15px;
+                }
+                .info p{
+                    margin-top: 15px;
+                    text-indent: 2em;
+                }
+                .spec{
+                    padding-top: 15px;
+                }
+                .thumbnail{
+                    cursor: pointer;
+                }
+                .thumbnail .caption {
+                    padding: 0px !important;
+                }
+                .thumbnail div[class*="col"]{
+                    padding: 5px;
+                    margin: 0;
+                }
+                .thumbnail div[class*="col"] img{
+                    height: 33px;
+                    display: block;
+                    width: 100%;
+                }
+                .thumbnail div[class*="col"]:nth-of-type(1){
+                    padding-left: 0px;
+                }
+                .thumbnail div[class*="col"]:nth-of-type(2){
+                    padding: 5px 2.5px;
+                }
+                .thumbnail div[class*="col"]:nth-of-type(3){
+                    padding-right: 0px;
+                }
+            </style>
+    <!--CONTENT CONTAINER-->
+    <!--===================================================-->
+    <div id="content-container" style="margin-top:-100px;">
+        <hr class="new-section-sm bord-no">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>苦竹属</h4>
+            </div>            
+        </div>
+        <div style="height: 2px;"></div>
+        <div class="row info">
+            <div class="col-sm-12">
+                <img class="" src="img\image\1.jpg" alt="苦竹属">
+                <p>
+                    乔木或灌木状竹类。地下茎为单轴散生，偶可复轴混生。竿圆筒形； 节间在分枝的一侧扁平或具浅纵沟，后者且可贯穿节间全长，髓呈薄膜质封闭的囊状，易与竿的内壁相剥离； 竿环多少明显隆起，稀可不明显。竿每节分2枝，一粗一细，在竿与枝的腋间有先出叶，有时在此2枝之间或粗枝的一侧再生出第三条显著细小的分枝，竿下部的节最初偶可仅分1枝。 竿箨早落；箨鞘纸质或革质；箨耳不见乃至大形；箨片在竿中部的竿箨上呈狭长三角形或带状，平直或波状或皱缩，直立至外翻。末级小枝具(1)2-4(7)叶，通常为2或3叶； 叶片披针形至带状披针形，下表面（即离轴面）的基部常生有柔毛，小横脉明显。花枝甚短，呈穗状至头状，通常单独侧生于无叶或顶端具叶小枝的各节上（如生于具叶嫩枝的顶端、新生的开花植株或同一花枝再度开花时，则此等花序及小穗之变化极大，均不宜用作分类的依据）， 基部的内侧托以极小的先出叶，后者之上还有2-6片逐渐增大的鳞片状苞片，苞片之上方是大形的佛焰苞2-7片，在此佛焰苞内各具1-7枚假小穗，惟花枝下方的1至数片佛焰苞内可不生假小穗而有腋芽，花枝中不具假小穗的佛焰苞则常早落，致使花枝下部裸露而呈柄状，其腋芽于花枝上部的佛焰苞及其腋内的小穗枯谢后， 还可继续发育成新的次生花枝或假小穗；佛焰苞的性质在许多方面与竿箨或枝箨相似，纸质或薄革质，宽广，多脉，有或无叶耳及鞘口繸毛，叶舌截平或弧形，有时两侧多少下延， 具呈叶状至锥状的缩小叶（即退化的小形绿色叶片）；假小穗的基部近花枝的一侧常有一膜质具2脊的先出叶，有时此先出叶偏于假小穗基部的一侧时则背部仅有1脊，先出叶上方还有呈颖状的苞片，苞腋内亦可再具芽或次生假小穗；小穗含1-6朵小花，上部小花常不孕； 小穗轴通常具柔毛，脱节于颖之上与诸孕花之间，常呈针棘状延伸于最上小花的内稃之后，此延伸部分通常无毛，其顶端有时尚有不同程度退化小花的痕迹；颖0-1(3)片，其大小及质地多变化，广披针形至线状披针形，5至多脉，背部常有脊，先端锥尖，有时也有极小的缩小叶； 外稃披针形至狭披针形，先端渐尖，呈短芒状或锥状，7至多脉，背脊不明显；内稃等长或稍短于其外稃，背部具2脊，先端分裂成2芒状小尖头；鳞被3，稀可较少，椭圆形、线形或线状披针形，位于两侧者其形不对称，均有数条不明显的细脉纹，上部边缘生细纤毛； 雄蕊3，偶可较少，花丝细长，开花时伸出花外，花药黄色； 子房无毛，具柄，花柱细长，柱头3，偶可较少，羽毛状。颖果长椭圆形，近内稃的一侧具纵向腹沟。笋期3-6月，相对地集中在5月。
+                </p>
+            </div>
+        </div>
+        <div style="height: 2px;"></div>
+        <div class="row spec">
+            <div class="col-sm-12">
+                <h4>苦竹属的竹种</h4>
+            </div>
+            <div class="col-sm-2">
+                <div class="thumbnail">
+                    <img src="img\image\1.jpg" alt="苦竹种">
+                    <!--<div class="clearfix"></div>-->
+                    <div class="caption">
+                        <h4>苦竹种</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="thumbnail">
+                    <img src="img\image\1.jpg" alt="刚竹种">
+                    <!--<div class="col-xs-4">-->
+                        <!--<img src="img\image\1.jpg" alt="苦竹种">-->
+                    <!--</div>-->
+                    <!--<div class="col-xs-4">-->
+                        <!--<img src="img\image\1.jpg" alt="苦竹种">-->
+                    <!--</div>-->
+                    <!--<div class="col-xs-4">-->
+                        <!--<img src="img\image\1.jpg" alt="苦竹种">-->
+                    <!--</div>-->
+                    <!--<div class="clearfix"></div>-->
+                    <div class="caption">
+                        <h4>刚竹种</h4>                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="thumbnail">
+                    <img src="img\image\1.jpg" alt="悬竹种">
+                    <div class="caption">
+                        <h4>悬竹种</h4>                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="thumbnail">
+                    <img src="img\image\1.jpg" alt="巴山木竹种">
+                    <div class="caption">
+                        <h4>巴山木竹种</h4>                        
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-2">
+                <div class="thumbnail">
+                    <img src="img\image\1.jpg" alt="竹种五">
+                    <div class="caption">
+                        <h4>竹种五</h4>                        
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-2">
+                <div class="thumbnail">
+                    <img src="img\image\1.jpg" alt="竹种六">
+                    <div class="caption">
+                        <h4>竹种六</h4>                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="thumbnail">
+                    <img src="img\image\1.jpg" alt="竹种七">
+                    <div class="caption">
+                        <h4>竹种七</h4>                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="thumbnail">
+                    <img src="img\image\1.jpg" alt="竹种八">
+                    <div class="caption">
+                        <h4>竹种八</h4>                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="thumbnail">
+                    <img src="img\image\1.jpg" alt="竹种九">
+                    <div class="caption">
+                        <h4>竹种九</h4>                        
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-2">
+                <div class="thumbnail">
+                    <img src="img\image\1.jpg" alt="竹种十">
+                    <div class="caption">
+                        <h4>竹种十</h4>                        
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-2">
+                <div class="thumbnail">
+                    <img src="img\image\1.jpg" alt="竹种十一">
+                    <div class="caption">
+                        <h4>竹种十一</h4>                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="thumbnail">
+                    <img src="img\image\1.jpg" alt="竹种十二">
+                    <div class="caption">
+                        <h4>竹种十二</h4>                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="thumbnail">
+                    <img src="img\image\1.jpg" alt="竹种十三">
+                    <div class="caption">
+                        <h4>竹种十三</h4>                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="thumbnail">
+                    <img src="img\image\1.jpg" alt="竹种十四">
+                    <div class="caption">
+                        <h4>竹种十四</h4>                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="thumbnail">
+                    <img src="img\image\1.jpg" alt="竹种十五">
+                    <div class="caption">
+                        <h4>竹种十五</h4>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<footer id="footer" style="text-align: center">-->
+                    <!--<span bigger-120>-->
+                    <!--&lt;!&ndash;<span class="blue bolder">安徽农业大学数字农业研究所                             </span> &copy; 2018-2019&ndash;&gt;-->
+                        <!--<span class="blue bolder">安徽农业大学数字农业研究所-->
+                            <!--</span> &copy; 2019-->
+                    <!--</span>-->
+        <!--</footer>-->
+    </div>
+
+
+    <!--===================================================-->
+    <!--END CONTENT CONTAINER-->
+
+</div>
+
+<div>
+
+</div>
+
+
+
+</body>
+</html>
