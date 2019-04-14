@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>竹种统计</title>
+		<title>数据挖掘</title>
 
 		<!--STYLESHEET-->
 		<!--=================================================-->
@@ -24,8 +24,8 @@
 		<!--Demo [ DEMONSTRATION ]-->
 		<link href="../../css/demo/nifty-demo.min.css" rel="stylesheet">
 
-		<!--&lt;!&ndash;Morris.js [ OPTIONAL ]&ndash;&gt;-->
-		<!--<link href="../../plugins/morris-js/morris.min.css" rel="stylesheet">-->
+		<!--Morris.js [ OPTIONAL ]-->
+		<link href="../../plugins/morris-js/morris.min.css" rel="stylesheet">
 
 		<link id="theme" href="../../css/themes/type-c/theme-lime.css" rel="stylesheet">
 		<!-- common [ OPTIONAL ] -->
@@ -54,15 +54,16 @@
 		<script src="../../js/demo/nifty-demo.min.js"></script>
 
 		<!--Morris.js [ OPTIONAL ]-->
-		<!--<script src="../../plugins/morris-js/morris.min.js"></script>-->
-		<!--<script src="../../plugins/morris-js/raphael-js/raphael.min.js"></script>-->
+		<script src="../../plugins/morris-js/morris.min.js"></script>
+		<script src="../../plugins/morris-js/raphael-js/raphael.min.js"></script>
 
 		<!--Sparkline [ OPTIONAL ]-->
 		<script src="../../plugins/sparkline/jquery.sparkline.min.js"></script>
 		<!--Easy Pie Chart [ OPTIONAL ]-->
 		<script src="../../plugins/easy-pie-chart/jquery.easypiechart.min.js"></script>
+		<script src="../../js/bambootattan_pc_js/common.js"></script>
 		<!--Charts [ SAMPLE ]-->
-		<!--<script src="../../js/demo/charts.js"></script>-->
+		<script src="../../js/demo/charts.js"></script>
 		<script src="../../js/demo/echarts.js"></script>
 	</head>
 
@@ -178,100 +179,98 @@
 							</div>
 						</div>-->
 						<div id="page-content">
-							<div class="col-lg-12">
-								<div class="panel">
-									<div class="panel-heading">
-										<h3 class="panel-title">属种统计图</h3>
-									</div>
-									<div class="panel-body">
+						<div class="col-lg-12">
+							<div class="panel">
+								<div class="panel-heading">
+									<h3 class="panel-title">属种占比分析</h3>
+								</div>
+								<div class="panel-body">
 
-										<!--Morris Line Chart placeholder-->
-										<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-										<!--					                <div id="demo-morris-line" style="height:212px"></div>-->
+									<!--Morris Line Chart placeholder-->
+									<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+									<!--					                <div id="demo-morris-line" style="height:212px"></div>-->
 
-										<div id="main" style="width: 1200px;height:800px;"></div>
-										<script type="text/javascript">
-											// 基于准备好的dom，初始化echarts实例
-											var myChart = echarts.init(document.getElementById('main'));
+									<div id="main" style="width: 1400px;height:900px;"></div>
+									<script type="text/javascript">
+										// 基于准备好的dom，初始化echarts实例
+										var myChart = echarts.init(document.getElementById('main'));
 
-//											指定图表的配置项和数据
-//											var option = {
-//												title: {
-//													text: 'ECharts 入门示例'
-//												},
-//												tooltip: {},
-//												legend: {
-//													data: ['销量']
-//												},
-//												xAxis: {
-//													data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
-//												},
-//												yAxis: {},
-//												series: [{
-//													name: '销量',
-//													type: 'bar',
-//													data: [5, 20, 36, 10, 10, 20]
-//												}]
-//											};
-//											使用刚指定的配置项和数据显示图表。
-//											myChart.setOption(option);
+										// 指定图表的配置项和数据
+				 						 var options = {
+							                title : {
+							                    text : '种质资源数据库属种占比分析',
+							                    subtext : '-',
+							                    x : 'center'
+							                },
+							                tooltip : {
+							                    trigger : 'item',
+							                    formatter : "{a} <br/>{b} : {c} ({d}%)"
+							                },
+							                legend : {
+							                    orient : 'vertical',
+							                    left : 'left',
+							                    data : []
+							                },
+							                series : [ {
+							                    name : '访问来源',
+							                    type : 'pie',
+							                    data : []
+							                } ]
+							            };
+										$.ajax({
+								                type : "get",
+								                async : false, //同步执行
+								                url : "http://47.106.74.107:8081/genus/showEchartPie",
+								                dataType : "json", //返回数据形式为json
+								                success : function(result) {
+								                    if (result) {
+								                        options.legend.data = result.legend;
 
-											myChart.showLoading();
-											$.get('../../data/flare.json', function(data) {
-												myChart.hideLoading();
+								                        //将返回的category和series对象赋值给options对象内的category和series
+								                        //因为xAxis是一个数组 这里需要是xAxis[i]的形式
+								                        options.series[0].name = result.series[0].name;
+								                        options.series[0].type = result.series[0].type;
+								                        var serisdata = result.series[0].data;
+								                        
+								                        //遍历
+								                        /* var datas = [];
+								                        for ( var i = 0; i < serisdata.length; i++) {
+								                            datas.push({
+								                                name : serisdata[i].name,
+								                                value : serisdata[i].value
+								                            });
+								                        }
+								                        options.series[0].data = datas; */
 
-												echarts.util.each(data.children, function(datum, index) {
-													index % 2 === 0 && (datum.collapsed = true);
-												});
+								                        //jquery遍历
+								                        var value = [];
+								                        $.each(serisdata, function(i, p) {
+								                            value[i] = {
+								                                'name' : p['name'],
+								                                'value' : p['value']
+								                            };
+								                        });
+								                        options.series[0]['data'] = value;
 
-												myChart.setOption(option = {
-													tooltip: {
-														trigger: 'item',
-														triggerOn: 'mousemove'
-													},
-													series: [{
-														type: 'tree',
+								                        myChart.hideLoading();
+								                        myChart.setOption(options);
+														                    }
+						                },
+						                error : function(errorMsg) {
+						                   console.log(errorMsg)
+						                }
+						            });
+										// 使用刚指定的配置项和数据显示图表。
+									
+									</script>
+									<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-														data: [data],
-
-														top: '1%',
-														left: '7%',
-														bottom: '1%',
-														right: '20%',
-
-														symbolSize: 7,
-
-														label: {
-															normal: {
-																position: 'left',
-																verticalAlign: 'middle',
-																align: 'right',
-																fontSize: 15
-															}
-														},
-
-														leaves: {
-															label: {
-																normal: {
-																	position: 'right',
-																	verticalAlign: 'middle',
-																	align: 'left'
-																}
-															}
-														},
-
-														expandAndCollapse: true,
-														animationDuration: 550,
-														animationDurationUpdate: 750
-													}]
-												});
-											});
-										</script>
-										<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-
-									</div>
 								</div>
 							</div>
+						</div>
+
+
+
 						</div>
 					</div>
 					<!--<div class="row">
@@ -298,6 +297,7 @@
 					</div>-->
 					<!--===================================================-->
 					<!-- End Morris Charts -->
+
 
 				</div>
 				<!--===================================================-->
@@ -528,12 +528,12 @@
 												<a href="#">竹种数据分析<i class="arrow"></i></a>
 												<!--Submenu-->
 												<ul class="collapse in">
-													<li>
+													<li class="active-link">
 														<a href="charts.html">属种占比分析</a>
 													</li>
 												</ul>
 												<ul class="collapse in">
-													<li class="active-link">
+													<li>
 														<a href="count.html">属种统计</a>
 													</li>
 												</ul>
@@ -604,6 +604,7 @@
 			<!--===================================================-->
 			<footer id="footer" style="text-align: center">
 				<span bigger-120>
+
                     <!--<span class="blue bolder">安徽农业大学数字农业研究所                             </span> &copy; 2018-2019-->
 				<span class="blue bolder">安徽农业大学数字农业研究所
                             </span> &copy; 2018-2019
@@ -617,6 +618,6 @@
 		<!--===================================================-->
 		<!-- END OF CONTAINER -->
 	</body>
-	<!--<script src="../../js/bambootattan_pc_js/datamine/datachart.js"></script>-->
+	<script src="../../js/bambootattan_pc_js/datamine/datachart.js"></script>
 
 </html>
