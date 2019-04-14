@@ -68,7 +68,8 @@ $(function () {
     });
 });
 function init_page(){
-    $('#userName').val( $.cookie('BAM_USERNAME'));//赋值  取cookie里保存的用户名给userName
+    // $('#userName').val( $.cookie('BAM_USERNAME'));//赋值  取cookie里保存的用户名给userName
+    $('#userName').val(sessionStorage.getItem('BAM_USERNAME'));//赋值  取sessionStorage里保存的用户名给userName
 }
 function changePassword(){
     // var userId = $('#userId').val();
