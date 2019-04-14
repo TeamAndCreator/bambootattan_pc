@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>数据挖掘</title>
+		<title>竹种统计</title>
 
 		<!--STYLESHEET-->
 		<!--=================================================-->
@@ -24,8 +24,8 @@
 		<!--Demo [ DEMONSTRATION ]-->
 		<link href="../../css/demo/nifty-demo.min.css" rel="stylesheet">
 
-		<!--Morris.js [ OPTIONAL ]-->
-		<link href="../../plugins/morris-js/morris.min.css" rel="stylesheet">
+		<!--&lt;!&ndash;Morris.js [ OPTIONAL ]&ndash;&gt;-->
+		<!--<link href="../../plugins/morris-js/morris.min.css" rel="stylesheet">-->
 
 		<link id="theme" href="../../css/themes/type-c/theme-lime.css" rel="stylesheet">
 		<!-- common [ OPTIONAL ] -->
@@ -54,15 +54,16 @@
 		<script src="../../js/demo/nifty-demo.min.js"></script>
 
 		<!--Morris.js [ OPTIONAL ]-->
-		<script src="../../plugins/morris-js/morris.min.js"></script>
-		<script src="../../plugins/morris-js/raphael-js/raphael.min.js"></script>
+		<!--<script src="../../plugins/morris-js/morris.min.js"></script>-->
+		<!--<script src="../../plugins/morris-js/raphael-js/raphael.min.js"></script>-->
 
 		<!--Sparkline [ OPTIONAL ]-->
 		<script src="../../plugins/sparkline/jquery.sparkline.min.js"></script>
 		<!--Easy Pie Chart [ OPTIONAL ]-->
 		<script src="../../plugins/easy-pie-chart/jquery.easypiechart.min.js"></script>
+		<script src="../../js/bambootattan_pc_js/common.js"></script>
 		<!--Charts [ SAMPLE ]-->
-		<script src="../../js/demo/charts.js"></script>
+		<!--<script src="../../js/demo/charts.js"></script>-->
 		<script src="../../js/demo/echarts.js"></script>
 	</head>
 
@@ -178,245 +179,100 @@
 							</div>
 						</div>-->
 						<div id="page-content">
-						<div class="col-lg-12">
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">属种占比分析</h3>
-								</div>
-								<div class="panel-body">
+							<div class="col-lg-12">
+								<div class="panel">
+									<div class="panel-heading">
+										<h3 class="panel-title">属种统计图</h3>
+									</div>
+									<div class="panel-body">
 
-									<!--Morris Line Chart placeholder-->
-									<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-									<!--					                <div id="demo-morris-line" style="height:212px"></div>-->
+										<!--Morris Line Chart placeholder-->
+										<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+										<!--					                <div id="demo-morris-line" style="height:212px"></div>-->
 
-									<div id="main" style="width: 1400px;height:900px;"></div>
-									<script type="text/javascript">
-										// 基于准备好的dom，初始化echarts实例
-										var myChart = echarts.init(document.getElementById('main'));
+										<div id="main" style="width: 1200px;height:800px;"></div>
+										<script type="text/javascript">
+											// 基于准备好的dom，初始化echarts实例
+											var myChart = echarts.init(document.getElementById('main'));
 
-										// 指定图表的配置项和数据
-										var option = {
-											title: {
-												text: '属种占比分析饼图',
-												subtext: '.',
-												x: 'center'
-											},
-											tooltip: {
-												trigger: 'item',
-												formatter: "{a} <br/>{b} : {c} ({d}%)"
-											},
-											legend: {
-												orient: 'vertical',
-												left: '',
-												data: ['巴山木竹属    Bashania',
-													'赤竹属    Sasa',
-													'慈竹属    Neosinocalamus',
-													'大节竹属    Indosasa',
-													'大明竹属    Pleioblastus',
-													'短穗竹属    Brachystachyum',
-													'刚竹属    Phyllostachys',
-													'寒竹属    Chimonobambusa',
-													'箭竹属    Fargesia',
-													'井冈寒竹属    Gelidocalamus',
-													'巨竹属    Gigantochloa',
-													'空竹属    Cephalostachyum',
-													'簩竹属    Schizostachyum',
-													'簕竹属    Bambusa',
-													'梨藤竹属    Melocalamus',
-													'梨竹属    Melocanna',
-													'镰序竹属    Drepanostachyum',
-													'绿竹属    Dendrocalamopsis',
-													'牡竹属    Dendrocalamus',
-													'泡竹属    Pseudostachyum',
-													'筇竹属    Qiongzhuea',
-													'箬竹属    Indocalamus',
-													'少穗竹属    Oligostachyum',
-													'矢竹属    Pseudosasa',
-													'酸竹属    Acidosasa',
-													'泰竹属    Thyrsostachys',
-													'唐竹属    Sinobambusa',
-													'铁竹属    Ferrocalamus',
-													'倭竹属    Shibataea',
-													'香竹属    Chimonocalamus',
-													'筱竹属    Thamnocalamus',
-													'新小竹属    Neomicrocalamus',
-													'悬竹属    Ampelocalamus',
-													'业平竹属    Semiarundinaria',
-													'异枝竹属    Metasasa',
-													'玉山竹属    Yushania',
-												]
-											},
-											series: [{
-												name: '访问来源',
-												type: 'pie',
-												radius: '55%',
-												center: ['60%', '50%'],
-												data: [{
-														value: 4,
-														name: '巴山木竹属    Bashania'
-													},
-													{
-														value: 10,
-														name: '赤竹属    Sasa'
-													},
-													{
-														value: 2,
-														name: '慈竹属    Neosinocalamus'
-													},
-													{
-														value: 15,
-														name: '大节竹属    Indosasa'
-													},
-													{
-														value: 20,
-														name: '大明竹属    Pleioblastus'
-													},
-													{
-														value: 1,
-														name: '短穗竹属    Brachystachyum'
-													},
-													{
-														value: 50,
-														name: '刚竹属    Phyllostachys'
-													},
-													{
-														value: 20,
-														name: '寒竹属    Chimonobambusa'
-													},
-													{
-														value: 76,
-														name: '箭竹属    Fargesia'
-													},
-													{
-														value: 9,
-														name: '井冈寒竹属    Gelidocalamus'
-													},
-													{
-														value: 5,
-														name: '巨竹属    Gigantochloa'
-													},
-													{
-														value: 4,
-														name: '空竹属    Cephalostachyum'
-													},
-													{
-														value: 9,
-														name: '簩竹属    Schizostachyum'
-													},
-													{
-														value: 61,
-														name: '簕竹属    Bambusa'
-													},
-													{
-														value: 2,
-														name: '梨藤竹属    Melocalamus'
-													},
-													{
-														value: 1,
-														name: '梨竹属    Melocanna'
-													},
-													{
-														value: 6,
-														name: '镰序竹属    Drepanostachyum'
-													},
-													{
-														value: 8,
-														name: '绿竹属    Dendrocalamopsis'
-													},
-													{
-														value: 29,
-														name: '牡竹属    Dendrocalamus'
-													},
-													{
-														value: 4,
-														name: '泡竹属    Pseudostachyum'
-													},
-													{
-														value: 8,
-														name: '筇竹属    Qiongzhuea'
-													},
-													{
-														value: 22,
-														name: '箬竹属    Indocalamus'
-													},
-													{
-														value: 15,
-														name: '少穗竹属    Oligostachyum'
-													},
-													{
-														value: 23,
-														name: '矢竹属    Pseudosasa'
-													},
-													{
-														value: 5,
-														name: '酸竹属    Acidosasa'
-													},
-													{
-														value: 2,
-														name: '泰竹属    Thyrsostachys'
-													},
-													{
-														value: 14,
-														name: '唐竹属    Sinobambusa'
-													},
-													{
-														value: 1,
-														name: '铁竹属    Ferrocalamus'
-													},
-													{
-														value: 7,
-														name: '倭竹属    Shibataea'
-													},
-													{
-														value: 9,
-														name: '香竹属    Chimonocalamus'
-													},
-													{
-														value: 1,
-														name: '筱竹属    Thamnocalamus'
-													},
-													{
-														value: 2,
-														name: '新小竹属    Neomicrocalamus'
-													},
-													{
-														value: 2,
-														name: '悬竹属    Ampelocalamus'
-													},
-													{
-														value: 1,
-														name: '业平竹属    Semiarundinaria'
-													},
-													{
-														value: 2,
-														name: '异枝竹属    Metasasa'
-													},
-													{
-														value: 57,
-														name: '玉山竹属    Yushania'
-													}
-												],
-												itemStyle: {
-													emphasis: {
-														shadowBlur: 10,
-														shadowOffsetX: 0,
-														shadowColor: 'rgba(0, 0, 0, 0.5)'
-													}
-												}
-											}]
-										};
+//											指定图表的配置项和数据
+//											var option = {
+//												title: {
+//													text: 'ECharts 入门示例'
+//												},
+//												tooltip: {},
+//												legend: {
+//													data: ['销量']
+//												},
+//												xAxis: {
+//													data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+//												},
+//												yAxis: {},
+//												series: [{
+//													name: '销量',
+//													type: 'bar',
+//													data: [5, 20, 36, 10, 10, 20]
+//												}]
+//											};
+//											使用刚指定的配置项和数据显示图表。
+//											myChart.setOption(option);
 
-										// 使用刚指定的配置项和数据显示图表。
-										myChart.setOption(option);
-									</script>
-									<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+											myChart.showLoading();
+											$.get('http://47.106.74.107:8081/genus/showEchartTree', function(data) {
+												myChart.hideLoading();
 
+												echarts.util.each(data.children, function(datum, index) {
+													index % 2 === 0 && (datum.collapsed = true);
+												});
+
+												myChart.setOption(option = {
+													tooltip: {
+														trigger: 'item',
+														triggerOn: 'mousemove'
+													},
+													series: [{
+														type: 'tree',
+
+														data: [data],
+
+														top: '1%',
+														left: '7%',
+														bottom: '1%',
+														right: '20%',
+
+														symbolSize: 7,
+
+														label: {
+															normal: {
+																position: 'left',
+																verticalAlign: 'middle',
+																align: 'right',
+																fontSize: 15
+															}
+														},
+
+														leaves: {
+															label: {
+																normal: {
+																	position: 'right',
+																	verticalAlign: 'middle',
+																	align: 'left'
+																}
+															}
+														},
+
+														expandAndCollapse: true,
+														animationDuration: 550,
+														animationDurationUpdate: 750
+													}]
+												});
+											});
+										</script>
+										<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+									</div>
 								</div>
 							</div>
-						</div>
-
-
-
 						</div>
 					</div>
 					<!--<div class="row">
@@ -443,7 +299,6 @@
 					</div>-->
 					<!--===================================================-->
 					<!-- End Morris Charts -->
-
 
 				</div>
 				<!--===================================================-->
@@ -674,12 +529,12 @@
 												<a href="#">竹种数据分析<i class="arrow"></i></a>
 												<!--Submenu-->
 												<ul class="collapse in">
-													<li class="active-link">
+													<li>
 														<a href="charts.html">属种占比分析</a>
 													</li>
 												</ul>
 												<ul class="collapse in">
-													<li>
+													<li class="active-link">
 														<a href="count.html">属种统计</a>
 													</li>
 												</ul>
@@ -750,7 +605,6 @@
 			<!--===================================================-->
 			<footer id="footer" style="text-align: center">
 				<span bigger-120>
-
                     <!--<span class="blue bolder">安徽农业大学数字农业研究所                             </span> &copy; 2018-2019-->
 				<span class="blue bolder">安徽农业大学数字农业研究所
                             </span> &copy; 2018-2019
@@ -764,6 +618,6 @@
 		<!--===================================================-->
 		<!-- END OF CONTAINER -->
 	</body>
-	<script src="../../js/bambootattan_pc_js/datamine/datachart.js"></script>
+	<!--<script src="../../js/bambootattan_pc_js/datamine/datachart.js"></script>-->
 
 </html>

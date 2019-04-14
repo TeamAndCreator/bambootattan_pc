@@ -1,5 +1,5 @@
 $(function () {
-    $('.username').html('欢迎您，'+ $.cookie('BAM_USERNAME'));
+   // $('.username').html('欢迎您，'+ $.cookie('BAM_USERNAME'));
     //var ctx = $("#myChart").get(0).getContext("2d");
     var myNewChart = new Chart(ctx);
     myNewChart.Bar(data);
