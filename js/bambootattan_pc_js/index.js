@@ -8,8 +8,6 @@ $(function () {
     })
 })
 
-
-
 function check(){
     $.ajax({
         url:baseUrl+"spec/findAll",
@@ -20,6 +18,5 @@ function check(){
             if(res.code==200){
             }
         }
-
     });
 }
