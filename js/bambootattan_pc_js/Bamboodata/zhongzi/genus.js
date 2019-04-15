@@ -505,6 +505,7 @@ function check(id) {
         contentType: 'application/json',        //数据类型
         success:function(res){	                //请求成功回调函数
             if(res.code===200){
+                //console.log('ddd');
                 $('#genusNameCh-info').html(res.data.genusNameCh).attr('data-original-title',res.data.genusNameCh);
                 $('#genusNameEn-info').html(res.data.genusNameEn).attr('data-original-title',res.data.genusNameEn);
                 $('#genusNameLd-info').html(res.data.genusNameLd).attr('data-original-title',res.data.genusNameLd);
