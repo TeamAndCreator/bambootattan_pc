@@ -135,6 +135,7 @@ function replaceByHasImg(speces,spec){
     }
     return speces;
 }
+//图片从上开始放
 function hasImgToTop(speces){
     var newSpeces=[];
     for(var i=0;i<speces.length;i++){
