@@ -609,6 +609,10 @@ var dataSoure=[
     {auth_page:'藤 - 导管形态特征',auth_name:'rattancathermorphology',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
     {auth_page:'藤 - 维管束形态特征',auth_name:'rattanvascularbundelmorphology',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
     {auth_page:'单位',auth_name:'unittable',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+
+    {auth_page:'属种占比分析',auth_name:'charts',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+    {auth_page:'属种统计',auth_name:'count',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
+
     {auth_page:'用户',auth_name:'user',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
     {auth_page:'角色',auth_name:'role',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
     {auth_page:'系统日志',auth_name:'log',auth_view:0,auth_create:0,auth_edit:0,auth_delete:0},
