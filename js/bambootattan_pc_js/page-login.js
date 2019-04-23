@@ -1,4 +1,4 @@
-var baseUrl="http://47.106.74.107:8081";
+var baseUrl="http://172.26.100.100:8081";
 //var baseUrl="http://192.168.43.120:8080";
 //var baseUrl="http://192.168.0.10:8080";//zl
 //var baseUrl="http://10.5.139.187:8080";
