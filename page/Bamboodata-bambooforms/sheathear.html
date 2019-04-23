@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../../img/image/favicon.ico"/>
-    <title>箨环</title>
+    <title>箨耳</title>
 
 
     <!--STYLESHEET-->
@@ -28,8 +28,10 @@
 
     <!--font-awesome.css [ OPTIONAL ]-->
     <link href="../../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
     <!--Demo [ DEMONSTRATION ]-->
     <link href="../../css/demo/nifty-demo.min.css" rel="stylesheet">
+
 
 
     <!--Bootstrap Table [ OPTIONAL ]-->
@@ -43,7 +45,7 @@
 
     <!-- Theme -->
     <link id="theme" href="../../css/themes/type-c/theme-lime.min.css" rel="stylesheet">
-
+    <!-- bootstrap-validator [ OPTIONAL ]-->
     <!--JAVASCRIPT-->
     <!--=================================================-->
 
@@ -55,16 +57,14 @@
 
     <!--jQuery [ REQUIRED ]-->
     <script src="../../js/jquery-2.2.4.min.js"></script>
-
     <script src="../../js/jquery.cookie.js"></script>
+
     <!--BootstrapJS [ RECOMMENDED ]-->
     <script src="../../js/bootstrap.min.js"></script>
 
 
     <!--NiftyJS [ RECOMMENDED ]-->
     <script src="../../js/nifty.min.js"></script>
-
-
 
     <!--=================================================-->
 
@@ -82,6 +82,7 @@
 
     <!--Bootstrap Table [ OPTIONAL ]-->
     <script src="../../plugins/bootstrap-table/bootstrap-table.min.js"></script>
+
 
     <!-- bootbox -->
     <script src="../../plugins/bootbox/bootbox.js"></script>
@@ -140,8 +141,8 @@
                                 </span>
                         </a>
                     </li>
-                    <!--User dropdown-->
-                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        <!--User dropdown-->
+                        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                     <li id="dropdown-user" class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
                                 <span class="pull-right">
@@ -172,21 +173,23 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="../../help.html">
-                                        <i class="demo-pli-information icon-lg icon-fw"></i> 帮助                                     <!--<i class=" ion-help-circled icon-lg icon-fw"></i> 帮助-->                                 </a>
+                                   <a href="../../help.html">
+                                       <i class="demo-pli-information icon-lg icon-fw"></i> 帮助                                     <!--<i class=" ion-help-circled icon-lg icon-fw"></i> 帮助-->                                 </a>
                                 </li>
                             </ul>
+
                             <!-- Dropdown footer -->
                         </div>
                     </li>
+
                 </ul>
             </div>
             <!--================================-->
             <!--End Navbar Dropdown-->
+
         </div>
     </header>
     <!--END NAVBAR-->
-
     <div class="boxed">
 
         <!--CONTENT CONTAINER-->
@@ -199,14 +202,16 @@
                 <h1 class="page-header text-overflow"></h1>
             </div>
 
+
+
             <!--Page content-->
             <div id="page-content">
 
-                <!--Custom Toolbar-->
+            <!--Custom Toolbar-->
                 <!--===================================================-->
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title">箨环</h3>
+                        <h3 class="panel-title">箨耳</h3>
                     </div>
                     <div class="panel-body">
                         <div id="btn_area">
@@ -225,45 +230,48 @@
                                         <h4 class="modal-title" id="exampleModalLabel">新增</h4>
                                     </div>
 
-
                                     <div class="modal-body">
-                                        <form id="sheathnodeForm" class="form-horizontal" style="font-size: 15px">
+                                        <form class="form-horizontal" style="font-size: 15px">
                                             <div class="panel-body">
-                                                <div class="form-group">
-                                                    <label for="sheathNode" class="col-sm-4 control-label"><b>箨鞘是否隆起</b>:</label>
-                                                    <div class="col-sm-5">
-                                                        <input id="sheathNode" class="form-control input-sm" name="sheathNode" placeholder="" type="text" style="border:1px solid #ccccccbd">
+                                                <div  id="sheathearForm" class="form-group">
+                                                    <div class="form-group">
+                                                        <label for="sheathEarDev" class="col-sm-3 col-sm-offset-2 control-label"><b>箨耳发达情况</b>:</label>
+                                                        <div class="col-sm-4">
+                                                            <input id="sheathEarDev" class="form-control input-sm" name="sheathEarDev" placeholder="" type="text" style="border:1px solid #ccccccbd">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="sheathEarShape" class="col-sm-3 col-sm-offset-2 control-label"><b>箨耳形状</b>:</label>
+                                                        <div class="col-sm-4">
+                                                            <input id="sheathEarShape" class="form-control input-sm" name="sheathEarShape" placeholder="" type="text" style="border:1px solid #ccccccbd">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="sheathEarMargin" class="col-sm-3 col-sm-offset-2 control-label"><b>箨耳边缘繸毛</b>:</label>
+                                                        <div class="col-sm-4">
+                                                            <input id="sheathEarMargin" class="form-control input-sm" name="sheathEarMargin" placeholder="" type="text" style="border:1px solid #ccccccbd">
+                                                        </div>
                                                     </div>
 
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="sheathNodeBack" class="col-sm-4 control-label"><b>箨鞘被毛</b>:</label>
-                                                    <div class="col-sm-5">
-                                                        <input id="sheathNodeBack" class="form-control input-sm" name="sheathNodeBack" placeholder="" type="text" style="border:1px solid #ccccccbd">
-                                                    </div>
-
-                                                </div>
-
-
-                                                <div class="form-group">
-                                                    <label for="spec" class="col-sm-4 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>
-                                                    <div class="col-sm-5">
-                                                        <div class="input-group">
+                                                    <div class="form-group">
+                                                        <label for="spec" class="col-sm-3 col-sm-offset-2 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>
+                                                        <div class="col-sm-4">
+                                                            <div class="input-group">
                                                             <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                             <input id="specId" type="hidden" value="">
                                                             <input id="genusId" type="hidden" value="">
                                                             <span class="input-group-btn">
                                                                 <button id="btn_select_spec" class="btn btn-success btn-sm" type="button"><i class="fa fa-search"></i></button>
                                                             </span>
-                                                            <input id="sheNodeId" type="hidden" value="" />
+                                                            <input id="sheEarId" type="hidden" value="" />
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!--<input id="underStemId" type="hidden" value="" />-->
+                                                <!--<input id="underStemId" type="hidden" value="" />-->
                                         </form>
                                     </div>
-
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
                                         <button id="btn_save" type="button" class="btn btn-primary">保存</button>
@@ -272,35 +280,41 @@
                             </div>
                         </div>
 
-
                         <!--增加查看的模态框-->
-                        <div class="modal fade" id="exampleModal-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
+                        <div class="modal fade" id="exampleModal-check" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
-                                        <h4 class="modal-title" id="exampleModalLabel-info">详情</h4>
+                                        <h4 class="modal-title" id="exampleModalLabel-check">详情</h4>
                                     </div>
 
                                     <div class="modal-body">
                                         <div class="form-horizontal" style="font-size: 15px">
                                             <div class="form-group">
-                                                <label for="sheathNode-info" class="col-sm-3 col-sm-offset-3 control-label"><b>箨鞘是否隆起</b>:</label>
-                                                <div class="col-sm-3">
-                                                    <p id="sheathNode-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                <label for="sheathEarDev-info" class="col-sm-3 col-sm-offset-3 control-label"><b>箨耳发达情况</b>:</label>
+                                                <div class="col-sm-4">
+                                                    <p id="sheathEarDev-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="sheathNodeBack-info" class="col-sm-3 col-sm-offset-3 control-label"><b>箨环被毛</b>:</label>
-                                                <div class="col-sm-3">
-                                                    <p id="sheathNodeBack-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                <label for="sheathEarShape-info" class="col-sm-3 col-sm-offset-3 control-label"><b>箨耳形状</b>:</label>
+                                                <div class="col-sm-4">
+                                                    <p id="sheathEarShape-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
                                             </div>
 
+
                                             <div class="form-group">
-                                                <label for="spec-info" class="col-sm-3 col-sm-offset-3 control-label"><b>种</b>:</label>
-                                                <div class="col-sm-3 input-group">
-                                                    <p id="spec-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                <label for="sheathEarMargin-info" class="col-sm-3 col-sm-offset-3 control-label"><b>箨耳边缘繸毛</b>:</label>
+                                                <div class="col-sm-4">
+                                                    <p id="sheathEarMargin-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="spec-check" class="col-sm-3 col-sm-offset-3 control-label"><b>种</b>:</label>
+                                                <div class="col-sm-4 input-group">
+                                                    <p id="spec-check" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
                                             </div>
 
@@ -314,8 +328,7 @@
                             </div>
                         </div>
 
-
-
+                        <!--种的模态框-->
                         <div class="modal fade" id="specModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" data-backdrop="static">
                             <div class="modal-dialog modal-lg"  role="document">
                                 <div class="modal-content">
@@ -333,17 +346,15 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- 数据表格 -->
+
                         <table id="data_table" class="table"></table>
                     </div>
                 </div>
-                <!--===================================================-->
             </div>
+            <!--===================================================-->
         </div>
-        <!--===================================================-->
-        <!--END CONTENT CONTAINER-->
+    <!--===================================================-->
 
-<<<<<<< HEAD
             <nav id="mainnav-container">
                 <div id="mainnav">
 
@@ -538,229 +549,25 @@
 
 
                                 </ul>
-=======
-        <!--MAIN NAVIGATION-->
-        <!--===================================================-->
-        <nav id="mainnav-container">
-            <div id="mainnav">
-                <!--Menu-->
-                <!--================================-->
-                <div id="mainnav-menu-wrap">
-                    <div class="nano">
-                        <div class="nano-content">
 
-                            <ul id="mainnav-menu" class="list-group">
-                                <li class="active-sub" id="bamboorattandata_page">
-                                    <a href="#">
-                                        <i class="demo-psi-pen-5"></i>
-                                        <span class="menu-title">竹藤数据</span>
-                                        <i class="arrow"></i>
-                                    </a>
-                                    <!--Submenu-->
-                                    <ul class="collapse in">
-                                        <li id="bamboodata_page">
-                                            <a href="#">竹种资源数据<i class="arrow"></i></a>
-                                            <!--Submenu-->
-                                            <ul class="collapse in">
-                                                <li id="bamboogenus_page">
-                                                    <a href="#">属名<i class="arrow"></i></a>
-                                                    <!--Submenu-->
-                                                    <ul class="collapse">
-                                                        <li id="bamboo_genus_page"><a href="../Bamboodata-zhongzi/genus.html">属名</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li id="bamboospec_page">
-                                                    <a href="#">种名<i class="arrow"></i></a>
-                                                    <!--Submenu-->
-                                                    <ul class="collapse">
-                                                        <li id="bamboo_spec_page"><a href="../Bamboodata-zhongzi/spec.html">种名</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li id="bambooform_page">
-                                                    <a href="#">形态<i class="arrow"></i></a>
-                                                    <!--Submenu-->
-                                                    <ul class="collapse in">
-                                                        <li id="bamboo_understem_page"><a href="../Bamboodata-bambooforms/understem.html">地下茎</a></li>
-                                                        <li id="bamboo_culm_page"><a href="../Bamboodata-bambooforms/culm.html">竹竿</a></li>
-                                                        <li id="bamboo_sheathnode_page" class="active-link"><a href="../Bamboodata-bambooforms/sheathnode.html">箨环</a></li>
-                                                        <li id="bamboo_sheath_page"><a href="../Bamboodata-bambooforms/sheath.html">箨鞘</a></li>
-                                                        <li id="bamboo_sheathear_page"><a href="../Bamboodata-bambooforms/sheathear.html">箨耳</a></li>
-                                                        <li id="bamboo_sheathtongue_page"><a href="../Bamboodata-bambooforms/sheathtongue.html">箨舌</a></li>
-                                                        <li id="bamboo_sheathshell_page"><a href="../Bamboodata-bambooforms/sheathshell.html">箨片</a></li>
-                                                        <li id="bamboo_leaf_page"><a href="../Bamboodata-bambooforms/bambooleaf.html">竹叶</a></li>
-                                                        <li id="bamboo_fruit_page"><a href="../Bamboodata-bambooforms/fruit.html">花果形态</a></li>
-                                                    </ul>
-                                                </li>
-
-
-                                                <li id="bamboonature_page">
-                                                    <a href="#">性质<i class="arrow"></i></a>
-                                                    <!--Submenu-->
-                                                    <ul class="collapse">
-                                                        <li id="bamboo_chemistry_page"><a href="../Bamboodata-Bamboonature/chemistry.html">化学性质</a></li>
-                                                        <li id="bamboo_physical_page"><a href="../Bamboodata-Bamboonature/physical.html">物理性质</a></li>
-                                                        <li id="bamboo_structure_page"><a href="../Bamboodata-Bamboonature/structure.html">结构性质</a></li>
-                                                        <li id="bamboo_mechanics_page"><a href="../Bamboodata-Bamboonature/mechanics.html">力学性质</a></li>
-
-
-                                                        <li id="bamboonatureanatomy_page">
-                                                            <a href="#">解剖性质<i class="arrow"></i></a>
-                                                            <!--Submenu-->
-                                                            <ul class="collapse">
-                                                                <li id="bamboo_tissueproportion_page"><a href="../Bamboodata-Bamboonature/tissueproportion.html">组织比量</a></li>
-                                                                <li id="bamboo_fibermorphology_page"><a href="../Bamboodata-Bamboonature/fibermorphology.html">纤维形态特征</a></li>
-                                                                <li id="bamboo_cathermorphology_page"><a href="../Bamboodata-Bamboonature/cathermorphology.html">导管形态特征</a></li>
-                                                                <li id="bamboo_vascularbundelmorphology_page"><a href="../Bamboodata-Bamboonature/vascularbundelmorphology.html">维管束形态特征</a></li>
-
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-
-
-                                            </ul>
-                                        </li>
-                                        <li id="rattandata_page">
-                                            <a href="#">藤种资源数据<i class="arrow"></i></a>
-                                            <!--Submenu-->
-                                            <ul class="collapse ">
-                                                <li>
-                                                    <a href="#">属名<i class="arrow"></i></a>
-                                                    <!--Submenu-->
-                                                    <ul class="collapse">
-                                                        <li id="rattan_genus_page"><a href="../Bamboodata-zhongzi/rattangenus.html">属名</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">种名<i class="arrow"></i></a>
-                                                    <!--Submenu-->
-                                                    <ul class="collapse">
-                                                        <li id="rattan_spec_page"><a href="../Bamboodata-zhongzi/rattanspec.html">种名</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li id="rattanform_page">
-                                                    <a href="#">形态<i class="arrow"></i></a>
-                                                    <!--Submenu-->
-                                                    <ul class="collapse">
-                                                        <li id="rattan_understem_page"><a href="../Bamboodata-tengform/understem.html">地下茎</a></li>
-                                                        <li id="rattan_culm_page"><a href="../Bamboodata-tengform/culm.html">竹竿</a></li>
-                                                        <li id="rattan_sheathnode_page"><a href="../Bamboodata-tengform/sheathnode.html">箨环</a></li>
-                                                        <li id="rattan_sheath_page"><a href="../Bamboodata-tengform/sheath.html">箨鞘</a></li>
-                                                        <li id="rattan_sheathear_page"><a href="../Bamboodata-tengform/sheathear.html">箨耳</a></li>
-                                                        <li id="rattan_sheathtongue_page"><a href="../Bamboodata-tengform/sheathtongue.html">箨舌</a></li>
-                                                        <li id="rattan_sheathshell_page"><a href="../Bamboodata-tengform/sheathshell.html">箨片</a></li>
-                                                        <li id="rattan_leaf_page"><a href="../Bamboodata-tengform/bambooleaf.html">竹叶</a></li>
-                                                        <li id="rattan_fruit_page"><a href="../Bamboodata-tengform/fruit.html">花果形态</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li id="rattannature_page">
-                                                    <a href="#">性质<i class="arrow"></i></a>
-                                                    <!--Submenu-->
-                                                    <ul class="collapse">
-                                                        <li id="rattan_chemistry_page"><a href="../Bamboodata-Tengnature/chemistry.html">化学性质</a></li>
-                                                        <li id="rattan_physical_page"><a href="../Bamboodata-Tengnature/physical.html">物理性质</a></li>
-                                                        <li id="rattan_structure_page"><a href="../Bamboodata-Tengnature/structure.html">结构性质</a></li>
-                                                        <li id="rattan_mechanics_page"><a href="../Bamboodata-Tengnature/mechanics.html">力学性质</a></li>
-
-                                                        <li id="rattannatureanatomy_page">
-                                                            <a href="#">解剖性质<i class="arrow"></i></a>
-                                                            <!--Submenu-->
-                                                            <ul class="collapse">
-                                                                <li id="rattan_tissueproportion_page"><a href="../Bamboodata-Tengnature/tTissueproportion.html">组织比量</a></li>
-                                                                <li id="rattan_fibermorphology_page"><a href="../Bamboodata-Tengnature/fiber.html">纤维形态特征</a></li>
-                                                                <li id="rattan_cathermorphology_page"><a href="../Bamboodata-Tengnature/cathermorphology.html">导管形态特征</a></li>
-                                                                <li id="rattan_vascularbundelmorphology_page"><a href="../Bamboodata-Tengnature/vascularbundelmorphology.html">维管束形态特征</a></li>
-                                                            </ul>
-                                                        </li>
-
-
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li id="unit_page">
-                                            <a href="#">单位<i class="arrow"></i></a>
-                                            <!--Submenu-->
-                                            <ul class="collapse">
-                                                <li id="unittable_page"><a href="../Bamboodata-zhongzi/unittable.html">单位</a></li>
-                                            </ul>
-                                        </li>
-                                        <li id="datamine_page">
-                                            <a href="#">竹种数据分析<i class="arrow"></i></a>
-                                            <!--Submenu-->
-                                            <ul class="collapse">
-                                                <li id="charts_page"><a href="../datamine/charts.html">属种占比分析</a></li>
-                                            </ul>
-                                            <ul class="collapse">
-                                                <li id="count_page"><a href="../datamine/count.html">属种统计</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-
-                                <li id="system_page">
-                                    <a href="#">
-                                        <i class="demo-psi-inbox-full"></i>
-                                        <span class="menu-title">系统管理</span>
-                                        <i class="arrow"></i>
-                                    </a>
-
-                                    <!--Submenu-->
-                                    <ul class="collapse">
-                                        <li id="user_page">
-                                            <a href="../system/user.html">用户管理</a>
-                                        </li>
-                                        <li id="role_page">
-                                            <a href="../system/role.html">角色管理</a>
-                                        </li>
-                                    </ul>
-                                </li>
-
-                                <li id="control_page">
-                                    <a href="#">
-                                        <i class="demo-psi-medal-2"></i>
-                                        <span class="menu-title">系统监控</span>
-                                        <i class="arrow"></i>
-                                    </a>
-                                    <ul class="collapse">
-
-                                        <li id="log_page">
-                                            <a href="../../page/monitoring/log.html">系统日志</a>
-                                        </li>
-
-                                    </ul>
-                                </li>
-
-
-
-
-                            </ul>
->>>>>>> cd298ea320f940e2668525e9cabd760a1408bd1c
-
+                            </div>
                         </div>
                     </div>
+                    <!--================================-->
+                    <!--End menu-->
+
                 </div>
-                <!--================================-->
-                <!--End menu-->
+            </nav>
+    <!--===================================================-->
+    <!--END MAIN NAVIGATION-->
 
-            </div>
-        </nav>
-        <!--===================================================-->
-        <!--END MAIN NAVIGATION-->
-    </div>
-
-
-
-
+</div>
     <!-- FOOTER -->
     <footer id="footer" style="text-align: center">
                     <span bigger-120>
-                    <!--<span class="blue bolder">安徽农业大学数字农业研究所                             </span> &copy; 2018-2019-->
-                        <span class="blue bolder">安徽农业大学数字农业研究所
-                            </span> &copy; 2018-2019
+                    <span class="blue bolder">安徽农业大学数字农业研究所                             </span> &copy; 2018-2019
                     </span>
-    </footer>
-    <!--===================================================-->
+        </footer>
     <!-- END FOOTER -->
 
     <!-- SCROLL PAGE BUTTON -->
@@ -770,9 +577,10 @@
     </button>
     <!--===================================================-->
 
-</div>
-
-<script src="../../js/bambootattan_pc_js/Bamboodata/bambooforms/sheathnode.js"></script>
+    </div>
+    <!--===================================================-->
+    <!-- END OF CONTAINER -->
+<script src="../../js/bambootattan_pc_js/Bamboodata/bambooforms/sheathear.js"></script>
 </body>
 </html>
 
