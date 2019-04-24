@@ -178,14 +178,14 @@ $(function () {
      var bamboospec=[];             //竹 - 种名
      var bambooform=[];             //竹 - 形态
      var bamboonature=[];           //竹 - 性质
-     var bamboonatureanatomy=[];    //竹 - 解剖性质
+     var bamboonatureanatomy=[];    //竹 - 解剖特征
 
      var rattandata=[];             //藤种资源数据
      var rattangenus=[];            //藤 - 属名
      var rattanspec=[];             //藤 - 种名
      var rattanform=[];             //藤 - 形态
      var rattannature=[];           //藤 - 性质
-     var rattannatureanatomy=[];    //藤 - 解剖性质
+     var rattannatureanatomy=[];    //藤 - 解剖特征
 
      var unit=[];                   //单位
 
