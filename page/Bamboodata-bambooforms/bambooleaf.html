@@ -229,9 +229,17 @@
                                             <form class="form-horizontal" id="leafForm" style="font-size: 15px">
                                                 <div class="panel-body">
                                                     <div  class="form-group">
-                                                        <label for="leafShape" class="col-sm-3 control-label"><b>竹叶形态</b>:</label>
+                                                        <label for="spec" class="col-sm-3 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>
                                                         <div class="col-sm-3">
-                                                            <input id="leafShape" class="form-control input-sm" name="leafShape" placeholder="" type="text" style="border:1px solid #ccccccbd">
+                                                            <div class="input-group">
+                                                                <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text" style="border:1px solid #ccccccbd">
+                                                                <input id="specId" type="hidden" value="">
+                                                                <input id="genusId" type="hidden" value="">
+                                                                <span class="input-group-btn">
+                                                                <button id="btn_select_spec" class="btn btn-success btn-sm" type="button"><i class="fa fa-search"></i></button>
+                                                            </span>
+                                                                <input id="leafId" type="hidden" value="" />
+                                                            </div>
                                                         </div>
                                                         <label for="leafLength" class="col-sm-3 control-label"><b>竹叶长度</b>:</label>
                                                         <div class="col-sm-3">
@@ -245,63 +253,54 @@
                                                         <div class="col-sm-3">
                                                             <input id="leafWidth" class="form-control input-sm" name="leafWidth" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                         </div>
+                                                        <label for="leafShape" class="col-sm-3 control-label"><b>竹叶形态</b>:</label>
+                                                        <div class="col-sm-3">
+                                                            <input id="leafShape" class="form-control input-sm" name="leafShape" placeholder="" type="text" style="border:1px solid #ccccccbd">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label for="leafBack" class="col-sm-3 control-label"><b>叶片背面被毛</b>:</label>
                                                         <div class="col-sm-3">
                                                             <input id="leafBack" class="form-control input-sm" name="leafBack" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
                                                         <label for="leafMargin" class="col-sm-3 control-label"><b>叶片边缘锯齿</b>:</label>
                                                         <div class="col-sm-3">
                                                             <input id="leafMargin" class="form-control input-sm" name="leafMargin" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                         </div>
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label for="leafTongueShape" class="col-sm-3 control-label"><b>叶舌形状</b>:</label>
                                                         <div class="col-sm-3">
                                                             <input id="leafTongueShape" class="form-control input-sm" name="leafTongueShape" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                         </div>
-                                                    </div>
-
-                                                    <div class="form-group">
                                                         <label for="leafTongueHeight" class="col-sm-3 control-label"><b>叶舌高度</b>:</label>
                                                         <div class="col-sm-3">
                                                             <input id="leafTongueHeight" class="form-control input-sm" name="leafTongueHeight" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                         </div>
+                                                    </div>
+
+                                                    <div class="form-group">
                                                         <label for="leafStalkLength" class="col-sm-3 control-label"><b>叶柄长度</b>:</label>
                                                         <div class="col-sm-3">
                                                             <input id="leafStalkLength" class="form-control input-sm" name="leafStalkLength" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
                                                         <label for="leafBaseShape" class="col-sm-3 control-label"><b>叶片基部形态</b>:</label>
                                                         <div class="col-sm-3">
                                                             <input id="leafBaseShape" class="form-control input-sm" name="leafBaseShape" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                         </div>
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label for="leafTopShape" class="col-sm-3 control-label"><b>叶尖形态</b>:</label>
                                                         <div class="col-sm-3">
                                                             <input id="leafTopShape" class="form-control input-sm" name="leafTopShape" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                         </div>
-                                                    </div>
-
-                                                 
-
-                                                    <div class="form-group">
                                                         <label for="culmNode" class="col-sm-3 control-label"><b>竿环是否隆起</b>:</label>
                                                         <div class="col-sm-3">
                                                             <input id="culmNode" class="form-control input-sm" name="culmNode" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                         </div>
-                                                        <label for="spec" class="col-sm-3 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>
-                                                        <div class="col-sm-3">
-                                                        <div class="input-group">
-                                                            <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text" style="border:1px solid #ccccccbd">
-                                                            <input id="specId" type="hidden" value="">
-                                                            <input id="genusId" type="hidden" value="">
-                                                            <span class="input-group-btn">
-                                                                <button id="btn_select_spec" class="btn btn-success btn-sm" type="button"><i class="fa fa-search"></i></button>
-                                                            </span>
-                                                            <input id="leafId" type="hidden" value="" />
-                                                        </div>
-                                                        </div>
                                                     </div>
+
+
                                                 </div>
                                             </form>
                                         </div>

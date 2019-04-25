@@ -229,6 +229,20 @@
                                         <form id="sheathForm" class="form-horizontal" style="font-size: 15px">
                                             <div class="panel-body">
                                                 <div class="form-group">
+                                                    <label for="spec" class="col-sm-5 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>
+                                                    <div class="col-sm-5 ">
+                                                        <div class="input-group">
+                                                            <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text" style="border:1px solid #ccccccbd">
+                                                            <input id="specId" type="hidden" value="">
+                                                            <input id="genusId" type="hidden" value="">
+                                                            <span class="input-group-btn">
+                                                                <button id="btn_select_spec" class="btn btn-success btn-sm" type="button"><i class="fa fa-search"></i></button>
+                                                        </span>
+                                                            <input id="sheId" type="hidden" value="" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
                                                     <label for="sheathShedTime" class="col-sm-5 control-label"><b>箨鞘早落</b>:</label>
                                                     <div class="col-sm-5">
                                                         <input id="sheathShedTime" class="form-control input-sm" name="sheathShedTime" placeholder="" type="text" style="border:1px solid #ccccccbd">
@@ -264,20 +278,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <label for="spec" class="col-sm-5 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>
-                                                    <div class="col-sm-5 ">
-                                                        <div class="input-group">
-                                                        <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text" style="border:1px solid #ccccccbd">
-                                                        <input id="specId" type="hidden" value="">
-                                                        <input id="genusId" type="hidden" value="">
-                                                        <span class="input-group-btn">
-                                                                <button id="btn_select_spec" class="btn btn-success btn-sm" type="button"><i class="fa fa-search"></i></button>
-                                                        </span>
-                                                        <input id="sheId" type="hidden" value="" />
-                                                        </div>
-                                                    </div>
-                                                </div>
+
                                             </div>
                                             <!--<input id="underStemId" type="hidden" value="" />-->
                                         </form>
@@ -303,6 +304,13 @@
 
                                     <div class="modal-body">
                                         <div class="form-horizontal" style="font-size: 15px">
+
+                                            <div class="form-group">
+                                                <label for="spec-check" class="col-sm-5 control-label"><b>种</b>:</label>
+                                                <div class="col-sm-5 input-group">
+                                                    <p id="spec-check" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                                </div>
+                                            </div>
                                             <div class="form-group">
                                                 <label for="sheathShedTime-info" class="col-sm-5 control-label"><b>箨鞘早落</b>:</label>
                                                 <div class="col-sm-5">
@@ -339,12 +347,6 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="spec-check" class="col-sm-5 control-label"><b>种</b>:</label>
-                                                <div class="col-sm-5 input-group">
-                                                    <p id="spec-check" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
-                                                </div>
-                                            </div>
 
                                         </div>
                                     </div>
