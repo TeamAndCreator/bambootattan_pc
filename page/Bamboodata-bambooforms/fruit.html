@@ -233,6 +233,20 @@
                                     <form id="fruitForm" class="form-horizontal" style="font-size: 15px">
                                         <div class="panel-body">
                                             <div class="form-group">
+                                                <label for="spec" class="col-sm-4 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>
+                                                <div class="col-sm-5">
+                                                    <div class="input-group">
+                                                        <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text" style="border:1px solid #ccccccbd">
+                                                        <input id="specId" type="hidden" value="">
+                                                        <input id="genusId" type="hidden" value="">
+                                                        <span class="input-group-btn">
+                                                                <button id="btn_select_spec" class="btn btn-success btn-sm" type="button"><i class="fa fa-search"></i></button>
+                                                            </span>
+                                                        <input id="floFruitId" type="hidden" value="" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="spikeletShape" class="col-sm-4 control-label"><b>小穗形状</b>:</label>
                                                 <div class="col-sm-5">
                                                     <input id="spikeletShape" class="form-control input-sm" name="spikeletShape" placeholder="" type="text" style="border:1px solid #ccccccbd">
@@ -289,20 +303,6 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="spec" class="col-sm-4 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>
-                                                <div class="col-sm-5">
-                                                    <div class="input-group">
-                                                    <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text" style="border:1px solid #ccccccbd">
-                                                    <input id="specId" type="hidden" value="">
-                                                    <input id="genusId" type="hidden" value="">
-                                                    <span class="input-group-btn">
-                                                                <button id="btn_select_spec" class="btn btn-success btn-sm" type="button"><i class="fa fa-search"></i></button>
-                                                            </span>
-                                                    <input id="floFruitId" type="hidden" value="" />
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                         <!--<input id="underStemId" type="hidden" value="" />-->
                                     </form>
@@ -328,44 +328,51 @@
                                 <div class="modal-body">
                                     <div class="form-horizontal" style="font-size: 15px">
                                         <div class="form-group">
+                                            <label for="spec-check" class="col-sm-3 control-label"><b>种</b>:</label>
+                                            <div class="col-sm-3">
+                                                <p id="spec-check" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                            </div>
                                             <label for="spikeletShape-info" class="col-sm-3 control-label"><b>小穗形状</b>:</label>
                                             <div class="col-sm-3">
                                                 <p id="spikeletShape-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                             </div>
+
+                                        </div>
+                                        <div class="form-group">
                                             <label for="spikeletBack-info" class="col-sm-3 control-label"><b>小穗被毛</b>:</label>
                                             <div class="col-sm-3">
                                                 <p id="spikeletBack-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
                                             <label for="spikeletFloret-info" class="col-sm-3 control-label"><b>小穗含花朵数</b>:</label>
                                             <div class="col-sm-3">
                                                 <p id="spikeletFloret-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                             </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="stamenNum-info" class="col-sm-3 control-label"><b>雄蕊数目</b>:</label>
                                             <div class="col-sm-3">
                                                 <p id="stamenNum-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                             </div>
-                                        </div>
-
-
-                                        <div class="form-group">
                                             <label for="glume-info" class="col-sm-3 control-label"><b>颖片</b>:</label>
                                             <div class="col-sm-3">
                                                 <p id="glume-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                             </div>
+                                        </div>
+
+
+                                        <div class="form-group">
                                             <label for="lodicule-info" class="col-sm-3 control-label"><b>内稃</b>:</label>
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <p id="lodicule-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
+                                            </div>
+                                            <label for="palea-info" class="col-sm-3 control-label"><b>外稃</b>:</label>
+                                            <div class="col-sm-3">
+                                                <p id="palea-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                             </div>
                                         </div>
 
 
                                         <div class="form-group">
-                                            <label for="palea-info" class="col-sm-3 control-label"><b>外稃</b>:</label>
-                                            <div class="col-sm-3">
-                                                <p id="palea-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
-                                            </div>
                                             <label for="lemma-info" class="col-sm-3 control-label"><b>箨舌被毛被粉</b>:</label>
                                             <div class="col-sm-3">
                                                 <p id="lemma-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
@@ -374,12 +381,6 @@
 
 
 
-                                        <div class="form-group">
-                                            <label for="spec-check" class="col-sm-3 control-label"><b>种</b>:</label>
-                                            <div class="col-sm-3 input-group">
-                                                <p id="spec-check" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
-                                            </div>
-                                        </div>
 
 
                                     </div>
