@@ -130,7 +130,7 @@ function init_table(){
             },
             {
                 field:'stStemDiameterUnitMm',//数据列
-                title:'胸高处杆径',//数据列名称
+                title:'胸径',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -150,7 +150,7 @@ function init_table(){
             },
             {
                 field:'stMaximumInternodeLengthUnitCm',//数据列
-                title:'最长节间长',//数据列名称
+                title:'最大节间长',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -158,16 +158,16 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 }
             },
-            {
-                field:'stRattanDiameterUnitMm',//数据列
-                title:'2m处的藤径',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field) {
-                    return {css: {'min-width': '80px'}};
-                }
-            },
+            // {
+            //     field:'stRattanDiameterUnitMm',//数据列
+            //     title:'2m处的藤径',//数据列名称
+            //     sortable:true,//可排序
+            //     align:'center',//水平居中
+            //     valign:'middle',//垂直居中
+            //     cellStyle:function(value,row,index,field) {
+            //         return {css: {'min-width': '80px'}};
+            //     }
+            // },
             /*
             {
                 field:'underStemId',//数据列

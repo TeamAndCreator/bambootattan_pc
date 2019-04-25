@@ -129,7 +129,7 @@ function init_table(){
             },
             {
                 field:'vbmRadialDiameterUnitMicrom',//数据列
-                title:'维管束径向直径',//数据列名称
+                title:'维管束径向直径(mm)',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -139,7 +139,7 @@ function init_table(){
             },
             {
                 field:'vbmChordDiameterUnitMicrom',//数据列
-                title:'维管束弦径直径',//数据列名称
+                title:'维管束弦径直径(mm)',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -149,7 +149,7 @@ function init_table(){
             },
             {
                 field:'vbmDensityUnitVcmidu',//数据列
-                title:'维管束密度',//数据列名称
+                title:'维管束密度(g/cm³)',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中

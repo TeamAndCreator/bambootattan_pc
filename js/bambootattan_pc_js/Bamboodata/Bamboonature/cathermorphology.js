@@ -129,7 +129,7 @@ function init_table(){
             },
             {
                 field:'chmCatheterLenghtUnitMicrom',//数据列
-                title:'导管长度',//数据列名称
+                title:'导管长度(mm)',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -139,7 +139,7 @@ function init_table(){
             },
             {
                 field:'chmCatheterDiameterUnitMicrom',//数据列
-                title:'导管直径',//数据列名称
+                title:'导管直径(mm)',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -149,7 +149,7 @@ function init_table(){
             },
             {
                 field:'chmCatheterDensityUnitVcmidu',//数据列
-                title:'导管密度',//数据列名称
+                title:'导管密度(g/cm³)',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
