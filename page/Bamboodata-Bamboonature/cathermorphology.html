@@ -213,22 +213,37 @@
                                     <div class="modal-body">
                                         <form id="cathermorphologyForm" class="form-horizontal" style="font-size: 15px">
                                             <div class="panel-body">
+
                                                 <div class="form-group">
-                                                    <label for="chmCatheterLenghtUnitMicrom" class="col-sm-4 control-label"><b>导管长度</b>:</label>
+                                                    <label for="spec" class="col-sm-4 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>
+                                                    <div class="col-sm-5 ">
+                                                        <div class="input-group">
+                                                            <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text" style="border:1px solid #ccccccbd">
+                                                            <input id="specId" type="hidden" value="">
+                                                            <input id="genusId" type="hidden" value="">
+                                                            <span class="input-group-btn">
+                                                                <button id="btn_select_spec" class="btn btn-success btn-sm" type="button"><i class="fa fa-search"></i></button>
+                                                            </span>
+                                                            <input id="chmId" type="hidden" value="" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="chmCatheterLenghtUnitMicrom" class="col-sm-4 control-label"><b>导管长度(mm)</b>:</label>
                                                     <div class="col-sm-5">
                                                         <input id="chmCatheterLenghtUnitMicrom" class="form-control input-sm" name="chmCatheterLenghtUnitMicrom" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                     </div>
 
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="chmCatheterDiameterUnitMicrom" class="col-sm-4 control-label"><b>导管直径</b>:</label>
+                                                    <label for="chmCatheterDiameterUnitMicrom" class="col-sm-4 control-label"><b>导管直径(mm)</b>:</label>
                                                     <div class="col-sm-5">
                                                         <input id="chmCatheterDiameterUnitMicrom" class="form-control input-sm" name="chmCatheterDiameterUnitMicrom" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="chmCatheterDensityUnitVcmidu" class="col-sm-4 control-label"><b>导管密度</b>:</label>
+                                                    <label for="chmCatheterDensityUnitVcmidu" class="col-sm-4 control-label"><b>导管密度(g/cm³)</b>:</label>
                                                     <div class="col-sm-5">
                                                         <input id="chmCatheterDensityUnitVcmidu" class="form-control input-sm" name="chmCatheterDensityUnitVcmidu" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                     </div>
@@ -243,20 +258,21 @@
                                                 </div>
 
 
-                                                <div class="form-group">
-                                                    <label for="spec" class="col-sm-4 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>
-                                                    <div class="col-sm-5 ">
-                                                        <div class="input-group">
-                                                        <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text" style="border:1px solid #ccccccbd">
-                                                        <input id="specId" type="hidden" value="">
-                                                        <input id="genusId" type="hidden" value="">
-                                                        <span class="input-group-btn">
-                                                                <button id="btn_select_spec" class="btn btn-success btn-sm" type="button"><i class="fa fa-search"></i></button>
-                                                            </span>
-                                                        <input id="chmId" type="hidden" value="" />
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <!--<div class="form-group">-->
+                                                    <!--<label for="spec" class="col-sm-4 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>-->
+                                                    <!--<div class="col-sm-5 ">-->
+                                                        <!--<div class="input-group">-->
+                                                        <!--<input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text" style="border:1px solid #ccccccbd">-->
+                                                        <!--<input id="specId" type="hidden" value="">-->
+                                                        <!--<input id="genusId" type="hidden" value="">-->
+                                                        <!--<span class="input-group-btn">-->
+                                                                <!--<button id="btn_select_spec" class="btn btn-success btn-sm" type="button"><i class="fa fa-search"></i></button>-->
+                                                            <!--</span>-->
+                                                        <!--<input id="chmId" type="hidden" value="" />-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+
                                             </div>
                                             <!--<input id="underStemId" type="hidden" value="" />-->
                                         </form>
@@ -283,19 +299,25 @@
                                     <div class="modal-body">
                                         <div class="form-horizontal" style="font-size: 15px">
                                             <div class="form-group">
-                                                <label for="chmCatheterLenghtUnitMicrom-info" class="col-sm-3 col-sm-offset-3 control-label"><b>导管长度</b>:</label>
+                                                <label for="spec-info" class="col-sm-3 col-sm-offset-3 control-label"><b>种</b>:</label>
+                                                <div class="col-sm-5 input-group">
+                                                    <p id="spec-info" class="form-control-static pad-hor-sm"></p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="chmCatheterLenghtUnitMicrom-info" class="col-sm-3 col-sm-offset-3 control-label"><b>导管长度(mm)</b>:</label>
                                                 <div class="col-sm-5">
                                                     <p id="chmCatheterLenghtUnitMicrom-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="chmCatheterDiameterUnitMicrom-info" class="col-sm-3 col-sm-offset-3 control-label"><b>导管直径</b>:</label>
+                                                <label for="chmCatheterDiameterUnitMicrom-info" class="col-sm-3 col-sm-offset-3 control-label"><b>导管直径(mm)</b>:</label>
                                                 <div class="col-sm-5">
                                                     <p id="chmCatheterDiameterUnitMicrom-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="chmCatheterDensityUnitVcmidu-info" class="col-sm-3 col-sm-offset-3 control-label"><b>导管密度</b>:</label>
+                                                <label for="chmCatheterDensityUnitVcmidu-info" class="col-sm-3 col-sm-offset-3 control-label"><b>导管密度(g/cm³)</b>:</label>
                                                 <div class="col-sm-5">
                                                     <p id="chmCatheterDensityUnitVcmidu-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
@@ -308,12 +330,7 @@
                                                     <p id="chmIndex-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="spec-info" class="col-sm-3 col-sm-offset-3 control-label"><b>种</b>>:</label>
-                                                <div class="col-sm-5 input-group">
-                                                    <p id="spec-info" class="form-control-static pad-hor-sm"></p>
-                                                </div>
-                                            </div>
+
 
 
 

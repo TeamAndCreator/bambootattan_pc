@@ -128,40 +128,8 @@ function init_table(){
                 }
             },
             {
-                field:'mechBendingModulusElastictyUnitGpa',//数据列
-                title:'抗弯弹性模量',//数据列名称
-                sortable:true,//可排序
-                visible:false,
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field) {
-                    return {css: {'min-width': '80px'}};
-                }
-            },
-            {
-                field:'mechBendingStrenghtUnitMpa',//数据列
-                title:'抗弯强度',//数据列名称
-                sortable:true,//可排序
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field) {
-                    return {css: {'min-width': '80px'}};
-                }
-            },
-            {
-                field:'mechCompressionStrenghtUnitMpa',//数据列
-                title:'顺纹抗压强度',//数据列名称
-                sortable:true,//可排序
-                visible:false,
-                align:'center',//水平居中
-                valign:'middle',//垂直居中
-                cellStyle:function(value,row,index,field) {
-                    return {css: {'min-width': '80px'}};
-                }
-            },
-            {
-                field:'mechShearStrenghtUnitMpa',//数据列
-                title:'顺纹抗拉强度',//数据列名称
+                field:'mechStretchElasticModulus',//数据列
+                title:'顺纹拉伸弹性模量(GPa)',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -171,7 +139,7 @@ function init_table(){
             },
             {
                 field:'mechTensileStrenghtUnitMpa',//数据列
-                title:'顺纹抗剪强度',//数据列名称
+                title:'顺纹抗拉强度(拉伸)(MPa)',//数据列名称
                 sortable:true,//可排序
                 visible:false,
                 align:'center',//水平居中
@@ -180,12 +148,75 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 }
             },
-
+            {
+                field:'mechCompressiveElasticModulus',//数据列
+                title:'顺纹压缩弹性模量(GPa)',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
+                }
+            },
+            {
+                field:'mechCompressionStrenghtUnitMpa',//数据列
+                title:'顺纹抗压强度(MPa)',//数据列名称
+                sortable:true,//可排序
+                visible:false,
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
+                }
+            },
+            {
+                field:'mechFlexuralModulus',//数据列
+                title:'弯曲模量(GPa)',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
+                }
+            },
+            {
+                field:'mechShearStrenghtUnitMpa',//数据列
+                title:'抗剪强度(MPa)',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
+                }
+            },
+            {
+                field:'mechShearStrength',//数据列
+                title:'顺纹抗剪强度(MPa)',//数据列名称
+                sortable:true,//可排序
+                visible:false,
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
+                }
+            },
+            {
+                field:'mechShearModulus',//数据列
+                title:'剪切模量',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                visible:false,
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
+                }
+            },
             {
                 field:'mechImpactDuctilityUnitRenxiang',//数据列
                 title:'冲击韧性',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
+                visible:false,
                 valign:'middle',//垂直居中
                 cellStyle:function(value,row,index,field) {
                     return {css: {'min-width': '80px'}};
@@ -201,6 +232,18 @@ function init_table(){
                     return {css: {'min-width': '80px'}};
                 }
             },
+
+            {
+                field:'phyAbsoluteUnitPercent',//数据列
+                title:'绝对含水率(%)',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field) {
+                    return {css: {'min-width': '80px'}};
+                }
+            }
+
 
             /*
             {
@@ -452,6 +495,14 @@ function save() {
                 var mechImpactDuctilityUnitRenxiang = $('#mechImpactDuctilityUnitRenxiang').val();
                 var mechComplianceUnitRouliang = $('#mechComplianceUnitRouliang').val();
 
+                var mechStretchElasticModulus = $('#mechStretchElasticModulus').val();
+                var mechCompressiveElasticModulus = $('#mechCompressiveElasticModulus').val();
+                var mechFlexuralModulus=$('#mechFlexuralModulus').val();
+                var mechShearStrength = $('#mechShearStrength').val();
+                var mechShearModulus = $('#mechShearModulus').val();
+                var phyAbsoluteUnitPercent = $('#phyAbsoluteUnitPercent').val();
+
+
                 var genusId=$('#genusId').val();
                 var formData = {
                     "mechId":mechId,
@@ -464,10 +515,17 @@ function save() {
                     "mechBendingModulusElastictyUnitGpa":mechBendingModulusElastictyUnitGpa,
                     "mechBendingStrenghtUnitMpa":mechBendingStrenghtUnitMpa,
                     "mechCompressionStrenghtUnitMpa":mechCompressionStrenghtUnitMpa,
-                    "mechTensileStrenghtUnitMpa":mechTensileStrenghtUnitMpa,
                     "mechShearStrenghtUnitMpa":mechShearStrenghtUnitMpa,
+                    "mechTensileStrenghtUnitMpa":mechTensileStrenghtUnitMpa,
                     "mechImpactDuctilityUnitRenxiang":mechImpactDuctilityUnitRenxiang,
-                    "mechComplianceUnitRouliang":mechComplianceUnitRouliang
+                    "mechComplianceUnitRouliang":mechComplianceUnitRouliang,
+                    "mechStretchElasticModulus":mechStretchElasticModulus,
+                    "mechCompressiveElasticModulus":mechCompressiveElasticModulus,
+                    "mechFlexuralModulus":mechFlexuralModulus,
+                    "mechShearStrength":mechShearStrength,
+                    "mechShearModulus":mechShearModulus,
+                    "phyAbsoluteUnitPercent":phyAbsoluteUnitPercent
+
 
                 };
                 if (mechId == "") {//新增
@@ -566,6 +624,8 @@ function edit(id) {
         success:function(res){	                //请求成功回调函数
             if(res.code==200){
                 $('#mechId').val(res.data.mechId);
+
+
                 $('#mechBendingModulusElastictyUnitGpa').val(res.data.mechBendingModulusElastictyUnitGpa);
                 $('#mechBendingStrenghtUnitMpa').val(res.data.mechBendingStrenghtUnitMpa);
                 $('#mechCompressionStrenghtUnitMpa').val(res.data.mechCompressionStrenghtUnitMpa);
@@ -573,6 +633,14 @@ function edit(id) {
                 $('#mechTensileStrenghtUnitMpa').val(res.data.mechTensileStrenghtUnitMpa);
                 $('#mechImpactDuctilityUnitRenxiang').val(res.data.mechImpactDuctilityUnitRenxiang);
                 $('#mechComplianceUnitRouliang').val(res.data.mechComplianceUnitRouliang);
+
+                $('#mechStretchElasticModulus').val(res.data.mechStretchElasticModulus);
+                $('#mechCompressiveElasticModulus').val(res.data.mechCompressiveElasticModulus);
+                $('#mechFlexuralModulus').val(res.data.mechFlexuralModulus);
+                $('#mechShearStrength').val(res.data.mechShearStrength);
+                $('#mechShearModulus').val(res.data.mechShearModulus);
+                $('#phyAbsoluteUnitPercent').val(res.data.phyAbsoluteUnitPercent);
+
                 $('#spec').val(res.data.spec.specNameCh);
                 $('#specId').val(res.data.spec.specId);
                 $('#genusId').val(res.data.spec.genus.genusId);
@@ -675,6 +743,12 @@ function check(id) {
                 $('#mechTensileStrenghtUnitMpa-info').html(res.data.mechTensileStrenghtUnitMpa).attr('data-original-title',res.data.mechTensileStrenghtUnitMpa);
                 $('#mechImpactDuctilityUnitRenxiang-info').html(res.data.mechImpactDuctilityUnitRenxiang).attr('data-original-title',res.data.mechImpactDuctilityUnitRenxiang);
                 $('#mechComplianceUnitRouliang-info').html(res.data.mechComplianceUnitRouliang).attr('data-original-title',res.data.mechComplianceUnitRouliang);
+                $('#mechStretchElasticModulus-info').html(res.data.mechStretchElasticModulus).attr('data-original-title',res.data.mechStretchElasticModulus);
+                $('#mechCompressiveElasticModulus').html(res.data.mechCompressiveElasticModulus).attr('data-origin-title',res.data.mechCompressiveElasticModulus);
+                $('#mechFlexuralModulus').html(res.data.mechFlexuralModulus).attr('data-origin-title',res.data.mechFlexuralModulus);
+                $('#mechShearStrength').html(res.data.mechShearStrength).attr('data-origin-title',res.data.mechShearStrength);
+                $('#mechShearModulus').html(res.data.mechShearModulus).attr('data-origin-title',res.data.mechShearModulus);
+                $('#phyAbsoluteUnitPercent').html(res.data.phyAbsoluteUnitPercent).attr('data-origin-title',res.data.phyAbsoluteUnitPercent);
 
                 $('#spec-info').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
                 $('#exampleModal-info').modal('show');
@@ -806,18 +880,33 @@ function init_form(){
     $('#mechTensileStrenghtUnitMpa').val("");
     $('#mechImpactDuctilityUnitRenxiang').val("");
     $('#mechComplianceUnitRouliang').val("");
+
+    $('#mechStretchElasticModulus').val("");
+    $('#mechCompressiveElasticModulus').val("");
+    $('#mechFlexuralModulus').val("");
+    $('#mechShearStrength').val("");
+    $('#mechShearModulus').val("");
+    $('#phyAbsoluteUnitPercent').val("");
     $('#mechanicsForm').data('bootstrapValidator').resetForm();
 }
 //初始化详情元素的值
 function init_info(){
     $('#spec-info').val("").attr('data-original-title',"");//清除鼠标停留显示的内容，就是提示内容
-    $('#mechBendingModulusElastictyUnitGpa').val("").attr('data-original-title',"");
-    $('#mechBendingStrenghtUnitMpa').val("").attr('data-original-title',"");
+    $('#mechBendingModulusElastictyUnitGpa-info').val("").attr('data-original-title',"");
+    $('#mechBendingStrenghtUnitMpa-info').val("").attr('data-original-title',"");
     $('#mechCompressionStrenghtUnitMpa-info').val("").attr('data-original-title',"");
     $('#mechShearStrenghtUnitMpa-info').val("").attr('data-original-title',"");
     $('#mechTensileStrenghtUnitMpa-info').val("").attr('data-original-title',"");
     $('#mechImpactDuctilityUnitRenxiang-info').val("").attr('data-original-title',"");
     $('#mechComplianceUnitRouliang-info').val("").attr('data-original-title',"");
+
+    $('#mechStretchElasticModulus-info').val("").attr('data-origin-title',"");
+    $('#mechCompressiveElasticModulus-info').val("").attr('data-origin-title',"");
+    $('#mechFlexuralModulus-info').val("").attr('data-origin-title',"");
+    $('#mechShearStrength-info').val("").attr('data-origin-title',"");
+    $('#mechShearModulus-info').val("").attr('data-origin-title',"");
+    $('#phyAbsoluteUnitPercent-info').val("").attr('data-origin-title',"");
+
 }
 function checkForm(){
     $("#mechanicsForm").bootstrapValidator({

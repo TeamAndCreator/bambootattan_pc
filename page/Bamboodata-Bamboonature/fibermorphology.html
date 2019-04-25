@@ -236,28 +236,43 @@
                                     <div class="modal-body">
                                         <form class="form-horizontal" id="fibermorphologyForm" style="font-size: 15px">
                                             <div class="panel-body">
+
                                                 <div class="form-group">
-                                                    <label for="fmLengthUnitMicron" class="col-sm-4 control-label"><b>纤维长度</b>:</label>
+                                                    <label for="spec" class="col-sm-4 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>
+                                                    <div class="col-sm-5">
+                                                        <div class="input-group">
+                                                            <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text" style="border:1px solid #ccccccbd">
+                                                            <input id="specId" type="hidden" value="">
+                                                            <input id="genusId" type="hidden" value="">
+                                                            <span class="input-group-btn">
+                                                                <button id="btn_select_spec" class="btn btn-success btn-sm" type="button"><i class="fa fa-search"></i></button>
+                                                            </span>
+                                                            <input id="fmId" type="hidden" value="" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="fmLengthUnitMicron" class="col-sm-4 control-label"><b>纤维长度(mm)</b>:</label>
                                                     <div class="col-sm-5">
                                                         <input id="fmLengthUnitMicron" class="form-control input-sm" name="fmLengthUnitMicron" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="fmWidthUnitMicron" class="col-sm-4 control-label"><b>纤维宽度</b>:</label>
+                                                    <label for="fmWidthUnitMicron" class="col-sm-4 control-label"><b>纤维宽度(mm)</b>:</label>
                                                     <div class="col-sm-5">
                                                         <input id="fmWidthUnitMicron" class="form-control input-sm" name="fmWidthUnitMicron" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="fmDwallThicknessUnitMicron" class="col-sm-4 control-label"><b>纤维双壁厚</b>:</label>
+                                                    <label for="fmDwallThicknessUnitMicron" class="col-sm-4 control-label"><b>纤维双壁厚(mm)</b>:</label>
                                                     <div class="col-sm-5">
                                                         <input id="fmDwallThicknessUnitMicron" class="form-control input-sm" name="fmDwallThicknessUnitMicron" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="fmCavityDeameterUnitMicrom" class="col-sm-4 control-label"><b>纤维腔径</b>:</label>
+                                                    <label for="fmCavityDeameterUnitMicrom" class="col-sm-4 control-label"><b>纤维腔径(mm)</b>:</label>
                                                     <div class="col-sm-5">
                                                         <input id="fmCavityDeameterUnitMicrom" class="form-control input-sm" name="fmCavityDeameterUnitMicrom" placeholder="" type="text" style="border:1px solid #ccccccbd">
                                                     </div>
@@ -283,20 +298,7 @@
                                                 </div>
 
 
-                                                <div class="form-group">
-                                                    <label for="spec" class="col-sm-4 control-label"><i class="fa fa-asterisk text-danger text-tf-05"></i><b>种</b>:</label>
-                                                    <div class="col-sm-5">
-                                                        <div class="input-group">
-                                                        <input id="spec" class="form-control input-sm" name="spec" placeholder="" type="text" style="border:1px solid #ccccccbd">
-                                                        <input id="specId" type="hidden" value="">
-                                                        <input id="genusId" type="hidden" value="">
-                                                        <span class="input-group-btn">
-                                                                <button id="btn_select_spec" class="btn btn-success btn-sm" type="button"><i class="fa fa-search"></i></button>
-                                                            </span>
-                                                        <input id="fmId" type="hidden" value="" />
-                                                        </div>
-                                                    </div>
-                                                </div>
+
                                             </div>
                                             <!--</div>-->
                                             <!--<input id="underStemId" type="hidden" value="" />-->
@@ -312,7 +314,7 @@
 
                         <!--增加查看的模态框-->
                         <div class="modal fade" id="exampleModal-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static">
-                            <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="pci-cross pci-circle"></i></button>
@@ -322,15 +324,27 @@
                                     <div class="modal-body">
                                         <div class="form-horizontal" style="font-size: 15px">
                                             <div class="form-group">
-                                                <label for="fmLengthUnitMicron-info" class="col-sm-2 control-label"><b>纤维长度</b>:</label>
+                                                <label for="spec-info" class="col-sm-5 control-label"><b>种</b>:</label>
+                                                <div class="col-sm-2 input-group">
+                                                    <p id="spec-info" class="form-control-static pad-hor-sm"></p>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="fmLengthUnitMicron-info" class="col-sm-5 control-label"><b>纤维长度(mm)</b>:</label>
                                                 <div class="col-sm-2">
                                                     <p id="fmLengthUnitMicron-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
-                                                <label for="fmWidthUnitMicron-info" class="col-sm-2 control-label"><b>纤维宽度</b>:</label>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="fmWidthUnitMicron-info" class="col-sm-5 control-label"><b>纤维宽度(mm)</b>:</label>
                                                 <div class="col-sm-2">
                                                     <p id="fmWidthUnitMicron-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
-                                                <label for="fmDwallThicknessUnitMicron-info" class="col-sm-2 control-label"><b>纤维双壁厚</b>:</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="fmDwallThicknessUnitMicron-info" class="col-sm-5 control-label"><b>纤维双壁厚(mm)</b>:</label>
                                                 <div class="col-sm-2">
                                                     <p id="fmDwallThicknessUnitMicron-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
@@ -338,30 +352,31 @@
 
 
                                             <div class="form-group">
-                                                <label for="fmCavityDeameterUnitMicrom-info" class="col-sm-2 control-label"><b>纤维腔径</b>:</label>
+                                                <label for="fmCavityDeameterUnitMicrom-info" class="col-sm-5 control-label"><b>纤维腔径(mm)</b>:</label>
                                                 <div class="col-sm-2">
                                                     <p id="fmCavityDeameterUnitMicrom-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
-                                                <label for="fmLetWidthRatio-info" class="col-sm-2 control-label"><b>纤维长宽比</b>:</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="fmLetWidthRatio-info" class="col-sm-5 control-label"><b>纤维长宽比</b>:</label>
                                                 <div class="col-sm-2">
                                                     <p id="fmLetWidthRatio-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
-                                                <label for="fmWallCavityRatio-info" class="col-sm-2 control-label"><b>纤维壁腔比</b>:</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="fmWallCavityRatio-info" class="col-sm-5 control-label"><b>纤维壁腔比</b>:</label>
                                                 <div class="col-sm-2">
                                                     <p id="fmWallCavityRatio-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
                                             </div>
-
                                             <div class="form-group">
-                                                <label for="fmCavityDiameterRatio-info" class="col-sm-2 control-label"><b>纤维腔径比</b>:</label>
+                                                <label for="fmCavityDiameterRatio-info" class="col-sm-5 control-label"><b>纤维腔径比</b>:</label>
                                                 <div class="col-sm-2">
                                                     <p id="fmCavityDiameterRatio-info" class="form-control-static pad-hor-sm text-overflow add-tooltip" data-toggle="tooltip" data-placement="bottom" data-original-title=""></p>
                                                 </div>
-                                                <label for="spec-info" class="col-sm-2 control-label"><b>种</b>:</label>
-                                                <div class="col-sm-2 input-group">
-                                                    <p id="spec-info" class="form-control-static pad-hor-sm"></p>
-                                                </div>
                                             </div>
+
+
                                         </div>
                                     </div>
                                     <div class="modal-footer">
