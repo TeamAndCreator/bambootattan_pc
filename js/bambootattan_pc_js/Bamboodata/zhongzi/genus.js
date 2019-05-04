@@ -589,6 +589,14 @@ function checkForm(){
                     }
                 }
             },
+            genusNameLd:{
+                validators:{
+                    notEmpty:{
+                        message:'拉丁名不能为空'
+                    }
+                }
+            }
+
         }
     });
 }
