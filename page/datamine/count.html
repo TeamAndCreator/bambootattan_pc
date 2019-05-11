@@ -181,7 +181,7 @@
                                     var myChart = echarts.init(document.getElementById('main'));
 
                                     myChart.showLoading();
-                                    $.get('http://47.106.74.107:8081/genus/showEchartTree', function(data) {
+                                    $.get('http://114.112.125.51:8081/genus/showEchartTree', function(data) {
                                         myChart.hideLoading();
 
                                         echarts.util.each(data.children, function(datum, index) {
