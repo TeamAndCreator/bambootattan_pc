@@ -268,7 +268,7 @@ function init_spec_table(){
                 field:'radio',//数据列
             },
             {
-                field:'genus',//数据列
+                field:'rattanGenus',//数据列
                 title:'属名',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
@@ -278,7 +278,7 @@ function init_spec_table(){
                 },
                 formatter:function(value,row,index){
                     //return row.genus.genusNameCh;
-                    return row.genus == null ? '' : row.genus.genusNameCh;
+                    return row.rattanGenus == null ? '' : row.rattanGenus.genusNameCh;
                 }
             },
             {
