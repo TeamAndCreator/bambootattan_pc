@@ -175,7 +175,7 @@ function init_spec_table(){
         sortName:'id',//排序字段
         sortable:false,//排序设置
         sortOrder:'asc',//排序类型，asc正序，desc倒序初始化加載第一頁
-        pageList:[5, 10, 20],//每页数量组
+        pageList:[5,20,100,200],//每页数量组
         pageSize:10,//默认每页数量
         pagination:true,//可以分页
         showPaginationSwitch:false,//
