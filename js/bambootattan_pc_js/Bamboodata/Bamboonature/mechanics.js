@@ -744,11 +744,11 @@ function check(id) {
                 $('#mechImpactDuctilityUnitRenxiang-info').html(res.data.mechImpactDuctilityUnitRenxiang).attr('data-original-title',res.data.mechImpactDuctilityUnitRenxiang);
                 $('#mechComplianceUnitRouliang-info').html(res.data.mechComplianceUnitRouliang).attr('data-original-title',res.data.mechComplianceUnitRouliang);
                 $('#mechStretchElasticModulus-info').html(res.data.mechStretchElasticModulus).attr('data-original-title',res.data.mechStretchElasticModulus);
-                $('#mechCompressiveElasticModulus').html(res.data.mechCompressiveElasticModulus).attr('data-origin-title',res.data.mechCompressiveElasticModulus);
-                $('#mechFlexuralModulus').html(res.data.mechFlexuralModulus).attr('data-origin-title',res.data.mechFlexuralModulus);
-                $('#mechShearStrength').html(res.data.mechShearStrength).attr('data-origin-title',res.data.mechShearStrength);
-                $('#mechShearModulus').html(res.data.mechShearModulus).attr('data-origin-title',res.data.mechShearModulus);
-                $('#phyAbsoluteUnitPercent').html(res.data.phyAbsoluteUnitPercent).attr('data-origin-title',res.data.phyAbsoluteUnitPercent);
+                $('#mechCompressiveElasticModulus-info').html(res.data.mechCompressiveElasticModulus).attr('data-origin-title',res.data.mechCompressiveElasticModulus);
+                $('#mechFlexuralModulus-info').html(res.data.mechFlexuralModulus).attr('data-origin-title',res.data.mechFlexuralModulus);
+                $('#mechShearStrength-info').html(res.data.mechShearStrength).attr('data-origin-title',res.data.mechShearStrength);
+                $('#mechShearModulus-info').html(res.data.mechShearModulus).attr('data-origin-title',res.data.mechShearModulus);
+                $('#phyAbsoluteUnitPercent-info').html(res.data.phyAbsoluteUnitPercent).attr('data-origin-title',res.data.phyAbsoluteUnitPercent);
 
                 $('#spec-info').html(res.data.spec.specNameCh).attr('data-original-title',res.data.specNameCh);
                 $('#exampleModal-info').modal('show');
