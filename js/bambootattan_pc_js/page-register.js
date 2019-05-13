@@ -7,29 +7,33 @@ $(function () {
         //     valiadtor.defaultSubmit();
         // },
         fields: {
-            userAcct: {
+            realName: {
                 validators: {
                     notEmpty: {
-                        message: '登录账户不能为空'
+                        message: '用户真实姓名不能为空'
                     },
                     stringLength: {
                         /*长度提示*/
                         min: 2,
                         max: 10,
-                        message: '用户名长度必须在2到10之间'
+                        message: '用户真实姓名长度必须在2到10之间'
+                    },
+                    regexp: {
+                        regexp: /^[\u4e00-\u9fa5]{1,}((·[\u4e00-\u9fa5]{1,}){0,3})$/,
+                        message: '必须输入中文'
                     }
                 }
             },
             userName: {
                 validators: {
                     notEmpty: {
-                        message: '用户名不能为空'
+                        message: '用户账号不能为空'
                     },
                     stringLength: {
                         /*长度提示*/
                         min: 2,
                         max: 10,
-                        message: '用户名长度必须在2到10之间'
+                        message: '用户账号长度必须在2到10之间'
                     }
                 }
             },
@@ -70,11 +74,11 @@ $(function () {
                     notEmpty: {
                         message: '确认密码不能为空'
                     },
-                    stringLength: {
-                        min: 6,
-                        max: 30,
-                        message: '用户名长度必须在6到30之间'
-                    },
+                    // stringLength: {
+                    //     min: 6,
+                    //     max: 30,
+                    //     message: '用户名长度必须在6到30之间'
+                    // },
                     identical: {//相同
                         field: 'userPwd',
                         message: '两次密码不一致'
@@ -96,6 +100,7 @@ $(function () {
 function submit(){
     var userAcct=$("#userAcct").val();
     var userName = $("#userName").val();
+    var realName = $("#realName").val();
     var userPwd = $("#userPwd").val();
     var userReped=$("#userReped").val();
     var eMail=$("#eMail").val();
@@ -106,6 +111,7 @@ function submit(){
     var formData={
         "userAcct":userAcct,
         "userName": userName,
+        "realName": realName,
         "userPwd": userPwd,
         "userReped":userReped,
         "eMail":eMail,
@@ -121,7 +127,7 @@ function submit(){
         //contentType: 'application/json',
         success: function (res) {    // 请求成功后的回调函数，其中的参数data为controller返回的map,也就是说,@ResponseBody将返回的map转化为JSON格式的数据，然后通过data这个参数取JSON数据中的值
             //res.code=400;
-            if (res.code ==200) {
+            if (res.code ===200) {
                 $.niftyNoty({
                     type: 'success',
                     icon: 'pli-like-2 icon-2x',
@@ -130,10 +136,10 @@ function submit(){
                     timer: 2000
                 });
                 window.location.href = "page-login.html";
-            }else if(res.code == 400){
+            }else if(res.code === 400){
                 window.location.href='page-page-404.html';
             }
-            else if(res.code == 505){
+            else if(res.code === 505){
                 window.location.href='page-page-500.html';
             } else{
                 //alert("账号已存在");
