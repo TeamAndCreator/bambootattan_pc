@@ -104,7 +104,7 @@ function init_table(){
             },
             {
                 field:'userName',//数据列
-                title:'用户姓名',//数据列名称
+                title:'用户账号',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -112,6 +112,18 @@ function init_table(){
                     return{ css:{'min-width':'80px'}};
                 }
             },
+            {
+                field:'realName',//数据列
+                title:'用户真实姓名',//数据列名称
+                sortable:true,//可排序
+                align:'center',//水平居中
+                visible:false,
+                valign:'middle',//垂直居中
+                cellStyle:function(value,row,index,field){
+                    return{ css:{'min-width':'80px'}};
+                }
+            },
+
             {
                 field:'createTime',//数据列
                 title:'创建时间',//数据列名称
@@ -211,7 +223,7 @@ function save() {
                 }
 
                 var userId=$("#userId").val();
-                //var userAcct=$("#userAcct").val();
+                var realName=$("#realName").val();
                 var userName = $("#userName").val();
                 // var createTime=$("createTime").val();
                 var userPwd = $("#userPwd").val();
@@ -227,7 +239,7 @@ function save() {
 
                 var formData={
                     "userId":userId,
-                   // "userAcct":userAcct,
+                    "realName":realName,
                     "userName": userName,
                     // "createTime":createTime,
                     "userPwd": userPwd,
@@ -342,7 +354,7 @@ function edit(id) {
                 //赋值
                 $('#userId').val(res.data.userId);
                 $('#userName').val(res.data.userName);
-                // $('#eMail').val(res.data.eMail);
+                $('#realName').val(res.data.realName);
                 // $('#userPwd').val(res.data.userPwd);//修改时候密码应该重新输入
                 $('#createTime').val(res.data.createTime);
                 $('#orgName').val(res.data.orgName);
@@ -525,6 +537,7 @@ function check(id) {
             if(res.code===200){
                 $('#userName-info').html(res.data.userName).attr('data-original-title',res.data.userName);
                 $('#eMail-info').html(res.data.eMail).attr('data-original-title',res.data.eMail);
+                $('#realName-info').html(res.data.realName).attr('data-original-title',res.data.realName);
                 $('#orgName-info').html(res.data.orgName).attr('data-original-title',res.data.orgName);
                 $('#createTime-info').html(res.data.createTime).attr('data-original-title',res.data.createTime);
                 $('#orgPhone-info').html(res.data.orgPhone).attr('data-original-title',res.data.orgPhone);
@@ -621,7 +634,7 @@ function state(value, row,index) {
 //初始化表单元素的值
 function init_form(){
     $('#userName').val("");
-    //$('#eMail').val("");
+    $('#realName').val("");
     $('#orgPhone').val("");
     $('#createTime').val();
    // $('#orgPhone').val("");
@@ -635,6 +648,7 @@ function init_form(){
 function init_info(){
     $('#userId').val("").attr('data-original-title',"");
     $('#userName-info').val("").attr('data-original-title',"");
+    $('#realName-info').val("").attr('data-original-title',"");
     $('#orgName-info').val("").attr('data-original-title',"");
     $('#orgPhone-info').val("").attr('data-original-title',"");
     $('#createTime-info').val("").attr('data-original-title',"");
@@ -649,7 +663,25 @@ function checkForm(){
             userName: {
                 validators: {
                     notEmpty: {
-                        message: '用户姓名不能为空'
+                        message: '用户账号不能为空'
+                    }
+                }
+
+            },
+            realName: {
+                validators: {
+                    notEmpty: {
+                        message: '用户真实姓名不能为空'
+                    },
+                    stringLength: {
+                        /*长度提示*/
+                        min: 2,
+                        max: 10,
+                        message: '用户真实姓名长度必须在2到10之间'
+                    },
+                    regexp: {
+                        regexp: /^[\u4e00-\u9fa5]{1,}((·[\u4e00-\u9fa5]{1,}){0,3})$/,
+                        message: '必须输入中文'
                     }
                 }
             },
