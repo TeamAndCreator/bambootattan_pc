@@ -507,7 +507,7 @@ function checkForm(){
             unitEnglish: {
                 validators: {
                     notEmpty: {
-                        message: '中文名不能为空'
+                        message: '英文名不能为空'
                     }
                 }
             }

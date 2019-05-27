@@ -130,7 +130,7 @@ function init_table(){
             },
             {
                 field:'sheathNode',//数据列
-                title:'箨鞘是否隆起',//数据列名称
+                title:'箨环是否隆起',//数据列名称
                 sortable:true,//可排序
                 align:'center',//水平居中
                 valign:'middle',//垂直居中
@@ -203,7 +203,8 @@ function init_spec_table(){
         queryParams:function(params){//请求参数，向后台传的数据，修改成后台可以接收的数据格式
             return {
                 page:params.offset/params.limit,    //页码，就是第几页
-                size:params.limit                   //每页数量
+                size:params.limit,                   //每页数量
+                search:params.search
             }
         },
         cache:false,//是否使用緩存

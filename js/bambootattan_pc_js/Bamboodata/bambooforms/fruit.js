@@ -266,7 +266,8 @@ function init_spec_table(){
         queryParams:function(params){//请求参数，向后台传的数据，修改成后台可以接收的数据格式
             return {
                 page:params.offset/params.limit,    //页码，就是第几页
-                size:params.limit                   //每页数量
+                size:params.limit,                   //每页数量
+                search:params.search
             }
         },
         cache:false,//是否使用緩存
