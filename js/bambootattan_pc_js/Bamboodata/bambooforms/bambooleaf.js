@@ -282,7 +282,7 @@ function init_spec_table(){
         pageList:[5,20,100,200],//每页数量组
         pageSize:10,//默认每页数量
         pagination:true,//可以分页
-        showPaginationSwitch:false,//
+        showPaginationSwitch:false,
         sidePagination:'server',//服務器端分頁
         clickToSelect:true,
         onDblClickRow:function(row, $element){
