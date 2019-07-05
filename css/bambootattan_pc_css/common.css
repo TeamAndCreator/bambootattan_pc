@@ -91,6 +91,7 @@
 }*/
 #mainnav-menu>li>a{
     font-size: 20px;
+    font-family: SimSun-ExtB !important;
 }
 #mainnav-menu>li>ul>li>a{
     font-size: 18px;
