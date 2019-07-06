@@ -89,21 +89,31 @@
 #mainnav-menu li a{
     font-size: 18px;
 }*/
+
+/*body{*/
+    /*font-family: '楷体' !important;*/
+/*}*/
+
+
 #mainnav-menu>li>a{
     font-size: 20px;
-    font-family: SimSun-ExtB !important;
+    font-family: '楷体' !important;
 }
 #mainnav-menu>li>ul>li>a{
     font-size: 18px;
+    font-family: '楷体' !important;
 }
 #mainnav-menu>li>ul>li>ul>li>a{
     font-size: 16px;
+    font-family: '楷体' !important;
 }
 #mainnav-menu>li>ul>li>ul>li>ul>li>a{
     font-size: 14px;
+    font-family: '楷体' !important;
 }
 #mainnav-menu>li>ul>li>ul>li>ul>li>ul>li>a{
     font-size: 13px;
+    font-family: '楷体' !important;
 }
 #mainnav-menu ul li a .arrow {
     height: 100%;
